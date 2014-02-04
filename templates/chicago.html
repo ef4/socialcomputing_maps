@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="/static/css/tipsy.css"/> 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="/static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+      html, body{
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica', sans-serif;
+      background-color: #2B2828;
+
+    }
+
+    #svgContainer {
+        width: 100%;
+        height: 100%;
+        float:left;
+        border-left: 5px;
+    }
+    
+    #infoGraphic{
+      position: absolute;
+      height: 100%;
+      width: 5%;
+      left: 100%;
+      margin-right: 2%;
+      float:right;
+      border-left: '1px';
+      border-left-color:#000000; 
+      background-color: #2B2828;
+    }
+
+    #drawer {
+      left : 95%;
+      float:right;
+      position:absolute;
+      background-color:'#093DDB';
+      z-index: 2;
+      top:2%;
+    }
+
+    #year{
+      position: absolute;
+      z-index: 2;
+      left: 3%;
+      top:80%;
+      font-size: 20pt;
+      float: left;
+    }
+
+    #logo{
+      left : 3%;
+      float:left;
+      position:absolute;
+      z-index: 3;
+      top:2%;
+    }
+
+
+    #paneContent{
+      height:100%;
+      width:100%
+    }
+    #tabcontent_1{
+      height:100%;
+      width:100%
+    }
+
+    #tabcontent_2{
+      height:100%;
+      width:100%
+    }
+
+    #tabcontent_3{
+      height:100%;
+      width:100%
+    }
+
+    .active {
+      background-color: #404142;
+      border-color: #404142;
+    }
+
+    #street-view{
+      width:95%;
+      height:60%;
+      top:3%;
+    }
+
+    .nav  {
+      border-color: #404142;
+    }
+
+    li  {
+      border-color: #404142;
+      background-color: #404142;
+    }
+
+
+
+    
+    </style>
+   <script type="text/javascript">
+   var map;
+   var canvasLayer;
+   var context;
+   var allData;
+   var mapCenter = [-87.715044,41.93202];
+   var bikeFlag = false;
+   var bikeLayer;
+   var activeTab;
+   var vertActiveTab;
+   var activeTabContent;
+   var pano;
+   var streetToPoints = {};
+   var chartData = [];
+   var chartDrawn = false;
+   var allClusters = {};
+   var finalClusters = {};
+   var projection = d3.geo.mercator();
+   var path = d3.geo.path().projection(projection); 
+   var geoJSON;
+   var scaleFactor = 0.98;
+   var svg;
+   var maxWidth = 1;
+   var infoGraphToggle = false;
+   var yearData;
+   var years = ['2010', '2011', '2012'];
+   var currentYrIndex = 0;
+
+   $(window).load(function(){
+
+
+  jQuery.getJSON('/static/data/Chicago/boundary.geojson', function(geojson){
+    geoJSON = geojson;
+    setProjection();
+    drawMap();
+    jQuery.getJSON('/static/data/Chicago/final_data.json', function(data){
+      console.log(data);
+        allData= data;
+        accidentData = allData["accidents"]["2012"];
+        processStreetClusters(allData["clusters"]["2012"]);
+        processChartData(allData["clusters"]["2012"]);
+        drawCircles();
+        //yearController();
+        
+    });
+  });
+     $('#drawer').click(function(){
+            var width = $(window).width(); var height = $(window).height();
+            $('#svgContainer').empty();
+            console.log('click');
+
+            if (!infoGraphToggle){
+                console.log("here1");
+                $('#infoGraphic').css('visibility', 'show');
+                $('#svgContainer').width(width * 0.7);
+                $('#infoGraphic').css('left', width * 0.7);
+                $('#infoGraphic').css('width', width * 0.3);
+                $('#chart').css('width', $('#infoGraphic').width());
+                $('#chart').css('height', $('#infoGraphic').height() * 0.95);
+                $('#drawer').css('left', width * 0.7);
+                $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
+                $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
+            } else {
+                console.log("here2");
+                $('#infoGraphic').css('visibility','hidden');
+                $('#svgContainer').width(width * 1.0);
+                $('#infoGraphic').css('left', width * 1.0);
+                $('#infoGraphic').css('width', width * 0);
+                $('#drawer').children().find('span').css('class','glyphicon glyphicon-arrow-left');
+                $('#chart').empty();
+                $('#button-icon').removeClass('glyphicon glyphicon-chevron-right');
+                $('#button-icon').addClass('glyphicon glyphicon-chevron-left');
+                $('#drawer').css('left', width * 0.95);
+            }
+
+            infoGraphToggle = !infoGraphToggle;
+            setProjection();
+            drawMap();
+            drawCircles();
+            // console.log('end chart');            
+
+        });
+
+     $("#chart").hide();
+     activeTab = $('#tab_1');
+     activeTabContent = $("#tabcontent_1");
+     $("#tabcontent_2").hide();
+
+     //$("#map").show();
+     $("#tab_2").click(function(){
+        console.log("here")
+        $('#tab_2').addClass("active");
+        $('#tab_1').removeClass("active");
+        $("#tabcontent_1").hide()
+        $("#tabcontent_2").show();
+        $("#chart").show();
+        drawChart();
+     });
+
+     $("#tab_1").click(function(){
+      $('#tab_2').removeClass("active");
+      $('#tab_1').addClass("active");
+      $("#tabcontent_1").show()
+      $("#tabcontent_2").hide();
+      $("#chart").hide();
+     });
+
+     $("#address").click(function(){
+        console.log("here");
+        $('#auditForm').toggle("slide");
+     });
+
+    
+  });
+
+function yearController(){
+  switch (currentYrIndex) {
+    case 0:
+      visualizeYear(years[currentYrIndex]);
+      break;
+    case 1:
+      setTimeout(visualizeYear(years[currentYrIndex]), 2000);
+      break;
+    case 2:
+      setTimeout(visualizeYear(years[currentYrIndex]), 3000);
+      break;
+    default:
+      comprehensiveAccidentData = [];
+      comprehensiveAccidentData =  comprehensiveAccidentData.concat(allData["accidents"]['2010']);
+      comprehensiveAccidentData =  comprehensiveAccidentData.concat(allData["accidents"]['2011']);
+      comprehensiveAccidentData =  comprehensiveAccidentData.concat(allData["accidents"]['2012']);
+      accidentData = comprehensiveAccidentData;
+      finalClusters = [];
+      drawCircles();
+      $('#year').html('2010 - 2012');
+  } 
+}
+
+
+function visualizeYear(year){
+        $('#year').html(year);
+        accidentData = allData["accidents"][year];
+        processStreetClusters(allData["clusters"][year]);
+        processChartData(allData["clusters"][year]);
+        drawCircles();
+        currentYrIndex++;
+        setTimeout(emptyCircles,5000);
+        setTimeout(yearController,5000);
+        
+        
+
+}
+
+function emptyCircles(){
+    var accidents = d3.selectAll('g circle')[0];
+    for (acc in accidents){
+      accidents[acc].setAttribute('visibility', 'hidden');
+    }
+
+    var clusters = d3.selectAll('g path')[0];
+    for (cl in clusters){
+      clusters[cl].setAttribute('visibility', 'hidden');
+    }
+}
+
+function setProjection(){ 
+  projection.scale(1)
+    .translate([0, 0]);
+
+  width = $("#svgContainer").width(); height = $("#svgContainer").height();
+  console.log(width, height);
+  var b = path.bounds(geoJSON),
+    s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+    t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+  projection.scale(s).translate(t);
+  projection(mapCenter);
+}
+
+
+function computeDistance(point1, point2){
+  lat1 = point1[0]; long1 = point1[1];
+  lat2 = point2[0]; long2 = point2[1];
+  degree_to_radians = Math.PI/180
+  dist_to_miles = 3960
+  dist_to_kms = 6371.01
+
+  phi1 = (90.0 - lat1)* degree_to_radians;
+  phi2 = (90.0 - lat2)* degree_to_radians;
+
+  theta1 = long1*degree_to_radians;
+  theta2 = long2*degree_to_radians;
+
+  cos = (Math.sin(phi1)*Math.sin(phi2)*Math.cos(theta1-theta2) + Math.cos(phi1)*Math.cos(phi2))
+  arc = Math.acos(cos)
+
+  distance = arc * dist_to_miles;
+  return distance;
+}
+
+function findClosestCluster(point, clusters){
+  bestCluster = -1;
+  bestDist = 100000;
+  for(var i = 0; i <clusters.length; i++) {
+    cluster = clusters[i];
+    dist = computeDistance(point, clusterAverage(cluster));
+    if (dist <= bestDist){
+        bestDist = dist; bestCluster = i;
+    }
+  }
+  return bestCluster;
+}
+
+function clusterAverage(cluster){
+  lats = 0; lngs = 0;
+  for (var i = 0; i<cluster.length; i++){
+    lats += cluster[i][0]; lngs += cluster[i][1];
+  }
+  return [lats/cluster.length, lngs/cluster.length];
+}
+
+
+function processStreetClusters(clusters){
+  for (var street in clusters){
+    //console.log(street);
+    allClusters[street] = [[clusters[street][0]]];
+    current= 1; thresholdDist = 1.5;
+    while (current < clusters[street].length){
+      closestClusterIndex = findClosestCluster(clusters[street][current], allClusters[street]);
+      if (computeDistance(clusters[street][current], clusterAverage(allClusters[street][closestClusterIndex])) < thresholdDist){
+        allClusters[street][closestClusterIndex].push(clusters[street][current]);
+      } else {
+        allClusters[street].push([clusters[street][current]]);
+      }
+      current++;
+   }
+  }
+  //console.log(allClusters);
+  for (var street in allClusters){
+    if (allClusters[street].length >= 5){
+      finalClusters[street] = [];
+      for (var i =0; i < allClusters[street].length; i++){
+        //console.log(allClusters[street][i]);
+        firstPoint = allClusters[street][i][0]; finalPoint = allClusters[street][i][allClusters[street][i].length -1];
+        finalClusters[street].push([firstPoint, finalPoint]);
+      }
+    }
+  }
+  //console.log(finalClusters);
+}
+
+function processChartData(streetData){
+  for (var street in streetData){
+    if (streetData[street].length > maxWidth){ maxWidth = streetData[street].length;}
+    chartData.push({'name': street, 'numAccidents': streetData[street].length});
+  }
+  //sort
+  chartData.sort(function(a, b) {return d3.descending(a.numAccidents, b.numAccidents);})
+  chartData.splice(30);
+}
+
+
+
+function drawChart(){
+  var chartHeight = $("#chart").height();
+  var chartWidth = $("#chart").width();
+
+  var maxBarWidth = chartWidth-2; var barHeight = 20;
+  var svg = d3.select("#chart").append("svg")
+        .attr("width", chartWidth)
+        .attr("height", chartHeight);
+
+
+  var barLabel = function(d) { return d['name']; };
+  var barValue = function(d) { return d['numAccidents']; };
+  
+  var yScale = d3.scale.ordinal().domain(d3.range(0, chartData.length)).rangeBands([0, chartData.length * barHeight]);
+  var y = function(d, i) { return yScale(i); };
+  var x = d3.scale.linear().domain([0, d3.max(chartData, barValue)]).range([0, maxBarWidth]);
+
+  var chart = d3.select('#chart').append("svg")
+    .attr("width", chartWidth)
+    .attr("height", chartHeight)
+  var gridContainer = chart.append('g')
+
+
+  svg.selectAll("rect")
+      .data(chartData)
+    .enter().append("rect")
+
+      .attr("y", y)
+      .attr('height', 10)
+      .attr("fill", "#FA8602")
+      .attr("stroke", "#FA8602")
+      .attr('opacity',0.3)
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity', 1.0);
+      })
+      .on('mouseout', function (){
+        d3.select(this).attr('opacity',0.3);
+      })
+      .on('click', function(d){
+          var accidents = d3.selectAll('g circle')[0];
+          for (var acc in accidents){
+            name = accidents[acc].className.animVal;
+            if (name.indexOf(d.name) != -1){
+              accidents[acc].setAttribute('visibility', 'show');
+            } else {
+              accidents[acc].setAttribute('visibility', 'hidden');
+            }
+          }
+
+          var clusters = d3.selectAll('g path')[0];
+          for (cl in clusters){
+            name = clusters[cl].className.animVal;
+            if (name.indexOf(d.name) != -1){
+              clusters[cl].setAttribute('visibility', 'show');
+            } else {
+              clusters[cl].setAttribute('visibility', 'hidden');
+            }
+          }
+
+          
+      })
+      .attr("x", function (d) {return chartWidth - x(barValue(d)) -20 ;})
+      
+      .transition().delay(function (d,i){ return i * 50;})
+        .ease("elastic")
+          .attr('width', function(d) { return x(barValue(d)); });
+  
+ 
+      $('svg rect').tipsy({ 
+          gravity: 'e', 
+          fade:true,
+          html: true, 
+          title: function() {
+            var d = this.__data__.name;
+            var val = this.__data__.numAccidents;
+            return '<p style="color:#FA8602;font-size:10pt;opacity:0.7;">' + d + ', # Accidents =  <span style="color:#FA8602;">' + val + '</span></p>'; 
+          }
+        });
+
+
+}
+
+
+  function toggleStreetView(latlng, show){
+        
+        if (show){
+          var panoramaOptions = {
+            position: latlng,
+            pov: {
+              heading: 0,
+              pitch: -10,
+              zoom: 1
+            },
+            //map: map,
+            navigationControl: false,
+            enableCloseButton: false,
+            addressControl: false,
+            linksControl: false,
+            panControl:false,
+            zoomControl:false
+        };
+       
+        pano = new google.maps.StreetViewPanorama(document.getElementById("street-view"), panoramaOptions);
+        } else{
+          $('#street-view').html('');
+        }
+  }
+
+function drawMap(){
+  svg = d3.select("#svgContainer").append("svg");
+
+  svg.selectAll("path")
+    .data(geoJSON.features)
+   .enter().append("path")
+    .attr("d", path)
+    .attr("fill", 000)
+    .attr("fill-opacity", 0.75)
+    .attr("stroke", 000);
+}
+
+function blur() {
+  filter.attr("stdDeviation", this.value / 5);
+}
+
+function drawCircles(){
+
+
+
+    var filter = svg.append("defs")
+      .append("filter")
+        .attr("id", "blur")
+      .append("feGaussianBlur")
+        .attr("stdDeviation", 0.5);
+  
+    g = svg.append('g'); 
+
+
+
+    g.selectAll(".finalClusters")
+        .data(d3.entries(finalClusters))
+        .enter().append("g")
+        .attr("class", function(d){
+            return d.key;
+        })
+        .selectAll(".cluster")
+                .data(function(d,i){ 
+                  return d.value;})
+                .enter().append("path")
+                  .attr('d', function (d) {                      
+                      var lineData = [
+                        projection([parseFloat(d[0][1]), parseFloat(d[0][0])]),
+                        projection([parseFloat(d[1][1]), parseFloat(d[1][0])]),
+                      ]
+                      var dataLine =  d3.svg.line()
+                        .x(function (d) {return d[0]})
+                        .y(function (d) {return d[1]});
+
+                      //console.log(dataLine(lineData));
+                      return dataLine(lineData);
+                  })
+                  .attr('stroke', "red")
+                  .attr('stroke-opacity',0.4)
+                  .attr('stroke-linejoin', 'round')
+                  .attr('stroke-width', 3)
+                  .attr('fill', 'none')
+
+
+
+    g.selectAll(".accidents-shell")
+      .data(accidentData)
+      .enter().append("circle")
+      .attr("class", function(d){
+        return d.street1 + '-' + d.street2;
+      })
+      .attr("r", 4.0)
+      .attr('cx', function (d) {       
+        return projection([d.lng, d.lat])[0]; 
+      })
+      .attr('cy', function (d) {
+        return projection([d.lng, d.lat])[1];
+      })
+      .attr("fill", "#FA8602")
+      .attr("stroke", "#FA8602")
+      .attr("opacity", 0.2)
+      .attr("visibility", "show")
+      .on('mouseover', function(d){
+        if (infoGraphToggle){
+          var latlng = new google.maps.LatLng(d['lat'], d['lng']);
+          toggleStreetView(latlng, true);
+          d3.select(this)
+        }
+      })
+      .attr("filter", "url(#blur)");
+
+
+      g.selectAll(".accidents-core")
+      .data(accidentData)
+      .enter().append("circle")
+      .attr("class", function(d){
+        return d.street1 + '-' + d.street2;
+      })
+      .attr("r", 0.5)
+      .attr('cx', function (d) {       
+        return projection([d.lng, d.lat])[0]; 
+      })
+      .attr('cy', function (d) {
+        return projection([d.lng, d.lat])[1];
+      })
+      .attr("fill", "#FA8602")
+      .attr("stroke", "#FA8602")
+      .attr("opacity", 0.5)
+      .attr("visibility", "show")
+      .on('mouseover', function(d){
+        if (infoGraphToggle){
+          var latlng = new google.maps.LatLng(d['lat'], d['lng']);
+          toggleStreetView(latlng, true);
+          d3.select(this)
+        
+        }
+      });
+     
+    
+                  //.attr("filter", "url(#blur)");
+    
+}
+  
+
+
+
+
+  
+
+    
+
+   
+
+   
+    //google.maps.event.addDomListener(window, 'load', init);
+   </script>
+  </head>
+  <body>
+      <img id="logo" src="/static/img/logo.png">
+      <div id="drawer">
+          <svg height='50' width='50' style="z-index:1">
+              <circle cx="25" cy="25" r="15" stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />
+          </svg>
+          <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="position:absolute; left:35%; top:33%; z-index:2"></i>
+        </div>
+
+        <p id="year" style="color:#FA8602;"></p>
+      <div id="infoGraphic">
+        <br></br>
+        <p id = 'title' align="center"  style="color:#FA8602;font-size:15pt"> Chicago Bicycle Accidents</p>
+         
+        <br></br>
+        <div id="tabConatiner">
+          <ul id="infoTabs" class="nav nav-tabs">
+            <li  id="tab_1" class="active" ><a href="#" style="color:#FA8602;border-color:#404142;background-color:#404142;">Street View</a></li>
+            <li id="tab_2" ><a  href="#" style="color:#FA8602;border-color:#404142;background-color:#404142;">Street Graph</a></li>
+          </ul>
+        </div>
+
+        <div id="paneContent">
+          <div id="tabcontent_1">
+            <p id="address" align="left" style="color:#FA8602;font-size:10pt">Hover over an accident to explore.</p>
+            <div id="street-view" > </div>
+            <br></br>
+            <p style="color:#FA8602;font-size:10pt"> Data Source: Illinois.gov </p>
+          </div>
+          <div id="tabcontent_2" >
+
+            <p align="center" style="color:#FA8602;font-size:11pt"> Accidents by Street </p>
+            <p id="chartTitle" align="center" style="color:#FA8602;font-size:11pt"> </p>
+            <div id="chart" style="width:80%; height:80%;"> </div>
+          </div>
+          
+        </div>
+
+
+      </div>
+        
+        <div id="svgContainer"></div>
+</body>
+</html>
+    

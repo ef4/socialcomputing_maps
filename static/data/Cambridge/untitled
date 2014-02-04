@@ -1,0 +1,14 @@
+import requests
+#import findImages as helper
+import utils as utils
+import math
+import time
+import datetime
+import random
+import json
+
+
+def readJSON(city):
+	gvals = open('static/data/'+str(city)+'/greenery.json', 'r')
+	data = json.load(gvals)
+	print data

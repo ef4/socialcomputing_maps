@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="/static/css/tipsy.css"/> 
+    <script type="text/javascript" src="/static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+
+    html, body{
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    #map, #roadImg {
+        width: 70%;
+        height: 100%;
+        float:left;
+        border-left: 5px;
+    }
+    
+    #infoGraphic{
+      position: absolute;
+      height: 100%;
+      width: 29%;
+      left: 71%;
+      margin-right: 2%;
+      margin-top:2%;
+      float:right;
+    }
+
+    #paneContent{
+      height:100%;
+      width:100%
+    }
+    #tabcontent_1{
+      height:100%;
+      width:100%
+    }
+
+    #tabcontent_2{
+      height:100%;
+      width:100%
+    }
+
+    #tabcontent_3{
+      height:100%;
+      width:100%
+    }
+
+
+
+    #street-view{
+      width:95%;
+      height:60%%;
+
+    }
+
+    .accidents, .accidents svg {
+      position: absolute;
+    }
+
+    .accidents svg {
+      width: 60px;
+      height: 20px;
+      padding-right: 100px;
+      font: 10px sans-serif;
+    }
+        
+    
+
+
+
+   </style>
+   <script type="text/javascript">
+   var map;
+   var canvasLayer;
+   var context;
+   var accidentData;
+
+   var bikeFlag = false;
+   var bikeLayer;
+   var activeTab;
+   var vertActiveTab;
+   var activeTabContent;
+   var pano;
+   var streetToPoints = {};
+   var chartDrawn = false;
+
+   function init(){
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 13,
+        center: new google.maps.LatLng(37.764158,-122.440577),
+        mapTypeId: google.maps.MapTypeId.ROAD,
+        streetViewControl: false,
+        zoomControl: false,
+        panControl:false
+      });
+
+    var styles = [
+    {
+        "featureType": "landscape",
+        "stylers": [
+          { "visibility": "simplified" },
+          { "color": "#000000" }
+        ]
+      },{
+        "featureType": "poi",
+        "stylers": [
+          { "visibility": "simplified" },
+          { "color": "#000000" }
+        ]
+      },{
+        "featureType": "road",
+        "stylers": [
+          { "visibility": "simplified" },
+          { "color": "#000000" },
+          { "lightness": 6 }
+        ]
+      },{
+        "featureType": "transit",
+        "stylers": [
+          { "visibility": "simplified" },
+          { "color": "#000000" },
+          { "lightness": 6 }
+        ]
+      },{
+        "elementType": "labels",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "water",
+        "stylers": [
+          { "hue": "#1100ff" },
+          { "color": "#96aac8" }
+        ]
+      }
+    ]
+
+    map.setOptions({styles: styles});
+  
+
+    jQuery.getJSON('/static/accidents/sf/2012.json', function(data){
+        console.log(data);
+        accidentData = data["2012data"];
+        drawCircles();
+        processStreets();
+        
+    });
+
+     $("#bicyclingLayer").click(function(){
+      if (!bikeFlag){
+        bikeLayer = new google.maps.BicyclingLayer();
+        bikeLayer.setMap(map);
+        $("#bicyclingLayer").html("Disable Bicycling Layer");
+        bikeFlag= true;
+      } else {
+        bikeLayer.setMap(null);
+        bikeFlag = !bikeFlag;
+        $("#bicyclingLayer").html("Enable Bicycling Layer");
+      }
+     });
+
+     $("#chart").hide();
+     activeTab = $('#tab_1');
+     activeTabContent = $("#tabcontent_1");
+     vertActiveTab = $('#vert_1');
+     $("#tabcontent_2").hide();
+     $("#tabcontent_3").hide();
+
+     $("#roadImg").hide();
+     $("#map").show();
+
+     $('li').click(function(){
+        $("#roadImg").hide();
+        $("#map").show();
+        var id = $(this).attr("id");
+        if (id.split('_')[0]=="tab"){
+          
+          activeTab.removeClass("active");
+          $(this).addClass("active");
+          var contentId = "tabcontent_" + id.split("_")[1];
+          $("#" + contentId).show();
+          activeTabContent.hide();
+          activeTab = $(this);
+          activeTabContent = $("#" + contentId);
+        } else {
+          var contentId = id.split("_")[1]; 
+          vertActiveTab.removeClass("active");
+          $(this).addClass("active");
+          vertActiveTab = $(this);
+
+          if (contentId =='1') {
+            $("#chartTitle").text("Accidents by Streets");
+            $("#roadImg").show();
+            $("#map").hide();
+            if (!chartDrawn){
+              drawChart(0);
+            }
+          } else {
+            $("#chartTitle").text("Accidents by Month");
+          }
+          $("#chart").show();
+          
+
+        }
+        
+
+        
+     });
+    
+  }
+  function processStreets(){
+    for (var i in accidentData){
+      var accident = accidentData[i];
+      
+      var streets = accident['address'].split(',');
+      streets = streets[0].split('&');
+      var street1 = streets[0];
+      var street2 = streets[1];
+      if (!(street1 in streetToPoints)){
+        streetToPoints[street1] = [accident];
+      } else {
+        streetToPoints[street1].push(accident);
+      }
+
+      if (!(street2 in streetToPoints)){
+        streetToPoints[street2] = [accident];
+      } else {
+        streetToPoints[street2].push(accident);
+      }
+
+    }
+    console.log(streetToPoints);
+  }
+
+
+  function drawChart(type){
+    // 0 == street chart
+    // 1 == month chart
+        if (type == 0){ 
+          console.log("drawing chart");
+          var chartData = [];
+          var maxHeight = 0;
+          var numPoints =0
+          for (street in streetToPoints){
+            if (street != 'undefined'){
+              if (streetToPoints[street].length > 8){
+                chartData.push({"street" : street, "values" : streetToPoints[street]});
+                numPoints++;
+              }
+              if (streetToPoints[street].length > maxHeight){
+                maxHeight = streetToPoints[street].length;
+              }
+            }
+            
+          }
+          var chartHeight = $("#chart").height();
+          var chartWidth = $("#chart").width();
+
+          var svg = d3.select("#chart").append("svg")
+                .attr("width", chartWidth)
+                .attr("height", chartHeight);
+          
+          console.log(maxHeight);
+
+          var barWidth = 15;
+
+          var xScale = d3.scale.ordinal()
+              .domain(d3.range(numPoints))
+              .rangeRoundBands([0, chartWidth], 0.001);
+
+          console.log(chartData);
+
+          svg.selectAll("rect")
+              .data(chartData)
+            .enter().append("rect")
+              .attr("x", function(d, i) { return xScale(i) })
+              .attr("y", function(d){ 
+                return chartHeight - (d.values.length/maxHeight)*chartHeight;})
+              .attr("height", function(d) {return (d.values.length/maxHeight) * chartHeight;})
+              .attr("width", 25)
+              .attr("fill", "#FA8602")
+              .attr("stroke", "#FA8602")
+              .attr('opacity',0.3)
+              .on('mouseover', function(d){
+                d3.select(this).attr('opacity', 1.0);
+              })
+              .on('mouseout', function (){
+                d3.select(this).attr('opacity',0.3);
+              });
+
+              $('svg rect').tipsy({ 
+                  gravity: 's', 
+                  fade:true,
+                  html: true, 
+                  title: function() {
+                    var d = this.__data__.street;
+                    return '<p style="#FA8602">' + d + '</p>'; 
+                  }
+                });
+
+        }
+        chartDrawn = true;
+    
+  }
+  function toggleStreetView(latlng, show){
+        
+        if (show){
+          var panoramaOptions = {
+            position: latlng,
+            pov: {
+              heading: 0,
+              pitch: -10,
+              zoom: 1
+            },
+            map: map,
+            navigationControl: false,
+            enableCloseButton: false,
+            addressControl: false,
+            linksControl: false,
+            panControl:false,
+            zoomControl:false
+        };
+       
+        pano = new google.maps.StreetViewPanorama(document.getElementById("street-view"), panoramaOptions);
+        } else{
+          $('#street-view').html('');
+        }
+  }
+
+
+    function drawCircles(){
+      var overlay = new google.maps.OverlayView();
+      overlay.onAdd = function () {
+        var layer = d3.select(this.getPanes().overlayLayer).append("div")
+            .attr("class", "accidents");
+
+        overlay.draw = function() {
+
+          console.log(accidentData);
+          var mapProjection = this.getProjection(),
+            padding = 10;
+
+
+          var marker = layer.selectAll("svg")
+            .data(d3.entries(accidentData))
+            .each(transform)
+          .enter().append("svg:svg")
+            .each(transform)
+            .attr("class", "marker")
+
+          marker.append("svg:circle")
+            .attr("r", 8)
+            .attr("cx", padding)
+            .attr("cy", padding)
+            .attr("fill", "#FA8602")
+            .attr("stroke", "#FA8602")
+            .attr("opacity", 0.25)
+            .on('mouseover', function(d){
+              console.log(d);
+              $("#address").text(d.value['address']);
+              var latlng = new google.maps.LatLng(d.value['lat'], d.value['lng']);
+              toggleStreetView(latlng, true);
+              d3.select(this)
+            })
+            .on('mouseout', function(d){
+              console.log(d.value['address']);
+              $("#address").text('Pick a circle');
+              var latlng = new google.maps.LatLng(d.value['lat'], d.value['lng']);
+              toggleStreetView(latlng, false);
+
+              d3.select(this)
+                .attr("fill", "#FA8602"); 
+            });
+
+          marker.append("svg:circle")
+            .attr("r", 2)
+            .attr("cx", padding)
+            .attr("cy", padding)
+            .attr("fill", "#FA8602")
+            .attr("stroke", "#FA8602")
+            .attr("opacity", 1.0);
+            
+
+
+
+          function transform(d){
+            d = new google.maps.LatLng(parseFloat(d.value['lat']), parseFloat(d.value['lng']));
+            
+            d = mapProjection.fromLatLngToDivPixel(d);
+
+            return d3.select(this)
+                .style("left", (d.x - padding) + "px" )
+                .style("top", (d.y - padding) + "px");
+          }
+
+        };
+      };
+      overlay.setMap(map);
+    }
+
+   
+
+  
+
+
+
+
+  
+
+    
+
+   
+
+   
+    google.maps.event.addDomListener(window, 'load', init);
+   </script>
+  </head>
+  <body>
+      <div id="infoGraphic">
+        <p align="center" top="10%" style="color:#FA8602;font-size:15pt"> San Francisco Bicycle Accidents - 2012</p>
+         <br></br>
+          <div align="left"><button id="bicyclingLayer" class="btn btn-mini btn-warning" > Enable Bicycling Layer </button></div>
+        <br></br>
+        <div id="tabConatiner">
+          <ul id="infoTabs" class="nav nav-tabs">
+            <li  id="tab_1" class="active" ><a href="#" style="color:#FA8602;">Street View</a></li>
+            <li id="tab_2" ><a  href="#" style="color:#FA8602;">Info Graphics</a></li>
+            <li id="tab_3"><a href="#" style="color:#FA8602;">Street Audit</a></li>
+          </ul>
+        </div>
+
+        <div id="paneContent">
+          <div id="tabcontent_1">
+            <p id="address" align="left" style="color:#FA8602;font-size:10pt">Pick a circle</p>
+            <div id="street-view" > </div>
+          </div>
+          <div id="tabcontent_2" >
+
+            <ul class="nav nav-tabs nav-stacked">
+              <li  id="vert_1" class="active" style="width:90%;" ><a href="#" style="color:#FA8602;">By Street</a></li>
+              <li id="vert_2" style="width:90%;" ><a  href="#" style="color:#FA8602;">By Month</a></li>
+            </ul>
+            <p id="chartTitle" align="center" style="color:#FA8602;font-size:11pt"> </p>
+            <br></br>
+            <div id="chart" style="width:95%; height:50%;"> </div>
+          </div>
+          <div id="tabcontent_3" >
+             <p id="address" align="left" style="color:#FA8602;font-size:10pt">
+              Can you help audit this street segment? </p>
+            </div>
+        </div>
+
+
+      </div>
+        
+      <div id="map"></div>
+      <img id="roadImg" style="display:none" src='/static/mockup SF-01.jpg'></img>
+</body>
+</html>
+    

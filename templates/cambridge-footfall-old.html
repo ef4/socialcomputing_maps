@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="/static/css/tipsy.css"/> 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <style type="text/css">
+
+    html, body{
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    h1 {
+        float:left;
+        padding-left: 20px;
+        padding-top: 40px;
+    }
+    #svgContainer {
+        width: 95%;
+        height: 100%;
+        float:left;
+        border-left: 2px;
+        border-bottom: 2px;
+        z-index: 1;
+
+    }
+
+
+    #infoGraphic{
+      position: absolute;
+      height: 100%;
+      width: 5%;
+      left: 100%;
+      margin-right: 2%;
+      float:right;
+      border-left: '1px';
+      border-left-color:'#093DDB';
+ 
+    }
+
+
+    #drawer {
+      left : 95%;
+      float:right;
+      position:absolute;
+      background-color:'#093DDB';
+      top:2%;
+    }
+
+    #logo{
+      left : 3%;
+      float:left;
+      position:absolute;
+      z-index: 3;
+      top:2%;
+    }
+
+    #streetname{
+      z-index: 2;
+      position:absolute;
+      top:95%;
+      float:right;
+      right:25%;
+    }
+
+
+    
+    </style>
+
+    <script type="text/javascript">
+
+    var projection = d3.geo.mercator();
+    var path = d3.geo.path().projection(projection); 
+    var mapCenter = [-71.115385,42.372622];
+    var geoJSON;
+    var scaleFactor = 1.05;
+    var svg;
+    var stations
+    var segments;
+    var streets = {};
+    var chartData = [];
+    var maxOverlap=1;
+    var infoGraphToggle = false;
+
+    $(window).load(function(){
+
+
+        jQuery.getJSON('/static/data/Cambridge/boundary.geojson', function(geojson){
+            geoJSON = geojson;
+            setProjection();
+            //drawMap();
+
+            d3.csv('/static/data/Cambridge/footfall/walking_paths_vals.csv', function (error, data) {
+                segments = data;
+                processStreets();
+
+                d3.csv('/static/data/Cambridge/footfall/stations.csv', function(error, data){
+                    stations = data;
+                    drawSegments(true);
+                });
+            });
+        });
+
+
+        $('#drawer').click(function(){
+            var width = $(window).width(); var height = $(window).height();
+            $('#svgContainer').empty();
+            console.log('click');
+
+            if (!infoGraphToggle){
+                console.log("here1");
+
+
+                $('#infoGraphic').show();
+                $('#svgContainer').width(width * 0.7);
+                $('#infoGraphic').css('left', width * 0.7);
+                $('#infoGraphic').css('width', width * 0.3);
+                $('#chart').css('width', $('#infoGraphic').width());
+                $('#chart').css('height', $('#infoGraphic').height() * 0.95);
+
+
+                
+                $('#drawer').css('left', width * 0.7);
+                $('#title').html("Footfall Density - Cambridge, MA");
+                $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
+                $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
+                drawChart();
+            } else {
+                console.log("here2");
+                $('#infoGraphic').hide();
+                $('#svgContainer').width(width * 0.95);
+                $('#infoGraphic').css('left', width * 0.95);
+                $('#infoGraphic').css('width', width * 0.05);
+                $('#chart').empty();
+                $("#title").empty();
+                $('#button-icon').removeClass('glyphicon glyphicon-chevron-right');
+                $('#button-icon').addClass('glyphicon glyphicon-chevron-left');
+                $('#drawer').css('left', width * 0.95);
+            }
+
+            infoGraphToggle = !infoGraphToggle;
+            console.log(infoGraphToggle);
+            // console.log('start chart');
+            setProjection();
+            drawSegments(false);
+            // console.log('end chart');            
+
+        });
+
+
+    });
+
+
+    function processStreets(){
+        for (var i = 0; i <segments.length; i++){
+            if (segments[i].name != undefined){
+                if (segments[i].name in streets){
+                    streets[segments[i].name]++;
+                } else {
+                    streets[segments[i].name] = 1;
+                }
+            }
+        }
+
+        for (street in streets){
+            chartData.push({name:street, frequency:streets[street]});
+            if (streets[street] > maxOverlap){maxOverlap = streets[street];}
+        }
+        chartData.sort(function(a,b){return d3.descending(a.frequency, b.frequency);});
+        chartData.splice(30);
+
+    }
+
+    function setProjection(){ 
+      projection.scale(1)
+        .translate([0, 0]);
+
+      width = $("#svgContainer").width(); height = $("#svgContainer").height();
+      var b = path.bounds(geoJSON),
+        s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+        t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+      projection.scale(s).translate(t);
+      projection(mapCenter);
+    }
+
+    function drawMap(){
+      svg = d3.select("#svgContainer").append("svg");
+
+      svg.selectAll(".map")
+        .data(geoJSON.features)
+       .enter().append("path")
+        .attr("d", path)
+        .attr("stroke-opacity", 0.2)
+        .attr("stroke", "black")
+        .attr("fill", "none");
+    }
+
+    function setText(name, value){
+        opacity = value/maxOverlap + 0.2;
+        $("#streetname").text(name);
+        $("#streetname").fadeTo('medium', opacity);
+    }
+
+    function drawSegments(animation){
+
+
+       var lineTransition = function lineTransition(path){
+          if (animation){
+            path.transition()
+              .duration(7500)
+              .attrTween("stroke-dasharray", tweenPath);
+          }
+          else {}
+       };
+
+        var tweenPath = function tweenPath() {
+          var len = this.getTotalLength(),
+              interpolate = d3.interpolateString("0," + len, len + "," + len);
+          return function (t) {return interpolate(t);};
+        }
+
+        svg = d3.select("#svgContainer").append("svg");
+        g = svg.append('g');
+
+        var path = g.selectAll('path')
+            .data(segments)
+            .enter().append('path')            
+
+            .attr('class', function(d){
+                return d.station + '-' + d.name;
+            })
+            .attr('d', function (d) {
+                var lineData = [
+                    projection([parseFloat(d.start_lng), parseFloat(d.start_lat)]),
+                    projection([parseFloat(d.end_lng), parseFloat(d.end_lat)]),
+                ]
+                var dataLine =  d3.svg.line()
+                    .interpolate("cardinal")
+                    .x(function (d) {return d[0]})
+                    .y(function (d) {return d[1]});
+                return dataLine(lineData);
+            })
+            .attr('stroke-opacity', function(d){return d.opacity;})
+            .attr('stroke-width', 1)
+            .attr('fill', 'none')
+            .attr('stroke', 'red')
+            .on('mouseover', function(d){
+              $("#streetname").html(d.name);
+            })
+            .on('mouseout', function(d){
+              $('#streetname').html("");
+            })
+            .call(lineTransition);
+
+        
+
+
+        g.selectAll('circle')
+            .data(stations)
+            .enter().append('circle')
+            .attr('class', function(d){return d.name;})
+            .attr('cx', function(d){
+                return projection([d.lng, d.lat])[0];
+            })
+            .attr('cy', function(d){
+                return projection([d.lng, d.lat])[1];
+            })
+            .attr('r', 8)
+            .attr('stroke', 'red')
+            .attr('fill-opacity', 0.0)
+            .attr('stroke-opacity', 0.0)
+            .on('mouseover', function(d){
+                var paths = d3.selectAll('path');
+                for (pathI in paths[0]){
+                    thisPath = paths[0][pathI];
+                    station = thisPath.className.animVal.split('-')[0];
+                    if (station != d.name) {
+                        thisPath.setAttribute('stroke', 'grey');
+                        thisPath.setAttribute('stroke-opacity', '0.05');
+                    } else {
+                        thisPath.setAttribute('visibility', 'visible');
+                    }
+                }
+            })
+            .on('mouseout', function(d){
+              var paths = d3.selectAll('path');       
+              for (pathI in paths[0]){
+                thisPath = paths[0][pathI];
+                thisPath.setAttribute('visibility', 'visible');
+              } 
+            });  
+
+            $('svg circle').tipsy({ 
+              gravity: 'w', 
+              fade:true,
+              html: true, 
+              title: function() {
+                var d = this.__data__.name;
+                return '<p style="font-size:8pt;">' + d + '</p>'; 
+              }
+            });
+
+
+
+        g.selectAll('circle')
+            .data(stations)
+            .enter().append('circle')
+            .attr('cx', function(d){
+                return projection([d.lng, d.lat])[0];
+            })
+            .attr('cy', function(d){
+                return projection([d.lng, d.lat])[1];
+            })
+            .attr('r', 1)
+            .attr('fill', 'red')
+            .attr('stroke', 'red')
+            .attr('fill-opacity', 1.0)
+            .attr('stroke-opacity', 1.0);
+
+
+    }
+
+
+
+function drawChart(){
+  
+  var chartHeight = $('#chart').height();
+  var chartWidth = $('#chart').width();
+
+  console.log(chartWidth, chartHeight);
+
+  var maxBarWidth = chartWidth-2; var barHeight = 20;
+
+  var svg = d3.select("#chart").append("svg")
+        .attr("width", chartWidth)
+        .attr("height", chartHeight);
+
+
+  var barLabel = function(d) {
+    return d.name; };
+  var barValue = function(d) { return d.frequency; };
+  
+  var yScale = d3.scale.ordinal().domain(d3.range(0, chartData.length)).rangeBands([0, chartData.length * barHeight]);
+  var y = function(d, i) { return yScale(i); };
+  var x = d3.scale.linear().domain([0, d3.max(chartData, barValue)]).range([0, maxBarWidth]); 
+
+  var chart = d3.select('#chart').append("svg")
+    .attr("width", chartWidth)
+    .attr("height", chartHeight)
+  var gridContainer = chart.append('g')
+
+
+  svg.selectAll("rect")
+      .data(chartData)
+    .enter().append("rect")
+      .attr("y", y)
+      .attr('height', 15)
+      .attr("fill", "#1526E6")
+      .attr("stroke", "#1526E6")
+      .attr('opacity',0.3)
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity', 1.0);
+      })
+      .on('mouseout', function (){
+        d3.select(this).attr('opacity',0.3);
+      })
+      .on('click', function(d){
+        var paths = d3.selectAll('path');
+        for (pathI in paths[0]){
+            thisPath = paths[0][pathI];
+            road = thisPath.className.animVal.split('-')[1];
+            
+            if (road != d.name) {
+
+                thisPath.setAttribute('visibility', 'hidden');
+            } else {
+                thisPath.setAttribute('visibility', 'visible');
+            }
+        }
+      })
+      .attr("x", function (d) {return chartWidth - x(barValue(d)) -1 ;})
+      
+      .transition().delay(function (d,i){ return i * 50;})
+        .ease("elastic")
+          .attr('width', function(d) { return x(barValue(d)); });
+  
+      $('svg rect').tipsy({ 
+          gravity: 'e', 
+          fade:true,
+          html: true, 
+          title: function() {
+            var d = this.__data__.name;
+            var val = this.__data__.frequency;
+            return '<p style="#1526E6">' + d + ', Frequency =  <span style="#1526E6">' + val + '</span></p>'; 
+          }
+        });
+
+
+}
+
+    
+
+
+    </script>
+    </head>
+
+    <body>
+        <img id="logo" src="/static/img/logo.png">
+        <div id="drawer">
+          <svg height='50' width='50' style="z-index:1">
+              <circle cx="25" cy="25" r="15"  stroke-opacity="0.0" fill="#093DDB" fill-opacity="0.5" />
+          </svg>
+          <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="position:absolute; left:35%; top:33%; z-index:2"></i>
+        </div>
+
+        <div id="infoGraphic">
+            <div>
+                <br></br>
+                <br></br>
+                <h2 id="title" align="left" style="font-size:14pt;color:#093DDB;"></h2>
+                <h3 align="left" style="font-size:12pt;color:#093DDB;"> Street-wise Density</h3>
+                <div id="chart"> </div>
+            </div> 
+        </div>
+    	<div id="svgContainer"></div>
+      <p id="streetname" style="font-size:16pt;color:#093DDB;"></p>
+        
+    	
+    </body>
+</html>
+    

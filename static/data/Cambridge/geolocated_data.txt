@@ -1,0 +1,956 @@
+212;212 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;11/11/2013;42.3732102;-71.1005089
+;Prospect Street & Bishop Allen Drive, Cambridge, MA 02139, USA;PROSPECT ST;Bishop Allen Dr;1;11/6/2013;42.3663480;-71.1031405
+45;45 Sidney Street, Cambridge, MA 02139, USA;Sidney St;;1;11/5/2013;42.3622015;-71.1014325
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1;11/5/2013;42.3601382;-71.0948792
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Albany St;Massachusetts Ave;1;11/4/2013;42.3608181;-71.0960318
+;Brookline Street & Green Street, Cambridge, MA 02139, USA;GREEN ST;Brookline St;1;10/30/2013;42.3634165;-71.1019284
+;Massachusetts Avenue & Gold Star Road, Cambridge, MA 02140, USA;Massachusetts Ave;GOLD STAR RD;1;10/29/2013;42.3983071;-71.1313752
+1781;1781 Massachusetts Avenue, Lexington, MA 02420, USA;Massachusetts Ave;Lancaster St;1;10/29/2013;42.4478683;-71.2277773
+;Mount Auburn Street & Dewolfe Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Dewolfe St;1;10/27/2013;42.3710834;-71.1161203
+;Hampshire Street & Tremont Street, Cambridge, MA 02139, USA;Hampshire St;Tremont St;1;10/27/2013;42.3714904;-71.0981120
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1;10/25/2013;42.3601382;-71.0948792
+;Broadway & Lee Street, Cambridge, MA 02139, USA;Broadway;LEE ST;1;10/25/2013;42.3708297;-71.1048575
+;Massachusetts Avenue & Upland Road, Cambridge, MA 02140, USA;Massachusetts Ave;Upland Rd;1;10/23/2013;42.3881742;-71.1194800
+;Western Avenue & Hews Street, Cambridge, MA 02139, USA;Western Ave;HEWS ST;1;10/22/2013;42.3645450;-71.1130982
+147;147 Columbia Street, Cambridge, MA 02139, USA;Columbia St;;1;10/22/2013;42.3668655;-71.0979443
+;Third Street & Spring Street, Cambridge, MA 02141, USA;Third St;SPRING ST;1;10/22/2013;42.3689584;-71.0802945
+402;402 Rindge Avenue, Cambridge, MA 02140, USA;Rindge Ave;;1;10/19/2013;42.3930560;-71.1399850
+;Concord Avenue & Craigie Street, Cambridge, MA 02138, USA;Concord Ave;Craigie St;1;10/17/2013;42.3794429;-71.1257588
+;Cambridge Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;Cambridge St;1;10/17/2013;42.3737254;-71.1008300
+;Concord Avenue & Fayerweather Street, Cambridge, MA 02138, USA;Concord Ave;FAYERWEATHER ST;1;10/16/2013;42.3845951;-71.1357947
+;Broadway & Norfolk Street, Cambridge, MA 02139, USA;Broadway;Norfolk St;1;10/15/2013;42.3685185;-71.0990006
+306;306 Webster Avenue, Cambridge, MA 02141, USA;Webster Ave;;1;10/11/2013;42.3735546;-71.0947462
+;Concord Avenue & Chilton Street, Cambridge, MA 02138, USA;Concord Ave;Chilton St;1;10/11/2013;42.3849231;-71.1365260
+189;189 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;10/10/2013;42.3729170;-71.0993240
+1637;1637 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;10/10/2013;42.3812878;-71.1197109
+;Rindge Avenue & Montgomery Street, Cambridge, MA 02140, USA;Rindge Ave;MONTGOMERY ST;1;10/10/2013;42.3935055;-71.1331102
+;Garden Street & Bond Street, Cambridge, MA 02138, USA;GARDEN ST;Bond St;1;10/10/2013;42.3814143;-71.1261404
+;Massachusetts Avenue & Rindge Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Rindge Ave;1;10/10/2013;42.3927003;-71.1248995
+;Jfk Street & South Street, Cambridge, MA 02138, USA;JFK St;SOUTH ST;1;10/9/2013;42.3716373;-71.1209264
+130;130 Waverly Street, Cambridge, MA 02139, USA;Waverly St;;1;10/7/2013;42.3570530;-71.1047990
+;Mount Auburn Street & Holyoke Street, Harvard University, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HOLYOKE ST;1;10/5/2013;42.3719669;-71.1185733
+;Massachusetts Avenue & Windsor Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Windsor St;1;10/4/2013;42.3613630;-71.0969560
+;Cambridge Street & Warren Street, Cambridge, MA 02141, USA;Cambridge St;Warren St;1;10/3/2013;42.3721047;-71.0882983
+96;96 Concord Avenue, Cambridge, MA 02138, USA;Concord Ave;;1;10/2/2013;42.3813772;-71.1293247
+15;15 Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Vassar St;;1;9/30/2013;42.3612684;-71.0926159
+;Brookline Street & Granite Street, Cambridge, MA 02139, USA;Brookline St;GRANITE ST;1;9/26/2013;42.3551104;-71.1103626
+;Oxford Street & Prentiss Street, Cambridge, MA 02140, USA;OXFORD AVE;PRENTISS ST;1;9/24/2013;42.3843253;-71.1160920
+;Douglass Street, Cambridge, MA 02139, USA;MASSACHUSETTS  AVE BRDG;DOUGLASS ST;1;9/23/2013;42.3643106;-71.1007459
+;Mount Auburn Street & Putnam Avenue, Cambridge, MA 02138, USA;Putnam Ave;MOUNT AUBURN ST;1;9/19/2013;42.3700834;-71.1133241
+;Kirkland Street & Myrtle Avenue, Cambridge, MA 02138, USA;Kirkland Rd;MYRTLE AVE;1;9/19/2013;42.3779680;-71.1078196
+;Huron Avenue & Fayerweather Street, Cambridge, MA 02138, USA;HURON AVE;FAYERWEATHER ST;1;9/13/2013;42.3813031;-71.1373342
+326;326 Broadway, Cambridge, MA 02139, USA;Broadway;;1;9/12/2013;42.3692870;-71.1017070
+;Massachusetts Avenue & Exeter Park, Cambridge, MA 02138, USA;Massachusetts Ave;EXETER PARK;1;9/10/2013;42.3848285;-71.1194676
+2161;2161 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;9/10/2013;42.3925430;-71.1242910
+2327;2327 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Woodbridge St;1;9/8/2013;42.3958220;-71.1283799
+;Gore Street & Rufo Road, Cambridge, MA 02141, USA;Gore St;RUFO RD;1;9/8/2013;42.3726041;-71.0852840
+;Hampshire Street & Inman Street, Cambridge, MA 02139, USA;Hampshire St;Inman St;1;9/5/2013;42.3734774;-71.1005336
+1039;1039 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;9/5/2013;42.3700750;-71.1123820
+1783;1783 Massachusetts Avenue, Arlington, MA 02476, USA;Massachusetts Ave;;1;8/30/2013;42.3860159;-71.1190439
+;Third Street & Hurley Street, Cambridge, MA 02141, USA;HURLEY ST;Third St;1;8/28/2013;42.3682981;-71.0805644
+2150;2150 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;8/27/2013;42.3921579;-71.1246066
+;Massachusetts Avenue & Dunster Street, Harvard University, Cambridge, MA 02138, USA;Massachusetts Ave;DUNSTER ST;1;8/23/2013;42.3733436;-71.1185736
+32;32 Quincy Street, Cambridge, MA 02138, USA;QUINCY ST;;1;8/23/2013;42.3750911;-71.1145909
+1621;1621 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;8/22/2013;42.3748821;-71.1091473
+;Massachusetts Avenue & Sidney Street, Cambridge, MA 02139, USA;Massachusetts Ave;Sidney St;1;8/21/2013;42.3629518;-71.0995844
+;Harvard Street & Trowbridge Street, Cambridge, MA 02138, USA;HARVARD ST;Trowbridge St;1;8/21/2013;42.3714527;-71.1120087
+;Massachusetts Avenue & Russell Street, Cambridge, MA 02140, USA;Massachusetts Ave;Russell St;1;8/17/2013;42.3917366;-71.1239230
+;Mt Auburn St @ Homer Ave, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HOMER AVE;1;8/16/2013;42.3749730;-71.1483080
+;Mount Auburn Street & Gerry Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;GERRY ST;1;8/14/2013;42.3738833;-71.1243726
+440;440 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;8/14/2013;42.3636567;-71.1008214
+193;193 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;8/14/2013;42.3729090;-71.0998147
+;Massachusetts Avenue & Rice Street, Cambridge, MA 02140, USA;Massachusetts Ave;Rice St;1;8/14/2013;42.3953744;-71.1278932
+;Broadway & Trowbridge Street, Cambridge, MA 02138, USA;Broadway;Trowbridge Pl;1;8/8/2013;42.3731970;-71.1108385
+;Cambridge Street & Hampshire Street, Cambridge, MA 02139, USA;Cambridge St;Hampshire St;1;8/5/2013;42.3737254;-71.1008300
+;Oxford Street & Kirkland Street, Harvard University, Cambridge, MA 02138, USA;KIRKLAND ST;OXFORD AVE;1;8/3/2013;42.3763208;-71.1156835
+2240;2240 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;8/2/2013;42.3938050;-71.1266750
+;Garden Street & Bond Street, Cambridge, MA 02138, USA;GARDEN ST;Bond St;1;8/1/2013;42.3814143;-71.1261404
+;Oxford Street & Garfield Street, Cambridge, MA 02138, USA;GARFIELD ST;OXFORD AVE;1;7/31/2013;42.3836448;-71.1160924
+411;411 Broadway, Cambridge, MA 02138, USA;Broadway;Scouting Way;1;7/30/2013;42.3725805;-71.1087746
+139;139 Main Street, Cambridge, MA 02142, USA;MAIN ST;;1;7/24/2013;42.3622694;-71.0823340
+1000;1000 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;7/23/2013;42.3283668;-71.0680082
+;Massachusetts Avenue & Trowbridge Street, Cambridge, MA 02138, USA;Massachusetts Ave;Trowbridge St;1;7/23/2013;42.3700963;-71.1129341
+;Massachusetts Avenue & Linnaean Street, Cambridge, MA 02138, USA;Massachusetts Ave;LINNAEAN ST;1;7/22/2013;42.3848285;-71.1194676
+163;163 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;7/22/2013;42.3717715;-71.0981570
+;Concord Avenue & Wheeler Street, Cambridge, MA 02138, USA;Wheeler St;Concord Ave;1;7/21/2013;42.3886942;-71.1442093
+;Putnam Avenue & Magazine Street, Cambridge, MA 02139, USA;MAGAZINE ST;Putnam Ave;1;7/21/2013;42.3591244;-71.1110791
+;Putnam Avenue & River Street, Cambridge, MA 02139, USA;Putnam Ave;River St;1;7/20/2013;42.3622704;-71.1135371
+202;202 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;7/20/2013;42.3728770;-71.1002830
+223;223 Western Avenue, Cambridge, MA 02139, USA;Western Ave;;1;7/19/2013;42.3649082;-71.1109538
+;Webster Avenue & Columbia Street, Cambridge, MA 02141, USA;Webster Ave;Columbia St;1;7/18/2013;42.3732231;-71.0943974
+;Broadway & Portland Street, Cambridge, MA 02139, USA;Broadway;Portland St;1;7/18/2013;42.3657954;-71.0920726
+1001;1001 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;7/17/2013;42.3728132;-71.0936504
+204;204 Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;;1;7/12/2013;42.3704332;-71.1002306
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;Massachusetts Ave;1;7/10/2013;42.3601382;-71.0948792
+99;99 Sherman Street, Cambridge, MA 02140, USA;SHERMAN ST;;1;7/10/2013;42.3904693;-71.1327241
+;Massachusetts Avenue & Forest Street, Cambridge, MA 02140, USA;Massachusetts Ave;FOREST ST;1;7/8/2013;42.3853756;-71.1194097
+;Cambridge, MA, USA;;;1;7/4/2013;42.3736158;-71.1097335
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1;6/27/2013;42.3601382;-71.0948792
+1728;1728 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;6/25/2013;42.3841058;-71.1196761
+;Cambridge Street & Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;Cambridge St;1;6/24/2013;42.3733872;-71.0981542
+161;161 Washington Avenue, Cambridge, MA 02140, USA;Washington Ave;;1;6/23/2013;42.3870152;-71.1241631
+1847;1847 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;6/21/2013;42.3878640;-71.1187070
+;Mount Auburn Street & Brattle Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Brattle St;1;6/21/2013;42.3753183;-71.1452231
+2450;2450 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;6/19/2013;42.3981455;-71.1312062
+;Massachusetts Avenue & Cameron Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Cameron Ave;1;6/17/2013;42.3974464;-71.1302260
+4;4 Blanchard Road, Cambridge, MA 02138, USA;Blanchard Rd;;1;6/17/2013;42.3868360;-71.1577940
+;Main Street & Ames Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;Ames St;1;6/17/2013;42.3625606;-71.0882354
+359;359 Broadway, Cambridge, MA 02139, USA;Broadway;;1;6/13/2013;42.3706192;-71.1038761
+;Putnam Avenue & Franklin Street, Cambridge, MA 02139, USA;Franklin St;Putnam Ave;1;6/12/2013;42.3685879;-71.1135115
+;Cambridge Street & Third Street, Cambridge, MA 02141, USA;Third St;Cambridge St;1;6/10/2013;42.3710199;-71.0798451
+;Cambridge, MA, USA;;;1;6/10/2013;42.3736158;-71.1097335
+;Columbia Street & Washington Street, Cambridge, MA 02139, USA;Washington Ave;Columbia St;1;6/10/2013;42.3654087;-71.0987623
+;Massachusetts Avenue & Somerville Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;SOMERVILLE AVE;1;6/9/2013;42.3888018;-71.1194946
+;Broadway & West Place, Cambridge, MA 02139, USA;Broadway;West Pl;1;6/8/2013;42.3703395;-71.1036126
+;Cambridge Street & Harding Street, Cambridge, MA 02141, USA;Cambridge St;HARDING ST;1;6/5/2013;42.3724087;-71.0906765
+;Mt Auburn St @ Homer Ave, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HOMER AVE;1;6/5/2013;42.3749730;-71.1483080
+287;287 Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;;1;6/1/2013;42.3723955;-71.0988837
+;Massachusetts Avenue & Somerville Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;SOMERVILLE AVE;1;6/1/2013;42.3888018;-71.1194946
+;Massachusetts Avenue & Beech Street, Cambridge, MA 02140, USA;Massachusetts Ave;Beech St;1;5/28/2013;42.3902584;-71.1210496
+1608;1608 Cambridge Street, Cambridge, MA 02138, USA;Cambridge St;;1;5/24/2013;42.3745500;-71.1086310
+;Cambridge Street & Hampshire Street, Cambridge, MA 02139, USA;Cambridge St;Hampshire St;1;5/24/2013;42.3737254;-71.1008300
+;Massachusetts Avenue & Trowbridge Street, Cambridge, MA 02138, USA;Massachusetts Ave;Trowbridge St;1;5/23/2013;42.3700963;-71.1129341
+;Garden Street & Walden Street, Cambridge, MA 02138, USA;GARDEN ST;Walden St;1;5/23/2013;42.3855365;-71.1322014
+;Prospect Street & Harvard Street, Cambridge, MA 02139, USA;PROSPECT ST;HARVARD ST;1;5/23/2013;42.3682981;-71.1017427
+1945;1945 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;5/21/2013;42.3897728;-71.1203033
+;Third Street & Rogers Street, Cambridge, MA 02142, USA;Third St;Rogers St;1;5/21/2013;42.3663797;-71.0819949
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1;5/17/2013;42.3704848;-71.0968790
+1629;1629 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;5/17/2013;42.3749145;-71.1093951
+1401;1401 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;5/14/2013;42.3735625;-71.1187584
+826;826 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;5/14/2013;42.3724086;-71.0907764
+675;675 Concord Avenue, Cambridge, MA 02138, USA;Concord Ave;;1;5/14/2013;42.3903050;-71.1501490
+;Hampshire Street & Tremont Street, Cambridge, MA 02139, USA;Hampshire St;Tremont St;1;5/13/2013;42.3714904;-71.0981120
+1001;1001 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;5/13/2013;42.3728132;-71.0936504
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Hampshire St;Portland St;1;5/12/2013;42.3663022;-71.0917948
+204;204 Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;;1;5/10/2013;42.3704332;-71.1002306
+6;6 Cambridge Center, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Cambridge Ctr;Broadway;1;5/7/2013;42.3640190;-71.0881025
+2443;2443 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;5/7/2013;42.3980803;-71.1306358
+;Cambridge Street & Springfield Street, Cambridge, MA 02139, USA;SPRINGFIELD ST;Cambridge St;1;5/4/2013;42.3736745;-71.1005265
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Vassar St;1;5/2/2013;42.3626897;-71.0900485
+;Vassar Street, Cambridge, MA, USA;Vassar St;;1;5/2/2013;42.3583279;-71.0985595
+350;350 Main Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;;1;4/26/2013;42.3623911;-71.0872673
+;Hampshire Street & Tremont Street, Cambridge, MA 02139, USA;Hampshire St;Tremont St;1;4/25/2013;42.3714904;-71.0981120
+;Brattle Street & Ash Street, Harvard University, Radcliffe Institute for Advanced Study, Cambridge, MA 02138, USA;Ash St;Brattle St;1;4/24/2013;42.3759381;-71.1244587
+;Brattle Street & Ash Street, Harvard University, Radcliffe Institute for Advanced Study, Cambridge, MA 02138, USA;Ash St;Brattle St;1;4/24/2013;42.3759381;-71.1244587
+;Inman Street & Inman Place, Cambridge, MA 02139, USA;Inman St;Inman Pl;1;4/22/2013;42.3696847;-71.1031906
+1821;1821 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;4/21/2013;42.3871076;-71.1190709
+1736;1736 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;4/20/2013;42.3844831;-71.1196052
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1;4/18/2013;42.3626470;-71.0990652
+229;229 Harvard Street, Cambridge, MA 02139, USA;HARVARD ST;;1;4/14/2013;42.3678760;-71.0998960
+;Massachusetts Avenue & Linnaean Street, Cambridge, MA 02138, USA;Massachusetts Ave;LINNAEAN ST;1;4/7/2013;42.3848285;-71.1194676
+;Cambridge Street & Roberts Road, Cambridge, MA 02138, USA;Cambridge St;ROBERTS RD;1;4/2/2013;42.3747560;-71.1088182
+;Cambridge Street & Third Street, Cambridge, MA 02141, USA;Cambridge St;Third St;1;3/29/2013;42.3710199;-71.0798451
+1000;1000 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;3/21/2013;42.3727138;-71.0936146
+;Rindge Avenue & Clifton Street, Cambridge, MA 02140, USA;Rindge Ave;Clifton St;1;3/21/2013;42.3936904;-71.1362247
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;PROSPECT ST;Hampshire St;1;3/17/2013;42.3722128;-71.0989926
+;Massachusetts Ave opp Waterhouse St, Harvard University, Cambridge, MA 02138, USA;Massachusetts Ave;Waterhouse St;1;3/14/2013;42.3778040;-71.1199420
+;Massachusetts Avenue & Tyler Court, Cambridge, MA 02140, USA;Massachusetts Ave;Tyler Ct;1;3/14/2013;42.3984495;-71.1315654
+;Concord Avenue & Blanchard Road, Belmont, MA 02478, USA;Concord Ave;Blanchard Rd;1;3/12/2013;42.3908787;-71.1572343
+112-;112 Bishop Allen Drive, Cambridge, MA 02139, USA;Bishop Allen Dr;;1;3/6/2013;42.3661309;-71.1028141
+;Kirkland Street & Sumner Road, Harvard University, Cambridge, MA 02138, USA;KIRKLAND ST;SUMNER RD;1;2/25/2013;42.3770097;-71.1123399
+;Brattle Street & Sparks Street, Cambridge, MA 02138, USA;Brattle St;Sparks St;1;2/22/2013;42.3778418;-71.1301870
+;Broadway & Columbia Street, Cambridge, MA 02139, USA;Columbia St;Broadway;1;2/19/2013;42.3678650;-71.0973684
+;Hampshire Street & Bristol Street, Cambridge, MA 02141, USA;Hampshire St;Bristol St;1;2/6/2013;42.3679550;-71.0938000
+1431;1431 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;2/3/2013;42.3739151;-71.1021843
+215;215 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;2/1/2013;42.3739376;-71.1010621
+;Cambridge Street & Elm Street, Cambridge, MA 02139, USA;Cambridge St;ELM ST;1;1/30/2013;42.3730155;-71.0953218
+;Broadway & Ellery Street, Cambridge, MA 02138, USA;Broadway;ELLERY PL;1;1/28/2013;42.3727618;-71.1097379
+1334;1334 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;1/15/2013;42.3735071;-71.0997444
+;Cambridge Street & Columbia Street, Cambridge, MA 02141, USA;Cambridge St;Columbia St;1;1/2/2013;42.3729102;-71.0945012
+;Brattle Street & Willard Street, Cambridge, MA 02138, USA;Brattle St;Willard St;1;12/21/2012;42.3768089;-71.1276484
+;Cambridge Street & Line Street, Mid-Cambridge, MA 02139, USA;Cambridge St;LINE ST;1;12/18/2012;42.3740212;-71.1030628
+229;229 Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;;1;12/12/2012;42.3573232;-71.1008504
+6;6 Concord Avenue, Belmont, MA 02478, USA;Concord Ave;;1;12/10/2012;42.3909095;-71.1575631
+;Main Street & Ames Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;Ames St;1;12/10/2012;42.3625606;-71.0882354
+;Plympton Street & Mill Street, Harvard University, Cambridge, MA 02138, USA;PLYMPTON ST;MILL ST;1;12/7/2012;42.3702547;-71.1177534
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;Massachusetts Ave;1;12/6/2012;42.3601382;-71.0948792
+;Broadway & Galileo Galilei Way, Cambridge, MA 02139, USA;Broadway;Galileo Galilei Way;1;12/3/2012;42.3647784;-71.0894878
+2032;2032 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;12/1/2012;42.3907012;-71.1221672
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Vassar St;1;11/30/2012;42.3626897;-71.0900485
+305;305 Webster Avenue, Cambridge, MA 02141, USA;Webster Ave;;1;11/28/2012;42.3736803;-71.0945336
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1;11/27/2012;42.3646216;-71.1024217
+;Putnam Avenue & Sidney Street, Cambridge, MA 02139, USA;Putnam Ave;Sidney St;1;11/27/2012;42.3566315;-71.1067326
+;Concord Avenue & Fayerweather Street, Cambridge, MA 02138, USA;Concord Ave;FAYERWEATHER ST;1;11/26/2012;42.3845951;-71.1357947
+;Massachusetts Avenue & Shepard Street, Cambridge, MA 02138, USA;Massachusetts Ave;Shepard St;1;11/22/2012;42.3817369;-71.1196856
+363;363 Windsor Street, Cambridge, MA 02139, USA;Windsor St;;1;11/20/2012;42.3700886;-71.0944257
+;Massachusetts Avenue & Garfield Street, Cambridge, MA 02138, USA;Massachusetts Ave;GARFIELD ST;1;11/20/2012;42.3837986;-71.1195808
+1698;1698 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;11/17/2012;42.3830474;-71.1196761
+1035;1035 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;11/15/2012;42.3729111;-71.0943818
+671;671 Main Street, Cambridge, MA 02139, USA;MAIN ST;;1;11/14/2012;42.3630770;-71.0947847
+;Hampshire Street & Inman Street, Cambridge, MA 02139, USA;Hampshire St;Inman St;1;11/14/2012;42.3734774;-71.1005336
+;Cambridge Street & Hampshire Street, Cambridge, MA 02139, USA;Cambridge St;Hampshire St;1;11/14/2012;42.3737254;-71.1008300
+;Cardinal Medeiros Avenue, Cambridge, MA, USA;Cardinal Medeiros Ave;;1;11/7/2012;42.3692712;-71.0900913
+;Hampshire Street & Columbia Street, Cambridge, MA 02139, USA;Columbia St;Hampshire St;1;11/5/2012;42.3699250;-71.0961941
+450;450 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;11/2/2012;42.3635889;-71.1009831
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1;10/31/2012;42.3626470;-71.0990652
+;Jfk Street & Winthrop Street, Cambridge, MA 02138, USA;JFK St;Winthrop Sq;1;10/30/2012;42.3721672;-71.1205000
+;Cambridge Street & Fulkerson Street, Cambridge, MA 02141, USA;Cambridge St;FULKERSON ST;1;10/26/2012;42.3719239;-71.0868792
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1;10/25/2012;42.3626470;-71.0990652
+;Hampshire Street & Tremont Street, Cambridge, MA 02139, USA;Tremont St;Hampshire St;1;10/25/2012;42.3714904;-71.0981120
+;Cambridge Street & Felton Street, Cambridge, MA 02138, USA;Cambridge St;FELTON ST;1;10/25/2012;42.3751960;-71.1122227
+;White Street Place, Cambridge, MA 02140, USA;Massachusetts Ave;White St;1;10/24/2012;42.3887092;-71.1176458
+;Cambridge Street & Highland Avenue, Cambridge, MA 02139, USA;Cambridge St;HIGHLAND AVE;1;10/21/2012;42.3742316;-71.1047258
+1452;1452 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;10/20/2012;42.3737740;-71.1029740
+;Mount Auburn Street & Banks Street, Cambridge, MA 02138, USA;Banks St;MOUNT AUBURN ST;1;10/18/2012;42.3704873;-71.1144672
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1;10/17/2012;42.3704848;-71.0968790
+;Cambridge Street & Windsor Street, Cambridge, MA 02141, USA;Cambridge St;Windsor St;1;10/17/2012;42.3727534;-71.0932842
+1008;1008 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;Columbia St;1;10/14/2012;42.3726399;-71.0938720
+;Hampshire Street, Cambridge, MA, USA;Hampshire St;;1;10/14/2012;42.3699250;-71.0961941
+;Massachusetts Avenue & Essex Street, Cambridge, MA 02139, USA;Massachusetts Ave;ESSEX ST;1;10/12/2012;42.3650836;-71.1031749
+33;33 Oxford Avenue, Belmont, MA 02478, USA;OXFORD AVE;;1;10/11/2012;42.3768494;-71.1560317
+;Concord Avenue & Smith Place, Cambridge, MA 02138, USA;Concord Ave;SMITH PL;1;10/10/2012;42.3901357;-71.1506873
+;Brookline Street & Franklin Street, Cambridge, MA 02139, USA;Brookline St;Franklin St;1;10/6/2012;42.3628727;-71.1024328
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1;10/6/2012;42.3646216;-71.1024217
+;Broadway & Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Broadway;Hampshire St;1;10/4/2012;42.3654283;-71.0911269
+;Plympton Street & Mill Street, Harvard University, Cambridge, MA 02138, USA;MILL ST;PLYMPTON ST;1;10/4/2012;42.3702547;-71.1177534
+;Massachusetts Avenue & Chauncy Street, Cambridge, MA 02138, USA;Massachusetts Ave;Chauncy St;1;10/2/2012;42.3799980;-71.1199791
+438;438 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;10/1/2012;42.3634530;-71.1007676
+;Mount Auburn Street & Brattle Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Brattle St;1;9/27/2012;42.3753183;-71.1452231
+;Massachusetts Avenue & Washburn Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Washburn Ave;1;9/25/2012;42.3987981;-71.1320086
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1;9/25/2012;42.3704848;-71.0968790
+;Prospect Street, Cambridge, MA, USA;PROSPECT ST;;1;9/24/2012;42.3706651;-71.1000866
+1967;1967 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;9/24/2012;42.3898864;-71.1204233
+;Cardinal Medeiros Avenue & Plymouth Street, Cambridge, MA 02141, USA;Cardinal Medeiros Ave;PLYMOUTH ST;1;9/24/2012;42.3683758;-71.0905737
+;Prospect Street & Bishop Allen Drive, Cambridge, MA 02139, USA;PROSPECT ST;Bishop Allen Dr;1;9/23/2012;42.3663480;-71.1031405
+;Garden Street & Linnaean Street, Harvard University, Cambridge, MA 02138, USA;GARDEN CT;LINNAEAN ST;1;9/21/2012;42.3820630;-71.1267338
+211;211 Massachusetts Avenue, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;;1;9/21/2012;42.3613652;-71.0966865
+100;100 Putnam Avenue, Cambridge, MA 02139, USA;Putnam Ave;;1;9/20/2012;42.3667376;-71.1153710
+;Broadway & Ware Street, Cambridge, MA 02138, USA;Broadway;Ware St;1;9/20/2012;42.3738336;-71.1124428
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Hampshire St;Portland St;1;9/20/2012;42.3663022;-71.0917948
+;Hampshire Street & Norfolk Street, Cambridge, MA 02139, USA;Hampshire St;Norfolk St;1;9/19/2012;42.3710278;-71.0975410
+1035;1035 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;Columbia St;1;9/18/2012;42.3729111;-71.0943818
+;Mason Street, Boston, MA 02111, USA;MASON ST;STATE ST;1;9/18/2012;42.3542049;-71.0632921
+;Massachusetts Avenue & Pearl Street, Cambridge, MA 02139, USA;Massachusetts Ave;PEARL ST;1;9/17/2012;42.3647021;-71.1025516
+;Massachusetts Avenue & Dover Street, Cambridge, MA 02140, USA;DOVER ST;Massachusetts Ave;1;9/15/2012;42.3945048;-71.1270669
+2055;2055 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;9/15/2012;42.3912318;-71.1224047
+141;141 Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;;1;9/14/2012;42.3687439;-71.1017050
+1668;1668 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;9/8/2012;42.3820501;-71.1198868
+;Putnam Avenue & Brookline Street, Cambridge, MA 02139, USA;Putnam Ave;Brookline St;1;9/7/2012;42.3573756;-71.1080122
+;Jefferson Street & Marion Street, Cambridge, MA 02141, USA;MARION ST;JEFFERSON ST;1;9/7/2012;42.3730046;-71.0887753
+;Kirkland Street & Irving Street, Cambridge, MA 02138, USA;KIRKLAND ST;IRVING ST;1;9/5/2012;42.3773745;-71.1105974
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Hampshire St;Portland St;1;9/5/2012;42.3663022;-71.0917948
+;Massachusetts Avenue & Hudson Street, Cambridge, MA 02138, USA;Massachusetts Ave;HUDSON ST;1;9/1/2012;42.3822382;-71.1197461
+;Kirkland Street & Divinity Avenue, Harvard University, Cambridge, MA 02138, USA;DIVINITY AVE;KIRKLAND ST;1;8/30/2012;42.3766969;-71.1138081
+;Albany Street, Cambridge, MA 02139, USA;MASON ST;Albany St;1;8/28/2012;42.3600462;-71.0978232
+;Massachusetts Avenue & Hancock Street, Cambridge, MA 02139, USA;Massachusetts Ave;HANCOCK ST;1;8/27/2012;42.3683792;-71.1087841
+;Cambridge Street & Sumner Road, Cambridge, MA 02138, USA;Cambridge St;SUMNER RD;1;8/27/2012;42.3752597;-71.1127180
+;Western Avenue & Putnam Avenue, Cambridge, MA 02139, USA;Putnam Ave;Western Ave;1;8/22/2012;42.3644733;-71.1138643
+165;165 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;8/22/2012;42.3718419;-71.0983790
+438;438 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;8/22/2012;42.3634530;-71.1007676
+;Memorial Drive, Cambridge, MA, USA;Massachusetts Ave;MEMORIAL DR;1;8/21/2012;42.3534576;-71.1061929
+;Cambridge Street & Ellery Street, Cambridge, MA 02138, USA;Cambridge St;ELLERY ST;1;8/20/2012;42.3747002;-71.1083689
+;Massachusetts Avenue & Exeter Park, Cambridge, MA 02138, USA;Massachusetts Ave;EXETER PARK;1;8/20/2012;42.3848285;-71.1194676
+711;711 Huron Avenue, Cambridge, MA 02138, USA;HURON AVE;;1;8/17/2012;42.3813308;-71.1547500
+;Massachusetts Avenue & Prospect Street, Cambridge, MA 02139, USA;Massachusetts Ave;PROSPECT ST;1;8/15/2012;42.3656114;-71.1040552
+;Green Street & Bay Street, Cambridge, MA 02139, USA;GREEN ST;Bay St;1;8/14/2012;42.3683137;-71.1107432
+;Massachusetts Avenue & Shepard Street, Cambridge, MA 02138, USA;Massachusetts Ave;Shepard St;1;8/13/2012;42.3817369;-71.1196856
+;Huron Avenue & Reservoir Street, Cambridge, MA 02138, USA;HURON AVE;RESERVOIR ST;1;8/10/2012;42.3814234;-71.1358106
+;Concord Avenue, Cambridge, MA, USA;Concord Ave;;1;8/9/2012;42.3909726;-71.1572632
+;Main Street & Windsor Street, Cambridge, MA 02139, USA;MAIN ST;Windsor St;1;8/9/2012;42.3632079;-71.0967089
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1;8/7/2012;42.3646216;-71.1024217
+;Broadway & Inman Street, Cambridge, MA 02139, USA;Broadway;Inman St;1;8/7/2012;42.3700717;-71.1029309
+1651;1651 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;8/6/2012;42.3815192;-71.1193817
+;Brattle Street & Sparks Street, Cambridge, MA 02138, USA;Sparks St;Brattle St;1;8/5/2012;42.3778418;-71.1301870
+;First Street & Charles Street, Cambridge, MA 02141, USA;FIRST ST;Charles St;1;8/4/2012;42.3672274;-71.0777256
+65;65 Landsdowne Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Landsdowne St;;1;8/3/2012;42.3607104;-71.1008914
+;Memorial Drive & Mount Auburn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;MEMORIAL DR;1;8/2/2012;42.3744608;-71.1267733
+;Massachusetts Avenue & Remington Street, Cambridge, MA 02138, USA;Massachusetts Ave;REMINGTON ST;1;7/31/2012;42.3708137;-71.1138888
+120;120 Massachusetts Avenue, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;;1;7/31/2012;42.3591700;-71.0954740
+;Mount Auburn Street & Holyoke Street, Harvard University, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HOLYOKE ST;1;7/29/2012;42.3719669;-71.1185733
+;Huron Avenue & Garden Street, Cambridge, MA 02138, USA;GARDEN ST;HURON AVE;1;7/26/2012;42.3838672;-71.1293150
+;Granite Street, Cambridge, MA 02139, USA;Dewolfe St;GRANITE ST;1;7/25/2012;42.3559916;-71.1120042
+2055;2055 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;7/24/2012;42.3912318;-71.1224047
+;Hampshire Street & Portsmouth Street, Cambridge, MA 02141, USA;Hampshire St;PORTSMOUTH ST;1;7/19/2012;42.3684247;-71.0943576
+;Main Street & Columbia Street, Cambridge, MA 02139, USA;Columbia St;MAIN ST;1;7/19/2012;42.3634089;-71.0993755
+;Cambridge, MA, USA;Brattle St;LONGFELLOW BRDG;1;7/16/2012;42.3736158;-71.1097335
+;Inman Street & West Street, Cambridge, MA 02139, USA;Inman St;West Pl;1;7/14/2012;42.3694062;-71.1033812
+;Cambridge Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;Cambridge St;QUINCY ST;1;7/11/2012;42.3755098;-71.1143185
+;Massachusetts Avenue & Richard Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;RICHARD AVE;1;7/11/2012;42.3999902;-71.1337536
+;Main Street & Portland Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Portland St;1;7/10/2012;42.3629743;-71.0936428
+;Broadway & Columbia Street, Cambridge, MA 02139, USA;Columbia St;Broadway;1;7/3/2012;42.3678650;-71.0973684
+5;5 Dewolfe Street, Cambridge, MA 02138, USA;Dewolfe St;;1;7/3/2012;42.3710349;-71.1161693
+;Cambridge Street & Sumner Road, Cambridge, MA 02138, USA;Cambridge St;SUMNER RD;1;7/3/2012;42.3752597;-71.1127180
+26;26 Garden Street, Cambridge, MA 02138, USA;GARDEN ST;;1;6/29/2012;42.3781090;-71.1239210
+14;14 Chauncy Street, Cambridge, MA 02138, USA;Chauncy St;;1;6/29/2012;42.3797397;-71.1217135
+;Massachusetts Avenue & Pleasant Street, Cambridge, MA 02139, USA;Massachusetts Ave;PLEASANT ST;1;6/28/2012;42.3664103;-71.1054060
+;Massachusetts Avenue & Linnaean Street, Cambridge, MA 02138, USA;Massachusetts Ave;LINNAEAN ST;1;6/26/2012;42.3848285;-71.1194676
+;Massachusetts Avenue & Everett Street, Cambridge, MA 02138, USA;Massachusetts Ave;EVERETT ST;1;6/22/2012;42.3799980;-71.1199791
+;Massachusetts Avenue & Hancock Street, Cambridge, MA 02139, USA;Massachusetts Ave;HANCOCK ST;1;6/20/2012;42.3683792;-71.1087841
+;Broadway & Ames Street, Cambridge, MA 02142, USA;Broadway;Ames St;1;6/18/2012;42.3640433;-71.0874256
+;Broadway & Third Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Broadway;Third St;1;6/14/2012;42.3626247;-71.0843649
+260;260 Harvard Street, Cambridge, MA 02139, USA;HARVARD ST;;1;6/14/2012;42.3682964;-71.1023147
+23;23 Bishop Allen Drive, Cambridge, MA 02139, USA;Bishop Allen Dr;;1;6/11/2012;42.3642427;-71.0995941
+1621;1621 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;6/10/2012;42.3748821;-71.1091473
+;Franklin Street & Bay Street, Cambridge, MA 02139, USA;Franklin St;Bay St;1;6/9/2012;42.3677590;-71.1110947
+;Second Street & Charles Street, Cambridge, MA 02141, USA;Second St;Charles St;1;6/8/2012;42.3674401;-71.0793841
+16;16 Prescott Street, Harvard University, Cambridge, MA 02138, USA;PRESCOTT ST;;1;6/7/2012;42.3732149;-71.1136866
+1673;1673 Cambridge Street, Cambridge, MA 02138, USA;Cambridge St;Thorndike St;1;6/7/2012;42.3752690;-71.1108550
+;Green Street & Bay Street, Cambridge, MA 02139, USA;Bay St;GREEN ST;1;6/6/2012;42.3683137;-71.1107432
+2501;2501 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;6/1/2012;42.3994574;-71.1322381
+;Mt Auburn St @ Homer Ave, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HOMER AVE;1;6/1/2012;42.3749730;-71.1483080
+581;581 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;5/31/2012;42.3650219;-71.1027564
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Vassar St;1;5/31/2012;42.3626897;-71.0900485
+;Huron Avenue & Fayerweather Street, Cambridge, MA 02138, USA;HURON AVE;FAYERWEATHER ST;1;5/31/2012;42.3813031;-71.1373342
+;Cambridge Street & Fulkerson Street, Cambridge, MA 02141, USA;Cambridge St;FULKERSON ST;1;5/31/2012;42.3719239;-71.0868792
+;Garden Street & Berkeley Street, Cambridge, MA 02138, USA;GARDEN ST;Berkeley St;1;5/30/2012;42.3776453;-71.1231611
+;Cambridge Street & Columbia Street, Cambridge, MA 02141, USA;Columbia St;Cambridge St;1;5/25/2012;42.3729102;-71.0945012
+1001;1001 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;5/24/2012;42.3728132;-71.0936504
+;Kirkland Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;QUINCY ST;KIRKLAND ST;1;5/24/2012;42.3766321;-71.1140944
+1432;1432 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;5/23/2012;42.3741288;-71.1189927
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Hampshire St;Portland St;1;5/23/2012;42.3663022;-71.0917948
+;Main Street & Windsor Street, Cambridge, MA 02139, USA;MAIN ST;Windsor St;1;5/21/2012;42.3632079;-71.0967089
+77;77 Massachusetts Ave, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Massachusetts Ave;;1;5/19/2012;42.3591840;-71.0935440
+;Broadway & Norfolk Street, Cambridge, MA 02139, USA;Norfolk St;Broadway;1;5/18/2012;42.3685185;-71.0990006
+119;119 Hampshire Street, Cambridge, MA 02141, USA;Hampshire St;;1;5/18/2012;42.3699025;-71.0961422
+1008;1008 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;5/18/2012;42.3692063;-71.1111812
+;Mount Auburn Street & Plympton Street, Harvard University, Cambridge, MA 02138, USA;PLYMPTON ST;MOUNT AUBURN ST;1;5/17/2012;42.3714098;-71.1170510
+;Massachusetts Avenue & Linnaean Street, Cambridge, MA 02138, USA;Massachusetts Ave;LINNAEAN ST;1;5/17/2012;42.3848285;-71.1194676
+2032;2032 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;5/16/2012;42.3907012;-71.1221672
+292;292 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;5/16/2012;42.3709210;-71.0808940
+;Third Street & Kendall Street, Cambridge, MA 02142, USA;Third St;Kendall Sq;1;5/14/2012;42.3639493;-71.0834123
+;Cambridge Street & 6th Street, Cambridge, MA 02141, USA;Cambridge St;Sixth St;1;5/14/2012;42.3716527;-71.0847941
+;Mount Auburn Street & Aberdeen Avenue, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Aberdeen Ct;1;5/14/2012;42.3752502;-71.1459271
+16;16 Garden Street, Cambridge, MA 02138, USA;GARDEN ST;;1;5/10/2012;42.3771850;-71.1232400
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Portland St;Hampshire St;1;5/9/2012;42.3663022;-71.0917948
+;Huron Avenue & Appleton Street, Cambridge, MA 02138, USA;HURON AVE;Appleton St;1;5/7/2012;42.3815151;-71.1340945
+2;2 University Road, Cambridge, MA 02138, USA;University Pl;MOUNT AUBURN PL;1;5/7/2012;42.3732847;-71.1229786
+44;44 John F. Kennedy Street, Cambridge, MA 02138, USA;JFK St;MOUNT AUBURN ST;1;5/6/2012;42.3724556;-71.1202231
+;Concord Avenue & Craigie Street, Cambridge, MA 02138, USA;Concord Ave;Craigie St;1;5/5/2012;42.3794429;-71.1257588
+98;98 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;5/5/2012;42.3690365;-71.0951492
+1414;1414 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;5/3/2012;42.3737394;-71.1015548
+;Cambridge Street & Parker Street, Boston, MA 02129, USA;Cambridge St;PARKER ST;1;4/29/2012;42.3822929;-71.0796576
+;Broadway & Main Street, Cambridge, MA 02142, USA;MAIN ST;Broadway;1;4/27/2012;42.3629462;-71.0850772
+;Memorial Drive & Jfk Street, Harvard University, Cambridge, MA 02138, USA;JFK St;MEMORIAL DR;1;4/27/2012;42.3697927;-71.1224694
+;Granite Street & Magazine Street, Cambridge, MA 02139, USA;MAGAZINE ST;GRANITE ST;1;4/26/2012;42.3568724;-71.1135698
+332;332 Broadway, Cambridge, MA 02139, USA;Broadway;;1;4/24/2012;42.3697281;-71.1020974
+;Broadway & Quincy Street, Harvard University, Cambridge, MA 02138, USA;Broadway;QUINCY ST;1;4/21/2012;42.3748203;-71.1144267
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1;4/20/2012;42.3626470;-71.0990652
+1617;1617 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;4/20/2012;42.3803770;-71.1194186
+;Gore Street & 7th Street, Cambridge, MA 02141, USA;Gore St;SEVENTH ST;1;4/19/2012;42.3725577;-71.0851520
+24;24 Eliot Street, Harvard University, Cambridge, MA 02138, USA;ELIOT ST;;1;4/13/2012;42.3728914;-71.1219422
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Portland St;Hampshire St;1;4/13/2012;42.3663022;-71.0917948
+;Main Street & Portland Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Portland St;1;4/9/2012;42.3629743;-71.0936428
+;Alewife Brook Parkway & Matignon Road, Cambridge, MA 02140, USA;Alewife Brook Pky;MATIGNON RD;1;4/7/2012;42.4026100;-71.1344460
+;Massachusetts Avenue & Western Avenue, Cambridge, MA 02139, USA;Western Ave;Massachusetts Ave;1;4/7/2012;42.3656114;-71.1040552
+710;710 Main Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;;1;4/5/2012;42.3629905;-71.0949967
+;Columbia Street & Bishop Allen Drive, Cambridge, MA 02139, USA;Bishop Allen Dr;Columbia St;1;4/4/2012;42.3641620;-71.0994873
+243;243 Broadway, Cambridge, MA 02139, USA;Broadway;;1;4/4/2012;42.3674270;-71.0956340
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1;4/3/2012;42.3601382;-71.0948792
+;Cambridge Street & Sumner Road, Cambridge, MA 02138, USA;Cambridge St;SUMNER RD;1;4/2/2012;42.3752597;-71.1127180
+1124;1124 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;3/30/2012;42.3728550;-71.0960300
+265;265 Allston Street, Cambridge, MA 02139, USA;Allston St;MAGAZINE ST;1;3/30/2012;42.3601646;-71.1105324
+;Massachusetts Avenue & Russell Street, Cambridge, MA 02140, USA;Massachusetts Ave;Russell St;1;3/28/2012;42.3917366;-71.1239230
+;Fresh Pond Parkway & Huron Avenue, Cambridge, MA 02138, USA;FRESH POND PKY;HURON AVE;1;3/26/2012;42.3799709;-71.1445372
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Albany St;1;3/23/2012;42.3608181;-71.0960318
+125;125 Mount Auburn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;;1;3/20/2012;42.3735730;-71.1228864
+1731;1731 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;3/20/2012;42.3842253;-71.1192756
+;Broadway & Galileo Galilei Way, Cambridge, MA 02139, USA;Galileo Galilei Way;Broadway;1;3/12/2012;42.3647784;-71.0894878
+831;831 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;3/9/2012;42.3672122;-71.1064598
+;Cambridge Street & Springfield Street, Cambridge, MA 02139, USA;SPRINGFIELD ST;Cambridge St;1;3/9/2012;42.3736745;-71.1005265
+164;164 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;3/8/2012;42.3718469;-71.0985703
+1;1 Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Hampshire St;;1;3/7/2012;42.3652169;-71.0900490
+;Broadway & Elm Street, Cambridge, MA 02139, USA;ELM ST;Broadway;1;2/29/2012;42.3682017;-71.0981883
+;Broadway & Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Broadway;Hampshire St;1;2/28/2012;42.3654283;-71.0911269
+;Massachusetts Avenue & Walden Street, Cambridge, MA 02140, USA;Massachusetts Ave;Walden St;1;2/28/2012;42.3914213;-71.1232057
+;Massachusetts Avenue & Davenport Street, Cambridge, MA 02140, USA;DAVENPORT ST;Massachusetts Ave;1;2/23/2012;42.3893996;-71.1200709
+;Western Avenue & Putnam Avenue, Cambridge, MA 02139, USA;Western Ave;Putnam Ave;1;2/23/2012;42.3644733;-71.1138643
+;Broadway & Amory Street, Cambridge, MA 02139, USA;Broadway;Amory St;1;2/22/2012;42.3697040;-71.1019970
+2274;2274 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;2/17/2012;42.3944135;-71.1269879
+1975;1975 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;2/9/2012;42.3900709;-71.1206237
+;Mount Auburn Street & Brattle Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Brattle St;1;2/5/2012;42.3753183;-71.1452231
+;Cambridge Street & Springfield Street, Cambridge, MA 02139, USA;Cambridge St;SPRINGFIELD ST;1;2/3/2012;42.3736745;-71.1005265
+;Hampshire Street & Bristol Street, Cambridge, MA 02141, USA;Hampshire St;Bristol St;1;2/3/2012;42.3679550;-71.0938000
+287;287 Broadway, Cambridge, MA 02138, USA;Broadway;;1;2/3/2012;42.3684672;-71.0985765
+;Massachusetts Avenue & Rice Street, Cambridge, MA 02140, USA;Massachusetts Ave;Rice St;1;2/2/2012;42.3953744;-71.1278932
+;Huron Avenue & Reservoir Street, Cambridge, MA 02138, USA;HURON AVE;RESERVOIR ST;1;2/2/2012;42.3814234;-71.1358106
+;Walden Street & Raymond Street, Cambridge, MA 02140, USA;Walden St;Raymond St;1;1/27/2012;42.3874118;-71.1275457
+;Cambridge Street & Springfield Street, Cambridge, MA 02139, USA;Cambridge St;SPRINGFIELD ST;1;1/22/2012;42.3736745;-71.1005265
+;Massachusetts Avenue & Exeter Park, Cambridge, MA 02138, USA;Massachusetts Ave;EXETER PARK;1;1/14/2012;42.3848285;-71.1194676
+1688;1688 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;1/11/2012;42.3827380;-71.1200620
+;Massachusetts Avenue & Landsdowne Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Landsdowne St;1;1/9/2012;42.3617348;-71.0975628
+;Massachusetts Avenue & Windsor Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Windsor St;1;1/6/2012;42.3613630;-71.0969560
+;Hampshire Street & Tremont Street, Cambridge, MA 02139, USA;Hampshire St;Tremont St;1;1/5/2012;42.3714904;-71.0981120
+;Massachusetts Avenue & Norfolk Street, Cambridge, MA 02139, USA;Massachusetts Ave;Norfolk St;1;1/3/2012;42.3644325;-71.1020946
+;Cambridge Street & Willow Street, Cambridge, MA 02141, USA;Cambridge St;Willow St;1;1/3/2012;42.3725619;-71.0918152
+810;810 Main Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;;1;12/30/2011;42.3631821;-71.0976772
+240;240 Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Albany St;;1;12/28/2011;42.3582610;-71.1007460
+;Cambridge Street & Trowbridge Street, Cambridge, MA 02138, USA;Cambridge St;Trowbridge St;1;12/27/2011;42.3749177;-71.1100676
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Vassar St;1;12/16/2011;42.3626897;-71.0900485
+1430;1430 Massachusetts Avenue, The Atrium Shopping Center, Cambridge, MA 02138, USA;Massachusetts Ave;Church St;1;12/14/2011;42.3741330;-71.1192690
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1;12/13/2011;42.3601382;-71.0948792
+;Putnam Avenue & Brookline Street, Cambridge, MA 02139, USA;Brookline St;Putnam Ave;1;11/30/2011;42.3573756;-71.1080122
+;Broadway & Galileo Galilei Way, Cambridge, MA 02139, USA;Broadway;Galileo Galilei Way;1;11/30/2011;42.3647784;-71.0894878
+;River Street & Blackstone Street, Cambridge, MA 02139, USA;River St;Blackstone St;1;11/30/2011;42.3619987;-71.1143181
+;Ames Street & Amherst Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Ames St;Amherst St;1;11/30/2011;42.3600091;-71.0876380
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1;11/26/2011;42.3626470;-71.0990652
+;Massachusetts Avenue & Dana Street, Cambridge, MA 02138, USA;Massachusetts Ave;Dana Pl;1;11/25/2011;42.3691586;-71.1107379
+;Prospect Street & Harvard Street, Cambridge, MA 02139, USA;HARVARD ST;PROSPECT ST;1;11/20/2011;42.3682981;-71.1017427
+350;350 Third Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Third St;Kendall Sq;1;11/19/2011;42.3630085;-71.0838894
+;Orchard Street & Blake Street, Cambridge, MA 02140, USA;ORCHARD ST;Blake St;1;11/18/2011;42.3918358;-71.1209863
+232;232 Broadway, Cambridge, MA 02139, USA;Broadway;;1;11/17/2011;42.3667430;-71.0945266
+320;320 Broadway, Cambridge, MA 02139, USA;Broadway;;1;11/15/2011;42.3690863;-71.1013863
+;Gore Street & Lambert Street, Twin City Plaza, East Cambridge, MA 02141, USA;Gore St;LAMBERT ST;1;11/15/2011;42.3730550;-71.0864747
+;Massachusetts Avenue & Pleasant Street, Cambridge, MA 02139, USA;Massachusetts Ave;PLEASANT ST;1;11/12/2011;42.3664103;-71.1054060
+;Broadway & Columbia Street, Cambridge, MA 02139, USA;Broadway;Columbia St;1;11/11/2011;42.3678650;-71.0973684
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1;11/9/2011;42.3646216;-71.1024217
+;Massachusetts Avenue & Everett Street, Cambridge, MA 02138, USA;Massachusetts Ave;EVERETT ST;1;11/8/2011;42.3799980;-71.1199791
+;Alewife Brook Parkway, Cambridge, MA, USA;Alewife Brook Pky;;1;11/7/2011;42.3999499;-71.1375426
+;Putnam Avenue & River Street, Cambridge, MA 02139, USA;Putnam Ave;River St;1;11/4/2011;42.3622704;-71.1135371
+;Brookline Street & Waverly Street, Cambridge, MA 02139, USA;Brookline St;Waverly St;1;10/31/2011;42.3551175;-71.1102278
+;Massachusetts Avenue & Rice Street, Cambridge, MA 02140, USA;Massachusetts Ave;Rice St;1;10/28/2011;42.3953744;-71.1278932
+204;204 Columbia Street, Cambridge, MA 02139, USA;Columbia St;;1;10/25/2011;42.3684416;-71.0970261
+;Western Avenue, Cambridge, MA, USA;Western Ave;;1;10/24/2011;42.3641825;-71.1177462
+;Broadway & Ellery Street, Cambridge, MA 02138, USA;Broadway;ELLERY ST;1;10/24/2011;42.3727618;-71.1097379
+;Main Street & Windsor Street, Cambridge, MA 02139, USA;MAIN ST;Windsor St;1;10/21/2011;42.3632079;-71.0967089
+;Cambridge Street & Warren Street, Cambridge, MA 02141, USA;Cambridge St;Warren Pl;1;10/21/2011;42.3721047;-71.0882983
+1000;1000 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;10/20/2011;42.3727138;-71.0936146
+;Massachusetts Avenue & Rice Street, Cambridge, MA 02140, USA;Massachusetts Ave;Rice St;1;10/20/2011;42.3953744;-71.1278932
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Albany St;1;10/18/2011;42.3608181;-71.0960318
+;Concord Avenue & Huron Avenue, Cambridge, MA 02138, USA;Concord Ave;HURON AVE;1;10/18/2011;42.3824208;-71.1310038
+;Mount Auburn Street & Plympton Street, Harvard University, Cambridge, MA 02138, USA;PLYMPTON ST;MOUNT AUBURN ST;1;10/15/2011;42.3714098;-71.1170510
+;Binney Street & 6th Street, Cambridge, MA 02141, USA;Binney St;Sixth St;1;10/14/2011;42.3662019;-71.0860680
+;Mount Auburn Street & Aberdeen Avenue, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Aberdeen Way;1;10/14/2011;42.3752502;-71.1459271
+1000;1000 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;10/14/2011;42.3727138;-71.0936146
+1555;1555 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;10/12/2011;42.3779390;-71.1197020
+;Cambridge Street & Harding Street, Cambridge, MA 02141, USA;Cambridge St;HARDING ST;1;10/11/2011;42.3724087;-71.0906765
+738;738 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;10/11/2011;42.3719550;-71.0892150
+;Massachusetts Avenue & Newport Road, Cambridge, MA 02140, USA;Massachusetts Ave;NEWPORT RD;1;10/7/2011;42.3858424;-71.1192159
+583;583 Mount Auburn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;;1;10/7/2011;42.3756207;-71.1449885
+;Broadway & Windsor Street, Cambridge, MA 02139, USA;Broadway;Windsor St;1;10/6/2011;42.3670949;-71.0954058
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1;10/4/2011;42.3704848;-71.0968790
+303;303 Broadway, Cambridge, MA 02139, USA;Broadway;Tremont St;1;10/2/2011;42.3690260;-71.0997140
+32;32 Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Vassar St;;1;10/2/2011;42.3618641;-71.0905626
+850;850 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;9/30/2011;42.3674154;-71.1070401
+;Cambridge Street & Elm Street, Cambridge, MA 02139, USA;Cambridge St;ELM ST;1;9/28/2011;42.3730155;-71.0953218
+;Otis Street & 8th Street, Cambridge, MA 02141, USA;EIGHTH ST;Otis St;1;9/20/2011;42.3711226;-71.0862856
+;Memorial Drive, Cambridge, MA, USA;Massachusetts Ave;MEMORIAL DR;1;9/17/2011;42.3534576;-71.1061929
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Albany St;1;9/16/2011;42.3608181;-71.0960318
+;Cambridge Street & Ellsworth Avenue, Cambridge, MA 02139, USA;Cambridge St;Ellsworth Ave;1;9/15/2011;42.3744028;-71.1060846
+;Harvard Street & Columbia Street, Cambridge, MA 02139, USA;HARVARD ST;Columbia St;1;9/15/2011;42.3669946;-71.0978463
+;Massachusetts Avenue & Cedar Street, Cambridge, MA 02140, USA;Massachusetts Ave;Cedar St;1;9/15/2011;42.3979323;-71.1309262
+;Windsor Street & Washington Street, Cambridge, MA 02139, USA;Washington Ave;Windsor St;1;9/14/2011;42.3648613;-71.0962564
+287;287 Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;;1;9/14/2011;42.3723955;-71.0988837
+;Broadway & Portland Street, Cambridge, MA 02139, USA;Portland St;Broadway;1;9/14/2011;42.3657954;-71.0920726
+;Massachusetts Avenue & Sidney Street, Cambridge, MA 02139, USA;Massachusetts Ave;Sidney St;1;9/10/2011;42.3629518;-71.0995844
+;Garden Street & Walker Street, Cambridge, MA 02138, USA;GARDEN ST;Walker St;1;9/6/2011;42.3796610;-71.1246832
+;Quincy Street, Cambridge, MA 02138, USA;QUINCY ST;;1;9/6/2011;42.3744753;-71.1145620
+;Brattle Street & Hawthorn Street, Cambridge, MA 02138, USA;Brattle St;HAWTHORNE ST;1;9/3/2011;42.3762351;-71.1256545
+;Antrim Street, Cambridge, MA 02139, USA;Antrim St;;1;8/31/2011;42.3724383;-71.1022585
+1039;1039 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;Trowbridge St;1;8/31/2011;42.3700750;-71.1123820
+;Cambridge Street & Windsor Street, Cambridge, MA 02141, USA;Cambridge St;Windsor St;1;8/31/2011;42.3727534;-71.0932842
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;PROSPECT ST;1;8/29/2011;42.3722128;-71.0989926
+;Massachusetts Avenue & Dover Street, Cambridge, MA 02140, USA;DOVER ST;Massachusetts Ave;1;8/25/2011;42.3945048;-71.1270669
+;Ames Street & Amherst Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Amherst St;Ames St;1;8/24/2011;42.3600091;-71.0876380
+92;92 Brattle Street, Cambridge, MA 02138, USA;Brattle St;;1;8/23/2011;42.3758250;-71.1251670
+;Massachusetts Avenue & Meacham Road, Cambridge, MA 02140, USA;MEACHAM RD;Massachusetts Ave;1;8/23/2011;42.3950629;-71.1276917
+;Massachusetts Avenue & Amherst Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Amherst St;Massachusetts Ave;1;8/22/2011;42.3581889;-71.0931051
+;Hampshire Street & Inman Street, Cambridge, MA 02139, USA;Hampshire St;Inman St;1;8/19/2011;42.3734774;-71.1005336
+;Massachusetts Avenue & Blake Street, Cambridge, MA 02140, USA;Massachusetts Ave;Blake St;1;8/19/2011;42.3909539;-71.1222127
+1809;1809 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;8/18/2011;42.3868901;-71.1190822
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;PROSPECT ST;1;8/16/2011;42.3722128;-71.0989926
+;Massachusetts Avenue & Norris Street, Cambridge, MA 02140, USA;NORRIS ST;Massachusetts Ave;1;8/13/2011;42.3960556;-71.1286692
+1933;1933 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;8/13/2011;42.3895796;-71.1201103
+193;193 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;Cambridge St;1;8/12/2011;42.3729090;-71.0998147
+;Western Avenue & Franklin Street, Cambridge, MA 02139, USA;Franklin St;Western Ave;1;8/12/2011;42.3651385;-71.1062018
+;Massachusetts Avenue & Blake Street, Cambridge, MA 02140, USA;Massachusetts Ave;Blake St;1;8/11/2011;42.3909539;-71.1222127
+;Cambridge Street & Windsor Street, Cambridge, MA 02141, USA;Cambridge St;Windsor St;1;8/11/2011;42.3727534;-71.0932842
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1;8/9/2011;42.3704848;-71.0968790
+;Pacific Street, Cambridge, MA 02139, USA;PACIFIC ST;;1;8/7/2011;42.3599185;-71.1017053
+20;20 Oxford Avenue, Belmont, MA 02478, USA;OXFORD AVE;;1;8/7/2011;42.3764660;-71.1564935
+;Broadway & Windsor Street, Cambridge, MA 02139, USA;Broadway;Windsor St;1;8/4/2011;42.3670949;-71.0954058
+183;183 Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;;1;8/4/2011;42.3696260;-71.1008462
+;Brattle Street & Hawthorn Street, Cambridge, MA 02138, USA;Brattle St;HAWTHORNE ST;1;8/3/2011;42.3762351;-71.1256545
+;Massachusetts Avenue & Cedar Street, Cambridge, MA 02140, USA;Massachusetts Ave;Cedar St;1;8/3/2011;42.3979323;-71.1309262
+524;524 Franklin Street, Cambridge, MA 02139, USA;Franklin St;;1;7/30/2011;42.3676190;-71.1113869
+;Massachusetts Avenue & Landsdowne Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Landsdowne St;Massachusetts Ave;1;7/30/2011;42.3617348;-71.0975628
+;Massachusetts Avenue & Bow Street, Harvard University, Cambridge, MA 02138, USA;Massachusetts Ave;Bow St;1;7/30/2011;42.3722152;-71.1156066
+524;524 Franklin Street, Cambridge, MA 02139, USA;Franklin St;;1;7/29/2011;42.3676190;-71.1113869
+;Broadway & Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Broadway;Hampshire St;1;7/28/2011;42.3654283;-71.0911269
+;Massachusetts Avenue & Hadley Street, Cambridge, MA 02140, USA;Massachusetts Ave;Hadley St;1;7/26/2011;42.3912112;-71.1227587
+;Garden Street & Walden Street, Cambridge, MA 02138, USA;GARDEN ST;Walden St;1;7/23/2011;42.3855365;-71.1322014
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;PROSPECT ST;1;7/22/2011;42.3722128;-71.0989926
+;Massachusetts Avenue & Rindge Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Rindge Ave;1;7/21/2011;42.3927003;-71.1248995
+629;629 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;7/19/2011;42.3653579;-71.1035991
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1;7/18/2011;42.3601382;-71.0948792
+;Massachusetts Avenue & Forest Street, Cambridge, MA 02140, USA;Massachusetts Ave;FOREST ST;1;7/14/2011;42.3853756;-71.1194097
+2143;2143 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;7/13/2011;42.3923013;-71.1242455
+358;358 Broadway, Cambridge, MA 02139, USA;Broadway;;1;7/12/2011;42.3703050;-71.1041970
+;Cambridge Street & Ellsworth Avenue, Cambridge, MA 02139, USA;Cambridge St;Ellsworth Ave;1;7/12/2011;42.3744028;-71.1060846
+;Huron Avenue & Park Avenue, Cambridge, MA 02138, USA;HURON AVE;PARK AVE;1;7/11/2011;42.3789060;-71.1483499
+468;468 Broadway, Cambridge, MA 02138, USA;Broadway;;1;7/11/2011;42.3739105;-71.1126782
+;Main Street & Windsor Street, Cambridge, MA 02139, USA;MAIN ST;Windsor St;1;7/2/2011;42.3632079;-71.0967089
+;Broadway & Ellery Street, Cambridge, MA 02138, USA;ELLERY ST;Broadway;1;7/1/2011;42.3727618;-71.1097379
+;Crawford Street, Cambridge, MA 02139, USA;HARVARD ST;Crawford St;1;6/30/2011;42.3709414;-71.1072911
+;Garden Street & Mason Street, Harvard University, Radcliffe Institute for Advanced Study, Cambridge, MA 02138, USA;GARDEN ST;MASON ST;1;6/27/2011;42.3765687;-71.1221826
+;Massachusetts Avenue & Essex Street, Cambridge, MA 02139, USA;Massachusetts Ave;ESSEX ST;1;6/27/2011;42.3650836;-71.1031749
+;Brattle Street & Palmer Street, Cambridge, MA 02138, USA;Brattle St;PALMER ST;1;6/25/2011;42.3733631;-71.1199003
+;Massachusetts Avenue & Windsor Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Windsor St;Massachusetts Ave;1;6/23/2011;42.3613630;-71.0969560
+;Broadway & Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;Broadway;1;6/22/2011;42.3693239;-71.1010401
+1957;1957 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Allen St;1;6/21/2011;42.3899461;-71.1202997
+;Main Street & Windsor Street, Cambridge, MA 02139, USA;MAIN ST;Windsor St;1;6/17/2011;42.3632079;-71.0967089
+1692;1692 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;6/17/2011;42.3828592;-71.1198599
+;Broadway & Antrim Street, Cambridge, MA 02139, USA;Broadway;Antrim St;1;6/15/2011;42.3704026;-71.1037709
+;Cambridge Street & Columbia Street, Cambridge, MA 02141, USA;Columbia St;Cambridge St;1;6/14/2011;42.3729102;-71.0945012
+359;359 Broadway, Cambridge, MA 02139, USA;Broadway;;1;6/13/2011;42.3706192;-71.1038761
+93;93 Rindge Avenue, Cambridge, MA 02140, USA;Rindge Ave;;1;6/8/2011;42.3930680;-71.1285630
+;Broadway & Fayette Street, Cambridge, MA 02139, USA;Broadway;FAYETTE ST;1;6/8/2011;42.3707636;-71.1046875
+;Massachusetts Avenue & Blake Street, Cambridge, MA 02140, USA;Massachusetts Ave;Blake St;1;6/7/2011;42.3909539;-71.1222127
+;Fresh Pond Parkway & Brattle Street, Cambridge, MA 02138, USA;Brattle St;FRESH POND PKY;1;6/7/2011;42.3761753;-71.1407075
+;Columbia Street & Bishop Allen Drive, Cambridge, MA 02139, USA;Bishop Allen Dr;Columbia St;1;6/7/2011;42.3641620;-71.0994873
+;Prospect Street & Gardner Road, Cambridge, MA 02139, USA;PROSPECT ST;GARDNER RD;1;6/7/2011;42.3709136;-71.0999136
+;Cambridge Street & Cardinal Medeiros Avenue, Cambridge, MA 02141, USA;Cambridge St;Cardinal Medeiros Ave;1;6/7/2011;42.3721205;-71.0884358
+;Massachusetts Avenue & Hadley Street, Cambridge, MA 02140, USA;Massachusetts Ave;Hadley St;1;6/4/2011;42.3912112;-71.1227587
+;Massachusetts Avenue & Rindge Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Rindge Ave;1;6/4/2011;42.3927003;-71.1248995
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;MAIN ST;1;6/3/2011;42.3626897;-71.0900485
+250;250 Brattle Street, Cambridge, MA 02138, USA;Brattle St;;1;5/31/2011;42.3756753;-71.1430930
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;PROSPECT ST;1;5/31/2011;42.3722128;-71.0989926
+;Massachusetts Avenue & Village Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Village St;1;5/31/2011;42.3619862;-71.0979631
+359;359 Rindge Avenue, Cambridge, MA 02140, USA;Rindge Ave;;1;5/30/2011;42.3940335;-71.1399671
+221;221 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;5/28/2011;42.3734692;-71.1002289
+;Jfk Street & Eliot Street, Harvard University, Cambridge, MA 02138, USA;ELIOT ST;JFK St;1;5/26/2011;42.3714161;-71.1211008
+;Mount Auburn Street & Coolidge Avenue, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Coolidge Ave;1;5/21/2011;42.3749391;-71.1397404
+;Mount Auburn Street & Hawthorn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HAWTHORNE ST;1;5/21/2011;42.3744368;-71.1264256
+42;42 Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Vassar St;;1;5/20/2011;42.3612135;-71.0926616
+;Bishop Allen Drive & Essex Street, Cambridge, MA 02139, USA;Bishop Allen Dr;ESSEX ST;1;5/14/2011;42.3658430;-71.1023139
+;Massachusetts Avenue & Hancock Street, Cambridge, MA 02139, USA;Massachusetts Ave;HANCOCK ST;1;5/13/2011;42.3683792;-71.1087841
+;Broadway & Inman Street, Cambridge, MA 02139, USA;Broadway;Inman St;1;5/10/2011;42.3700717;-71.1029309
+137;137 Mount Auburn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;;1;5/10/2011;42.3740700;-71.1242890
+;Massachusetts Ave opp Waterhouse St, Harvard University, Cambridge, MA 02138, USA;Massachusetts Ave;Waterhouse St;1;5/7/2011;42.3778040;-71.1199420
+;Broadway & Ellery Street, Cambridge, MA 02138, USA;Broadway;ELLERY ST;1;5/5/2011;42.3727618;-71.1097379
+;Broadway & Columbia Street, Cambridge, MA 02139, USA;Broadway;Columbia St;1;5/2/2011;42.3678650;-71.0973684
+204;204 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;4/30/2011;42.3731010;-71.1003335
+625;625 Mount Auburn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;;1;4/29/2011;42.3757140;-71.1476983
+;Prospect Street & Harvard Street, Cambridge, MA 02139, USA;PROSPECT ST;HARVARD ST;1;4/26/2011;42.3682981;-71.1017427
+;Broadway & Ames Street, Cambridge, MA 02142, USA;Broadway;Ames St;1;4/21/2011;42.3640433;-71.0874256
+;Putnam Avenue & Pleasant Street, Cambridge, MA 02139, USA;Putnam Ave;PLEASANT ST;1;4/19/2011;42.3601476;-71.1127833
+;Massachusetts Avenue & Hancock Street, Cambridge, MA 02139, USA;Massachusetts Ave;HANCOCK ST;1;4/11/2011;42.3683792;-71.1087841
+743;743 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;4/7/2011;42.3665349;-71.1052019
+;Cambridge Street & Tremont Street, Cambridge, MA 02139, USA;Cambridge St;Tremont St;1;4/4/2011;42.3732442;-71.0970897
+;Cambridge Street & Roberts Road, Cambridge, MA 02138, USA;Cambridge St;ROBERTS RD;1;4/4/2011;42.3747560;-71.1088182
+;Mount Auburn Street & Athens Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Athens St;1;4/3/2011;42.3707452;-71.1151833
+;Jfk Street & Eliot Street, Harvard University, Cambridge, MA 02138, USA;JFK St;ELIOT ST;1;3/26/2011;42.3714161;-71.1211008
+;Eliot Street & Bennett Street, Cambridge, MA 02138, USA;ELIOT ST;Bennett St;1;3/25/2011;42.3723208;-71.1218531
+;Massachusetts Avenue & Norfolk Street, Cambridge, MA 02139, USA;Massachusetts Ave;Norfolk St;1;3/25/2011;42.3644325;-71.1020946
+;Concord Avenue & Walden Street, Cambridge, MA 02138, USA;Concord Ave;Walden St;1;3/22/2011;42.3838409;-71.1340906
+1559;1559 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;3/19/2011;42.3783054;-71.1200399
+;Massachusetts Avenue & Rindge Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Rindge Ave;1;3/7/2011;42.3927003;-71.1248995
+50;50 Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Vassar St;;1;3/1/2011;42.3613308;-71.0920694
+2469;2469 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;3/1/2011;42.3987644;-71.1317867
+872;872 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;LEE ST;1;2/28/2011;42.3675535;-71.1075838
+;Broadway & Lee Street, Cambridge, MA 02139, USA;Broadway;LEE ST;1;2/22/2011;42.3708297;-71.1048575
+1;1 Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Hampshire St;;1;2/22/2011;42.3652169;-71.0900490
+;Massachusetts Avenue & Windsor Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Windsor St;1;2/14/2011;42.3613630;-71.0969560
+;Broadway & Ames Street, Cambridge, MA 02142, USA;Broadway;Ames St;1;2/11/2011;42.3640433;-71.0874256
+;Memorial Drive, Cambridge, MA, USA;Trowbridge St;MEMORIAL DR;1;2/11/2011;42.3643097;-71.1160607
+;Eliot Street & Bennett Street, Cambridge, MA 02138, USA;Bennett St;ELIOT ST;1;1/23/2011;42.3723208;-71.1218531
+;Broadway & Portland Street, Cambridge, MA 02139, USA;Broadway;Portland St;1;1/20/2011;42.3657954;-71.0920726
+;John F. Kennedy Street, Cambridge, MA 02138, USA;JFK St;;1;1/18/2011;42.3712873;-71.1212115
+41;41 Linnaean Street, Cambridge, MA 02138, USA;LINNAEAN ST;;1;1/17/2011;42.3834208;-71.1240014
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1;1/14/2011;42.3704848;-71.0968790
+;River Street & Howard Street, Cambridge, MA 02139, USA;River St;HOWARD ST;1;1/10/2011;42.3632811;-71.1105377
+28;28 Fernald Drive, Harvard University, Cambridge, MA 02138, USA;FERNALD DR;;1;1/10/2011;42.3833152;-71.1256652
+;Massachusetts Avenue & Forest Street, Cambridge, MA 02140, USA;Massachusetts Ave;FOREST ST;1;1/5/2011;42.3853756;-71.1194097
+;Memorial Drive & Pleasant Street Extension, Cambridge, MA 02139, USA;MEMORIAL DR;PLEASANT ST;1;1/2/2011;42.3588368;-71.1155992
+;Granite Street & Rockingham Street, Cambridge, MA 02139, USA;GRANITE ST;ROCKINGHAM ST;1;12/17/2010;42.3555939;-71.1113066
+;Massachusetts Avenue & Bigelow Street, Cambridge, MA 02139, USA;Massachusetts Ave;Bigelow St;1;12/14/2010;42.3669957;-71.1063480
+874;874 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;LEE ST;1;12/13/2010;42.3677164;-71.1075224
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Albany St;Massachusetts Ave;1;12/8/2010;42.3608181;-71.0960318
+;Broadway & Inman Street, Cambridge, MA 02139, USA;Broadway;Inman St;1;12/7/2010;42.3700717;-71.1029309
+;Concord Avenue & Moulton Street, Cambridge, MA 02138, USA;Concord Ave;MOULTON ST;1;12/7/2010;42.3896214;-71.1481302
+;Broadway & Windsor Street, Cambridge, MA 02139, USA;Broadway;Windsor St;1;12/6/2010;42.3670949;-71.0954058
+1672;1672 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;HUDSON ST;1;12/5/2010;42.3453608;-71.0870451
+;Massachusetts Avenue & Temple Street, Cambridge, MA 02139, USA;Massachusetts Ave;Temple St;1;12/4/2010;42.3659733;-71.1046701
+;Mount Auburn Street & Putnam Avenue, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Putnam Ave;1;11/30/2010;42.3700834;-71.1133241
+;Broadway & Prospect Street, Cambridge, MA 02139, USA;Broadway;PROSPECT ST;1;11/29/2010;42.3693239;-71.1010401
+;Jfk Street & Eliot Street, Harvard University, Cambridge, MA 02138, USA;JFK St;ELIOT ST;1;11/24/2010;42.3714161;-71.1211008
+267;267 Pearl Street, Cambridge, MA 02139, USA;PEARL ST;Putnam Ave;1;11/24/2010;42.3582012;-71.1097055
+48-5;48 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;Webster Ave;1;11/22/2010;42.3668585;-71.0924907
+1153;1153 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;11/21/2010;42.3731757;-71.0964566
+;Hampshire Street & Columbia Street, Cambridge, MA 02139, USA;Columbia St;Hampshire St;1;11/21/2010;42.3699250;-71.0961941
+;Franklin Street & Brookline Place, Cambridge, MA 02139, USA;Franklin St;Brookline Pl;1;11/20/2010;42.3624262;-71.1017114
+;Putnam Avenue & Allston Street, Cambridge, MA 02139, USA;Putnam Ave;Allston St;1;11/19/2010;42.3616884;-71.1134457
+;Cambridge Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;Cambridge St;1;11/19/2010;42.3737254;-71.1008300
+1783;1783 Massachusetts Avenue, Arlington, MA 02476, USA;Massachusetts Ave;;1;11/18/2010;42.3860159;-71.1190439
+;Cambridge Street & Second Street, Cambridge, MA 02141, USA;Cambridge St;Second St;1;11/10/2010;42.3708593;-71.0785960
+;Hampshire Street & Amory Street, Cambridge, MA 02139, USA;Hampshire St;Amory St;1;11/10/2010;42.3728460;-71.0997612
+;Massachusetts Avenue & Somerville Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;SOMERVILLE AVE;1;11/8/2010;42.3888018;-71.1194946
+878;878 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;11/2/2010;42.3725252;-71.0916422
+;Western Avenue & Pleasant Street, Cambridge, MA 02139, USA;Western Ave;PLEASANT ST;1;11/2/2010;42.3650739;-71.1069534
+199;199 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;11/1/2010;42.3736930;-71.1007656
+;Harvard Street & Lee Street, Cambridge, MA 02139, USA;HARVARD ST;LEE ST;1;11/1/2010;42.3697486;-71.1058621
+575;575 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;10/30/2010;42.3650130;-71.1024060
+;Columbia Street & Bishop Allen Drive, Cambridge, MA 02139, USA;Columbia St;Bishop Allen Dr;1;10/27/2010;42.3641620;-71.0994873
+;Massachusetts Avenue & Garfield Street, Cambridge, MA 02138, USA;Massachusetts Ave;GARFIELD ST;1;10/27/2010;42.3837986;-71.1195808
+;Massachusetts Avenue & Putnam Avenue, Cambridge, MA 02138, USA;Putnam Ave;Massachusetts Ave;1;10/25/2010;42.3703582;-71.1133199
+;Broadway & Antrim Street, Cambridge, MA 02139, USA;Broadway;Antrim St;1;10/25/2010;42.3704026;-71.1037709
+;Cambridge, MA, USA;;;1;10/23/2010;42.3736158;-71.1097335
+;Massachusetts Avenue & Amherst Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Massachusetts Ave;Amherst St;1;10/21/2010;42.3581889;-71.0931051
+;Cambridge Street & Columbia Street, Cambridge, MA 02141, USA;Cambridge St;Columbia St;1;10/20/2010;42.3729102;-71.0945012
+;Massachusetts Avenue & Landsdowne Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Landsdowne St;1;10/18/2010;42.3617348;-71.0975628
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;PROSPECT ST;Hampshire St;1;10/17/2010;42.3722128;-71.0989926
+;Columbia Street & Lincoln Street, Cambridge, MA 02141, USA;Columbia St;LINCOLN ST;1;10/13/2010;42.3714097;-71.0953342
+330;330 Broadway, Cambridge, MA 02139, USA;Broadway;Amory St;1;10/12/2010;42.3697150;-71.1020640
+;Massachusetts Avenue & Mellen Street, Cambridge, MA 02138, USA;Massachusetts Ave;MELLEN ST;1;10/6/2010;42.3808464;-71.1197805
+;Elm St @ Saint James Ave, Somerville, MA 02144, USA;Beech St;ELM ST;1;10/4/2010;42.3918190;-71.1192700
+;Cambridge Street & Warren Street, Cambridge, MA 02141, USA;Cambridge St;Warren St;1;10/4/2010;42.3721047;-71.0882983
+220;220 Alewife Brook Parkway, Cambridge, MA 02138, USA;Alewife Brook Pky;;1;10/3/2010;42.3886060;-71.1424560
+;Cambridge Street & Line Street, Mid-Cambridge, MA 02139, USA;Cambridge St;LINE ST;1;10/1/2010;42.3740212;-71.1030628
+686;686 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;9/24/2010;42.3719070;-71.0880602
+;Mount Auburn Street & Dewolfe Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Dewolfe St;1;9/24/2010;42.3710834;-71.1161203
+;Hampshire Street & Webster Avenue, Area IV, MA 02139, USA;Hampshire St;Webster Ave;1;9/24/2010;42.3668117;-71.0924075
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;PROSPECT ST;Hampshire St;1;9/23/2010;42.3722128;-71.0989926
+;Jfk Street & Eliot Street, Harvard University, Cambridge, MA 02138, USA;JFK St;ELIOT ST;1;9/23/2010;42.3714161;-71.1211008
+;Cambridge Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;QUINCY ST;Cambridge St;1;9/23/2010;42.3755098;-71.1143185
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Albany St;1;9/21/2010;42.3608181;-71.0960318
+;Broadway & Ware Street, Cambridge, MA 02138, USA;Broadway;Ware St;1;9/20/2010;42.3738336;-71.1124428
+459;459 Broadway, Cambridge, MA 02138, USA;Broadway;;1;9/20/2010;42.3740909;-71.1118503
+;Cambridge Street & Windsor Street, Cambridge, MA 02141, USA;Cambridge St;Windsor St;1;9/18/2010;42.3727534;-71.0932842
+;Massachusetts Avenue & Everett Street, Cambridge, MA 02138, USA;Massachusetts Ave;EVERETT ST;1;9/17/2010;42.3799980;-71.1199791
+;Massachusetts Avenue & Linnaean Street, Cambridge, MA 02138, USA;Massachusetts Ave;LINNAEAN ST;1;9/17/2010;42.3848285;-71.1194676
+;Massachusetts Avenue & Roseland Street, Cambridge, MA 02140, USA;Massachusetts Ave;ROSELAND ST;1;9/16/2010;42.3868436;-71.1192457
+;Hampshire Street, Cambridge, MA, USA;Hampshire St;;1;9/16/2010;42.3699250;-71.0961941
+120;120 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;9/16/2010;42.3700555;-71.0963795
+738;738 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;9/15/2010;42.3661092;-71.1052925
+;Massachusetts Avenue & Somerville Avenue, Cambridge, MA 02140, USA;SOMERVILLE AVE;Massachusetts Ave;1;9/14/2010;42.3888018;-71.1194946
+;Broadway & Prescott Street, Harvard University, Cambridge, MA 02138, USA;Broadway;PRESCOTT ST;1;9/13/2010;42.3743407;-71.1135855
+;Massachusetts Avenue & Smart Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;SMART ST;1;9/12/2010;42.3611241;-71.0965498
+;Cambridge Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;Cambridge St;QUINCY ST;1;9/8/2010;42.3755098;-71.1143185
+;Massachusetts Avenue & Sidney Street, Cambridge, MA 02139, USA;Massachusetts Ave;Sidney St;1;9/8/2010;42.3629518;-71.0995844
+581;581 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;9/4/2010;42.3650219;-71.1027564
+34;34 Kinnaird Street, Cambridge, MA 02139, USA;KINNAIRD ST;;1;9/4/2010;42.3656641;-71.1090990
+1033;1033 Massachusetts Avenue, Harvard University, Cambridge, MA 02138, USA;Massachusetts Ave;;1;9/3/2010;42.3699400;-71.1120090
+;Garden Street & Mason Street, Harvard University, Radcliffe Institute for Advanced Study, Cambridge, MA 02138, USA;GARDEN ST;MASON ST;1;8/31/2010;42.3765687;-71.1221826
+;Cambridge Street & Ellsworth Avenue, Cambridge, MA 02139, USA;Cambridge St;Ellsworth Ave;1;8/31/2010;42.3744028;-71.1060846
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Albany St;1;8/30/2010;42.3608181;-71.0960318
+2000;2000 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;8/30/2010;42.3902480;-71.1215020
+;Broadway & Prescott Street, Harvard University, Cambridge, MA 02138, USA;Broadway;PRESCOTT ST;1;8/27/2010;42.3743407;-71.1135855
+;Mount Auburn Street & Brattle Street, Cambridge, MA 02138, USA;Brattle St;MOUNT AUBURN ST;1;8/27/2010;42.3753183;-71.1452231
+;Inman Street & West Street, Cambridge, MA 02139, USA;Inman St;West St;1;8/26/2010;42.3694062;-71.1033812
+;Cambridge Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;QUINCY ST;Cambridge St;1;8/26/2010;42.3755098;-71.1143185
+;Cambridge Street & Harding Street, Cambridge, MA 02141, USA;Cambridge St;HARDING ST;1;8/25/2010;42.3724087;-71.0906765
+;Garden Street & Appian Way, Harvard University, Radcliffe Institute for Advanced Study, Cambridge, MA 02138, USA;GARDEN ST;Appian Way;1;8/20/2010;42.3759824;-71.1209987
+69;69 6th Street, Cambridge, MA 02141, USA;Sixth St;;1;8/20/2010;42.3693790;-71.0855190
+1008;1008 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1;8/14/2010;42.3692063;-71.1111812
+;Concord Avenue & Bond Street, Cambridge, MA 02138, USA;Concord Ave;Bond St;1;8/14/2010;42.3803964;-71.1275095
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Albany St;1;8/13/2010;42.3608181;-71.0960318
+;Broadway & Hancock Street, Cambridge, MA 02139, USA;Broadway;HANCOCK ST;1;8/11/2010;42.3713201;-71.1060996
+;Massachusetts Avenue & Pearl Street, Cambridge, MA 02139, USA;Massachusetts Ave;PEARL ST;1;8/7/2010;42.3647021;-71.1025516
+;Jfk Street & Eliot Street, Harvard University, Cambridge, MA 02138, USA;ELIOT ST;JFK St;1;8/2/2010;42.3714161;-71.1211008
+;Cambridge Street & Cardinal Medeiros Avenue, Cambridge, MA 02141, USA;Cambridge St;Cardinal Medeiros Ave;1;7/30/2010;42.3721205;-71.0884358
+;Memorial Drive & Vassar Street, Cambridge, MA 02139, USA;MEMORIAL DR;Vassar St;1;7/30/2010;42.3534404;-71.1071370
+;Cambridge Street & Line Street, Mid-Cambridge, MA 02139, USA;Cambridge St;LINE ST;1;7/30/2010;42.3740212;-71.1030628
+689;689 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;7/21/2010;42.3660720;-71.1042380
+2067;2067 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;7/20/2010;42.3915953;-71.1232721
+;Mount Auburn Street, Cambridge, MA, USA;PLYMOUTH ST;MOUNT AUBURN ST;1;7/19/2010;42.3747907;-71.1491185
+;Massachusetts Avenue & Exeter Park, Cambridge, MA 02138, USA;Massachusetts Ave;EXETER PARK;1;7/18/2010;42.3848285;-71.1194676
+700;700 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;7/16/2010;42.3658689;-71.1045239
+55-5;55 Columbia Street, Cambridge, MA 02139, USA;Columbia St;;1;7/15/2010;42.3647488;-71.0991577
+;Massachusetts Avenue & Harvard Bridge, Cambridge, MA 02142, USA;Massachusetts Ave;HARVARD SQ;1;7/14/2010;42.3571144;-71.0925340
+;Garden Street & Walden Street, Cambridge, MA 02138, USA;GARDEN ST;Walden St;1;7/14/2010;42.3855365;-71.1322014
+;Brattle Street & Hilliard Street, Cambridge, MA 02138, USA;Brattle St;HILLIARD ST;1;7/13/2010;42.3748550;-71.1223479
+97A;97 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;7/13/2010;42.3691302;-71.0952129
+1899;1899 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;7/10/2010;42.3884323;-71.1192779
+;Cambridge Street & Windsor Street, Cambridge, MA 02141, USA;Cambridge St;Windsor St;1;7/9/2010;42.3727534;-71.0932842
+1;1 Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Hampshire St;;1;7/9/2010;42.3652169;-71.0900490
+;Massachusetts Avenue & Davenport Street, Cambridge, MA 02140, USA;Massachusetts Ave;DAVENPORT ST;1;7/8/2010;42.3893996;-71.1200709
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;Massachusetts Ave;1;7/7/2010;42.3601382;-71.0948792
+;Sidney Street & Pacific Street, Cambridge, MA 02139, USA;Sidney St;PACIFIC ST;1;7/6/2010;42.3603595;-71.1024657
+120;120 Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;;1;7/6/2010;42.3588868;-71.0962334
+;Broadway & Columbia Street, Cambridge, MA 02139, USA;Broadway;Columbia St;1;7/4/2010;42.3678650;-71.0973684
+720;720 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;7/2/2010;42.3659846;-71.1050224
+;Massachusetts Avenue & Dover Street, Cambridge, MA 02140, USA;Massachusetts Ave;DOVER ST;1;7/2/2010;42.3945048;-71.1270669
+;Massachusetts Avenue & Inman Street, Cambridge, MA 02139, USA;Massachusetts Ave;Inman St;1;6/30/2010;42.3666022;-71.1056957
+2161;2161 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;6/26/2010;42.3925430;-71.1242910
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;PROSPECT ST;1;6/25/2010;42.3722128;-71.0989926
+;Huron Avenue & Appleton Street, Cambridge, MA 02138, USA;HURON AVE;Appleton Pl;1;6/24/2010;42.3815151;-71.1340945
+;Massachusetts Avenue & Pearl Street, Cambridge, MA 02139, USA;Massachusetts Ave;PEARL ST;1;6/16/2010;42.3647021;-71.1025516
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1;6/16/2010;42.3626470;-71.0990652
+319;319 Massachusetts Avenue, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;;1;6/15/2010;42.3625184;-71.0988138
+;Massachusetts Avenue & Garden Street, Cambridge, MA 02138, USA;Massachusetts Ave;GARDEN ST;1;6/11/2010;42.3750511;-71.1185823
+;Cambridgeside Place, Cambridge, MA, USA;Cambridgeside Pl;;1;6/10/2010;42.3670997;-71.0766499
+620;620 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;6/8/2010;42.3651501;-71.1033097
+;Massachusetts Avenue & Forest Street, Cambridge, MA 02140, USA;Massachusetts Ave;FOREST ST;1;6/7/2010;42.3853756;-71.1194097
+;Main Street & Bishop Allen Drive, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Bishop Allen Dr;1;6/7/2010;42.3633336;-71.0983693
+;Broadway & West Place, Cambridge, MA 02139, USA;Broadway;West Pl;1;6/4/2010;42.3703395;-71.1036126
+472;472 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;6/3/2010;42.3637576;-71.1012485
+;Massachusetts Avenue & Amherst Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Massachusetts Ave;Amherst St;1;6/3/2010;42.3581889;-71.0931051
+1544;1544 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;6/3/2010;42.3744088;-71.1062390
+;Cambridge Street & Warren Street, Cambridge, MA 02141, USA;Cambridge St;Warren St;1;6/1/2010;42.3721047;-71.0882983
+1945;1945 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;5/28/2010;42.3897728;-71.1203033
+12;12 Everett Street, Cambridge, MA 02138, USA;EVERETT ST;;1;5/28/2010;42.3799687;-71.1197648
+;Massachusetts Avenue & Everett Street, Cambridge, MA 02138, USA;Massachusetts Ave;EVERETT ST;1;5/27/2010;42.3799980;-71.1199791
+340;340 Putnam Avenue, Cambridge, MA 02139, USA;Putnam Ave;;1;5/27/2010;42.3614045;-71.1133421
+;Brattle Street & Lexington Avenue, Cambridge, MA 02138, USA;Brattle St;LEXINGTON AVE;1;5/26/2010;42.3763508;-71.1397609
+;Ames Street & Amherst Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Ames St;Amherst St;1;5/26/2010;42.3600091;-71.0876380
+;Cambridge Street & Sumner Road, Cambridge, MA 02138, USA;Cambridge St;SUMNER RD;1;5/25/2010;42.3752597;-71.1127180
+1745;1745 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1;5/24/2010;42.3846654;-71.1193294
+;Rindge Avenue & Clifton Street, Cambridge, MA 02140, USA;Rindge Ave;Clifton St;1;5/22/2010;42.3936904;-71.1362247
+;Massachusetts Avenue & Windsor Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Windsor St;1;5/22/2010;42.3613630;-71.0969560
+;Sidney Street & Hamilton Street, Cambridge, MA 02139, USA;Sidney St;HAMILTON ST;1;5/21/2010;42.3578666;-71.1054295
+602;602 Green Street, Cambridge, MA 02139, USA;GREEN ST;;1;5/19/2010;42.3683600;-71.1114260
+;River Street & Cottage Street, Cambridge, MA 02139, USA;Cottage St;River St;1;5/18/2010;42.3640226;-71.1083014
+159;159 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;5/18/2010;42.3716674;-71.0983024
+212;212 Windsor Street, Cambridge, MA 02139, USA;Windsor St;;1;5/17/2010;42.3664089;-71.0954819
+445;445 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;5/16/2010;42.3636326;-71.1007225
+657;657 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1;5/13/2010;42.3719910;-71.0873071
+22;22 Eliot Street, Cambridge, MA 02138, USA;ELIOT ST;;1;5/10/2010;42.3719887;-71.1215297
+;Broadway & Prospect Street, Cambridge, MA 02139, USA;Broadway;PROSPECT ST;1;5/10/2010;42.3693239;-71.1010401
+;Broadway & Norfolk Street, Cambridge, MA 02139, USA;Broadway;Norfolk St;1;5/10/2010;42.3685185;-71.0990006
+;Cambridge Street & Oak Street, Cambridge, MA 02139, USA;Cambridge St;OAK ST;1;5/7/2010;42.3735615;-71.0996511
+;Cambridge Street & First Street, Cambridge, MA 02141, USA;Cambridge St;FIRST ST;1;5/7/2010;42.3706651;-71.0769030
+931;931 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;5/6/2010;42.3685756;-71.1091704
+675;675 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;5/6/2010;42.3657567;-71.1041543
+;Western Avenue & Putnam Avenue, Cambridge, MA 02139, USA;Western Ave;Putnam Ave;1;5/5/2010;42.3644733;-71.1138643
+100;100 Main Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;;1;4/30/2010;42.3617791;-71.0831227
+;Hampshire Street & Amory Street, Cambridge, MA 02139, USA;Hampshire St;Amory St;1;4/28/2010;42.3728460;-71.0997612
+;Oxford Street & Wendell Street, Cambridge, MA 02138, USA;OXFORD AVE;Wendell St;1;4/27/2010;42.3815726;-71.1163203
+;Albany Street & Pacific Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Albany St;PACIFIC ST;1;4/23/2010;42.3589882;-71.1001219
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1;4/23/2010;42.3646216;-71.1024217
+;Mount Auburn Street & Brattle Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Brattle St;1;4/22/2010;42.3753183;-71.1452231
+110;110 Magazine Street, Cambridge, MA 02139, USA;MAGAZINE ST;;1;4/21/2010;42.3601137;-71.1099700
+;Hampshire Street & Columbia Street, Cambridge, MA 02139, USA;Hampshire St;Columbia St;1;4/21/2010;42.3699250;-71.0961941
+432;432 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;4/21/2010;42.3636314;-71.1007791
+336;336 Rindge Avenue, Cambridge, MA 02140, USA;Rindge Ave;;1;4/20/2010;42.3936219;-71.1375246
+;Huron Avenue & Garden Street, Cambridge, MA 02138, USA;GARDEN ST;HURON AVE;1;4/15/2010;42.3838672;-71.1293150
+50;50 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;4/14/2010;42.3664564;-71.0934059
+306;306 Broadway, Cambridge, MA 02139, USA;Broadway;;1;4/13/2010;42.3682637;-71.0987596
+280;280 Harvard Street, Cambridge, MA 02139, USA;HARVARD ST;;1;4/9/2010;42.3691085;-71.1041096
+576;576 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1;4/8/2010;42.3645220;-71.1030700
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;PROSPECT ST;1;4/8/2010;42.3722128;-71.0989926
+;Cambridge Street & Prospect Street, Cambridge, MA 02139, USA;Cambridge St;PROSPECT ST;1;4/7/2010;42.3733872;-71.0981542
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;Massachusetts Ave;1;4/6/2010;42.3601382;-71.0948792
+;Kirkland Street, Cambridge, MA 02138, USA;KIRKLAND ST;;1;4/5/2010;42.3770570;-71.1121103
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1;4/3/2010;42.3601382;-71.0948792
+;Brattle Street & Palmer Street, Cambridge, MA 02138, USA;Brattle St;PALMER ST;1;4/2/2010;42.3733631;-71.1199003
+1293;1293 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;4/1/2010;42.3734889;-71.0989583
+;River Street & Blackstone Street, Cambridge, MA 02139, USA;River St;Blackstone St;1;3/29/2010;42.3619987;-71.1143181
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;MAIN ST;1;3/26/2010;42.3626897;-71.0900485
+58;58 Willow Street, Cambridge, MA 02141, USA;Willow St;;1;3/25/2010;42.3713524;-71.0925292
+28;28 Dewolfe Street, Harvard University, Cambridge, MA 02138, USA;Dewolfe St;;1;3/25/2010;42.3698901;-71.1168058
+;Garden Street & Appian Way, Harvard University, Radcliffe Institute for Advanced Study, Cambridge, MA 02138, USA;GARDEN ST;Appian Way;1;3/25/2010;42.3759824;-71.1209987
+;Jfk Street & Eliot Street, Harvard University, Cambridge, MA 02138, USA;ELIOT ST;JFK St;1;3/25/2010;42.3714161;-71.1211008
+1820;1820 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;ROSELAND ST;1;3/20/2010;42.3870157;-71.1192567
+;Massachusetts Avenue & Cedar Street, Cambridge, MA 02140, USA;Cedar St;Massachusetts Ave;1;3/18/2010;42.3979323;-71.1309262
+1;1 Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Hampshire St;Broadway;1;3/16/2010;42.3652169;-71.0900490
+;Garden Street & Mason Street, Harvard University, Radcliffe Institute for Advanced Study, Cambridge, MA 02138, USA;GARDEN ST;MASON ST;1;3/8/2010;42.3765687;-71.1221826
+1310;1310 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1;3/4/2010;42.3736693;-71.1005787
+;Brattle Street & John F. Kennedy Street, Cambridge, MA 02138, USA;Brattle St;JFK St;1;3/3/2010;42.3734200;-71.1195063
+187;187 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1;3/3/2010;42.3728190;-71.0992530
+;Binney Street & Third Street, Cambridge, MA 02142, USA;Binney St;Third St;1;2/26/2010;42.3657326;-71.0823710
+;Prospect Street & Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;PROSPECT ST;1;2/19/2010;42.3722128;-71.0989926
+;Massachusetts Avenue & Douglass Street, Cambridge, MA 02139, USA;Massachusetts Ave;DOUGLASS ST;1;2/13/2010;42.3638909;-71.1011864
+;Appleton Street & Highland Street, Cambridge, MA 02138, USA;Appleton St;HIGHLAND AVE;1;2/12/2010;42.3791415;-71.1338458
+;Broadway & Ware Street, Cambridge, MA 02138, USA;Broadway;Ware St;1;2/4/2010;42.3738336;-71.1124428
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;Massachusetts Ave;1;1/22/2010;42.3601382;-71.0948792
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1;1/16/2010;42.3704848;-71.0968790
+;Harvard Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;HARVARD ST;QUINCY ST;1;1/10/2010;42.3722982;-71.1151513
+;Massachusetts Avenue & Norfolk Street, Cambridge, MA 02139, USA;Massachusetts Ave;Norfolk St;1.0;1/3/2012;42.3644325;-71.1020946
+;Cambridge Street & Willow Street, Cambridge, MA 02141, USA;Cambridge St;Willow St;1.0;1/3/2012;42.3725619;-71.0918152
+;Hampshire Street & Tremont Street, Cambridge, MA 02139, USA;Hampshire St;Tremont St;1.0;1/5/2012;42.3714904;-71.0981120
+;Massachusetts Avenue & Windsor Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Windsor St;1.0;1/6/2012;42.3613630;-71.0969560
+;Massachusetts Avenue & Landsdowne Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Landsdowne St;1.0;1/9/2012;42.3617348;-71.0975628
+1688;1688 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;1/11/2012;42.3827380;-71.1200620
+;Massachusetts Avenue & Exeter Park, Cambridge, MA 02138, USA;Massachusetts Ave;EXETER PARK;1.0;1/14/2012;42.3848285;-71.1194676
+;Cambridge Street & Springfield Street, Cambridge, MA 02139, USA;Cambridge St;SPRINGFIELD ST;1.0;1/22/2012;42.3736745;-71.1005265
+;Walden Street & Raymond Street, Cambridge, MA 02140, USA;Walden St;Raymond St;1.0;1/27/2012;42.3874118;-71.1275457
+;Massachusetts Avenue & Rice Street, Cambridge, MA 02140, USA;Massachusetts Ave;Rice St;1.0;2/2/2012;42.3953744;-71.1278932
+;Huron Avenue & Reservoir Street, Cambridge, MA 02138, USA;HURON AVE;RESERVOIR ST;1.0;2/2/2012;42.3814234;-71.1358106
+;Cambridge Street & Springfield Street, Cambridge, MA 02139, USA;Cambridge St;SPRINGFIELD ST;1.0;2/3/2012;42.3736745;-71.1005265
+287;287 Broadway, Cambridge, MA 02138, USA;Broadway;;1.0;2/3/2012;42.3684672;-71.0985765
+;Hampshire Street & Bristol Street, Cambridge, MA 02141, USA;Hampshire St;Bristol St;1.0;2/3/2012;42.3679550;-71.0938000
+;Mount Auburn Street & Brattle Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Brattle St;1.0;2/5/2012;42.3753183;-71.1452231
+1975;1975 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1.0;2/9/2012;42.3900709;-71.1206237
+2274;2274 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1.0;2/17/2012;42.3944466;-71.1270253
+;Broadway & Amory Street, Cambridge, MA 02139, USA;Broadway;Amory St;1.0;2/22/2012;42.3697040;-71.1019970
+;Massachusetts Avenue & Davenport Street, Cambridge, MA 02140, USA;DAVENPORT ST;Massachusetts Ave;1.0;2/23/2012;42.3893996;-71.1200709
+;Western Avenue & Putnam Avenue, Cambridge, MA 02139, USA;Western Ave;Putnam Ave;1.0;2/23/2012;42.3644733;-71.1138643
+;Broadway & Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Broadway;Hampshire St;1.0;2/28/2012;42.3654283;-71.0911269
+;Massachusetts Avenue & Walden Street, Cambridge, MA 02140, USA;Massachusetts Ave;Walden St;1.0;2/28/2012;42.3913401;-71.1232916
+;Broadway & Elm Street, Cambridge, MA 02139, USA;ELM ST;Broadway;1.0;2/29/2012;42.3682017;-71.0981883
+1;1 Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Hampshire St;;1.0;3/7/2012;42.3652169;-71.0900490
+164;164 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1.0;3/8/2012;42.3718469;-71.0985703
+;Cambridge Street & Springfield Street, Cambridge, MA 02139, USA;SPRINGFIELD ST;Cambridge St;1.0;3/9/2012;42.3736745;-71.1005265
+831;831 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1.0;3/9/2012;42.3672122;-71.1064598
+;Broadway & Galileo Galilei Way, Cambridge, MA 02139, USA;Galileo Galilei Way;Broadway;1.0;3/12/2012;42.3647784;-71.0894878
+125;125 Mount Auburn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;;1.0;3/20/2012;42.3735730;-71.1228864
+1731;1731 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;3/20/2012;42.3842253;-71.1192756
+;Massachusetts Avenue & Albany Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Albany St;1.0;3/23/2012;42.3608181;-71.0960318
+;Fresh Pond Parkway & Huron Avenue, Cambridge, MA 02138, USA;FRESH POND PKY;HURON AVE;1.0;3/26/2012;42.3799709;-71.1445372
+;Massachusetts Avenue & Russell Street, Cambridge, MA 02140, USA;Massachusetts Ave;Russell St;1.0;3/28/2012;42.3917366;-71.1239230
+265;265 Allston Street, Cambridge, MA 02139, USA;Allston St;MAGAZINE ST;1.0;3/30/2012;42.3601646;-71.1105324
+1124;1124 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1.0;3/30/2012;42.3728550;-71.0960300
+;Cambridge Street & Sumner Road, Harvard University, Cambridge, MA 02138, USA;Cambridge St;SUMNER RD;1.0;4/2/2012;42.3752597;-71.1127180
+;Massachusetts Avenue & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;Vassar St;1.0;4/3/2012;42.3601382;-71.0948792
+243;243 Broadway, Cambridge, MA 02139, USA;Broadway;;1.0;4/4/2012;42.3674270;-71.0956340
+;Columbia Street & Bishop Allen Drive, Cambridge, MA 02139, USA;Bishop Allen Dr;Columbia St;1.0;4/4/2012;42.3641620;-71.0994873
+710;710 Main Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;;1.0;4/5/2012;42.3629905;-71.0949967
+;Alewife Brook Parkway & Matignon Road, Cambridge, MA 02140, USA;Alewife Brook Pky;MATIGNON RD;1.0;4/7/2012;42.4026100;-71.1344460
+;Main Street & Portland Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Portland St;1.0;4/9/2012;42.3629743;-71.0936428
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Portland St;Hampshire St;1.0;4/13/2012;42.3663022;-71.0917948
+24;24 Eliot Street, Harvard University, Cambridge, MA 02138, USA;ELIOT ST;;1.0;4/13/2012;42.3728914;-71.1219422
+;Gore Street & 7th Street, Cambridge, MA 02141, USA;Gore St;SEVENTH ST;1.0;4/19/2012;42.3725577;-71.0851520
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1.0;4/20/2012;42.3626470;-71.0990652
+1617;1617 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;4/20/2012;42.3803770;-71.1194186
+;Broadway & Quincy Street, Harvard University, Cambridge, MA 02138, USA;Broadway;QUINCY ST;1.0;4/21/2012;42.3748012;-71.1143754
+332;332 Broadway, Cambridge, MA 02139, USA;Broadway;;1.0;4/24/2012;42.3697278;-71.1020966
+;Granite Street & Magazine Street, Cambridge, MA 02139, USA;MAGAZINE ST;GRANITE ST;1.0;4/26/2012;42.3568724;-71.1135698
+;Memorial Drive & Jfk Street, Cambridge, MA 02138, USA;JFK St;MEMORIAL DR;1.0;4/27/2012;42.3697927;-71.1224694
+;Broadway & Main Street, Cambridge, MA 02142, USA;MAIN ST;Broadway;1.0;4/27/2012;42.3629462;-71.0850772
+;Cambridge Street & Parker Street, Boston, MA 02129, USA;Cambridge St;PARKER ST;1.0;4/29/2012;42.3822929;-71.0796576
+1414;1414 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1.0;5/3/2012;42.3737394;-71.1015548
+;Concord Avenue & Craigie Street, Cambridge, MA 02138, USA;Concord Ave;Craigie St;1.0;5/5/2012;42.3794429;-71.1257588
+98;98 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1.0;5/5/2012;42.3690365;-71.0951492
+44;44 John F. Kennedy Street, Cambridge, MA 02138, USA;JFK St;MOUNT AUBURN ST;1.0;5/6/2012;42.3724556;-71.1202231
+;Huron Avenue & Appleton Street, Cambridge, MA 02138, USA;HURON AVE;Appleton St;1.0;5/7/2012;42.3815151;-71.1340945
+2;2 University Road, Cambridge, MA 02138, USA;University Pl;MOUNT AUBURN PL;1.0;5/7/2012;42.3732847;-71.1229786
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Portland St;Hampshire St;1.0;5/9/2012;42.3663022;-71.0917948
+16;16 Garden Street, Cambridge, MA 02138, USA;GARDEN ST;;1.0;5/10/2012;42.3771850;-71.1232400
+;3rd Street & Kendall Street, Cambridge, MA 02142, USA;Third St;Kendall Sq;1.0;5/14/2012;42.3639493;-71.0834123
+;Cambridge Street & 6th Street, Cambridge, MA 02141, USA;Cambridge St;Sixth St;1.0;5/14/2012;42.3716527;-71.0847941
+;Mount Auburn Street & Aberdeen Avenue, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Aberdeen Ct;1.0;5/14/2012;42.3752502;-71.1459271
+292;292 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1.0;5/16/2012;42.3709210;-71.0808940
+2032;2032 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1.0;5/16/2012;42.3907012;-71.1221672
+;Massachusetts Avenue & Linnaean Street, Cambridge, MA 02138, USA;Massachusetts Ave;LINNAEAN ST;1.0;5/17/2012;42.3848285;-71.1194676
+;Mount Auburn Street & Plympton Street, Cambridge, MA 02138, USA;PLYMPTON ST;MOUNT AUBURN ST;1.0;5/17/2012;42.3714098;-71.1170510
+119;119 Hampshire Street, Cambridge, MA 02141, USA;Hampshire St;;1.0;5/18/2012;42.3699025;-71.0961422
+1008;1008 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;5/18/2012;42.3692063;-71.1111812
+77;77 Massachusetts Ave, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Massachusetts Ave;;1.0;5/19/2012;42.3591840;-71.0935440
+;Main Street & Windsor Street, Cambridge, MA 02139, USA;MAIN ST;Windsor St;1.0;5/21/2012;42.3632079;-71.0967089
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Hampshire St;Portland St;1.0;5/23/2012;42.3663022;-71.0917948
+1432;1432 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;5/23/2012;42.3741288;-71.1189927
+1001;1001 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1.0;5/24/2012;42.3728132;-71.0936504
+;Kirkland Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;QUINCY ST;KIRKLAND ST;1.0;5/24/2012;42.3766321;-71.1140944
+;Cambridge Street & Columbia Street, Cambridge, MA 02141, USA;Columbia St;Cambridge St;1.0;5/25/2012;42.3729102;-71.0945012
+;Garden Street & Berkeley Street, Cambridge, MA 02138, USA;GARDEN ST;Berkeley St;1.0;5/30/2012;42.3776453;-71.1231611
+;Cambridge Street & Fulkerson Street, Cambridge, MA 02141, USA;Cambridge St;FULKERSON ST;1.0;5/31/2012;42.3719239;-71.0868792
+;Huron Avenue & Fayerweather Street, Cambridge, MA 02138, USA;HURON AVE;FAYERWEATHER ST;1.0;5/31/2012;42.3813031;-71.1373342
+581;581 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1.0;5/31/2012;42.3650219;-71.1027564
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Vassar St;1.0;5/31/2012;42.3626897;-71.0900485
+2501;2501 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1.0;6/1/2012;42.3994574;-71.1322381
+;Mount Auburn Street & Homer Avenue, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HOMER AVE;1.0;6/1/2012;42.3749611;-71.1480132
+;Green Street & Bay Street, Cambridge, MA 02139, USA;Bay St;GREEN ST;1.0;6/6/2012;42.3683137;-71.1107432
+16;16 Prescott Street, Harvard University, Cambridge, MA 02138, USA;PRESCOTT ST;;1.0;6/7/2012;42.3732149;-71.1136866
+1673;1673 Cambridge Street, Cambridge, MA 02138, USA;Cambridge St;Thorndike St;1.0;6/7/2012;42.3752690;-71.1108550
+;2nd Street & Charles Street, Cambridge, MA 02141, USA;Second St;Charles St;1.0;6/8/2012;42.3674401;-71.0793841
+;Franklin Street & Bay Street, Cambridge, MA 02139, USA;Franklin St;Bay St;1.0;6/9/2012;42.3677590;-71.1110947
+1621;1621 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1.0;6/10/2012;42.3748821;-71.1091473
+23;23 Bishop Allen Drive, Cambridge, MA 02139, USA;Bishop Allen Dr;;1.0;6/11/2012;42.3642427;-71.0995941
+260;260 Harvard Street, Cambridge, MA 02139, USA;HARVARD ST;;1.0;6/14/2012;42.3682964;-71.1023147
+;Broadway & 3rd Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Broadway;Third St;1.0;6/14/2012;42.3626247;-71.0843649
+;Broadway & Ames Street, Cambridge, MA 02142, USA;Broadway;Ames St;1.0;6/18/2012;42.3640433;-71.0874256
+;Massachusetts Avenue & Hancock Street, Cambridge, MA 02139, USA;Massachusetts Ave;HANCOCK ST;1.0;6/20/2012;42.3683792;-71.1087841
+;Massachusetts Avenue & Everett Street, Cambridge, MA 02138, USA;Massachusetts Ave;EVERETT ST;1.0;6/22/2012;42.3799980;-71.1199791
+;Massachusetts Avenue & Linnaean Street, Cambridge, MA 02138, USA;Massachusetts Ave;LINNAEAN ST;1.0;6/26/2012;42.3848285;-71.1194676
+;Massachusetts Avenue & Pleasant Street, Cambridge, MA 02139, USA;Massachusetts Ave;PLEASANT ST;1.0;6/28/2012;42.3664103;-71.1054060
+14;14 Chauncy Street, Cambridge, MA 02138, USA;Chauncy St;;1.0;6/29/2012;42.3797397;-71.1217135
+26;26 Garden Street, Cambridge, MA 02138, USA;GARDEN ST;;1.0;6/29/2012;42.3781090;-71.1239210
+5;5 Dewolfe Street, Harvard University, Cambridge, MA 02138, USA;Dewolfe St;;1.0;7/3/2012;42.3710349;-71.1161693
+;Cambridge Street & Sumner Road, Harvard University, Cambridge, MA 02138, USA;Cambridge St;SUMNER RD;1.0;7/3/2012;42.3752597;-71.1127180
+;Broadway & Columbia Street, Cambridge, MA 02139, USA;Columbia St;Broadway;1.0;7/3/2012;42.3678650;-71.0973684
+;Main Street & Portland Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Portland St;1.0;7/10/2012;42.3629743;-71.0936428
+;Cambridge Street & Quincy Street, Harvard University, Cambridge, MA 02138, USA;Cambridge St;QUINCY ST;1.0;7/11/2012;42.3755098;-71.1143185
+;Inman Street & West Street, Cambridge, MA 02139, USA;Inman St;West Pl;1.0;7/14/2012;42.3694062;-71.1033812
+;Cambridge, MA, USA;Brattle St;LONGFELLOW BRDG;1.0;7/16/2012;42.3736158;-71.1097335
+;Main Street & Columbia Street, Cambridge, MA 02139, USA;Columbia St;MAIN ST;1.0;7/19/2012;42.3634089;-71.0993755
+;Hampshire Street & Portsmouth Street, Cambridge, MA 02141, USA;Hampshire St;PORTSMOUTH ST;1.0;7/19/2012;42.3684247;-71.0943576
+2055;2055 Massachusetts Avenue, Lexington, MA 02421, USA;Massachusetts Ave;;1.0;7/24/2012;42.4489962;-71.2377540
+;Granite Street, Cambridge, MA 02139, USA;Dewolfe St;GRANITE ST;1.0;7/25/2012;42.3559916;-71.1120042
+;Huron Avenue & Garden Street, Cambridge, MA 02138, USA;GARDEN ST;HURON AVE;1.0;7/26/2012;42.3838672;-71.1293150
+;Mount Auburn Street & Holyoke Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;HOLYOKE ST;1.0;7/29/2012;42.3719669;-71.1185733
+120;120 Massachusetts Avenue, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;;1.0;7/31/2012;42.3591700;-71.0954740
+;Massachusetts Avenue & Remington Street, Cambridge, MA 02138, USA;Massachusetts Ave;REMINGTON ST;1.0;7/31/2012;42.3708137;-71.1138888
+;Memorial Drive & Mount Auburn Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;MEMORIAL DR;1.0;8/2/2012;42.3744608;-71.1267733
+65;65 Landsdowne Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Landsdowne St;;1.0;8/3/2012;42.3607104;-71.1008914
+;1st Street & Charles Street, Cambridge, MA 02141, USA;FIRST ST;Charles St;1.0;8/4/2012;42.3672274;-71.0777256
+;Brattle Street & Sparks Street, Cambridge, MA 02138, USA;Sparks St;Brattle St;1.0;8/5/2012;42.3778418;-71.1301870
+1651;1651 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;8/6/2012;42.3813517;-71.1197035
+;Broadway & Inman Street, Cambridge, MA 02139, USA;Broadway;Inman St;1.0;8/7/2012;42.3700717;-71.1029309
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1.0;8/7/2012;42.3646216;-71.1024217
+;Main Street & Windsor Street, Cambridge, MA 02139, USA;MAIN ST;Windsor St;1.0;8/9/2012;42.3632079;-71.0967089
+;Concord Avenue, Cambridge, MA, USA;Concord Ave;;1.0;8/9/2012;42.3909726;-71.1572632
+;Huron Avenue & Reservoir Street, Cambridge, MA 02138, USA;HURON AVE;RESERVOIR ST;1.0;8/10/2012;42.3814234;-71.1358106
+;Massachusetts Avenue & Shepard Street, Cambridge, MA 02138, USA;Massachusetts Ave;Shepard St;1.0;8/13/2012;42.3817928;-71.1197891
+;Green Street & Bay Street, Cambridge, MA 02139, USA;GREEN ST;Bay St;1.0;8/14/2012;42.3683137;-71.1107432
+;Massachusetts Avenue & Prospect Street, Cambridge, MA 02139, USA;Massachusetts Ave;PROSPECT ST;1.0;8/15/2012;42.3655671;-71.1039850
+711;711 Huron Avenue, Cambridge, MA 02138, USA;HURON AVE;;1.0;8/17/2012;42.3813308;-71.1547500
+;Cambridge Street & Ellery Street, Cambridge, MA 02138, USA;Cambridge St;ELLERY ST;1.0;8/20/2012;42.3747002;-71.1083689
+;Massachusetts Avenue & Exeter Park, Cambridge, MA 02138, USA;Massachusetts Ave;EXETER PARK;1.0;8/20/2012;42.3848285;-71.1194676
+;Massachusetts Ave @ Memorial Dr, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;Massachusetts Ave;MEMORIAL DR;1.0;8/21/2012;42.3576130;-71.0927350
+438;438 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1.0;8/22/2012;42.3634530;-71.1007676
+165;165 Hampshire Street, Cambridge, MA 02139, USA;Hampshire St;;1.0;8/22/2012;42.3718419;-71.0983790
+;Western Avenue & Putnam Avenue, Cambridge, MA 02139, USA;Putnam Ave;Western Ave;1.0;8/22/2012;42.3644733;-71.1138643
+;Massachusetts Avenue & Hancock Street, Cambridge, MA 02139, USA;Massachusetts Ave;HANCOCK ST;1.0;8/27/2012;42.3683792;-71.1087841
+;Cambridge Street & Sumner Road, Harvard University, Cambridge, MA 02138, USA;Cambridge St;SUMNER RD;1.0;8/27/2012;42.3752597;-71.1127180
+;Albany Street, Cambridge, MA 02139, USA;MASON ST;Albany St;1.0;8/28/2012;42.3600462;-71.0978232
+;Kirkland Street & Divinity Avenue, Harvard University, Cambridge, MA 02138, USA;DIVINITY AVE;KIRKLAND ST;1.0;8/30/2012;42.3766969;-71.1138081
+;Massachusetts Avenue & Hudson Street, Cambridge, MA 02138, USA;Massachusetts Ave;HUDSON ST;1.0;9/1/2012;42.3822382;-71.1197461
+;Kirkland Street & Irving Street, Cambridge, MA 02138, USA;KIRKLAND ST;IRVING ST;1.0;9/5/2012;42.3773745;-71.1105974
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Hampshire St;Portland St;1.0;9/5/2012;42.3663022;-71.0917948
+;Jefferson Street & Marion Street, Cambridge, MA 02141, USA;MARION ST;JEFFERSON ST;1.0;9/7/2012;42.3730046;-71.0887753
+;Putnam Avenue & Brookline Street, Cambridge, MA 02139, USA;Putnam Ave;Brookline St;1.0;9/7/2012;42.3573756;-71.1080122
+1668;1668 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;9/8/2012;42.3820501;-71.1198868
+141;141 Prospect Street, Cambridge, MA 02139, USA;PROSPECT ST;;1.0;9/14/2012;42.3687439;-71.1017050
+2055;2055 Massachusetts Avenue, Lexington, MA 02421, USA;Massachusetts Ave;;1.0;9/15/2012;42.4489962;-71.2377540
+;Massachusetts Avenue & Dover Street, Cambridge, MA 02140, USA;DOVER ST;Massachusetts Ave;1.0;9/15/2012;42.3945048;-71.1270669
+;Massachusetts Avenue & Pearl Street, Cambridge, MA 02139, USA;Massachusetts Ave;PEARL ST;1.0;9/17/2012;42.3647021;-71.1025516
+;Mason Street, Boston, MA 02111, USA;MASON ST;STATE ST;1.0;9/18/2012;42.3542049;-71.0632921
+1035;1035 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;Columbia St;1.0;9/18/2012;42.3729111;-71.0943818
+;Hampshire Street & Norfolk Street, Cambridge, MA 02139, USA;Hampshire St;Norfolk St;1.0;9/19/2012;42.3710278;-71.0975410
+;Broadway & Ware Street, Cambridge, MA 02138, USA;Broadway;Ware St;1.0;9/20/2012;42.3738336;-71.1124428
+;Hampshire Street & Portland Street, Cambridge, MA 02139, USA;Hampshire St;Portland St;1.0;9/20/2012;42.3663022;-71.0917948
+100;100 Putnam Avenue, Cambridge, MA 02139, USA;Putnam Ave;;1.0;9/20/2012;42.3667376;-71.1153710
+211;211 Massachusetts Avenue, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;;1.0;9/21/2012;42.3613652;-71.0966865
+;Garden Street & Linnaean Street, Harvard University, Cambridge, MA 02138, USA;GARDEN CT;LINNAEAN ST;1.0;9/21/2012;42.3820630;-71.1267338
+;Prospect Street & Bishop Allen Drive, Cambridge, MA 02139, USA;PROSPECT ST;Bishop Allen Dr;1.0;9/23/2012;42.3663480;-71.1031405
+1967;1967 Massachusetts Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;;1.0;9/24/2012;42.3898864;-71.1204233
+;Cardinal Medeiros Avenue & Plymouth Street, Cambridge, MA 02141, USA;Cardinal Medeiros Ave;PLYMOUTH ST;1.0;9/24/2012;42.3683758;-71.0905737
+;Prospect Street, Cambridge, MA, USA;PROSPECT ST;;1.0;9/24/2012;42.3706651;-71.1000866
+;Massachusetts Avenue & Washburn Avenue, Cambridge, MA 02140, USA;Massachusetts Ave;Washburn Ave;1.0;9/25/2012;42.3987981;-71.1320086
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1.0;9/25/2012;42.3704848;-71.0968790
+;Mount Auburn Street & Brattle Street, Cambridge, MA 02138, USA;MOUNT AUBURN ST;Brattle St;1.0;9/27/2012;42.3753183;-71.1452231
+438;438 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1.0;10/1/2012;42.3634530;-71.1007676
+;Massachusetts Avenue & Chauncy Street, Cambridge, MA 02138, USA;Massachusetts Ave;Chauncy St;1.0;10/2/2012;42.3799980;-71.1199791
+;Plympton Street & Mill Street, Harvard University, Cambridge, MA 02138, USA;MILL ST;PLYMPTON ST;1.0;10/4/2012;42.3702547;-71.1177534
+;Broadway & Hampshire Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Broadway;Hampshire St;1.0;10/4/2012;42.3654283;-71.0911269
+;Brookline Street & Franklin Street, Cambridge, MA 02139, USA;Brookline St;Franklin St;1.0;10/6/2012;42.3628727;-71.1024328
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1.0;10/6/2012;42.3646216;-71.1024217
+;Concord Avenue & Smith Place, Cambridge, MA 02138, USA;Concord Ave;SMITH PL;1.0;10/10/2012;42.3901357;-71.1506873
+33;33 Oxford Avenue, Belmont, MA 02478, USA;OXFORD AVE;;1.0;10/11/2012;42.3768494;-71.1560317
+;Massachusetts Avenue & Essex Street, Cambridge, MA 02139, USA;Massachusetts Ave;ESSEX ST;1.0;10/12/2012;42.3650836;-71.1031749
+1008;1008 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;Columbia St;1.0;10/14/2012;42.3726399;-71.0938720
+;Hampshire Street, Cambridge, MA, USA;Hampshire St;;1.0;10/14/2012;42.3699250;-71.0961941
+;Cambridge Street & Windsor Street, Cambridge, MA 02141, USA;Cambridge St;Windsor St;1.0;10/17/2012;42.3727534;-71.0932842
+;Hampshire Street & Elm Street, Cambridge, MA 02139, USA;Hampshire St;ELM ST;1.0;10/17/2012;42.3704848;-71.0968790
+;Mount Auburn Street & Banks Street, Cambridge, MA 02138, USA;Banks St;MOUNT AUBURN ST;1.0;10/18/2012;42.3704873;-71.1144672
+1452;1452 Cambridge Street, Cambridge, MA 02139, USA;Cambridge St;;1.0;10/20/2012;42.3737740;-71.1029740
+;Cambridge Street & Highland Avenue, Cambridge, MA 02139, USA;Cambridge St;HIGHLAND AVE;1.0;10/21/2012;42.3742316;-71.1047258
+;White Street Place, Cambridge, MA 02140, USA;Massachusetts Ave;White St;1.0;10/24/2012;42.3887092;-71.1176458
+;Hampshire Street & Tremont Street, Cambridge, MA 02139, USA;Tremont St;Hampshire St;1.0;10/25/2012;42.3714904;-71.0981120
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1.0;10/25/2012;42.3626470;-71.0990652
+;Cambridge Street & Felton Street, Cambridge, MA 02138, USA;Cambridge St;FELTON ST;1.0;10/25/2012;42.3751960;-71.1122227
+;Cambridge Street & Fulkerson Street, Cambridge, MA 02141, USA;Cambridge St;FULKERSON ST;1.0;10/26/2012;42.3719239;-71.0868792
+;Jfk Street & Winthrop Street, Cambridge, MA 02138, USA;JFK St;Winthrop Sq;1.0;10/30/2012;42.3721672;-71.1205000
+;Massachusetts Avenue & State Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Massachusetts Ave;STATE ST;1.0;10/31/2012;42.3626470;-71.0990652
+450;450 Massachusetts Avenue, Cambridge, MA 02139, USA;Massachusetts Ave;;1.0;11/2/2012;42.3635889;-71.1009831
+;Hampshire Street & Columbia Street, Cambridge, MA 02139, USA;Columbia St;Hampshire St;1.0;11/5/2012;42.3699250;-71.0961941
+;Cardinal Medeiros Avenue, Cambridge, MA, USA;Cardinal Medeiros Ave;;1.0;11/7/2012;42.3692712;-71.0900913
+671;671 Main Street, Cambridge, MA 02139, USA;MAIN ST;;1.0;11/14/2012;42.3630770;-71.0947847
+;Hampshire Street & Inman Street, Cambridge, MA 02139, USA;Hampshire St;Inman St;1.0;11/14/2012;42.3734774;-71.1005336
+;Cambridge Street & Hampshire Street, Cambridge, MA 02139, USA;Cambridge St;Hampshire St;1.0;11/14/2012;42.3737254;-71.1008300
+1035;1035 Cambridge Street, Cambridge, MA 02141, USA;Cambridge St;;1.0;11/15/2012;42.3729111;-71.0943818
+1698;1698 Massachusetts Avenue, Cambridge, MA 02138, USA;Massachusetts Ave;;1.0;11/17/2012;42.3830474;-71.1196761
+;Massachusetts Avenue & Garfield Street, Cambridge, MA 02138, USA;Massachusetts Ave;GARFIELD ST;1.0;11/20/2012;42.3837986;-71.1195808
+363;363 Windsor Street, Cambridge, MA 02139, USA;Windsor St;;1.0;11/20/2012;42.3700886;-71.0944257
+;Massachusetts Avenue & Shepard Street, Cambridge, MA 02138, USA;Massachusetts Ave;Shepard St;1.0;11/22/2012;42.3817928;-71.1197891
+;Concord Avenue & Fayerweather Street, Cambridge, MA 02138, USA;Concord Ave;FAYERWEATHER ST;1.0;11/26/2012;42.3845951;-71.1357947
+;Massachusetts Avenue, Cambridge, MA, USA;Massachusetts Ave;;1.0;11/27/2012;42.3646216;-71.1024217
+;Putnam Avenue & Sidney Street, Cambridge, MA 02139, USA;Putnam Ave;Sidney St;1.0;11/27/2012;42.3566315;-71.1067326
+305;305 Webster Avenue, Cambridge, MA 02141, USA;Webster Ave;;1.0;11/28/2012;42.3736803;-71.0945336
+;Main Street & Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;MAIN ST;Vassar St;1.0;11/30/2012;42.3626897;-71.0900485
+;Broadway & Galileo Galilei Way, Cambridge, MA 02139, USA;Broadway;Galileo Galilei Way;1.0;12/3/2012;42.3647784;-71.0894878
+;Plympton Street & Mill Street, Harvard University, Cambridge, MA 02138, USA;PLYMPTON ST;MILL ST;1.0;12/7/2012;42.3702547;-71.1177534
+;Main Street & Ames Street, Massachusetts Institute of Technology, Cambridge, MA 02142, USA;MAIN ST;Ames St;1.0;12/10/2012;42.3625606;-71.0882354
+6;6 Concord Avenue, Belmont, MA 02478, USA;Concord Ave;;1.0;12/10/2012;42.3909095;-71.1575631
+229;229 Vassar Street, Massachusetts Institute of Technology, Cambridge, MA 02139, USA;Vassar St;;1.0;12/12/2012;42.3573232;-71.1008504
+;Cambridge Street & Line Street, Mid-Cambridge, MA 02139, USA;Cambridge St;LINE ST;1.0;12/18/2012;42.3740212;-71.1030628
+;Brattle Street & Willard Street, Cambridge, MA 02138, USA;Brattle St;Willard St;1.0;12/21/2012;42.3768089;-71.1276484

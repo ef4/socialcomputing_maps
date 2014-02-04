@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="/static/css/tipsy.css"/> 
+    <script type="text/javascript" src="/static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <style type="text/css">
+
+    html, body{
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    h1 {
+        float:left;
+        padding-left: 20px;
+        padding-top: 40px;
+    }
+    #svgContainer {
+        width: 100%;
+        height: 90%;
+        float:left;
+        border-left: 5px;
+        z-index: 1;
+    }
+    #streetname{
+        font-size:25pt;
+        position: absolute;
+        z-index: 2;
+        float:left;
+        padding-left: 10px;
+        top:90%;
+    }
+
+    
+    </style>
+
+    <script type="text/javascript">
+
+    var projection = d3.geo.mercator();
+    var path = d3.geo.path().projection(projection); 
+    var geoJSON;
+    var scaleFactor = 1.2;
+    var svg;
+    var segments;
+    var streets = {};
+    var maxOverlap=1;
+
+    $(window).load(function(){
+        jQuery.getJSON('/static/data/San Francisco/boundary.geojson', function(geojson){
+            geoJSON = geojson;
+            setProjection();
+            drawMap();
+
+            d3.csv('/static/data/San Francisco/footfall/walking_paths.csv', function (error, data) {
+                segments = data;
+                processStreets();
+                drawSegments();
+            });
+        });
+    });
+
+    function processStreets(){
+        for (var i = 0; i <segments.length; i++){
+            if (segments[i].name != undefined){
+                if (segments[i].name in streets){
+                    streets[segments[i].name]++;
+                } else {
+                    streets[segments[i].name] = 1;
+                }
+            }
+        }
+        for (street in streets){
+            if (streets[street] > maxOverlap){maxOverlap = streets[street];}
+        }
+    }
+
+    function setProjection(){ 
+      projection.scale(1)
+        .translate([0, 0]);
+
+      width = $("#svgContainer").width(); height = $("#svgContainer").height();
+      console.log(width, height);
+      var b = path.bounds(geoJSON),
+        s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+        t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+      projection.scale(s).translate(t);
+      projection([-71.115385,42.372622]);
+    }
+
+    function drawMap(){
+      svg = d3.select("#svgContainer").append("svg");
+
+      svg.selectAll(".map")
+        .data(geoJSON.features)
+       .enter().append("path")
+        .attr("d", path)
+        .attr("stroke-opacity", 0.2)
+        .attr("stroke", "black")
+        .attr("fill", "none");
+    }
+
+    function setText(name, value){
+        opacity = value/maxOverlap + 0.2;
+        $("#streetname").text(name);
+        $("#streetname").fadeTo('slow', opacity);
+    }
+
+    function drawSegments(){
+        g = svg.append('g');
+
+        g.selectAll('path')
+            .data(segments)
+            .enter().append('path')
+            .on('mouseover', function (d) {
+                setText(d.name, streets[d.name]);
+            })
+            .transition()
+            .delay(function(d,i){return i*10;})
+            .attr('class', 'street-segment')
+            .attr('d', function (d) {
+                var lineData = [
+                    projection([parseFloat(d.start_lng), parseFloat(d.start_lat)]),
+                    projection([parseFloat(d.end_lng), parseFloat(d.end_lat)]),
+                ]
+                var dataLine =  d3.svg.line()
+                    .x(function (d) {return d[0]})
+                    .y(function (d) {return d[1]});
+                return dataLine(lineData);
+            })
+            .attr('stroke', 'blue')
+            .attr('stroke-opacity', 0.2)
+            .attr('stroke-width', 1)
+            .attr('fill', 'none');
+    }
+
+    </script>
+    </head>
+
+    <body>
+    	<h1 align="left" style="font-size:40pt">Footfall Density - San Francisco, CA</h1>
+        <br></br>
+    	<div id="svgContainer"></div>
+        <div>
+            <p id="streetname"> Hover over a street </p>
+        </div>
+    	
+    </body>
+</html>
+    
