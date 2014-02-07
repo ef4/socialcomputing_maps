@@ -1,73 +1,159 @@
 html, body{
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Raleway', sans-serif;
-    }
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue';
+  font-weight: lighter;
+  background-color: rgba(43, 40, 40, 0.8);
+  color: #FA8602;
+}
 
-    #svgContainer {
-        width: 100%;
-        height: 100%;
-        float:left;
-        border-left: 5px;
-        background-color: #2B2828;
-    }
+#svgContainer {
+  width: 100%;
+  height: 100%;
+  float:left;
+  border-left: 5px;
+}
     
-    #infoGraphic{
-      position: absolute;
-      height: 100%;
-      width: 5%;
-      left: 100%;
-      margin-right: 2%;
-      float:right;
-      border-left: '1px';
-      border-left-color:#000000; 
-      background-color: #2B2828;
-    }
+#infoGraphic{
+  position: absolute;
+  height: 100%;
+  width: 5%;
+  left: 100%;
+  margin-right: 2%;
+  float:right;
+  border-left: '1px';
+  border-left-color:#000000; 
+  background-color: rgba(43, 40, 40, 0.1);
+  visibility: hidden;
+  z-index: 2;
+}
 
-    #drawer {
-      left : 95%;
-      float:right;
-      position:absolute;
-      background-color:'#093DDB';
-      z-index: 2;
-      top:2%;
-    }
+#chart {
+  width:80%; 
+  height:80%;
+}
 
+#drawer {
+  left : 95%;
+  float:right;
+  position:absolute;
+  background-color:'#093DDB';
+  z-index: 2;
+  top:2%;
+}
 
-    #logo{
-      left : 3%;
-      float:left;
-      position:absolute;
-      z-index: 3;
-      top:2%;
-    }
+#drawer i{
+  position:absolute; 
+  left:35%; 
+  top:33%; 
+  z-index:2;
+  cursor:pointer;
+}
 
+#logo{
+  left : 3%;
+  float:left;
+  position:absolute;
+  z-index: 3;
+  top:2%;
+}
 
-    #paneContent{
-      height:100%;
-      width:100%
-    }
-    #tabcontent_1{
-      height:100%;
-      width:100%
-    }
-
-    #tabcontent_2{
-      height:100%;
-      width:100%
-    }
-
-    #tabcontent_3{
-      height:100%;
-      width:100%
-    }
-
+#id {
+  color:#FA8602;
+  font-size:15pt;
+}
 
 
-    #street-view{
-      width:95%;
-      height:60%;
-      top:3%;
-    }
+#paneContent{
+  height:100%;
+  width:100%
+}
+#tabcontent_1{
+  height:100%;
+  width:100%
+}
+
+#tabcontent_2{
+  height:100%;
+  width:100%
+}
+
+#tabcontent_3{
+  height:100%;
+  width:100%
+}
+
+.active {
+  background-color: #404142;
+  border-color: #404142;
+  color: #FA8602;
+  opacity: 1.0;
+}
+
+#street-view{
+  width:95%;
+  height:60%;
+  top:3%;
+  opacity: 0.6;
+}
+
+
+.nav  {
+  border-color: #404142;
+}
+
+li  {
+  border-color: #404142;
+  background-color: #404142;
+  cursor: pointer;
+}
+
+rect {
+  cursor: pointer;
+}
+
+
+#title {
+  position:absolute;
+  left:3%;
+  top: 60%;
+  font-size:35px;
+  color: #7F7E80;
+}
+
+#numAccidents {
+  position: absolute;
+  top:65%;
+  left:3%;
+  font-size:35px;
+  color: #FA8602;
+}
+
+
+
+#footer {
+  position: absolute;
+  left:3%;
+  top:95%;
+  font-size: 12px;
+  padding: 5px 10px 10px 5px;
+  color: #7F7E80;
+  z-index: 2;
+}
+ 
+#footer i.fa-plus {
+  color: #FA8602;
+  font-size: 8px;
+  opacity: 0.5;
+  margin: 5px;
+}
+ 
+#footer a {
+  text-color: #656566;
+}
+.footer-plus {
+  color: #656566;
+  font-size: 8px;
+}

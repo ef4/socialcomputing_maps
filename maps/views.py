@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 
-def main(request):
-	return render_to_response('sf-accidents.html')
+def sanfrancisco(request):
+	return render_to_response('sanfrancisco.html')
 
 def boundaries(request):
 	return render_to_response('boundaries.html')
@@ -14,6 +14,9 @@ def losangeles(request):
 
 def cambridge(request):
 	return render_to_response('cambridge.html')
+
+def manhattan(request):
+	return render_to_response('manhattan.html')
 
 def portland(request):
 	return render_to_response('portland.html')

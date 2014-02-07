@@ -1,7 +1,11 @@
 # Django settings for maps project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+def relative_to_app(*path):
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), '..', *path))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -72,8 +76,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/pranavramkrishnan/Desktop/Research/maps/static',
-
+    relative_to_app('static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -113,7 +116,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/pranavramkrishnan/Desktop/Research/maps/templates',
+    relative_to_app('templates'),
 
 )
 

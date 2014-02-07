@@ -7,7 +7,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^sf$', 'maps.views.main', name='home'),
+    url(r'^sanfrancisco$', 'maps.views.sanfrancisco', name='home'),
     url(r'^chicago$', 'maps.views.chicago', name='home'),
     url(r'^boundaries$', 'maps.views.boundaries', name='home'),
     url(r'^losangeles$', 'maps.views.losangeles', name='home'),
@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^sanfrancisco-footfall$', 'maps.views.sanfrancisco_footfall', name='home'),
     url(r'^sanfrancisco-green$', 'maps.views.sanfrancisco_green', name='home'),
     url(r'^cambridge-green$', 'maps.views.cambridge_green', name='home'),
+    url(r'^manhattan$', 'maps.views.manhattan', name='home'),
     # url(r'^maps/', include('maps.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
