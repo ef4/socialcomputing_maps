@@ -1,13 +1,19 @@
 from django.shortcuts import render_to_response
 
+
+URL_PREFIX = '/p/'
+
+
+
 def sanfrancisco(request):
-	return render_to_response('sanfrancisco.html')
+	print URL_PREFIX
+	return render_to_response('sanfrancisco.html', {'URL_PREFIX':URL_PREFIX})
 
 def boundaries(request):
 	return render_to_response('boundaries.html')
 
 def chicago(request):
-	return render_to_response('chicago.html')
+	return render_to_response('chicago.html', {'URL_PREFIX':URL_PREFIX})
 
 def losangeles(request):
 	return render_to_response('los angeles.html')
