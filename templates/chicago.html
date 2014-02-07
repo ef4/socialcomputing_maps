@@ -5,15 +5,15 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/./static/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/./static/css/bootstrap-responsive.min.css"/> 
-    <link rel="stylesheet" type="text/css" href="/./static/css/tipsy.css"/> 
+    <link rel="stylesheet" type="text/css" href="{{BASE_URL}}/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{BASE_URL}}/static/css/bootstrap-responsive.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="{{BASE_URL}}/static/css/tipsy.css"/> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-    <script type="text/javascript" src="/./static/js/jquery.tipsy.js"></script>
-    <script type="text/javascript" src="/./static/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/./static/css/accidents.css"> </style>
-    <script type="text/javascript" src="/./static/js/accidents_utils.js"></script>
+    <script type="text/javascript" src="{{BASE_URL}}/static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="{{BASE_URL}}/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{BASE_URL}}/static/css/accidents.css"> </style>
+    <script type="text/javascript" src="{{BASE_URL}}/static/js/accidents_utils.js"></script>
 
 
 <script type="text/javascript">
@@ -31,7 +31,7 @@ var coreOpacity = 0.5;
 $(window).load(function(){
 
 
-  jQuery.getJSON('/./static/data/Chicago/boundary.geojson', function(geojson){
+  jQuery.getJSON('{{BASE_URL}}/static/data/Chicago/boundary.geojson', function(geojson){
     geoJSON = geojson;
     setProjection();
     drawMap();
@@ -54,7 +54,7 @@ $(window).load(function(){
 </script>
 </head>
 <body>
-  <img id="logo" src="/./static/img/logo.png">
+  <img id="logo" src="{{BASE_URL}}/static/img/logo.png">
   <div id="drawer">
       <svg height='50' width='50' style="z-index:1">
           <circle cx="25" cy="25" r="15" stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />

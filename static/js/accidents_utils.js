@@ -13,7 +13,7 @@ var maxWidth = 1;
 var map;
 var allData;
 
-var BASE_URL = '/p/';
+var BASE_URL = '/p';
 
 
 function initialize(){
