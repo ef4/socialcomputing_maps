@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 
 
-URL_PREFIX = '/p/'
+URL_PREFIX = ''
 
 
 
