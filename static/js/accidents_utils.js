@@ -164,7 +164,7 @@ function drawChart(){
   
  
       $('svg rect').tipsy({ 
-          gravity: 's', 
+          gravity: 'e', 
           fade:true,
           html: true, 
           title: function() {
