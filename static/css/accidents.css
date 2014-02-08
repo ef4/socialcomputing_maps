@@ -137,7 +137,7 @@ rect {
   left:3%;
   top: 75%;
   font-size:60px;
-  color: #7F7E80;
+  color: #969596;
   letter-spacing: 1.5px;
 }
 
@@ -163,9 +163,10 @@ rect {
 
 #mini-essay {
   position: absolute;
-  top: 90%;
+  top: 87%;
   left: 3%;
-  color: #7F7E80;
+  /*color: #7F7E80;*/
+  color :#FA8602;
   letter-spacing: 1.5px;
 }
 
@@ -195,6 +196,7 @@ rect {
 
 .footer-highlight{
   color:#FA8602;
+  text-decoration: underline;
 }
  
 
