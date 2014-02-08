@@ -6,7 +6,6 @@ url_config = URL_CONFIG()
 
 
 def sanfrancisco(request):
-	print URL_PREFIX
 	return render_to_response('sanfrancisco.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def boundaries(request):
