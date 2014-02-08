@@ -23,7 +23,6 @@ function initialize(){
 
     if (!infoGraphToggle){
       $('#infoGraphic').css('visibility', 'visible');
-      //$('#svgContainer').width(width * 0.7);
       $('#infoGraphic').css('left', width * 0.7);
       $('#infoGraphic').css('width', width * 0.3);
       $('#chart').css('width', $('#infoGraphic').width());
@@ -31,6 +30,7 @@ function initialize(){
       $('#drawer').css('left', width * 0.7);
       $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
       $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
+      drawChart();
     } else {
       $('#infoGraphic').css('visibility','hidden');
       //$('#svgContainer').width(width * 1.0);
@@ -43,39 +43,32 @@ function initialize(){
       $('#drawer').css('left', width * 0.95);
     }
     infoGraphToggle = !infoGraphToggle;
-    //setProjection();
-    //drawMap();
-    //drawCircles();
+
 
   });
 
-   $("#chart").hide();
+   //$("#chart").hide();
    activeTab = $('#tab_1');
    activeTabContent = $("#tabcontent_1");
    $("#tabcontent_2").hide();
 
    $("#tab_2").click(function(){
-      console.log("here")
-      $('#tab_2').addClass("active");
-      $('#tab_1').removeClass("active");
+      $(this).css('background-color','rgba(43, 40, 40, 0.7)');
+      $("#tab_1").css('background-color', 'rgba(43, 40, 40, 0.1)');
       $("#tabcontent_1").hide()
       $("#tabcontent_2").show();
-      $("#chart").show();
-      drawChart();
+      $("#chart").empty();
+      //drawChart();
    });
 
    $("#tab_1").click(function(){
-    $('#tab_2').removeClass("active");
-    $('#tab_1').addClass("active");
+    $(this).css('background-color','rgba(43, 40, 40, 0.7)');
+    $("#tab_2").css('background-color', 'rgba(43, 40, 40, 0.1)');
     $("#tabcontent_1").show()
     $("#tabcontent_2").hide();
-    $("#chart").hide();
+    drawChart();
    });
 
-   $("#address").click(function(){
-      console.log("here");
-      $('#auditForm').toggle("slide");
-   });
 }
 
 
@@ -175,7 +168,7 @@ function drawChart(){
   
  
       $('svg rect').tipsy({ 
-          gravity: 'e', 
+          gravity: 's', 
           fade:true,
           html: true, 
           title: function() {

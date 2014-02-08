@@ -85,12 +85,11 @@ html, body{
   width:100%
 }
 
-.active {
-  background-color: #404142;
-  border-color: #404142;
-  color: #FA8602;
-  opacity: 1.0;
+#tabContainer{
+  width: 100%;
+  height: 5%;
 }
+
 
 #street-view{
   width:95%;
@@ -104,28 +103,56 @@ html, body{
   border-color: #404142;
 }
 
+ul {
+  width: 100%;
+  height: 100%;
+}
+
 li  {
   border-color: #404142;
-  background-color: #404142;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color:rgba(43, 40, 40, 0.1);
   cursor: pointer;
+  text-align: center;
+  font-size: 15px;
+  height: 100%;
+  width: 50%;
+  padding-top: 10px;
 }
+
+
+
 
 rect {
   cursor: pointer;
 }
 
 
+
 #title {
   position:absolute;
   left:3%;
   top: 60%;
-  font-size:35px;
+  font-size:60px;
   color: #7F7E80;
+}
+
+#years {
+  position:absolute;
+  left:3%;
+  top: 69%;
+  font-size:30px;
+  color: #7F7E80;
+}
+
+#state{
+  font-size: 40px;
 }
 
 #numAccidents {
   position: absolute;
-  top:70%;
+  top:78%;
   left:3%;
   font-size:35px;
   color: #FA8602;
@@ -155,5 +182,5 @@ rect {
 }
 .footer-plus {
   color: #656566;
-  font-size: 8px;
+  font-size: 12px;
 }

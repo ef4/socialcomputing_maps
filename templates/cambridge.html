@@ -6,7 +6,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/bootstrap-responsive.min.css"/> 
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/tipsy.css"/> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
@@ -15,6 +14,16 @@
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/accidents.css"> </style>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/accidents_utils.js"></script>
 
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47879752-1', 'mit.edu');
+      ga('send', 'pageview');
+
+    </script>
 
 <script type="text/javascript">
 
@@ -93,20 +102,23 @@ $(window).load(function(){
     
     <div id="svgContainer"></div>
 
-    <p id='title'> Cambridge, MA - 2010 to 2013</p>
+    <p id='title'> Cambridge</p>
+    <p id='years'> 2010 to 2013 </p>
     <p id='numAccidents'> 956 bicycle accidents </p>
 
     <div id="footer">
       <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
       This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project 
       <span class="footer-plus">+</span>
-      <a href="http://www.mit.edu">Data Source </a>
-      <span class="footer-plus">+</span>
       <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
       <span class="footer-plus">+</span>
       <a href="http://media.mit.edu"> MIT Media Lab </a>
-      
-     
-  </div>
+      <span class="footer-plus">+</span>
+      <a href="http://mit.edu"> MIT</a>
+      &nbsp
+      <span> | </span>
+      &nbsp
+      <a href="http://www.cambridgema.gov/cpd/"> Data Source </a>
+    </div>
 </body>
 </html>
