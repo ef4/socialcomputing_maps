@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/accidents.css"> </style>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/accidents_utils.js"></script>
 
+
+    <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -71,8 +73,7 @@ $(window).load(function(){
       <i id='button-icon' class="glyphicon glyphicon-chevron-left"></i>
   </div>
 
-  <div id="infoGraphic">
-         
+  <div id="infoGraphic">     
     <br></br>
     <br></br>
     <div id="tabContainer">
@@ -81,28 +82,20 @@ $(window).load(function(){
         <li id="tab_2"> Street View</li>
       </ul>
     </div>
-
     <div id="paneContent">
-
-
       <div id="tabcontent_1" >
         <br></br>
         <p align="center"> Accidents by Street </p>
         <p id="chartTitle" align="center"> </p>
         <div id="chart"> </div>
       </div>
-
       <div id="tabcontent_2">
         <br></br>
         <p id="address" align="left">Hover over an accident to explore.</p>
         <div id="street-view" > </div>
         <br></br>
       </div>
-      
-      
     </div>
-
-
   </div>
     
     <div id="svgContainer"></div>
@@ -114,7 +107,7 @@ $(window).load(function(){
 
     <div id="footer">
       <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
-      This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project 
+      This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
       <span class="footer-plus">+</span>
       <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
       <span class="footer-plus">+</span>

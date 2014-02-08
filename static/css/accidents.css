@@ -42,6 +42,7 @@ html, body{
   background-color:'#093DDB';
   z-index: 2;
   top:2%;
+  cursor:pointer;
 }
 
 #drawer i{
@@ -144,10 +145,6 @@ rect {
   top: 69%;
   font-size:30px;
   color: #7F7E80;
-}
-
-#state{
-  font-size: 40px;
 }
 
 #numAccidents {

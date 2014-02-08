@@ -73,33 +73,29 @@ $(window).load(function(){
       <i id='button-icon' class="glyphicon glyphicon-chevron-left"></i>
   </div>
 
-  <div id="infoGraphic">
+  <div id="infoGraphic">     
     <br></br>
-     
     <br></br>
-    <div id="tabConatiner">
+    <div id="tabContainer">
       <ul id="infoTabs" class="nav nav-tabs">
-        <li  id="tab_1" class="active" ><a href="#" style="color:#FA8602;border-color:#404142;background-color:#404142;">Street View</a></li>
-        <li id="tab_2" ><a  href="#" style="color:#FA8602;border-color:#404142;background-color:#404142;">Street Graph</a></li>
+        <li id="tab_1" style="background-color:rgba(43, 40, 40, 0.7);"> Street Graph </li>
+        <li id="tab_2"> Street View</li>
       </ul>
     </div>
-
     <div id="paneContent">
-      <div id="tabcontent_1">
-        <p id="address" align="left" style="font-size:10pt">Hover over an accident to explore.</p>
+      <div id="tabcontent_1" >
+        <br></br>
+        <p align="center"> Accidents by Street </p>
+        <p id="chartTitle" align="center"> </p>
+        <div id="chart"> </div>
+      </div>
+      <div id="tabcontent_2">
+        <br></br>
+        <p id="address" align="left">Hover over an accident to explore.</p>
         <div id="street-view" > </div>
         <br></br>
       </div>
-      <div id="tabcontent_2" >
-
-        <p align="center" style="font-size:11pt"> Accidents by Street </p>
-        <p id="chartTitle" align="center" style="font-size:11pt"> </p>
-        <div id="chart"> </div>
-      </div>
-      
     </div>
-
-
   </div>
     
     <div id="svgContainer"></div>

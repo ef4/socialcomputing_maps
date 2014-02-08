@@ -13,15 +13,14 @@ var maxWidth = 1;
 var map;
 var allData;
 
-var BASE_URL = '/p';
 
 
 function initialize(){
   $('#drawer').click(function(){
     var width = $(window).width(); var height = $(window).height();
-    //$('#svgContainer').empty();
-
+    console.log('clicked');
     if (!infoGraphToggle){
+      console.log('here');
       $('#infoGraphic').css('visibility', 'visible');
       $('#infoGraphic').css('left', width * 0.7);
       $('#infoGraphic').css('width', width * 0.3);
@@ -32,6 +31,7 @@ function initialize(){
       $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
       drawChart();
     } else {
+      console.log('here2');
       $('#infoGraphic').css('visibility','hidden');
       //$('#svgContainer').width(width * 1.0);
       $('#infoGraphic').css('left', width * 1.0);
@@ -43,11 +43,8 @@ function initialize(){
       $('#drawer').css('left', width * 0.95);
     }
     infoGraphToggle = !infoGraphToggle;
-
-
   });
 
-   //$("#chart").hide();
    activeTab = $('#tab_1');
    activeTabContent = $("#tabcontent_1");
    $("#tabcontent_2").hide();
@@ -58,7 +55,6 @@ function initialize(){
       $("#tabcontent_1").hide()
       $("#tabcontent_2").show();
       $("#chart").empty();
-      //drawChart();
    });
 
    $("#tab_1").click(function(){
