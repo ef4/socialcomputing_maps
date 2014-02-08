@@ -91,6 +91,7 @@ function processChartData(streetData){
   //sort
   chartData.sort(function(a, b) {return d3.descending(a.numAccidents, b.numAccidents);})
   chartData.splice(25);
+
 }
 
 
