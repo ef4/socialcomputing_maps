@@ -12,7 +12,7 @@ var infoGraphToggle = false;
 var maxWidth = 1;
 var map;
 var allData;
-
+var showAllFlag = true;
 
 
 function initialize(){
@@ -64,6 +64,20 @@ function initialize(){
     $("#tabcontent_2").hide();
     drawChart();
    });
+
+   $('#svgContainer').on('mouseover', function(){
+    if (!showAllFlag){
+      var accidents = d3.selectAll('g circle')[0];
+      for (var acc in accidents){
+        accidents[acc].setAttribute('visibility', 'show');
+      }
+      var clusters = d3.selectAll('g path')[0];
+      for (var cl in clusters){
+        clusters[cl].setAttribute('visibility', 'show');
+      }
+    }
+    showAllFlag = !showAllFlag; 
+   })
 
 }
 
@@ -135,6 +149,7 @@ function drawChart(){
         d3.select(this).attr('opacity',0.3);
       })
       .on('click', function(d){
+          showAllFlag = false;
           var accidents = d3.selectAll('g circle')[0];
           for (var acc in accidents){
             name = accidents[acc].className.animVal;
