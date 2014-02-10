@@ -91,9 +91,7 @@ function initialize(){
     var moveY = 0.35*(windowHeight - selfHeight);
 
     $('#data-lightbox').animate({
-        'top': moveY.toString(),
-        'left': moveX.toString(),
-        'opacity':1.0}, 'slow'
+        'opacity':1.0}, 2000
     );
 
    });
@@ -113,8 +111,6 @@ function initialize(){
 function closeLightBox(){
   if (lightBoxShown){
       $('#data-lightbox').animate({
-        'top': '86%',
-        'left': '3%',
         'opacity':0.0}, 'fast'
       );
 
