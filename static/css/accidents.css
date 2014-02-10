@@ -56,6 +56,8 @@ html, body{
 
 #logo{
   left : 3%;
+  height:7%;
+  width: 4%;
   float:left;
   position:absolute;
   z-index: 3;
@@ -136,9 +138,9 @@ rect {
   position:absolute;
   left:3%;
   top: 75%;
-  font-size:60px;
+  font-size:65px;
   color: #969596;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
 }
 
 /*
@@ -161,13 +163,32 @@ rect {
 }
 */
 
-#mini-essay {
+#map-descp {
   position: absolute;
-  top: 87%;
+  top: 86%;
   left: 3%;
   /*color: #7F7E80;*/
   color :#FA8602;
   letter-spacing: 1.5px;
+}
+
+#data-lightbox {
+  position: absolute;
+  border-radius: 5px;
+  opacity: 0.0;
+  top: 86%;
+  float:left;
+  left:3%;
+  border:2px;
+  border-color: rgba(43, 40, 40, 0.5);
+  border-style: outset;
+  height: 125px;
+  width: 500px;
+  color :#FA8602;
+  padding-top: 10px;
+  padding-left: 10px;
+  letter-spacing: 1.5px;
+  background-color:rgba(43, 40, 40, 0.2);
 }
 
 
@@ -196,7 +217,7 @@ rect {
 
 .footer-highlight{
   color:#FA8602;
-  text-decoration: underline;
+  cursor: pointer;
 }
  
 

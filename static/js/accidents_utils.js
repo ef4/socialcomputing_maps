@@ -13,6 +13,7 @@ var maxWidth = 1;
 var map;
 var allData;
 var showAllFlag = true;
+var lightBoxShown = false;
 
 
 function initialize(){
@@ -78,6 +79,38 @@ function initialize(){
     }
     showAllFlag = !showAllFlag; 
    })
+
+   $('#data-source').click(function(){
+    lightBoxShown = true;
+    $('#svgContainer').css('opacity',0.1);
+
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    var selfWidth = $(this).width(); var selfHeight = $(this).height();
+    var moveX = 0.4*(windowWidth - selfWidth);
+    var moveY = 0.35*(windowHeight - selfHeight);
+
+    $('#data-lightbox').animate({
+        'top': moveY.toString(),
+        'left': moveX.toString(),
+        'opacity':1.0}, 'slow'
+    );
+
+   });
+
+  
+  $('#svgContainer').click(function(){
+    if (lightBoxShown){
+      $('#data-lightbox').animate({
+        'top': '86%',
+        'left': '3%',
+        'opacity':0.0}, 'fast'
+      );
+
+      $('#svgContainer').animate({'opacity':1.0},'slow');
+      lightBoxShown = false;
+    };
+   });
 
 }
 
@@ -181,12 +214,11 @@ function drawChart(){
  
       $('svg rect').tipsy({ 
           gravity: 'e', 
-          fade:true,
           html: true, 
           title: function() {
             var d = this.__data__.name;
             var val = this.__data__.numAccidents;
-            return '<p style="color:#FA8602;font-size:10pt;opacity:0.7;">' + d + ', # Accidents =  <span style="color:#FA8602;">' + val + '</span></p>'; 
+            return '<p style="color:#FA8602;font-size:10pt;padding-top:8px;letter-spacing:2px;opacity:0.7;">' + d + ':<span style="color:#FA8602;">' + val + '</span> accidents</p>'; 
           }
         });
 }
@@ -210,6 +242,7 @@ function toggleStreetView(latlng, show){
   };
  
   pano = new google.maps.StreetViewPanorama(document.getElementById("street-view"), panoramaOptions);
+  console.log('rendered street-view');
   } else{
     $('#street-view').html('');
   }
@@ -285,8 +318,8 @@ function drawCircles(){
       .attr("fill", "#FA8602")
       .attr("stroke", "#FA8602")
       .attr("opacity", shellOpacity)
-      .attr("visibility", "show")
       .on('mouseover', function(d){
+        console.log("call to street-view");
         if (infoGraphToggle){
           var latlng = new google.maps.LatLng(d['lat'], d['lng']);
           toggleStreetView(latlng, true);
@@ -311,14 +344,5 @@ function drawCircles(){
       })
       .attr("fill", "#FA8602")
       .attr("stroke", "#FA8602")
-      .attr("opacity", coreOpacity)
-      .attr("visibility", "show")
-      .on('mouseover', function(d){
-        if (infoGraphToggle){
-          var latlng = new google.maps.LatLng(d['lat'], d['lng']);
-          toggleStreetView(latlng, true);
-          d3.select(this)
-        
-        }
-      });
+      .attr("opacity", coreOpacity);
 }
