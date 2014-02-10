@@ -219,6 +219,12 @@ rect {
   color:#FA8602;
   cursor: pointer;
 }
+
+.footer-highlight-link{
+  color:#FA8602;
+  cursor: pointer;
+  text-decoration: underline;
+}
  
 
 .footer-plus {
