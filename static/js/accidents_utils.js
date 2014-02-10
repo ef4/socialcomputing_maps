@@ -100,7 +100,18 @@ function initialize(){
 
   
   $('#svgContainer').click(function(){
-    if (lightBoxShown){
+      closeLightBox();
+  });
+
+  $('#lightbox-close').click(function(){
+    closeLightBox();
+  })
+
+}
+
+
+function closeLightBox(){
+  if (lightBoxShown){
       $('#data-lightbox').animate({
         'top': '86%',
         'left': '3%',
@@ -110,10 +121,7 @@ function initialize(){
       $('#svgContainer').animate({'opacity':1.0},'slow');
       lightBoxShown = false;
     };
-   });
-
 }
-
 
 
 function setProjection(){ 
@@ -126,7 +134,6 @@ function setProjection(){
     s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
   projection.scale(s).translate(t);
-  projection(mapCenter);
 }
 
 
@@ -256,7 +263,7 @@ function drawMap(){
    .enter().append("path")
     .attr("d", path)
     .attr("fill", 000)
-    .attr("fill-opacity", 0.75)
+    .attr("fill-opacity",1.0)
     .attr("stroke", 000);
 }
 
