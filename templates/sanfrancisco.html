@@ -35,7 +35,8 @@ var clusterStrokeWidth = 3;
 var shellRandomShift = 0.002;
 var shellOpacity = 0.2;
 var coreOpacity = 0.5;
-
+var cityName = 'San Francisco';
+var URL_PREFIX = '{{URL_PREFIX}}';
 
 
 $(window).load(function(){
@@ -91,7 +92,7 @@ $(window).load(function(){
       <div id="tabcontent_2">
         <br></br>
         <p id="address" align="left">Hover over an accident to explore.</p>
-        <div id="street-view" > </div>
+        <img id="street-view" > </img>
         <br></br>
       </div>
     </div>
@@ -101,8 +102,6 @@ $(window).load(function(){
 
 
     <p id='title'> San Francisco</p>
-    <!--<p id='years'> 2012 & 2013</p>
-    <p id='numAccidents'> 307 bicycle accidents </p>-->
 
     <div id='map-descp'>
       This map visualizes the 307 bicycle accidents

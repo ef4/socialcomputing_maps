@@ -37,7 +37,8 @@ var clusterStrokeWidth = 3;
 var shellRandomShift = 0.002;
 var shellOpacity = 0.2;
 var coreOpacity = 0.5;
-
+var cityName = 'Chicago';
+var URL_PREFIX = '{{URL_PREFIX}}';
 
 $(window).load(function(){
 
@@ -47,10 +48,10 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Chicago/final_data2.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Chicago/bicycle_accidents/final_data2.json', function(data){
     console.log(data);
       allData= data;
-      accidentData = allData["accidents"]["2012"];
+      accidentData = allData["accidents"];
       finalClusters = allData["clusters"]["2012"];
       processChartData(allData["streets"]["2012"]);
       drawCircles();
@@ -92,7 +93,7 @@ $(window).load(function(){
       <div id="tabcontent_2">
         <br></br>
         <p id="address" align="left">Hover over an accident to explore.</p>
-        <div id="street-view" > </div>
+        <img id="street-view" > </img>
         <br></br>
       </div>
     </div>

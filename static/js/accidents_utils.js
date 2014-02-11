@@ -14,14 +14,13 @@ var map;
 var allData;
 var showAllFlag = true;
 var lightBoxShown = false;
+var URL_PREFIX = '{{URL_PREFIX}}';
 
 
 function initialize(){
   $('#drawer').click(function(){
     var width = $(window).width(); var height = $(window).height();
-    console.log('clicked');
     if (!infoGraphToggle){
-      console.log('here');
       $('#infoGraphic').css('visibility', 'visible');
       $('#infoGraphic').css('left', width * 0.7);
       $('#infoGraphic').css('width', width * 0.3);
@@ -31,10 +30,9 @@ function initialize(){
       $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
       $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
       drawChart();
+      bindHoverHandlers();
     } else {
-      console.log('here2');
       $('#infoGraphic').css('visibility','hidden');
-      //$('#svgContainer').width(width * 1.0);
       $('#infoGraphic').css('left', width * 1.0);
       $('#infoGraphic').css('width', width * 0);
       $('#drawer').children().find('span').css('class','glyphicon glyphicon-arrow-left');
@@ -91,7 +89,7 @@ function initialize(){
     var moveY = 0.35*(windowHeight - selfHeight);
 
     $('#data-lightbox').animate({
-        'opacity':1.0}, 2000
+        'opacity':1.0}, 1500
     );
 
    });
@@ -103,9 +101,26 @@ function initialize(){
 
   $('#lightbox-close').click(function(){
     closeLightBox();
-  })
+  });
 
 }
+
+
+function bindHoverHandlers(){
+  $('svg circle').on('mouseover',function(){
+    var classname = $(this).attr('class');
+    console.log('mouseover');
+    if (classname.indexOf('accident') != -1){
+      var data = this.__data__;
+      toggleStreetView(data['lat'],data['lng'], data['image_id'], true);
+    }
+  });
+
+  console.log('done binding');
+
+}
+
+
 
 
 function closeLightBox(){
@@ -227,25 +242,36 @@ function drawChart(){
 }
 
 
-function toggleStreetView(latlng, show){
+function toggleStreetView(lat, lng, image_id, show){
+  var LatLng = new google.maps.LatLng(lat, lng);
   if (show){
-    var panoramaOptions = {
-      position: latlng,
-      pov: {
-        heading: 0,
-        pitch: -10,
-        zoom: 1
-      },
-      navigationControl: false,
-      enableCloseButton: false,
-      addressControl: false,
-      linksControl: false,
-      panControl:false,
-      zoomControl:false
-  };
- 
-  pano = new google.maps.StreetViewPanorama(document.getElementById("street-view"), panoramaOptions);
-  console.log('rendered street-view');
+    // var panoramaOptions = {
+    //   position: LatLng,
+    //   pov: {
+    //     heading: 0,
+    //     pitch: -10,
+    //     zoom: 1
+    //   },
+    //   navigationControl: false,
+    //   enableCloseButton: false,
+    //   addressControl: false,
+    //   linksControl: false,
+    //   panControl:false,
+    //   zoomControl:false
+    // };
+   
+    // pano = new google.maps.StreetViewPanorama(document.getElementById("street-view"), panoramaOptions);
+    // console.log('rendered street-view');
+
+    //Load image
+    $('#street-view').empty();
+    $('#street-view').css('visibility', 'visible');
+    var imgName = cityName + '_' + image_id.toString() + '.jpeg';
+    console.log(imgName);
+    var fileName = URL_PREFIX +'static/data/' + cityName + '/bicycle_accidents/streetviews/' + imgName;
+    console.log(fileName);
+    $('#street-view').attr('src', fileName);
+
   } else{
     $('#street-view').html('');
   }
@@ -303,7 +329,7 @@ function drawCircles(){
     .data(accidentData)
     .enter().append("circle")
       .attr("class", function(d){
-        return d.street1 + '-' + d.street2;
+        return 'accident-' + d.street1 + '-' + d.street2;
       })
       .attr("r", 4.0)
       .attr('cx', function (d) {       
@@ -318,17 +344,10 @@ function drawCircles(){
         y = Math.random() * (y_max - y_min) + y_min;
         return y;
       })
+      .attr('data', function(d){return d;})
       .attr("fill", "#FA8602")
       .attr("stroke", "#FA8602")
       .attr("opacity", shellOpacity)
-      .on('mouseover', function(d){
-        console.log("call to street-view");
-        if (infoGraphToggle){
-          var latlng = new google.maps.LatLng(d['lat'], d['lng']);
-          toggleStreetView(latlng, true);
-          d3.select(this)
-        }
-      })
       .attr("filter", "url(#blur)");
 
 
