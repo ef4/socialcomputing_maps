@@ -130,24 +130,29 @@ rect {
 }
 
 
+#text-descp{
+  position: absolute;
+  top: 75%;
+  left: 3%;
+  height: 10%
+
+}
 
 #title {
-  position:absolute;
   left:3%;
-  top: 75%;
   font-size:65px;
   color: #969596;
   letter-spacing: 2px;
 }
 
 #map-descp {
-  position: absolute;
-  top:86%;
+  margin-top: -15px;
   left: 3%;
-  /*color: #7F7E80;*/
   color :#FA8602;
   letter-spacing: 1.5px;
 }
+
+
 
 #data-lightbox {
   position: absolute;
@@ -184,8 +189,8 @@ rect {
 
 #footer {
   position: absolute;
+  top: 96%;
   left:2.68%;
-  top:95%;
   font-size: 12px;
   padding: 5px 10px 10px 5px;
   color: rgba(127,126,128,0.98);
