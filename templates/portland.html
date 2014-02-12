@@ -48,13 +48,13 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Portland/final_data2.json', function(data){
-    console.log(data);
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Portland/bicycle_accidents/final_data2.json', function(data){
       allData= data;
       accidentData = data['accidents'];
       finalClusters = allData['clusters'];
       processChartData(allData["streets"]);
       drawCircles();
+      bindHoverHandlers();
     });
   });
 

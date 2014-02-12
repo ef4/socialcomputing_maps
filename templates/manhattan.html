@@ -47,14 +47,16 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/final_data2.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/bicycle_accidents/final_data2.json', function(data){
     console.log(data);
       allData= data;
-      accidentData = allData["accidents"]["2012"];
+      accidentData = allData["accidents"];
       //finalClusters = allData["clusters"]["2012"];
       finalClusters = [];
       processChartData(allData["streets"]["2012"]);
       drawCircles();
+      bindHoverHandlers();
+
     });
   });
 
@@ -106,13 +108,13 @@ $(window).load(function(){
     <p id='numAccidents'> 5034 bicycle accidents </p>-->
 
     <div id='map-descp'>
-      This map visualizes the 5034 bicycle accidents </span> that were reported 
+      This map visualizes the 5432 bicycle accidents </span> that were reported 
       <br>
       in Manhattan in 2012.
     </div>
     <div id='data-lightbox'>
       <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
-      This map visualizes the 5034 bicycle accidents </span> that were reported in Manhattan in 2012.
+      This map visualizes the 5432 bicycle accidents </span> that were reported in Manhattan in 2012.
       <br>
       Broadway, 2nd Avenue, and 3rd Avenue had the most accidents during this time. 
       <br>

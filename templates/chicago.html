@@ -52,9 +52,11 @@ $(window).load(function(){
     console.log(data);
       allData= data;
       accidentData = allData["accidents"];
-      finalClusters = allData["clusters"]["2012"];
-      processChartData(allData["streets"]["2012"]);
+      finalClusters = allData["clusters"]['2012'];
+      processChartData(allData["streets"]['2012']);
       drawCircles();
+      bindHoverHandlers();
+
     });
   });
 

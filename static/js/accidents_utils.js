@@ -30,7 +30,6 @@ function initialize(){
       $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
       $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
       drawChart();
-      bindHoverHandlers();
     } else {
       $('#infoGraphic').css('visibility','hidden');
       $('#infoGraphic').css('left', width * 1.0);
@@ -109,7 +108,6 @@ function initialize(){
 function bindHoverHandlers(){
   $('svg circle').on('mouseover',function(){
     var classname = $(this).attr('class');
-    console.log('mouseover');
     if (classname.indexOf('accident') != -1){
       var data = this.__data__;
       toggleStreetView(data['lat'],data['lng'], data['image_id'], true);
@@ -321,6 +319,7 @@ function drawCircles(){
       .attr('stroke-linejoin', 'round')
       .attr('stroke-width', clusterStrokeWidth)
       .attr('fill', 'none')
+      .attr('z-index', 0)
       .attr("filter", "url(#blur)");
 
 
@@ -348,6 +347,7 @@ function drawCircles(){
       .attr("fill", "#FA8602")
       .attr("stroke", "#FA8602")
       .attr("opacity", shellOpacity)
+      .attr('z-index', 4)
       .attr("filter", "url(#blur)");
 
 
@@ -366,5 +366,6 @@ function drawCircles(){
       })
       .attr("fill", "#FA8602")
       .attr("stroke", "#FA8602")
+      .attr('z-index', 0)
       .attr("opacity", coreOpacity);
 }

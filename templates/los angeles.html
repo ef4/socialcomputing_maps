@@ -47,13 +47,15 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Los Angeles/final_data2.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Los Angeles/bicycle_accidents/final_data2.json', function(data){
     console.log(data);
       allData= data;
-      accidentData = allData["accidents"]["2012"];
+      accidentData = allData["accidents"];
       finalClusters = allData["clusters"]["2012"];
       processChartData(allData["streets"]["2012"]);
       drawCircles();
+      bindHoverHandlers();
+
     });
   });
 
