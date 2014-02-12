@@ -2,5 +2,5 @@
 *.pyc
 *~
 /static/config.json
-/streetviews/*
+/static/data/Chicago/bicycle_accidents/streetviews/*
 
