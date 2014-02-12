@@ -2,4 +2,5 @@
 *.pyc
 *~
 /static/config.json
-/streetviews/*.jpeg
+/streetviews/*
+
