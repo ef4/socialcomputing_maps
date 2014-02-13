@@ -8,12 +8,15 @@ var projection = d3.geo.mercator();
 var path = d3.geo.path().projection(projection); 
 var geoJSON;
 var svg;
+var g;
 var infoGraphToggle = false;
 var maxWidth = 1;
 var map;
 var allData;
 var showAllFlag = true;
 var lightBoxShown = false;
+var currentDrawPoints;
+var drawIndex = 0;
 var URL_PREFIX = '{{URL_PREFIX}}';
 
 
@@ -90,10 +93,8 @@ function initialize(){
     $('#data-lightbox').animate({
         'opacity':1.0}, 1500
     );
-
    });
 
-  
   $('#svgContainer').click(function(){
       closeLightBox();
   });
@@ -155,6 +156,28 @@ function processChartData(streetData){
   chartData.sort(function(a, b) {return d3.descending(a.numAccidents, b.numAccidents);})
   chartData.splice(25);
 
+}
+
+
+function drawController(){
+
+  if (accidentData.length > 0){
+
+    if (accidentData.length > 500){
+      currentDrawPoints = accidentData.splice(0,500);
+      //drawIndex += currentDrawPoints.length;
+      //console.log("middle",drawIndex);
+      setTimeout(drawCircles, 200);
+    } else {
+        //drawIndex += accidentData.length;
+        currentDrawPoints = accidentData;
+        accidentData = [];
+        //console.log("end", drawIndex);
+        setTimeout(drawCircles,200);
+    }
+  } else {
+    bindHoverHandlers();
+  } 
 }
 
 
@@ -243,24 +266,6 @@ function drawChart(){
 function toggleStreetView(lat, lng, image_id, show){
   var LatLng = new google.maps.LatLng(lat, lng);
   if (show){
-    // var panoramaOptions = {
-    //   position: LatLng,
-    //   pov: {
-    //     heading: 0,
-    //     pitch: -10,
-    //     zoom: 1
-    //   },
-    //   navigationControl: false,
-    //   enableCloseButton: false,
-    //   addressControl: false,
-    //   linksControl: false,
-    //   panControl:false,
-    //   zoomControl:false
-    // };
-   
-    // pano = new google.maps.StreetViewPanorama(document.getElementById("street-view"), panoramaOptions);
-    // console.log('rendered street-view');
-
     //Load image
     $('#street-view').empty();
     $('#street-view').css('visibility', 'visible');
@@ -285,21 +290,22 @@ function drawMap(){
     .attr("fill", 000)
     .attr("fill-opacity",1.0)
     .attr("stroke", 000);
+
+  g = svg.append('g'); 
+
+  var filter = svg.append("defs")
+    .append("filter")
+      .attr("id", "blur")
+    .append("feGaussianBlur")
+      .attr("stdDeviation", blurConstant);
 }
 
 function blur() {
   filter.attr("stdDeviation", this.value / 5);
 }
 
-function drawCircles(){
-  var filter = svg.append("defs")
-    .append("filter")
-      .attr("id", "blur")
-    .append("feGaussianBlur")
-      .attr("stdDeviation", blurConstant);
 
-  g = svg.append('g'); 
-
+function drawClusters(){
   g.selectAll(".finalClusters")
     .data(finalClusters)
     .enter().append("path")
@@ -319,13 +325,14 @@ function drawCircles(){
       .attr('stroke-linejoin', 'round')
       .attr('stroke-width', clusterStrokeWidth)
       .attr('fill', 'none')
-      .attr('z-index', 0)
-      .attr("filter", "url(#blur)");
+      .attr('z-index', 0);
+}
 
+function drawCircles(){
 
 
   g.selectAll(".accidents-shell")
-    .data(accidentData)
+    .data(currentDrawPoints)
     .enter().append("circle")
       .attr("class", function(d){
         return 'accident-' + d.street1 + '-' + d.street2;
@@ -352,7 +359,7 @@ function drawCircles(){
 
 
   g.selectAll(".accidents-core")
-    .data(accidentData)
+    .data(currentDrawPoints)
     .enter().append("circle")
       .attr("class", function(d){
         return d.street1 + '-' + d.street2;
@@ -368,4 +375,6 @@ function drawCircles(){
       .attr("stroke", "#FA8602")
       .attr('z-index', 0)
       .attr("opacity", coreOpacity);
+
+  setTimeout(drawController,200);
 }

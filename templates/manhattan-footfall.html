@@ -128,6 +128,7 @@
     function sortByStation(){
       for (var i in segments){
         var station = segments[i].station;
+        console.log(station);
         byStation[station].push({'start_lat': segments[i].start_lat, 'start_lng':segments[i].start_lng, 'end_lat': segments[i].end_lat, 'end_lng':segments[i].end_lng,'name':segments[i].name, 'station':segments[i].station, 'opacity':segments[i].opacity});
 
       }

@@ -5,7 +5,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/bootstrap.min.css"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/tipsy.css"/> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
@@ -54,8 +54,8 @@ $(window).load(function(){
       //finalClusters = allData["clusters"]["2012"];
       finalClusters = [];
       processChartData(allData["streets"]["2012"]);
-      drawCircles();
-      bindHoverHandlers();
+      drawClusters();
+      drawController();
 
     });
   });
@@ -117,7 +117,7 @@ $(window).load(function(){
       <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
       Broadway, 2nd Avenue, and 3rd Avenue had the most accidents during this time.
       <br>
-       We’ve suspended a year’s-worth of bicycle crashes onto a single canvas - 2000 unexpected, painful and traumatic, stops, impacts and falls. Maps won’t tell you where the next crash will be. They will help separate the noise from the pattern; or where things will tend to happen rather than just might.
+       We’ve suspended a year’s-worth of bicycle crashes onto a single canvas - around 5000 unexpected, painful and traumatic, stops, impacts and falls. Maps won’t tell you where the next crash will be. They will help separate the noise from the pattern; or where things will tend to happen rather than just might.
       <br>
       The data is availble through the <a href="http://www.nyc.gov/html/dot/html/bicyclists/bikestats.shtml" class="footer-highlight-link"> NYC Data Portal </a>
       <div id='lightbox-close'></div>
