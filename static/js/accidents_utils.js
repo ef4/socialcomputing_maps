@@ -187,7 +187,7 @@ function drawChart(){
   var chartWidth = $("#chart").width();
 
   var maxBarWidth = chartWidth-2; var barHeight = 20;
-  var svg = d3.select("#chart").append("svg")
+  var svg2 = d3.select("#chart").append("svg")
         .attr("width", chartWidth)
         .attr("height", chartHeight);
 
@@ -205,7 +205,7 @@ function drawChart(){
   var gridContainer = chart.append('g')
 
 
-  svg.selectAll("rect")
+  svg2.selectAll("rect")
       .data(chartData)
     .enter().append("rect")
 
@@ -281,8 +281,10 @@ function toggleStreetView(lat, lng, image_id, show){
 }
 
 function drawMap(){
-  svg = d3.select("#svgContainer").append("svg");
-  console.log(geoJSON);
+  svg = d3.select("#svgContainer").append("svg")
+        .attr('height', window.innerHeight)
+        .attr('width', window.innerWidth);
+        
   svg.selectAll("path")
     .data(geoJSON.features)
    .enter().append("path")
