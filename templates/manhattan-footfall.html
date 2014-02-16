@@ -48,7 +48,7 @@
 
     .tag {
       z-index: 2;
-      width:5%;
+      width:20%;
       position:absolute;
       top:95%;
       float:right;
@@ -57,8 +57,7 @@
       color:#F52307;
       /*background-color: rgba(64,65,66,0.3);*/
       border-radius: 2px;
-      text-align: center;
-      word-break: break-all;
+      text-align: left;
       cursor: pointer;
     }
 
@@ -81,7 +80,7 @@
     var path = d3.geo.path().projection(projection); 
     var mapCenter = [-71.123625,42.372115];
     var geoJSON;
-    var scaleFactor = 1.0;
+    var scaleFactor = 1.3;
     var segmentColor = '#F52307'
     var svg;
     var stations
@@ -128,13 +127,11 @@
     function sortByStation(){
       for (var i in segments){
         var station = segments[i].station;
-        console.log(station);
         byStation[station].push({'start_lat': segments[i].start_lat, 'start_lng':segments[i].start_lng, 'end_lat': segments[i].end_lat, 'end_lng':segments[i].end_lng,'name':segments[i].name, 'station':segments[i].station, 'opacity':segments[i].opacity});
 
       }
 
       for (var i = 0; i<stationNames.length; i++){
-        console.log(stationNames[i]);
         segmentsFinal.push(byStation[stationNames[i]]);
       }
 
@@ -147,8 +144,8 @@
     function addStationTags(){
       for (var i in stations){
         var  station = stations[i];
-        console.log(station, station.name);
-        var p_tag = "<p id='"+station.name +"_tag' class='tag'></p>";
+        var name = station.name.split(' ').join('_')
+        var p_tag = "<p id='"+name +"_tag' class='tag'></p>";
         $('body').append(p_tag);
       }
     }
@@ -279,7 +276,6 @@
           var id = tag.id;
           var windowWidth = $(window).width();
           var windowHeight = $(window).height();
-          console.log(parseFloat(tag.style.left));
           var moveX = (parseFloat(tag.style.left) <= windowWidth/2 ? '0%' : '100%');
           var moveY = (parseFloat(tag.style.top) <= windowHeight/2 ? '0%' : '100%');
           $('#'+id).animate({
@@ -330,8 +326,6 @@
             }
           } 
         });
-
-
     }
 
 
@@ -340,7 +334,7 @@
 
 
 
-      
+      console.log('called drawStations');
 
         var circle = d3.selectAll('circle')
             .data(stations)
@@ -351,13 +345,16 @@
               return d.name;})
             .attr('cx', function(d){
                var x =  projection([d.lng, d.lat])[0];
-               var name = '#' + d.name + '_tag';
+               var stationName = d.name.split(' ').join('_');
+               var name = '#' + stationName + '_tag';
+               console.log(name, x);
                $(name).offset({'left': x});
                return x;
             })
             .attr('cy', function(d){
                 var y = projection([d.lng, d.lat])[1];
-                var name = '#' + d.name + '_tag';
+                var stationName = d.name.split(' ').join('_');
+                var name = '#' + stationName + '_tag';
                 $(name).offset({'top': y});
                 $(name).html(d.name);
                 return y;

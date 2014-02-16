@@ -51,6 +51,7 @@ $(window).load(function(){
     console.log(data);
       allData= data;
       accidentData = data['accidents'];
+      accidentDataDraw = accidentData;
       finalClusters = allData['clusters'];
       processChartData(allData["streets"]);
       drawClusters();
@@ -92,7 +93,7 @@ $(window).load(function(){
       </div>
       <div id="tabcontent_2">
         <br></br>
-        <p id="address" align="left">Hover over an accident to explore.</p>
+        <p id="address" align="center">Hover over an accident to explore.</p>
         <img id="street-view" > </img>
         <br></br>
       </div>
@@ -100,6 +101,14 @@ $(window).load(function(){
   </div>
     
     <div id="svgContainer"></div>
+    <div id='data-lightbox'>
+      <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
+      Market Street, Mission Street, and Valencia Street had the most accidents during this time.
+      <br>
+      Out of the cities we looked at, SF had the least reported accidents - and most of them on flat land. 
+      <br>
+      The data was given to us by the <a href="http://www.chp.ca.gov/index.php" class="footer-highlight-link"> California Highway Patrol </a>
+    </div>
 
 
     <div id='text-descp'>
@@ -112,30 +121,24 @@ $(window).load(function(){
         <br>
         2012 and 2013.
       </p>
-    </div>
+    
 
-    <div id='data-lightbox'>
-      <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
-      Market Street, Mission Street, and Valencia Street had the most accidents during this time.
-      <br>
-      Out of the cities we looked at, SF had the least reported accidents - and most of them on flat land. 
-      <br>
-      The data was given to us by the <a href="http://www.chp.ca.gov/index.php" class="footer-highlight-link"> California Highway Patrol </a>
-    </div>
 
-    <div id="footer">
-      <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
-      This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
-      <span class="footer-plus">+</span>
-      <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
-      <span class="footer-plus">+</span>
-      <a href="http://media.mit.edu"> MIT Media Lab </a>
-      <span class="footer-plus">+</span>
-      <a href="http://mit.edu"> MIT</a>
-      &nbsp
-      <span class="footer-plus">|</span>
-      &nbsp
-      <span id="data-source" class='footer-highlight'> Data Source</span>
+
+      <div id="footer">
+        <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+        This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
+        <span class="footer-plus">+</span>
+        <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+        <span class="footer-plus">+</span>
+        <a href="http://media.mit.edu"> MIT Media Lab </a>
+        <span class="footer-plus">+</span>
+        <a href="http://mit.edu"> MIT</a>
+        &nbsp
+        <span class="footer-plus">|</span>
+        &nbsp
+        <span id="data-source" class='footer-highlight'> Data Source</span>
+      </div>
     </div>
 
 

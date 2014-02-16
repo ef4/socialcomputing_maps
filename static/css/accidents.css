@@ -1,67 +1,68 @@
 html, body{
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  max-height: 800px;
+  max-width: 2000px;
   font-family: 'Helvetica Neue';
   font-weight: lighter;
   background-color: rgba(43, 40, 40, 0.8);
-  /*background-color: rgba(255,255,255,1.0);*/
   color: #FA8602;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x:scroll;
+
 }
 
 #svgContainer {
-  width: 100%;
-  height: 100%;
-  float:left;
-  border-left: 5px;
+  position: relative;
+  top: -70px;
+  width: 1200px;
+  height: 800px;
+}
+
+#svgContainer svg{
+  position: absolute;
+  left: 100px;
 }
 
 
 #infoGraphic{
-  position: absolute;
-  height: 100%;
-  width: 5%;
-  left: 100%;
-  margin-right: 2%;
+  position: relative;
+  height: 800px;
+  width: 0px;
+  right: 0px;
+  margin-right: 2px;
   float:right;
-  border-left: '1px';
-  border-left-color:#000000; 
   background-color: rgba(43, 40, 40, 0.1);
   visibility: hidden;
-  z-index: 2;
+  z-index: 1;
 }
 
 #chart {
   width:80%; 
-  height:80%;
+  height:60%;
 }
 
 #drawer {
-  left : 95%;
+  position: relative;
+  right:50px;
+  top:40px;
   float:right;
-  position:absolute;
   background-color:'#093DDB';
   z-index: 3;
-  top:2%;
   cursor:pointer;
 }
 
 #drawer i{
   position:absolute; 
   left:35%; 
-  top:33%; 
+  top:33%;
   z-index:3;
   cursor:pointer;
 }
 
 #logo{
-  left : 3%;
-  float:left;
-  position:absolute;
+  position:relative;
+  top: 30px;
+  left :30px;
   z-index: 3;
-  top:2%;
 }
 
 #id {
@@ -92,7 +93,7 @@ html, body{
 
 
 #street-view{
-  width:95%;
+  width:100%;
   height:70%;
   visibility: hidden;
   top:3%;
@@ -132,23 +133,24 @@ rect {
 
 
 #text-descp{
-  position: absolute;
-  top: 75%;
-  left: 3%;
-  height: 10%
+  position: relative;
+  top: -300px;
+  left: 50px;
+  height: 200px;
+  font-size: 100px;
+  z-index: 3;
 
 }
 
 #title {
-  left:3%;
-  font-size:65px;
+  font-size:15%;
   color: #969596;
+  font-size: 60%;
   letter-spacing: 2px;
 }
 
 #map-descp {
-  margin-top: -15px;
-  left: 3%;
+  font-size: 15%;
   color :#FA8602;
   letter-spacing: 1.5px;
 }
@@ -171,6 +173,7 @@ rect {
   font-size: 12px;
   letter-spacing: 1.5px;
   background-color:rgba(0, 0, 0, 0.2);
+  z-index: 5;
 }
 
 #lightbox-close {
@@ -189,9 +192,9 @@ rect {
 }
 
 #footer {
-  position: absolute;
-  top: 96%;
-  left:2.68%;
+  position: relative;
+  left: -5px;
+  top: 10px;
   font-size: 12px;
   padding: 5px 10px 10px 5px;
   color: rgba(127,126,128,0.98);

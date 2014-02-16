@@ -13,6 +13,8 @@ var infoGraphToggle = false;
 var maxWidth = 1;
 var map;
 var allData;
+var accidentData;
+var accidentDataDraw;
 var showAllFlag = true;
 var lightBoxShown = false;
 var currentDrawPoints;
@@ -22,26 +24,26 @@ var URL_PREFIX = '{{URL_PREFIX}}';
 
 function initialize(){
   $('#drawer').click(function(){
-    var width = $(window).width(); var height = $(window).height();
     if (!infoGraphToggle){
       $('#infoGraphic').css('visibility', 'visible');
-      $('#infoGraphic').css('left', width * 0.7);
-      $('#infoGraphic').css('width', width * 0.3);
+      $('#infoGraphic').css('width', '400px');
       $('#chart').css('width', $('#infoGraphic').width());
       $('#chart').css('height', $('#infoGraphic').height() * 0.95);
-      $('#drawer').css('left', width * 0.7);
+      $('#drawer').css('right', '410px');
+      $('#street-view').css('width','100%');
       $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
       $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
       drawChart();
     } else {
       $('#infoGraphic').css('visibility','hidden');
-      $('#infoGraphic').css('left', width * 1.0);
-      $('#infoGraphic').css('width', width * 0);
+      $('#infoGraphic').css('width', '0px');
       $('#drawer').children().find('span').css('class','glyphicon glyphicon-arrow-left');
       $('#chart').empty();
+      $('#street-view').html('');
+      $('#street-view').css('width','0px');
       $('#button-icon').removeClass('glyphicon glyphicon-chevron-right');
       $('#button-icon').addClass('glyphicon glyphicon-chevron-left');
-      $('#drawer').css('left', width * 0.95);
+      $('#drawer').css('right', '50px');
     }
     infoGraphToggle = !infoGraphToggle;
   });
@@ -105,6 +107,14 @@ function initialize(){
 
 }
 
+// window.onresize = function(){
+//   accidentDataDraw = accidentData;
+//   $('#svgContainer').empty();
+//   setProjection();
+//   drawMap();
+//   drawController();
+// }
+
 
 function bindHoverHandlers(){
   $('svg circle').on('mouseover',function(){
@@ -161,17 +171,17 @@ function processChartData(streetData){
 
 function drawController(){
 
-  if (accidentData.length > 0){
+  if (accidentDataDraw.length > 0){
 
-    if (accidentData.length > 500){
-      currentDrawPoints = accidentData.splice(0,500);
+    if (accidentDataDraw.length > 500){
+      currentDrawPoints = accidentDataDraw.splice(0,500);
       //drawIndex += currentDrawPoints.length;
       //console.log("middle",drawIndex);
       setTimeout(drawCircles, 200);
     } else {
         //drawIndex += accidentData.length;
-        currentDrawPoints = accidentData;
-        accidentData = [];
+        currentDrawPoints = accidentDataDraw;
+        accidentDataDraw = [];
         //console.log("end", drawIndex);
         setTimeout(drawCircles,200);
     }
@@ -210,7 +220,7 @@ function drawChart(){
     .enter().append("rect")
 
       .attr("y", y)
-      .attr('height', 15)
+      .attr('height', 12 )
       .attr("fill", "#FA8602")
       .attr("stroke", "#FA8602")
       .attr('opacity',0.3)
@@ -282,8 +292,8 @@ function toggleStreetView(lat, lng, image_id, show){
 
 function drawMap(){
   svg = d3.select("#svgContainer").append("svg")
-        .attr('height', window.innerHeight)
-        .attr('width', window.innerWidth);
+        .attr('height',$('#svgContainer').height())
+        .attr('width', $('#svgContainer').width());
         
   svg.selectAll("path")
     .data(geoJSON.features)
