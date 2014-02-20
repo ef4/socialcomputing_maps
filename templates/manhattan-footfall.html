@@ -26,13 +26,17 @@
 
     var scaleFactor = 1.2;
     var mapCenter = [-87.715044,41.93202];
-    var stationNames = ['14th Street Sixth Avenue', '14th Street Eighth Avenue', '14th Street Union Square', '34th Street Herald Square', '42nd Street 5th Avenue Bryant Park', '59th Street Columbus Circle', '168th Street Washington Heights', 'Bleecker Street Broadway Lafayette Street', 'Brooklyn Bridge Chambers Street', 'Canal Street', 'Chambers Street WTC Park Place','Delancey Street Essex Street', 'Fulton Street', 'Grand Central 42nd Street', 'Lexington Avenue 51st 53rd Streets', 'Lexington Avenue 59th Street', 'South Ferry Whitehall Street', 'Times Sqaure 42nd Street', '42nd Street Port Authority Bus Terminal'];
-    var byStation = {'14th Street Sixth Avenue':[], '14th Street Eighth Avenue':[], '14th Street Union Square':[], '34th Street Herald Square':[], '42nd Street 5th Avenue Bryant Park':[], '59th Street Columbus Circle':[], '168th Street Washington Heights':[], 'Bleecker Street Broadway Lafayette Street':[], 'Brooklyn Bridge Chambers Street':[], 'Canal Street':[], 'Chambers Street WTC Park Place':[],'Delancey Street Essex Street':[], 'Fulton Street':[], 'Grand Central 42nd Street':[], 'Lexington Avenue 51st 53rd Streets':[], 'Lexington Avenue 59th Street':[], 'South Ferry Whitehall Street':[], 'Times Sqaure 42nd Street':[], '42nd Street Port Authority Bus Terminal':[]};
+    var stationNames = ['14 St 6 Av', '14 St 8 Av', 'Union Sq', '34th St', 'Bryant Park', 'Columbus Circle', '168th St', 'Bleecker St', 'Brooklyn Brdg', 'Canal St', 'Chambers St','Delancey St', 'Fulton St', 'Grand Central', '51 St', 'Lexington Av', 'South Ferry', 'Times Sq', 'Port Authority'];
+    var byStation = {'14 St 6 Av':[], '14 St 8 Av':[], 'Union Sq':[], '34th St':[], 'Bryant Park':[], 'Columbus Circle':[], '168th St':[], 'Bleecker St':[], 'Brooklyn Brdg':[], 'Canal St':[], 'Chambers St':[],'Delancey St':[], 'Fulton St':[], 'Grand Central':[], '51 St':[], 'Lexington Av':[], 'South Ferry':[], 'Times Sq':[], 'Port Authority':[]};
     var segmentsFinal = [[]];
     var labelXoffset = 100;
     var labelYoffset = 0;
     var drawSpeed = 30;
-
+    var structuredOffset = true;
+    var tagLeftMargin = 475;
+    var tagRightMargin = 945;
+    var tagTopMargin = 100;
+    var tagVerticalGap = 100;
     $(window).load(function(){
 
 

@@ -36,6 +36,11 @@ function initialize(){
   $('#lightbox-close').click(function(){
     closeLightBox();
   });
+
+  $('body').click(function(event){
+    console.log(event.pageX);
+
+  })
 }
 
 
@@ -56,7 +61,6 @@ function sortByStation(){
 function addStationTags(){
   for (var i in stations){
     var  station = stations[i];
-    console.log(station, station.tagname);
     var p_tag = "<p id='"+station.tagname +"_tag' class='tag'></p>";
     $('body').append(p_tag);
   }
@@ -136,7 +140,7 @@ function drawSegments(){
         .attr('fill', 'none')
         .attr('stroke', segmentColor)  
         .attr('class', function(d){
-            return d.station + '-' + d.name;
+            return d.station + '-' + d.name.split(" ").join("_");
         })
         .on('mouseover', function(d){
           console.log("here", d.name);
@@ -169,7 +173,6 @@ function drawSegments(){
     var id = tag.id;
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
-    console.log(parseFloat(tag.style.left));
     var moveX = (parseFloat(tag.style.left) <= windowWidth/2 ? '0%' : '100%');
     var moveY = (parseFloat(tag.style.top) <= windowHeight/2 ? '0%' : '100%');
     $('#'+id).animate({
@@ -185,6 +188,7 @@ function drawSegments(){
     var paths = d3.selectAll('path');
     for (pathI in paths[0]){
         thisPath = paths[0][pathI];
+        console.log(thisPath);
         station_from_path = thisPath.className.animVal.split('-')[0];
         if (station_from_path != station_id) {
             thisPath.setAttribute('stroke', 'grey');
@@ -227,6 +231,9 @@ function drawSegments(){
 
 function drawStations(){
 
+  //stations.sort(function(a, b) {return d3.descending(parseFloat(a.lng), parseFloat(b.lng));});
+
+
   var circle = d3.selectAll('circle')
       .data(stations)
       .enter().append('circle')
@@ -234,17 +241,31 @@ function drawStations(){
         currentStation = d.name;
         stationName = d.name;
         return 'segment-'+d.name;})
-      .attr('cx', function(d){
+      .attr('cx', function(d,i){
          var x =  projection([d.lng, d.lat])[0];
          var name = '#' + d.tagname + '_tag';
-         $(name).offset({'left': x+labelXoffset});
+         var finalXOffset;
+         if (structuredOffset){
+          var diffX = (i%2 == 0 ? tagLeftMargin : tagRightMargin);
+          finalXOffset = diffX;
+         } else {
+          finalXOffset = x+labelXoffset;
+         }
+         $(name).offset({'left': finalXOffset});
          return x;
       })
-      .attr('cy', function(d){
+      .attr('cy', function(d,i){
           var y = projection([d.lng, d.lat])[1];
           var name = '#' + d.tagname + '_tag';
-          console.log($(name));
-          $(name).offset({'top': y+labelYoffset});
+          var finalYOffset;
+          if (structuredOffset){
+            var diffY = (i%2 == 1 ? tagVerticalGap : 0)
+            tagTopMargin = tagTopMargin + diffY;
+            finalYOffset = tagTopMargin;
+          } else {
+            finalYOffset = y+labelYoffset;
+          }
+          $(name).offset({'top': finalYOffset});
           $(name).html(d.name);
           return y;
       })

@@ -1,20 +1,20 @@
 lat,lng,name,tagname
 40.702472,-74.012833,South Ferry,South_Ferry
 40.712655,-74.009657,Chambers St,Chambers_St
-40.756,-73.987,Times Sq,Times_Sq
 40.734722,-73.990278,Union Sq,Union_Sq
-40.712778,-74.004722,Brooklyn Brdg,Brooklyn_Brdg
 40.710206,-74.007744,Fulton St,Fulton_St
 40.739779,-74.002533,14 St 8 Av,14_St_8_Av
 40.712655,-74.009657,Delancey St,Delancey_St
-40.754799,-73.984208,Bryant Park,Bryant_Park
 40.749338,-73.987985,34th St,34th_St
 40.752283,-73.977519,Grand Central,Grand_Central
+40.756,-73.987,Times Sq,Times_Sq
+40.754799,-73.984208,Bryant Park,Bryant_Park
 40.762471,-73.9679,Lexington Av,Lexington_Av
+40.757205,-73.98983,Port Authority,Port_Authority
 40.757075,-73.971977,51 St,51_St
 40.768056,-73.981944,Columbus Circle,Columbus_Circle
 40.757075,-73.989708,14 St 6 Av,14_St_6_Av
 40.725833,-73.994722,Bleecker St,Bleecker_St
 40.841022,-73.939791,168th St,168th_St
-40.718056,-74.0,Canal Street,Canal_Street
-40.757205,-73.98983,Port Authority,Port_Authority
+40.718056,-74.0,Canal St,Canal_St
+40.712778,-74.004722,Brooklyn Brdg,Brooklyn_Brdg
