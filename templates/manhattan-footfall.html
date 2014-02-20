@@ -4,112 +4,37 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css"/> 
-    <link rel="stylesheet" type="text/css" href="/static/css/tipsy.css"/> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <script type="text/javascript" src="/static/js/jquery.tipsy.js"></script>
-    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-    <style type="text/css">
-
-    html, body{
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-    }
-
-    h1 {
-        float:left;
-        padding-left: 20px;
-        padding-top: 40px;
-    }
-    #svgContainer {
-        width: 100%;
-        height: 98%;
-        float:left;
-        border-left: 2px;
-        border-bottom: 2px;
-        z-index: 1;
-
-    }
-
-
-
-    #logo{
-      left : 3%;
-      float:left;
-      position:absolute;
-      z-index: 3;
-      top:2%;
-    }
-
-    .tag {
-      z-index: 2;
-      width:20%;
-      position:absolute;
-      top:95%;
-      float:right;
-      right:15%;
-      font-size:10pt;
-      color:#F52307;
-      /*background-color: rgba(64,65,66,0.3);*/
-      border-radius: 2px;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    #streetname{
-      z-index: 2;
-      position:absolute;
-      top:95%;
-      float:right;
-      right:25%;
-      font-size:16pt;
-      color:#F52307;
-    }
-
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/footfall.css"> </style>
+    <script type="text/javascript" src='{{URL_PREFIX}}static/js/footfall.js'></script>
     
-    </style>
-
     <script type="text/javascript">
 
-    var projection = d3.geo.mercator();
-    var path = d3.geo.path().projection(projection); 
-    var mapCenter = [-71.123625,42.372115];
-    var geoJSON;
-    var scaleFactor = 1.3;
-    var segmentColor = '#F52307'
-    var svg;
-    var stations
-    var g;
-    var currentStation;
-    var segmentsToDraw;
-    var streets = {};
-    var stationIndex  = 0;
+    var scaleFactor = 1.2;
+    var mapCenter = [-87.715044,41.93202];
     var stationNames = ['14th Street Sixth Avenue', '14th Street Eighth Avenue', '14th Street Union Square', '34th Street Herald Square', '42nd Street 5th Avenue Bryant Park', '59th Street Columbus Circle', '168th Street Washington Heights', 'Bleecker Street Broadway Lafayette Street', 'Brooklyn Bridge Chambers Street', 'Canal Street', 'Chambers Street WTC Park Place','Delancey Street Essex Street', 'Fulton Street', 'Grand Central 42nd Street', 'Lexington Avenue 51st 53rd Streets', 'Lexington Avenue 59th Street', 'South Ferry Whitehall Street', 'Times Sqaure 42nd Street', '42nd Street Port Authority Bus Terminal'];
-    //var chartData = [];
-    var maxOverlap=1;
-    //var infoGraphToggle = false;
     var byStation = {'14th Street Sixth Avenue':[], '14th Street Eighth Avenue':[], '14th Street Union Square':[], '34th Street Herald Square':[], '42nd Street 5th Avenue Bryant Park':[], '59th Street Columbus Circle':[], '168th Street Washington Heights':[], 'Bleecker Street Broadway Lafayette Street':[], 'Brooklyn Bridge Chambers Street':[], 'Canal Street':[], 'Chambers Street WTC Park Place':[],'Delancey Street Essex Street':[], 'Fulton Street':[], 'Grand Central 42nd Street':[], 'Lexington Avenue 51st 53rd Streets':[], 'Lexington Avenue 59th Street':[], 'South Ferry Whitehall Street':[], 'Times Sqaure 42nd Street':[], '42nd Street Port Authority Bus Terminal':[]};
     var segmentsFinal = [[]];
+    var labelXoffset = 10;
+    var labelYoffset = 10;
+    var drawSpeed = 30;
+
     $(window).load(function(){
 
 
-        jQuery.getJSON('/static/data/Manhattan/boundary.geojson', function(geojson){
+        jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/boundary.geojson', function(geojson){
             geoJSON = geojson;
             setProjection();
             drawMap();
+            initialize();
 
-            d3.csv('/static/data/Manhattan/footfall/walking_segments.csv', function (error, data) {
+            d3.csv('{{URL_PREFIX}}static/data/Manhattan/footfall/walking_segments.csv', function (error, data) {
                 segments = data;
                 sortByStation();
 
-                //processStreets();
-
-                d3.csv('/static/data/Manhattan/footfall/stations.csv', function(error, data){
+                d3.csv('{{URL_PREFIX}}static/data/Manhattan/footfall/stations.csv', function(error, data){
                     stations = data;
                     addStationTags();
                     drawStations();
@@ -123,285 +48,46 @@
 
     });
 
-
-    function sortByStation(){
-      for (var i in segments){
-        var station = segments[i].station;
-        byStation[station].push({'start_lat': segments[i].start_lat, 'start_lng':segments[i].start_lng, 'end_lat': segments[i].end_lat, 'end_lng':segments[i].end_lng,'name':segments[i].name, 'station':segments[i].station, 'opacity':segments[i].opacity});
-
-      }
-
-      for (var i = 0; i<stationNames.length; i++){
-        segmentsFinal.push(byStation[stationNames[i]]);
-      }
-
-      setTimeout(drawSegments,3000);
-
-
-    }
-
-    
-    function addStationTags(){
-      for (var i in stations){
-        var  station = stations[i];
-        var name = station.name.split(' ').join('_')
-        var p_tag = "<p id='"+name +"_tag' class='tag'></p>";
-        $('body').append(p_tag);
-      }
-    }
-
-
-
-    function processStreets(){
-        for (var i = 0; i <segments.length; i++){
-            if (segments[i].name != undefined){
-                if (segments[i].name in streets){
-                    streets[segments[i].name]++;
-                } else {
-                    streets[segments[i].name] = 1;
-                }
-            }
-        }
-
-        for (street in streets){
-            chartData.push({name:street, frequency:streets[street]});
-            if (streets[street] > maxOverlap){maxOverlap = streets[street];}
-        }
-        chartData.sort(function(a,b){return d3.descending(a.frequency, b.frequency);});
-        chartData.splice(30);
-
-    }
-
-    function setProjection(){ 
-      projection.scale(1)
-        .translate([0, 0]);
-
-      width = $("#svgContainer").width(); height = $("#svgContainer").height();
-      var b = path.bounds(geoJSON),
-        s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-        t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
-      projection.scale(s).translate(t);
-      projection(mapCenter);
-    }
-
-    function drawMap(){
-
-      svg = d3.select("#svgContainer").append("svg");
-
-
-      svg.selectAll(".map")
-        .data(geoJSON.features)
-       .enter().append("path")
-        .attr("d", path)
-        .attr("stroke-opacity", 0.0)
-        .attr("stroke", "black")
-        .attr("fill", "#CCCCCC")
-        .attr("fill-opacity", 0.075);
-    }
-
-    function drawSegments(){
-
-       // var lineTransition = function lineTransition(path){
-       //      path.transition()
-       //        .duration(200)
-       //        .attrTween("stroke-dasharray", tweenPath);
-       // };
-
-       //  var tweenPath = function tweenPath() {
-       //    var len = this.getTotalLength(),
-       //        interpolate = d3.interpolateString("0," + len, len + "," + len);
-       //    return function (t) {return interpolate(t);};
-       //  }
-
-        var opValue = function(d) { return d.opacity; };
-        
-        var opScale = d3.scale.sqrt().domain([0, d3.max(segments, opValue)]).range([0.0, 1]); 
-        var widthScale = d3.scale.linear().domain([0, d3.max(segments, opValue)]).range([0.5, 4.0]); 
-
-        var stationGroup = svg.selectAll('g')
-              .data(segmentsFinal)
-              .enter().append('g')
-              .attr('class', 'stationGroup');
-
-       
-
-
-        var paths = stationGroup.selectAll('path')
-              .data(function(d,i){
-                return d;
-              })
-              .enter().append('path')
-              .attr('stroke-opacity', function(d){
-                return opScale(opValue(d));})
-              .attr('stroke-width', function(d){return widthScale(opValue(d));})
-              .attr('fill', 'none')
-              .attr('stroke', segmentColor)  
-              .attr('class', function(d){
-                  return d.station + '-' + d.name;
-              })
-              .on('mouseover', function(d){
-                console.log("here", d.name);
-                $("#streetname").html(d.name);
-              })
-              .on('mouseout', function(d){
-                $('#streetname').html("");
-              })
-              .transition().delay(function(d,i){
-                return  i*50;})                    
-
-              .attr('d', function (d) {
-                  var lineData = [
-                      projection([parseFloat(d.start_lng), parseFloat(d.start_lat)]),
-                      projection([parseFloat(d.end_lng), parseFloat(d.end_lat)]),
-                  ]
-                  var dataLine =  d3.svg.line()
-                      .interpolate("basis")
-                      .x(function (d) {return d[0]})
-                      .y(function (d) {return d[1]});
-                  return dataLine(lineData);
-              })
-
-           
-
-
-
-        
-
-    }
-
-    var fadeOutMoveText = function(){
-        var tags = d3.selectAll('.tag')[0];
-        for (i in tags){
-          var tag = tags[i];
-          var id = tag.id;
-          var windowWidth = $(window).width();
-          var windowHeight = $(window).height();
-          var moveX = (parseFloat(tag.style.left) <= windowWidth/2 ? '0%' : '100%');
-          var moveY = (parseFloat(tag.style.top) <= windowHeight/2 ? '0%' : '100%');
-          $('#'+id).animate({
-          'opacity': 0.25
-            }, 12000, function() {
-            // Animation complete.
-          });
-        }
-
-        $('.tag').on('mouseover', function(){
-          $(this).css('opacity', 1.0);
-          var station_id = $(this).attr('id').split('_')[0];
-          var paths = d3.selectAll('path');
-          for (pathI in paths[0]){
-              thisPath = paths[0][pathI];
-              station_from_path = thisPath.className.animVal.split('-')[0];
-              if (station_from_path != station_id) {
-                  thisPath.setAttribute('stroke', 'grey');
-              }
-          }
-
-          var stations = $.find('.tag');
-
-          for (var st in stations){
-            var thisStation_id = stations[st].attr('id').split('_')[0];
-            if (thisStation_id != station_id){
-              $(this).setAttribute('color', 'grey');
-            }
-          }
-
-        });
-
-        $('.tag').on('mouseout', function(){
-          $(this).css('opacity', 0.25);
-          var station_id = $(this).attr('id').split('_')[0];
-          var paths = d3.selectAll('path');
-          for (pathI in paths[0]){
-              thisPath = paths[0][pathI];
-              thisPath.setAttribute('stroke', segmentColor);
-              
-          }
-          var stations = d3.selectAll('.tag')[0];
-
-          for (var st in stations){
-            var thisStation_id = stations[st].id.split('_')[0];
-            if (thisStation_id != station_id){
-              $(this).setAttribute('color', segmentColor);
-            }
-          } 
-        });
-    }
-
-
-
-    function drawStations(){
-
-
-
-      console.log('called drawStations');
-
-        var circle = d3.selectAll('circle')
-            .data(stations)
-            .enter().append('circle')
-            .attr('class', function(d){
-              currentStation = d.name;
-              stationName = d.name;
-              return d.name;})
-            .attr('cx', function(d){
-               var x =  projection([d.lng, d.lat])[0];
-               var stationName = d.name.split(' ').join('_');
-               var name = '#' + stationName + '_tag';
-               console.log(name, x);
-               $(name).offset({'left': x});
-               return x;
-            })
-            .attr('cy', function(d){
-                var y = projection([d.lng, d.lat])[1];
-                var stationName = d.name.split(' ').join('_');
-                var name = '#' + stationName + '_tag';
-                $(name).offset({'top': y});
-                $(name).html(d.name);
-                return y;
-            })
-            .attr('fill', 'black')
-            .attr('r', 0)
-            .attr('fill-opacity', 0.2)
-            .attr('stroke-opacity', 0.0)
-            
-
-
-        circle
-            .transition()
-            .duration(2000).delay(function(d, i) {return i * 1000;})
-              .attr("r", 3)
-              .ease("bounce");
-
-
-            $('svg circle').tipsy({ 
-              gravity: 'w', 
-              fade:true,
-              html: true, 
-              title: function() {
-                var d = this.__data__.name;
-                return '<p style="font-size:8pt;">' + d + '</p>'; 
-              }
-            });
-
-    }
-
-
-
-
-
-
-    
-
-
     </script>
     </head>
 
     <body>
-      <img id="logo" src="/static/img/logo.png">
+      <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.jpg"></a>
       <div id="svgContainer"></div>
-      <p id="streetname"></p>
 
+      <div id='data-lightbox'>
+        <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
+        Massachusetts Avenue, Cambridge Street, and Hampshire Stret had the most accidents during this time.
+        <br>
+        In ten years time bicycle ridership has quadrupled - we’re entering the bicycle age.  
+        <br>
+        The data was given to us by the <a href="http://www.cambridgema.gov/cpd/" class="highlight-link"> Cambridge Police Department </a>
+      </div>
+
+      <div id='text-descp'>
+        <p id='title'> Manhattan</p>
       
+
+        <p id='map-descp'>
+          This map visualizes footfall density in Manhattan.    
+        </p>
+      
+
+        <div id="footer">
+          <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+          This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
+          <span class="footer-plus">+</span>
+          <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+          <span class="footer-plus">+</span>
+          <a href="http://media.mit.edu"> MIT Media Lab </a>
+          <span class="footer-plus">+</span>
+          <a href="http://mit.edu"> MIT</a>
+          &nbsp
+          <span class="footer-plus">|</span>
+          &nbsp
+          <span id="data-source" class='footer-highlight'> Data Source</span>
+        </div>
+      </div>
     </body>
 </html>
     

@@ -1,7 +1,7 @@
-lat,lng,name
-42.362508,-71.086313,kendall
-42.365504,-71.103819,central
-42.373368,-71.118647,harvard
-42.388679,-71.119483,porter
-42.396714,-71.122411,davis
-42.395446,-71.141759,alewife
+lat,lng,name,tagname
+42.362508,-71.086313,kendall,kendall
+42.365504,-71.103819,central,central
+42.373368,-71.118647,harvard,harvard
+42.396714,-71.122411,davis,davis
+42.395446,-71.141759,alewife,alewife
+42.388679,-71.119483,porter,porter

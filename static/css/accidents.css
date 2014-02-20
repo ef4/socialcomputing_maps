@@ -58,12 +58,7 @@ html, body{
   cursor:pointer;
 }
 
-#logo{
-  position:relative;
-  top: 30px;
-  left :30px;
-  z-index: 3;
-}
+
 
 #id {
   color:#FA8602;
@@ -131,7 +126,6 @@ rect {
   cursor: pointer;
 }
 
-
 #text-descp{
   position: relative;
   top: -300px;
@@ -142,17 +136,28 @@ rect {
 
 }
 
+#logo{
+  position:relative;
+  top: 30px;
+  left :30px;
+  height: 60px;
+  width: 60px;
+  z-index: 3;
+}
+
 #title {
   font-size:15%;
   color: #969596;
   font-size: 60%;
   letter-spacing: 2px;
+  z-index: 3;
 }
 
 #map-descp {
   font-size: 15%;
   color :#FA8602;
   letter-spacing: 1.5px;
+  z-index: 3;
 }
 
 
@@ -198,7 +203,7 @@ rect {
   font-size: 12px;
   padding: 5px 10px 10px 5px;
   color: rgba(160,160,160,0.98);
-  z-index: 2;
+  z-index: 3;
   letter-spacing: 1.5px;
 }
  
@@ -230,3 +235,6 @@ rect {
   color: #656566;
   font-size: 12px;
 }
+
+
+
