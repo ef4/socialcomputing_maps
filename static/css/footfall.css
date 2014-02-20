@@ -13,7 +13,7 @@ html, body{
   top: -55px;
   left: 50px;
   width: 1200px;
-  height: 780px;
+  height: 750px;
 }
 
 #svgContainer svg{
@@ -120,7 +120,7 @@ html, body{
 #footer {
   position: relative;
   left: -5px;
-  top: -20px;
+  top:12px;
   font-size: 12px;
   padding: 5px 10px 10px 5px;
   color: rgba(160,160,160,0.98);

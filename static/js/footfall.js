@@ -49,7 +49,7 @@ function sortByStation(){
     segmentsFinal.push(byStation[stationNames[i]]);
   }
 
-  setTimeout(drawSegments,3000);
+  setTimeout(drawSegments,1000);
 }
 
 
@@ -115,7 +115,7 @@ function drawSegments(){
   var opValue = function(d) { return d.opacity; };
 
   var opScale = d3.scale.sqrt().domain([0, d3.max(segments, opValue)]).range([0.0, 1]); 
-  var widthScale = d3.scale.linear().domain([0, d3.max(segments, opValue)]).range([0.5, 4.0]); 
+  var widthScale = d3.scale.linear().domain([0, d3.max(segments, opValue)]).range([1.0, 3.0]); 
 
   var stationGroup = svg.selectAll('g')
         .data(segmentsFinal)
