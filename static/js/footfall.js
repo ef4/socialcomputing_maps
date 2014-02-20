@@ -61,7 +61,7 @@ function sortByStation(){
 function addStationTags(){
   for (var i in stations){
     var  station = stations[i];
-    var p_tag = "<p id='"+station.tagname +"_tag' class='tag'></p>";
+    var p_tag = "<p id="+station.tagname+" class='tag'></p>";
     $('body').append(p_tag);
   }
 }
@@ -140,7 +140,7 @@ function drawSegments(){
         .attr('fill', 'none')
         .attr('stroke', segmentColor)  
         .attr('class', function(d){
-            return d.station + '-' + d.name.split(" ").join("_");
+            return d.station.split(" ").join("_") + '-' + d.name.split(" ").join("_");
         })
         .on('mouseover', function(d){
           console.log("here", d.name);
@@ -166,7 +166,8 @@ function drawSegments(){
 
 }
 
-  var fadeOutMoveText = function(){
+
+var fadeOutMoveText = function(){
   var tags = d3.selectAll('.tag')[0];
   for (i in tags){
     var tag = tags[i];
@@ -181,15 +182,19 @@ function drawSegments(){
       // Animation complete.
     });
   }
+}
 
+
+function bindTagHandlers(){
   $('.tag').on('mouseover', function(){
     $(this).css('opacity', 1.0);
-    var station_id = $(this).attr('id').split('_')[0];
-    var paths = d3.selectAll('path');
+    var station_id = $(this).attr('id');
+    var paths = d3.selectAll('g path');
     for (pathI in paths[0]){
         thisPath = paths[0][pathI];
-        console.log(thisPath);
-        station_from_path = thisPath.className.animVal.split('-')[0];
+        station_from_path = $(thisPath).attr('class').split('-')[0];
+        console.log(station_from_path, station_id);
+        // station_from_path = station_from_path.split("_").join(" ");
         if (station_from_path != station_id) {
             thisPath.setAttribute('stroke', 'grey');
         }
@@ -209,7 +214,7 @@ function drawSegments(){
   $('.tag').on('mouseout', function(){
     $(this).css('opacity', 0.4);
     var station_id = $(this).attr('id').split('_')[0];
-    var paths = d3.selectAll('path');
+    var paths = d3.selectAll('g path');
     for (pathI in paths[0]){
         thisPath = paths[0][pathI];
         thisPath.setAttribute('stroke', segmentColor);
@@ -224,8 +229,9 @@ function drawSegments(){
       }
     } 
   });
-
 }
+
+
 
 
 
@@ -243,11 +249,11 @@ function drawStations(){
         return 'segment-'+d.name;})
       .attr('cx', function(d,i){
          var x =  projection([d.lng, d.lat])[0];
-         var name = '#' + d.tagname + '_tag';
+         var name = '#' + d.tagname;
          var finalXOffset;
          if (structuredOffset){
-          var diffX = (i%2 == 0 ? tagRightMargin : tagRightMargin - 350);
-          tagRightMargin = tagRightMargin - 20;
+          var diffX = (i%2 == 0 ? tagRightMargin : tagRightMargin - 370);
+          tagRightMargin = tagRightMargin - 15;
           finalXOffset = diffX;
          } else {
           finalXOffset = x+labelXoffset;
@@ -257,7 +263,7 @@ function drawStations(){
       })
       .attr('cy', function(d,i){
           var y = projection([d.lng, d.lat])[1];
-          var name = '#' + d.tagname + '_tag';
+          var name = '#' + d.tagname;
           var finalYOffset;
           if (structuredOffset){
             var diffY = (i%2 == 1 ? tagVerticalGap : 0)
@@ -294,4 +300,5 @@ function drawStations(){
         }
       });
 
+  bindTagHandlers();
   }
