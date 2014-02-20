@@ -3,7 +3,7 @@
 *~
 /static/config.json
 /static/data/Chicago/bicycle_accidents/streetviews/*
-/sstatic/data/Cambridge/bicycle_accidents/streetviews/*
+/static/data/Cambridge/bicycle_accidents/streetviews/*
 /static/data/Manhattan/bicycle_accidents/streetviews/*
 /static/data/Los Angeles/bicycle_accidents/streetviews/*
 /static/data/San Francisco/bicycle_accidents/streetviews/*
