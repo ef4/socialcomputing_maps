@@ -24,14 +24,15 @@ html, body{
 
 .tag {
   z-index: 4;
-  width:400px;
-  font-size:10pt;
+  width:100px;
+  font-size:12px;
   color:#F52307;
   /*background-color: rgba(64,65,66,0.3);*/
   border-radius: 2px;
   text-align: center;
   word-break: break-all;
   cursor: pointer;
+  text-decoration: bold;
 }
 
 
