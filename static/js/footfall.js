@@ -17,6 +17,7 @@ function initialize(){
   $('#data-source').click(function(){
     lightBoxShown = true;
     $('#svgContainer').css('opacity',0.1);
+    $('.tag').css('opacity',0.1);
 
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
@@ -27,6 +28,9 @@ function initialize(){
     $('#data-lightbox').animate({
         'opacity':1.0}, 1500
     );
+
+    $('#data-lightbox').attr('z-index', 6);
+    $('.tag').attr('z-index', 1);
    });
 
   $('#svgContainer').click(function(){
@@ -77,8 +81,11 @@ function closeLightBox(){
       );
 
       $('#svgContainer').animate({'opacity':1.0},'slow');
+      $('.tag').css('opacity',0.4);
       lightBoxShown = false;
-    };
+  };
+  $('#data-lightbox').attr('z-index', 1);
+  $('.tag').animate({'z-index': 6}, 'slow');
 }
 
 
