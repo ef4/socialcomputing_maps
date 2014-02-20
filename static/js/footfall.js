@@ -246,7 +246,8 @@ function drawStations(){
          var name = '#' + d.tagname + '_tag';
          var finalXOffset;
          if (structuredOffset){
-          var diffX = (i%2 == 0 ? tagLeftMargin : tagRightMargin);
+          var diffX = (i%2 == 0 ? tagRightMargin : tagRightMargin - 350);
+          tagRightMargin = tagRightMargin - 20;
           finalXOffset = diffX;
          } else {
           finalXOffset = x+labelXoffset;
