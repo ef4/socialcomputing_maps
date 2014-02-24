@@ -76,13 +76,13 @@
           .enter().append("path")
           
           .attr("class", "features")
-          .attr("stroke-opacity", 0.9)
-          .attr("stroke", function(d){
-            return d.properties.color;})
           .attr("fill", function(d){return d.properties.color;})
           .attr("fill-opacity", 0.0)
+          .attr("stroke", 'white')
           .transition().delay(function(d,i){return i;})
-            .attr("d",path);
+            .attr("d",path)
+            .attr("stroke", function(d){return d.properties.color;})
+            .attr("stroke-opacity", 0.9);
     } 
 
 
