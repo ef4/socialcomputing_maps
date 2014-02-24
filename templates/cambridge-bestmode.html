@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation.css"> </style>
+    <script type="text/javascript" src='{{URL_PREFIX}}static/js/footfall.js'></script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47879752-1', 'mit.edu');
+      ga('send', 'pageview');
+
+    </script>
+    
+    <script type="text/javascript">
+
+    var scaleFactor = 1.0;
+    var mapCenter = [-71.123625,42.372115];
+    var labelXoffset = 140;
+    var labelYoffset = 25;
+    var drawSpeed = 20;
+    var segments;
+    var structuredOffset = false;
+    var buildings;
+
+    $(window).load(function(){
+
+
+        jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
+            geoJSON = geojson;
+            setProjection();
+            drawMap();
+            //initialize();
+
+            d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/central.geojson', function(geojson2){
+              buildings = geojson2;
+              drawBuildings();
+            });
+        });
+    });
+
+    function drawBuildings(){
+
+      // var buildingsPaths = svg.append('g').selectAll("path.features")
+      //     .data(buildings.features)
+      //     .enter().append("circle")
+      //     .attr("cx", function(d){
+      //       var x =  projection([d.properties.center[0], d.properties.center[1]])[0];
+      //       return x;
+      //     })
+      //     .attr("cy", function(d){
+      //       var y =  projection([d.properties.center[0], d.properties.center[1]])[1];
+      //       return y;
+      //     })
+      //     .attr('r', 2)
+      //     .attr("class", "features")
+      //     .attr("stroke-opacity", 0.9)
+      //     .attr("stroke", function(d){
+      //       return d.properties.color;})
+      //     .attr("fill", function(d){return d.properties.color;})
+      //     .attr("fill-opacity", 0.9);
+
+
+      var buildingsPaths = svg.selectAll(".features")
+          .data(buildings.features)
+          .enter().append("path")
+          
+          .attr("class", "features")
+          .attr("stroke-opacity", 0.9)
+          .attr("stroke", function(d){
+            return d.properties.color;})
+          .attr("fill", function(d){return d.properties.color;})
+          .attr("fill-opacity", 0.0)
+          .transition().delay(function(d,i){return i;})
+            .attr("d",path);
+    } 
+
+
+    </script>
+    </head>
+
+    <body>
+      <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.jpg"></a>
+    	<div id="svgContainer"></div>
+
+      <div id='data-lightbox'>
+        <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
+         <p id='line1'> We simulate the shortest route from any point in the city's grid to the closest transit station.</p>
+        <br>
+         <p id='data-descrp'> Data Source: Google Maps.</p>
+      </div>
+
+      <div id='text-descp'>
+        <p id='title'> Cambridge</p>
+      
+
+        <p id='map-descp'>
+          Best modes of transportation from central square.    
+        </p>
+      </div>
+      
+
+        <div id="footer">
+          <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+          This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
+          <span class="footer-plus">+</span>
+          <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+          <span class="footer-plus">+</span>
+          <a href="http://media.mit.edu"> MIT Media Lab </a>
+          <span class="footer-plus">+</span>
+          <a href="http://mit.edu"> MIT</a>
+          &nbsp
+          <span class="footer-plus">|</span>
+          &nbsp
+          <span id="data-source" class='footer-highlight'> Data Source</span>
+        </div>
+      </div>
+    </body>
+</html>
+    

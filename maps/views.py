@@ -40,3 +40,9 @@ def sanfrancisco_green(request):
 
 def cambridge_green(request):
 	return render_to_response('cambridge-green.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def cambridge_generations(request):
+	return render_to_response('cambridge-generations.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def cambridge_bestmode(request):
+	return render_to_response('cambridge-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})

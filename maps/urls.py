@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^sanfrancisco-footfall$', 'maps.views.sanfrancisco_footfall', name='home'),
     url(r'^sanfrancisco-green$', 'maps.views.sanfrancisco_green', name='home'),
     url(r'^cambridge-green$', 'maps.views.cambridge_green', name='home'),
+    url(r'^cambridge-generations$', 'maps.views.cambridge_generations', name='home'),
+    url(r'^cambridge-bestmode$', 'maps.views.cambridge_bestmode', name='home'),
     url(r'^manhattan$', 'maps.views.manhattan', name='home'),
     # url(r'^maps/', include('maps.foo.urls')),
 

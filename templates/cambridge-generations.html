@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/footfall.css"> </style>
+    <script type="text/javascript" src='{{URL_PREFIX}}static/js/footfall.js'></script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47879752-1', 'mit.edu');
+      ga('send', 'pageview');
+
+    </script>
+    
+    <script type="text/javascript">
+
+    var scaleFactor = 1.0;
+    var mapCenter = [-71.123625,42.372115];
+    var labelXoffset = 140;
+    var labelYoffset = 25;
+    var drawSpeed = 20;
+    var segments;
+    var structuredOffset = false;
+;
+
+    $(window).load(function(){
+
+
+        jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
+            geoJSON = geojson;
+            setProjection();
+            drawMap();
+            initialize();
+
+            d3.csv('{{URL_PREFIX}}static/data/Cambridge/generations/generations_segments.csv', function (error, data) {
+                segments = data;
+                drawGenerationSegments();
+                //sortByStation();
+
+                // d3.csv('{{URL_PREFIX}}static/data/Cambridge/footfall/stations.csv', function(error, data){
+                //     stations = data;
+                //     addStationTags();
+                //     drawStations();
+                //     setTimeout(fadeOutMoveText, 6000);
+                // });
+            });
+        });
+
+
+        
+
+    });
+
+function drawGenerationSegments(){
+
+
+  // var opValue = function(d) { return d.opacity; };
+
+  // var opScale = d3.scale.sqrt().domain([0, d3.max(segments, opValue)]).range([0.0, 1]); 
+  // var widthScale = d3.scale.linear().domain([0, d3.max(segments, opValue)]).range([1.0, 3.0]); 
+
+  // var stationGroup = svg.selectAll('g')
+  //       .data(segmentsFinal)
+  //       .enter().append('g')
+  //       .attr('class', 'stationGroup');
+
+
+  var colorArray = ['rgb(51,160,44)','rgb(255,255,179)','rgb(251,154,153)','rgb(251,128,114)','rgb(128,177,211)','rgb(253,180,98)','rgb(179,222,105)','rgb(252,205,229)','rgb(217,217,217)','rgb(31,120,180)','rgb(178,223,138)','rgb(251,154,153)','rgb(227,26,28)','rgb(253,191,111)','rgb(255,127,0)','rgb(141,211,199)'];
+
+  var colorArray2 = ['black', 'brown', 'purple', 'blue', 'green', 'red', 'orange', 'yellow',];
+
+
+  segments.sort(function(a, b) {return d3.descending(parseFloat(a.generation), parseFloat(b.generation));});
+
+
+
+  var paths = svg.selectAll('path')
+        .data(segments)
+        .enter().append('path')
+        .attr('stroke-opacity', 0.8)
+        .attr('stroke-width', 5)
+        .attr('fill', 'none')
+        .attr('stroke', function(d){return colorArray2[d.generation];})  
+        .attr('class', function(d){
+            return d.name.split(" ").join("_");
+        })
+        .on('mouseover', function(d){
+          console.log("here", d.name);
+          $("#streetname").html(d.name);
+        })
+        .on('mouseout', function(d){
+          $('#streetname').html("");
+        })
+        .transition().delay(function(d,i){
+          return  i*1.5;})                    
+
+        .attr('d', function (d) {
+            var lineData = [
+                projection([parseFloat(d.start_lng), parseFloat(d.start_lat)]),
+                projection([parseFloat(d.end_lng), parseFloat(d.end_lat)]),
+            ]
+            var dataLine =  d3.svg.line()
+                .interpolate("basis")
+                .x(function (d) {return d[0]})
+                .y(function (d) {return d[1]});
+            return dataLine(lineData);
+        })
+
+}
+
+    </script>
+    </head>
+
+    <body>
+      <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.jpg"></a>
+    	<div id="svgContainer"></div>
+
+      <div id='data-lightbox'>
+        <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
+         <p id='line1'> We simulate the shortest route from any point in the city's grid to the closest transit station.</p>
+        <br>
+         <p id='data-descrp'> Data Source: Google Maps.</p>
+      </div>
+
+      <div id='text-descp'>
+        <p id='title'> Cambridge</p>
+      
+
+        <p id='map-descp'>
+          Street Generations    
+        </p>
+      </div>
+      
+
+        <div id="footer">
+          <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+          This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
+          <span class="footer-plus">+</span>
+          <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+          <span class="footer-plus">+</span>
+          <a href="http://media.mit.edu"> MIT Media Lab </a>
+          <span class="footer-plus">+</span>
+          <a href="http://mit.edu"> MIT</a>
+          &nbsp
+          <span class="footer-plus">|</span>
+          &nbsp
+          <span id="data-source" class='footer-highlight'> Data Source</span>
+        </div>
+      </div>
+    </body>
+</html>
+    
