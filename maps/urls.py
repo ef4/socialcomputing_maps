@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^cambridge-green$', 'maps.views.cambridge_green', name='home'),
     url(r'^cambridge-generations$', 'maps.views.cambridge_generations', name='home'),
     url(r'^cambridge-bestmode$', 'maps.views.cambridge_bestmode', name='home'),
+    url(r'^cambridge-bestmode-blocks$', 'maps.views.cambridge_bestmode_blocks', name='home'),
     url(r'^manhattan$', 'maps.views.manhattan', name='home'),
     # url(r'^maps/', include('maps.foo.urls')),
 

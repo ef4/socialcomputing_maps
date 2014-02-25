@@ -8,7 +8,7 @@
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation.css"> </style>
-    <script type="text/javascript" src='{{URL_PREFIX}}static/js/footfall.js'></script>
+    <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
 
     <!-- Google Analytics -->
     <script>
@@ -79,10 +79,9 @@
           .attr("fill", function(d){return d.properties.color;})
           .attr("fill-opacity", 0.0)
           .attr("stroke", 'white')
-          .transition().delay(function(d,i){return i;})
-            .attr("d",path)
-            .attr("stroke", function(d){return d.properties.color;})
-            .attr("stroke-opacity", 0.9);
+          .attr("d",path)
+          .attr("stroke", function(d){return d.properties.color;})
+          .attr("stroke-opacity", 0.9);
     } 
 
 

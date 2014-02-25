@@ -19,22 +19,13 @@ html, body{
 #svgContainer svg{
   position: absolute;
   left: 100px;
+  z-index: 6;
 }
 
 
-.tag {
-  z-index:5;
-  width:85px;
-  font-size:12px;
-  color:#F52307;
-  /*background-color: rgba(64,65,66,0.3);*/
-  border-radius: 2px;
-  text-align: center;
-  word-break: break-all;
-  cursor: pointer;
-  text-decoration: bold;
+.block{
+  z-index: 7;
 }
-
 
 #logo{
   position:relative;
@@ -45,10 +36,19 @@ html, body{
   z-index: 3;
 }
 
+#scale{
+  z-index: 3;
+  position: relative;
+  top: -700px;
+  left:800px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+}
+
 
 #text-descp{
   position: relative;
-  top: -250px;
+  top: -320px;
   left: 50px;
   height: 200px;
   font-size: 100px;
@@ -125,7 +125,7 @@ html, body{
 #footer {
   position: relative;
   left: 45px;
-  top:-325px;
+  top:-375px;
   font-size: 12px;
   padding: 5px 10px 10px 5px;
   color: rgba(160,160,160,0.98);
