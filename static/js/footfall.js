@@ -58,7 +58,7 @@ function sortByStation(){
     segmentsFinal.push(byStation[stationNames[i]]);
   }
 
-  setTimeout(drawSegments,1000);
+  setTimeout(drawSegments,600);
 }
 
 
