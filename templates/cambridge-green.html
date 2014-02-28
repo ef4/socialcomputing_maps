@@ -388,6 +388,13 @@ function drawController(){
 
 function drawCircles(){
 
+  var opValue = function(d) { return d.properties.opacity; };
+  var opScale = d3.scale.sqrt().domain([0, d3.max(greenData.features, opValue)]).range([0.0, 1]); 
+
+
+  var radValue = function(d){ return d.properties.radius;};
+  var radiusScale = d3.scale.sqrt().domain([0, d3.max(greenData.features, radValue)]).range([0.05, 2.0]); 
+
   var filter = svg.append("defs")
       .append("filter")
         .attr("id", "blur")
@@ -400,7 +407,7 @@ function drawCircles(){
     .data(greenData.features)
     .enter().append("circle")
     .attr("class", "greens")
-    .attr("r", function(d,i){ return d.properties.radius;})
+    .attr("r", function(d,i){ return radiusScale(d.properties.radius);})
     .attr('cx', function (d) {       
       return projection([parseFloat(d.geometry.coordinates[1]), parseFloat(d.geometry.coordinates[0])])[0]; 
     })
@@ -409,7 +416,7 @@ function drawCircles(){
     })
     .attr("fill", "#2DBA20")
     .attr("stroke", "#2DBA20")
-    .attr("opacity", function(d,i){return d.properties.opacity;});
+    .attr("opacity", function(d,i){return opScale(d.properties.opacity);});
     // .on('mouseover', function(d){
     //   var latlng = new google.maps.LatLng(d['lat'], d['lng']);
     //   toggleStreetView(latlng, true);
