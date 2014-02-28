@@ -19,48 +19,44 @@
   max-width: 2000px;
   font-family: 'Helvetica Neue';
   font-weight: lighter;
-  background-color: rgba(43, 40, 40, 0.8);
-  color: #FA8602;
   overflow-y: hidden;
-  overflow-x:scroll;
-
+  overflow-x:hidden;
 }
+
 
 #svgContainer {
   position: relative;
-  top: -70px;
+  top: -55px;
+  left: 50px;
   width: 1200px;
-  height: 800px;
+  height: 750px;
 }
 
 
-#logo{
-  position:relative;
-  top: 30px;
-  left :30px;
-  height: 60px;
-  width: 60px;
-  z-index: 3;
+#map{
+  position: relative;
+  top: -725px;
+  left: 250px;
+  width: 900px;
+  height: 650px;
 }
-    
-    
-
-    #map{
-      width: 100%;
-      height: 100%;
-    }
 
 #title {
-  font-size:15%;
+  position: relative;
+  top: -550px;
+  font-size:60%;
   color: #969596;
-  font-size: 60%;
   letter-spacing: 2px;
   z-index: 3;
 }
 
+
+
 #map-descp {
+  position: relative;
+  top: -525px;
   font-size: 15%;
-  color :#FA8602;
+  color :red;
   letter-spacing: 1.5px;
   z-index: 3;
 }
@@ -103,8 +99,8 @@
 
 #footer {
   position: relative;
-  left: -5px;
-  top: 40px;
+  left: 45px;
+  top: -900px;
   font-size: 12px;
   padding: 5px 10px 10px 5px;
   color: rgba(160,160,160,0.98);
@@ -139,6 +135,26 @@
 .footer-plus {
   color: #656566;
   font-size: 12px;
+}
+
+#logo{
+  position:relative;
+  top: 30px;
+  left :30px;
+  height: 60px;
+  width: 60px;
+  z-index: 3;
+}
+
+
+#text-descp{
+  position: relative;
+  top: -250px;
+  left: 50px;
+  height: 200px;
+  font-size: 100px;
+  z-index: 3;
+
 }
 
 
@@ -405,17 +421,17 @@ function drawCircles(){
   </head>
   <body>
       
-
+        <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.jpg"></a>
         <div id="svgContainer"></div>
         <img id='map' src="{{URL_PREFIX}}static/img/SanFrancisco_green.png"></img>
         <!--<div id="map"></div>-->
 
         <div id='text-descp'>
-        <p id='title'> New York, NY</p>
+        <p id='title'>San Francisco</p>
       
 
         <p id='map-descp'>
-          Transportation efficienty - Driving duration vs Transit duration 
+          Street Greenery 
         </p>
       </div>
       
