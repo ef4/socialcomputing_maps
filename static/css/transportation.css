@@ -39,8 +39,6 @@ html, body{
 #scale{
   z-index: 3;
   position: relative;
-  top: -700px;
-  left:800px;
   font-size: 18px;
   letter-spacing: 1.5px;
 }

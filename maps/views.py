@@ -47,5 +47,18 @@ def cambridge_generations(request):
 def cambridge_bestmode(request):
 	return render_to_response('cambridge-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
-def cambridge_bestmode_blocks(request):
-	return render_to_response('cambridge-bestmode-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+def cambridge_efficiency_blocks(request):
+	return render_to_response('cambridge-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def manhattan_efficiency_blocks(request):
+	return render_to_response('manhattan-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def mumbai_footfall(request):
+	return render_to_response('mumbai-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def scale(request):
+	return render_to_response('scale.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def slider_bar(request):
+	return render_to_response('slider-bar.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+

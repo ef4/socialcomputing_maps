@@ -20,8 +20,12 @@ urlpatterns = patterns('',
     url(r'^cambridge-green$', 'maps.views.cambridge_green', name='home'),
     url(r'^cambridge-generations$', 'maps.views.cambridge_generations', name='home'),
     url(r'^cambridge-bestmode$', 'maps.views.cambridge_bestmode', name='home'),
-    url(r'^cambridge-bestmode-blocks$', 'maps.views.cambridge_bestmode_blocks', name='home'),
+    url(r'^cambridge-efficiency-blocks$', 'maps.views.cambridge_efficiency_blocks', name='home'),
+    url(r'^manhattan-efficiency-blocks$', 'maps.views.manhattan_efficiency_blocks', name='home'),
     url(r'^manhattan$', 'maps.views.manhattan', name='home'),
+    url(r'^mumbai-footfall$', 'maps.views.mumbai_footfall', name='home'),
+    url(r'^scale$', 'maps.views.scale', name='home'),
+    url(r'^slider-bar$', 'maps.views.slider_bar', name='home'),
     # url(r'^maps/', include('maps.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

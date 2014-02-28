@@ -193,7 +193,7 @@ var fadeOutMoveText = function(){
 
 
 function bindTagHandlers(){
-  $('.tag').on('click', function(){
+  $('.tag').on('click   ', function(){
     $(this).css('opacity', 1.0);
     var station_id = $(this).attr('id');
     var paths = d3.selectAll('g path');

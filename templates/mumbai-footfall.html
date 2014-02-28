@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/footfall.css"> </style>
+    <script type="text/javascript" src='{{URL_PREFIX}}static/js/footfall.js'></script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47879752-1', 'mit.edu');
+      ga('send', 'pageview');
+
+    </script>
+    
+    <script type="text/javascript">
+
+    var scaleFactor = 1.0;
+    var mapCenter = [-71.123625,42.372115];
+    var stationNames = ['CST', 'Churchgate','Mumbai Central','Dadar','Bandra','Ghatkopar','Vashi','Andheri','Borivali'];
+    var byStation = {'CST':[],'Churchgate':[],'Mumbai Central':[],'Dadar':[],'Bandra':[],'Ghatkopar':[],'Vashi':[],'Andheri':[],'Borivali':[] };
+    var segmentsFinal = [[]];
+    var labelXoffset = 100;
+    var labelYoffset = 0;
+    var drawSpeed = 30;
+    var structuredOffset = true;
+    var tagLeftMargin = 400;
+    var tagRightMargin = 1000;
+    var tagTopMargin = 100;
+    var tagVerticalGap = 120;
+
+    var leftToRightGap = 750;
+    var leftMarginOffset = 0;
+;
+
+    $(window).load(function(){
+
+
+        jQuery.getJSON('{{URL_PREFIX}}static/data/Mumbai/boundary.geojson', function(geojson){
+            geoJSON = geojson;
+            setProjection();
+            drawMap();
+            initialize();
+
+            d3.csv('{{URL_PREFIX}}static/data/Mumbai/footfall/walking_segments.csv', function (error, data) {
+                segments = data;
+                sortByStation();
+
+                d3.csv('{{URL_PREFIX}}static/data/Mumbai/footfall/stations.csv', function(error, data){
+                    stations = data;
+                    addStationTags();
+                    drawStations();
+                    setTimeout(fadeOutMoveText, 6000);
+                });
+             });
+        });
+
+
+        
+
+    });
+
+    </script>
+    </head>
+
+    <body>
+      <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.jpg"></a>
+        <div id="svgContainer"></div>
+
+      <div id='data-lightbox'>
+        <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
+         <p id='line1'> We simulate the shortest route from any point in the city's grid to the closest transit station.</p>
+        <br>
+         <p id='data-descrp'> Data Source: Google Maps.</p>
+      </div>
+
+      <div id='text-descp'>
+        <p id='title'> Mumbai</p>
+      
+
+        <p id='map-descp'>
+          Walking Watersheds    
+        </p>
+      </div>
+      
+
+        <div id="footer">
+          <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+          This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
+          <span class="footer-plus">+</span>
+          <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+          <span class="footer-plus">+</span>
+          <a href="http://media.mit.edu"> MIT Media Lab </a>
+          <span class="footer-plus">+</span>
+          <a href="http://mit.edu"> MIT</a>
+          &nbsp
+          <span class="footer-plus">|</span>
+          &nbsp
+          <span id="data-source" class='footer-highlight'> Data Source</span>
+        </div>
+      </div>
+    </body>
+</html>
+    
