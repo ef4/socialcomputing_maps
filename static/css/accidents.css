@@ -1,5 +1,5 @@
 html, body{
-  max-height: 1100px;
+  max-height: 800px;
   max-width: 2000px;
   font-family: 'Helvetica Neue';
   font-weight: lighter;
@@ -12,9 +12,10 @@ html, body{
 
 #svgContainer {
   position: relative;
-  top: -70px;
-  width: 1800px;
-  height: 1000px;
+  top: -40px;
+  left:125px;
+  width: 1200px;
+  height: 750px;
 }
 
 #svgContainer svg{
@@ -128,25 +129,24 @@ rect {
 
 #text-descp{
   position: relative;
-  top: -500px;
-  left: 125px;
+  top: -405px;
+  left: 150px;
   height: 200px;
-  font-size: 150px;
   z-index: 3;
 
 }
 
 #logo{
   position:relative;
-  top: 30px;
-  left :30px;
-  height: 60px;
-  width: 60px;
+  top: 50px;
+  left :150px;
+  height: 55px;
+  width: 55px;
   z-index: 3;
 }
 
 #title {
-  font-size:60pt;
+  font-size:50pt;
   color: rgba(225,225,225,0.8);;
   letter-spacing: 2px;
   z-index: 3;
@@ -154,7 +154,7 @@ rect {
 }
 
 #map-descp {
-  font-size: 16pt;
+  font-size: 12pt;
   color :rgb(247, 147 , 70);
   letter-spacing: 1.5px;
   z-index: 3;
@@ -198,9 +198,9 @@ rect {
 
 #footer {
   position: relative;
-  left: 125px;
-  bottom: 325px;
-  font-size: 15px;
+  left: 150px;
+  bottom: 300px;
+  font-size: 12px;
   padding: 5px 10px 10px 5px;
   color: rgba(160,160,160,0.98);
   z-index: 3;
@@ -209,14 +209,14 @@ rect {
  
 #footer i.fa-plus {
   color: #FA8602;
-  font-size: 15px;
+  font-size: 12px;
   opacity: 0.5;
   margin: 5px;
 }
 
 #footer a{
   color: rgba(200,200,200,1.0);
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .footer-highlight{
@@ -233,7 +233,7 @@ rect {
 
 .footer-plus {
   color: #656566;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 

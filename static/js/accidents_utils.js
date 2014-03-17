@@ -26,10 +26,10 @@ function initialize(){
   $('#drawer').click(function(){
     if (!infoGraphToggle){
       $('#infoGraphic').css('visibility', 'visible');
-      $('#infoGraphic').css('width', '500px');
+      $('#infoGraphic').css('width', '400px');
       $('#chart').css('width', $('#infoGraphic').width());
       $('#chart').css('height', $('#infoGraphic').height() * 0.95);
-      $('#drawer').css('right', '510px');
+      $('#drawer').css('right', '410px');
       $('#street-view').css('width','100%');
       $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
       $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
