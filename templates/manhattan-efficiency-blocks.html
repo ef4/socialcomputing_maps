@@ -40,7 +40,8 @@
       jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/transportation/nyc-zip-codes.geojson', function(geojson){
             geoJSON = geojson;
             setProjection();
-            drawMap();
+            //drawMap();
+            drawBlocks();
             initialize();
 
             $('#scale').offset({top:200, left:60});
@@ -90,23 +91,28 @@
 
     function drawBlocks(){
 
+      svg = d3.select("#svgContainer").append("svg")
+        .attr('height',$('#svgContainer').height())
+        .attr('width', $('#svgContainer').width());
+
       var filter = svg.append("defs")
         .append("filter")
           .attr("id", "blur")
         .append("feGaussianBlur")
           .attr("stdDeviation", blurConstant);
 
-      var buildingsPaths = svg.selectAll(".block")
-          .data(buildings.features)
+
+      var boroughs = svg.selectAll(".block")
+        .data(geoJSON.features)
           .enter().append("path")
           
           .attr("class", "block")
-          .attr("fill", 'white')
-          .attr("fill-opacity", 1.0)
+          .attr("fill", getColor(0.1))
+          .attr("fill-opacity", 0.3)
           .attr("id", function(d){return d.id;})
           .attr("d",path)
-          .attr("stroke", 'black')
-          .attr("stroke-opacity", 0.05);
+          .attr("stroke", getColor(0.3))
+          .attr("stroke-opacity", 0.2);
 
       initHandlers();
     } 

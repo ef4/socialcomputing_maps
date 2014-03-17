@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <script type="text/javascript">
+
+    
+    var K = 12; 
+    var numLocations =1000; 
+    var points = [];
+    var means =[];
+    var centers;
+    var FIXED_K = 3
+    var cluster;
+    var size = 100; var offset =10;
+    var colors = d3.scale.category10();
+    var MAX_INTERATIONS = 25; 
+    var numInterations = 0;
+    var MIN_THRESHOLD = 0.00000001; var THRESHOLD_FLAG= false;
+    window.onload = function(){
+    	//points = selectRandomLocationsTEST(numLocations);
+
+    	points = selectRandomLocations(numLocations);
+    	centers = selectRandomLocations(K);
+
+
+
+    	shuffled_points = d3.shuffle(points);
+    	means = shuffled_points.slice(0,K);
+    	fixedMeans = shuffled_points.slice(K,K+FIXED_K); 
+    	means = fixedMeans.concat(means);
+
+    	
+
+    	svg = d3.select("#mapContainer").append("svg")
+    		.attr("width", size*offset+16)
+    		.attr("height", size*offset+16)
+    		.append('g')
+    		.attr('transform', 'translate(8, 8)');
+
+    	svg.selectAll(".gridpoint")
+    	.data(points)
+    	.enter().append("circle")
+    	.attr("class","gridpoint")
+    	.attr("cx", function(d){return d[0]*offset;})
+    	.attr("cy", function(d){return d[1]*offset;})
+    	.attr("r", 4)
+    	.attr("fill","blue").attr("fill-opacity",0.5);
+
+    	svg.selectAll(".mean")
+    	.data(means)
+    	.enter().append("circle")
+    	.attr("class","mean")
+    	.attr("cx", function(d){return d[0]*offset;})
+    	.attr("cy", function(d){return d[1]*offset;})
+    	.attr("r", 10)
+    	.attr("fill",function(d,i){return colors(i);});
+
+    	svg.selectAll(".fixed")
+    	.data(fixedMeans)
+    	.enter().append("circle")
+    	.attr("class","fixed")
+    	.attr("cx", function(d){return d[0]*offset;})
+    	.attr("cy", function(d){return d[1]*offset;})
+    	.attr("r", 20)
+    	.attr("fill","black");
+
+    	processStep();
+   
+    }
+
+
+
+    function selectRandomLocationsTEST(numLocations) {
+
+    	// Random within 4 quadrants
+    	var randomLocations = []; 
+    	for (var k= 0; k< centers.length ; k++){
+    		var center = centers[k]
+			for (var i = 0; i < numLocations; i++) {
+				var nx = Math.nrand(); var ny = Math.nrand();
+				var scaleFactor = size/10;
+				var x = center[0] + scaleFactor*nx; var y = center[1] + scaleFactor*ny;
+	    		randomLocations.push([x, y]); 
+    		}
+    	}
+	   
+    	return randomLocations; 
+    }
+
+
+    function selectRandomLocations(numLocations) {
+    	var randomLocations = []; 
+    	for (var i = 0; i < numLocations; i++) {
+    		var x = Math.floor(Math.random() * size); 
+    		var y = Math.floor(Math.random() * size); 
+    		randomLocations.push([x, y]); 
+    	}
+    	return randomLocations; 
+    }
+
+    function computeDistance(p1,p2){
+    	return Math.pow(p2[1]-p1[1],2) + Math.pow(p2[0]-p1[0],2);
+    }
+
+
+    function computerClusterMean(cluster){
+    	var meanX = d3.mean(cluster,function(d) { return d[0]});
+    	var meanY = d3.mean(cluster,function(d) { return d[1]});
+    	return [meanX, meanY];
+    }
+
+
+    function processStep(){
+
+    	if (numInterations < MAX_INTERATIONS){
+
+    		clusters = d3.range(K+FIXED_K).map(function (d) { return []; });
+
+	    	for (var i =0; i<points.length;i++){
+	    		var minCluster = -1; var minDist = 1000000;
+	    		for (var k=0; k<means.length;k++){
+
+	    			var dist = computeDistance(points[i],means[k]);
+	    			if (dist < minDist){minCluster = k; minDist = dist;}
+	    		}
+
+	    		points[i].cluster=minCluster;
+	    		clusters[minCluster].push(points[i]);
+	    	}
+
+	    	for (var k =FIXED_K; k<means.length;k++){
+	    		var updatedMean = computerClusterMean(clusters[k]);
+	    		//if ((updatedMean[0]-means[k][0]) < MIN_THRESHOLD && ((updatedMean[1]-means[k][1]) < MIN_THRESHOLD)) {THRESHOLD_FLAG=true}
+	    		means[k] = updatedMean;
+	    	}
+
+	    	svg.selectAll(".gridpoint")
+	    		.attr("fill", function(d){
+	    			if (d.cluster >= FIXED_K) return colors(d.cluster)
+	    			return "black"});
+
+
+	    	svg.selectAll(".mean")
+	    		.data(means)
+	    		.attr("cx", function(d){return d[0]*offset;})
+	    		.attr("cy", function(d){return d[1]*offset;});
+	    	numInterations++;
+    	}
+
+    	//if (!THRESHOLD_FLAG){setTimeout(processStep, 1000);}
+    	
+    	setTimeout(processStep, 1000);
+    }
+
+
+    Math.nrand = function() {
+	var x1, x2, rad, y1;
+	do {
+		x1 = 2 * this.random() - 1;
+		x2 = 2 * this.random() - 1;
+		rad = x1 * x1 + x2 * x2;
+	} while(rad >= 1 || rad == 0);
+	var c = this.sqrt(-2 * Math.log(rad) / rad);
+	return x1 * c;
+	};
+
+	Math.nrand_clamped = function(x_normal) {
+		if (x_normal > 1) return 1
+		else if (x_normal < -1) return -1
+		else return x_normal;
+	}
+
+    </script>
+
+   </head>
+   <body>
+
+   <div id="mapContainer"></div>
+   </body>
+</html>

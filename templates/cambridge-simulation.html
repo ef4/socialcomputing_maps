@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <script type="text/javascript">
+    var gridSize = 100;
+    var offset = 10;
+    var fixedLocations = [];
+    var svg; 
+    var newLocations; 
+    var alpha = 0.05; 
+    var SPEED_FACTOR = 1;
+    var numIterations = 0; 
+    var MAX_ITERATIONS =100; 
+    var color = d3.scale.linear().range(["#fed98e", "#cc4c02"]).domain([0,(Math.PI/25) * Math.sqrt(gridSize*offset)]);
+
+    window.onload = function(){
+
+    	var gridPoints = makeGridPoints();
+    	newLocations = selectRandomLocations(8); 
+    	//newLocations = [[51,51]];
+    	fixedLocations = selectRandomLocations(10);
+
+
+    	svg = d3.select("#mapContainer").append("svg")
+    		.attr("width", gridSize*offset+16)
+    		.attr("height", gridSize*offset+16)
+    		.append('g')
+    		.attr('transform', 'translate(8, 8)');
+
+    	svg.selectAll(".gridpoint")
+    	.data(gridPoints)
+    	.enter().append("circle")
+    	.attr("cx", function(d){return d[0]*offset;})
+    	.attr("cy", function(d){return d[1]*offset;})
+    	.attr("r", 2)
+    	.attr("fill",function (d, i) {
+    		return color(pDensity(d[0], d[1]));
+    	});
+
+    	svg.selectAll(".school")
+    	.data(fixedLocations).enter().append("circle")
+    	.attr("cx", function(d){return	d[0]*offset;}).attr("cy", function(d){return d[1]*offset;})
+    	.attr('class', 'school')
+    	.attr("r", 4).attr("fill","red").attr("stroke","red");
+
+        svg.selectAll(".new-school")
+    	.data(newLocations).enter().append("circle")
+    	.attr("cx", function(d){return	d[0]*offset;}).attr("cy", function(d){return d[1]*offset;})
+    	.attr("r", 8).attr("fill","blue")
+    	.attr('class', "new-school");
+    	processStep();
+
+    }
+
+
+    function makeGridPoints(){
+    	var gridPoints = [];
+    	for (var i=0; i<gridSize;i++){
+    		for (var j=0; j<gridSize; j++){1
+    			gridPoints.push([i, j]);
+    		}
+    	}
+    	return gridPoints;
+    }
+
+    function selectRandomLocations(numLocation) {
+    	var randomLocations = []; 
+    	for (var i = 0; i < numLocation; i++) {
+    		var x = Math.floor(Math.random() * gridSize); 
+    		var y = Math.floor(Math.random() * gridSize); 
+    		randomLocations.push([x, y]); 
+    	}
+    	return randomLocations; 
+    }
+
+
+    function pDensity(x,y){
+    	var x_grid = Math.floor(x); var y_grid = Math.floor(y);
+    	if (x_grid < 0 || y_grid < 0) return 0;
+    	else if (x_grid >= gridSize || y_grid >= gridSize) return 0;
+    	else {
+    		//return 0;
+    		var p_value = (Math.PI/25) * Math.sqrt(x_grid*y_grid)* Math.sin(x_grid*(Math.PI/25)) * Math.sin(y_grid*(Math.PI/25));
+    		return p_value;
+    		//return Math.sqrt(i)*;
+    	}
+    }
+
+    function computePartialForP(x,y){
+    	var diffX = (pDensity(x+1,y) - pDensity(x,y))/(Math.PI/25);
+    	var diffY = (pDensity(x,y+1) - pDensity(x,y))/(Math.PI/25);
+    	// d(p^2)/dx or d(p^2)/dy
+    	var dp2dx = 2 * pDensity(x,y) * diffX;
+    	var dp2dy = 2 * pDensity(x,y) * diffY;
+    	return [dp2dx, dp2dy];
+    }
+
+
+    function partialDistance(x1,y1,x2,y2 ){
+    	var denominator = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2); 
+    	if (denominator == 0) return 100000;
+    	var diffX = (x1 - x2) / denominator; 
+    	var diffY = (y1 - y2) / denominator; 
+    	//console.log(x1,x2,y1,y2,diffX,diffY); 
+    	return [diffX, diffY];
+    }
+
+    function getTemperature(t) {
+
+    }
+
+    function updateLocations() {
+    	var updatedLocations = newLocations.map(function (d) { return [0, 0]}); 
+    	for (var i = 0; i < fixedLocations.length; i++) {
+    		var s = fixedLocations[i]; 
+    		for (var j = 0; j < newLocations.length; j++) {
+    			var l = newLocations[j]; 
+    			//console.log('L -> S', l,s);
+    			var diff = partialDistance(l[0], l[1], s[0], s[1]); 
+    			console.log('diff1', diff);
+    			updatedLocations[j][0] += diff[0]; updatedLocations[j][1] += diff[1];  
+    		}
+    	}
+    	//console.log('updatedLocations', updatedLocations[0]);
+
+    	for (var i = 0; i < newLocations.length; i++) {
+    		var l1 = newLocations[i]; 
+    		for (var j = 0; j < i; j++) {
+				var l2 = newLocations[j];
+				//console.log('L1 -> L2', l1,l2, i, j); 
+				var diff = partialDistance(l1[0], l1[1], l2[0], l2[1]);
+				//console.log('diff2', diff, newLocations);
+				updatedLocations[i][0] += diff[0]; updatedLocations[i][1] += diff[1];
+    			
+    		}
+
+    		var pDiff = computePartialForP(l1[0], l1[1]).map(function (d) { return alpha * d}); 
+    		console.log('pDiff', pDiff);
+    		updatedLocations[i][0] += pDiff[0] //+ Math.random() * Math.exp(-numIterations + 2);
+			updatedLocations[i][1] += pDiff[1] //+ Math.random() * Math.exp(-numIterations + 2);
+
+    	}
+    	console.log('updatedLocations', updatedLocations[0])
+
+    	newLocations = newLocations.map(function (d, i) {
+    		d[0] = Math.max(Math.min(d[0]+updatedLocations[i][0] *SPEED_FACTOR, gridSize -1), 0); 
+    		d[1] = Math.max(Math.min(d[1]+updatedLocations[i][1] *SPEED_FACTOR, gridSize -1), 0); 
+    		console.log(d)
+    		return d;  
+    	});
+
+
+    }
+
+
+    function processStep() {
+    	if (numIterations < MAX_ITERATIONS) {
+    		updateLocations(); 
+    		console.log(numIterations,newLocations);
+    		svg.selectAll('.new-school')
+	    		.attr('cx', function (d) { return d[0] *offset})
+	    		.attr('cy', function (d) { return d[1] *offset});
+
+	    	numIterations++; 
+	    	setTimeout(processStep, 500);
+    	}
+    }
+
+    var Simulation = function(){
+
+    };
+
+
+    </script>
+
+   </head>
+   <body>
+
+   <div id="mapContainer"></div>
+   </body>
+</html>

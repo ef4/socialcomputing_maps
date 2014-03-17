@@ -26,7 +26,10 @@ urlpatterns = patterns('',
     url(r'^manhattan$', 'maps.views.manhattan', name='home'),
     url(r'^mumbai-footfall$', 'maps.views.mumbai_footfall', name='home'),
     url(r'^scale$', 'maps.views.scale', name='home'),
-    url(r'^slider-bar$', 'maps.views.slider_bar', name='home'),
+    url(r'^schools$', 'maps.views.schools', name='home'),
+    url(r'^zipcodes$', 'maps.views.zipcodes', name='home'),
+    url(r'^cambridge-simulation$', 'maps.views.cambridge_simulation', name='home'),
+    url(r'^cambridge-kmeans$', 'maps.views.cambridge_kmeans', name='home'),
     # url(r'^maps/', include('maps.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

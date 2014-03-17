@@ -62,6 +62,14 @@ def mumbai_footfall(request):
 def scale(request):
 	return render_to_response('scale.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
-def slider_bar(request):
-	return render_to_response('slider-bar.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+def schools(request):
+	return render_to_response('schools.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def zipcodes(request):
+	return render_to_response('zipcodes.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def cambridge_simulation(request):
+	return render_to_response('cambridge-simulation.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def cambridge_kmeans(request):
+	return render_to_response('cambridge-kmeans.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
