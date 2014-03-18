@@ -17,6 +17,7 @@ var lightBoxShown = false;
 function initialize(){
 
   $('#data-source').click(function(){
+    console.log("click lbox");
     lightBoxShown = true;
     $('#svgContainer').css('opacity',0.1);
     $('.tag').css('opacity',0.1);
@@ -42,11 +43,6 @@ function initialize(){
   $('#lightbox-close').click(function(){
     closeLightBox();
   });
-
-  $('body').click(function(event){
-    console.log(event.pageX);
-
-  })
 }
 
 

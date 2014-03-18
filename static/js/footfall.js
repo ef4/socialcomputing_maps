@@ -3,7 +3,8 @@ var path = d3.geo.path().projection(projection);
 var geoJSON;
 var segmentColor = '#F52307'
 var svg;
-var stations
+var stations;
+var convexHulls;
 var g;
 var currentStation;
 var segmentsToDraw;
@@ -70,7 +71,16 @@ function addStationTags(){
   }
 }
 
-
+function createConvexHull(station_id){
+  console.log(station_id);
+  var hull_points = station_points[station_id].map(function(d){return projection([parseFloat(d[0]), parseFloat(d[1])]);});
+  svg.append("path")
+    .datum(d3.geom.hull(hull_points))
+    .attr("d", function(d) { return "M" + d.join("L") + "Z"; })
+    .attr("class","hull")
+    .attr("stroke",segmentColor).attr("stroke-opacity",0.1)
+    .attr("fill",segmentColor).attr("fill-opacity",0.1);
+}
 
 
 
@@ -193,49 +203,27 @@ var fadeOutMoveText = function(){
 
 
 function bindTagHandlers(){
-  $('.tag').on('click   ', function(){
-    $(this).css('opacity', 1.0);
+  $('.tag').on('mouseover', function(){
     var station_id = $(this).attr('id');
-    var paths = d3.selectAll('g path');
-    for (pathI in paths[0]){
-        thisPath = paths[0][pathI];
-        station_from_path = $(thisPath).attr('class').split('-')[0];
-        console.log(station_from_path, station_id);
-        // station_from_path = station_from_path.split("_").join(" ");
-        if (station_from_path != station_id) {
-            thisPath.setAttribute('stroke', 'grey');
-        }
-    }
-
-    var stations = $.find('.tag');
-
-    for (var st in stations){
-      var thisStation_id = stations[st].attr('id').split('_')[0];
-      if (thisStation_id != station_id){
-        $(this).setAttribute('text-color', 'grey');
+    createConvexHull(station_id);
+    d3.selectAll('.tag').each(function(d){
+      if(this.id != station_id){
+        $(this).css('opacity',0.4);
+      } else {
+        $(this).css('opacity',1.0);
       }
-    }
-
+    });
   });
 
   $('.tag').on('mouseout', function(){
-    $(this).css('opacity', 0.4);
-    var station_id = $(this).attr('id').split('_')[0];
-    var paths = d3.selectAll('g path');
-    for (pathI in paths[0]){
-        thisPath = paths[0][pathI];
-        thisPath.setAttribute('stroke', segmentColor);
-        
-    }
-    var stations = d3.selectAll('.tag')[0];
-
-    for (var st in stations){
-      var thisStation_id = stations[st].id.split('_')[0];
-      if (thisStation_id != station_id){
-        $(this).setAttribute('color', segmentColor);
-      }
-    } 
+    svg.selectAll('.hull').each(function(){
+      d3.select(this).remove();
+    })
+    d3.selectAll('.tag').each(function(d){
+      $(this).css('opacity',1.0);
+    });
   });
+
 }
 
 

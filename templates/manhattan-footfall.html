@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
@@ -28,45 +29,44 @@
     var mapCenter = [-87.715044,41.93202];
     var stationNames = ['14 St 6 Av', '14 St 8 Av', 'Union Sq', '34th St', 'Bryant Park', 'Columbus Circle', '168th St', 'Bleecker St', 'Brooklyn Brdg', 'Canal St', 'Chambers St','Delancey St', 'Fulton St', 'Grand Central', '51 St', 'Lexington Av', 'South Ferry', 'Times Sq', 'Port Authority'];
     var byStation = {'14 St 6 Av':[], '14 St 8 Av':[], 'Union Sq':[], '34th St':[], 'Bryant Park':[], 'Columbus Circle':[], '168th St':[], 'Bleecker St':[], 'Brooklyn Brdg':[], 'Canal St':[], 'Chambers St':[],'Delancey St':[], 'Fulton St':[], 'Grand Central':[], '51 St':[], 'Lexington Av':[], 'South Ferry':[], 'Times Sq':[], 'Port Authority':[]};
+    var station_points;
     var segmentsFinal = [[]];
     var labelXoffset = 100;
     var labelYoffset = 0;
     var drawSpeed = 30;
     var structuredOffset = true;
     var tagLeftMargin = 475;
-    var tagRightMargin = 1050;
+    var tagRightMargin = 1150;
     var tagTopMargin = 100;
     var tagVerticalGap = 65;
 
-    var leftToRightGap = 400;
+    var leftToRightGap = 425;
     var leftMarginOffset = 15;
 
     $(window).load(function(){
 
 
-        jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/boundary.geojson', function(geojson){
-            geoJSON = geojson;
-            setProjection();
-            drawMap();
-            initialize();
-
-            d3.csv('{{URL_PREFIX}}static/data/Manhattan/footfall/walking_segments.csv', function (error, data) {
-                segments = data;
-                sortByStation();
-
-                d3.csv('{{URL_PREFIX}}static/data/Manhattan/footfall/stations.csv', function(error, data){
-                    stations = data;
-                    addStationTags();
-                    drawStations();
-                    setTimeout(fadeOutMoveText, 6000);
-                });
-            });
+       queue()
+            .defer(d3.json, '{{URL_PREFIX}}static/data/Manhattan/boundary.geojson')
+            .defer(d3.csv, '{{URL_PREFIX}}static/data/Manhattan/footfall/walking_segments.csv')
+            .defer(d3.csv, '{{URL_PREFIX}}static/data/Manhattan/footfall/stations.csv')
+            .defer(d3.json, '{{URL_PREFIX}}static/data/Manhattan/footfall/station_points.json')
+            .await(ready);
+  
         });
 
-
-        
-
-    });
+        function ready(error,geojson,segments_data,stations_data,station_points_data){
+          geoJSON = geojson;
+          setProjection();
+          drawMap();
+          initialize();
+          segments = segments_data;
+          sortByStation();
+          station_points = station_points_data;
+          stations = stations_data;
+          addStationTags();
+          drawStations();
+        }
 
     </script>
     </head>
