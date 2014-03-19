@@ -78,8 +78,8 @@ function createConvexHull(station_id){
     .datum(d3.geom.hull(hull_points))
     .attr("d", function(d) { return "M" + d.join("L") + "Z"; })
     .attr("class","hull")
-    .attr("stroke",segmentColor).attr("stroke-opacity",0.1)
-    .attr("fill",segmentColor).attr("fill-opacity",0.1);
+    .attr("stroke","black").attr("stroke-opacity",0.3).attr("stroke-width",1.5)
+    .attr("fill","none").attr("fill-opacity",0.0);
 }
 
 

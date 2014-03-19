@@ -57,9 +57,12 @@
           .enter().append("path")
           
           .attr("class", "features")
+          // .attr("cx", function(d){return projection(d.properties.center)[0];})
+          // .attr("cy", function(d){return projection(d.properties.center)[1];})
+          //.attr("r", )
           .attr("fill", function(d){return d.properties.color;})
-          .attr("fill-opacity", 0.0)
-          .attr("stroke", 'white')
+          .attr("fill-opacity", 0.9)
+          .attr("stroke", function(d){return d.properties.color;})
           .attr("d",path)
           .attr("stroke", function(d){return d.properties.color;})
           .attr("stroke-opacity", 0.9);
