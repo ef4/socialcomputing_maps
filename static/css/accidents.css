@@ -204,8 +204,8 @@ rect {
 
 #essayBox{
   position: absolute;
-  top: 120px;
-  left:215px;
+  top: 110px;
+  left:180px;
   border:1px;
   border-color: rgba(43, 40, 40, 0.5);
   border-style: outset;
