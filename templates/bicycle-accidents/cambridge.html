@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/tipsy.css"/> 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/accidents.css"> </style>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/accidents_utils.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47879752-1', 'mit.edu');
+      ga('send', 'pageview');
+
+    </script>
+
+<script type="text/javascript">
+
+var mapCenter = [-122.643914,45.515971];
+var scaleFactor = 0.9;
+var blurConstant = 0.3;
+var clusterStrokeOpacity = 0.3;
+var clusterStrokeWidth = 3;
+var shellRandomShift = 0.002;
+var shellOpacity = 0.2;
+var coreOpacity = 0.5;
+var cityName = 'Cambridge';
+var URL_PREFIX = '{{URL_PREFIX}}';
+
+
+$(window).load(function(){
+
+
+  jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
+    geoJSON = geojson;
+    setProjection();
+    drawMap();
+    initialize();
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/bicycle_accidents/final_data2.json', function(data){
+      allData= data;
+      accidentData = data['accidents'];
+      accidentDataDraw = accidentData;
+      finalClusters = allData['clusters'];
+      processChartData(allData["streets"]);
+      drawClusters();
+      drawController();
+    });
+  });
+
+
+
+});
+
+
+</script>
+</head>
+<body>
+  <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.png"></a>
+  
+  <div id="drawer">
+      <svg height='50' width='50' style="z-index:1">
+          <circle cx="25" cy="25" r="15" stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />
+      </svg>
+      <i id='button-icon' class="glyphicon glyphicon-chevron-left"></i>
+  </div>
+
+  <div id="infoGraphic">     
+    <br></br>
+    <br></br>
+    <div id="tabContainer">
+      <ul id="infoTabs" class="nav nav-tabs">
+        <li id="tab_1" style="background-color:rgba(43, 40, 40, 0.7);"> Street Graph </li>
+        <li id="tab_2"> Street View</li>
+      </ul>
+    </div>
+    <div id="paneContent">
+      <div id="tabcontent_1" >
+        <br></br>
+        <p align="center"> Accidents by Street </p>
+        <p id="chartTitle" align="center"> </p>
+        <div id="chart"> </div>
+      </div>
+      <div id="tabcontent_2">
+        <br></br>
+        <p id="address" align="center">Hover over an accident to explore.</p>
+        <img id="street-view" > </img>
+        <br></br>
+      </div>
+    </div>
+  </div>
+
+  <div id='essayBox'>
+    <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+    <h1> Essay Title </h1> 
+
+    <div id='essayContent'>
+      <h2> Motivation </h2>
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text.
+      </p>
+      
+      <h2> Data Collection </h2>
+      <p>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+      </p>
+
+      <h2> Analysis and Insights</h2>
+      <p>
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. 
+      </p>
+
+      <h2> References </h2>
+      <p>
+        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+      </p>
+    </div>
+  </div>
+  
+  <div id="svgContainer"></div>
+
+  <div id='data-lightbox'>
+    <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
+    Massachusetts Avenue, Cambridge Street, and Hampshire Stret had the most accidents during this time.
+    <br>
+    In ten years time bicycle ridership has quadrupled - we’re entering the bicycle age.  
+    <br>
+    The data was given to us by the <a href="http://www.cambridgema.gov/cpd/" class="footer-highlight-link"> Cambridge Police Department </a>
+  </div>
+
+  <div id='text-descp'>
+    <p id='title'> Cambridge</p>
+
+    <p id='map-descp'>
+      This map visualizes the 956 bicycle accidents that were reported  
+      <br>
+      in Cambridge between 2010 and 2013...<b id='essayBox-source'>more</b>
+    </p>
+  </div>
+
+
+  <div id="footer">
+    <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+    This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
+    <span class="footer-plus">+</span>
+    <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+    <span class="footer-plus">+</span>
+    <a href="http://media.mit.edu"> MIT Media Lab </a>
+    <span class="footer-plus">+</span>
+    <a href="http://mit.edu"> MIT</a>
+    &nbsp
+    <span class="footer-plus">|</span>
+    &nbsp
+    <span id="data-source" class='footer-highlight'> Data Source</span>
+  </div>
+
+    
+
+</body>
+</html>

@@ -17,6 +17,7 @@ var accidentData;
 var accidentDataDraw;
 var showAllFlag = true;
 var lightBoxShown = false;
+var essayBoxShown = false;
 var currentDrawPoints;
 var drawIndex = 0;
 var URL_PREFIX = '{{URL_PREFIX}}';
@@ -97,6 +98,15 @@ function initialize(){
     );
    });
 
+  $('#essayBox-source').click(function(){
+    essayBoxShown = true;
+    $('#text-descp').css('opacity',0.2);
+    $('#essayBox').css('z-index',10);
+    $('#essayBox').animate({
+        'opacity':0.9}, 1500
+    );
+  })
+
   $('#svgContainer').click(function(){
       closeLightBox();
   });
@@ -104,6 +114,10 @@ function initialize(){
   $('#lightbox-close').click(function(){
     closeLightBox();
   });
+
+  $('#essayBox-close').click(function(){
+    closeEssayBox();
+  })
 
 }
 
@@ -137,9 +151,21 @@ function closeLightBox(){
       $('#data-lightbox').animate({
         'opacity':0.0}, 'fast'
       );
-
       $('#svgContainer').animate({'opacity':1.0},'slow');
+
       lightBoxShown = false;
+    };
+}
+function closeEssayBox(){
+  if (essayBoxShown){
+      
+      $('#svgContainer').animate({'opacity':1.0},'slow');
+      $('#text-descp').css('opacity',1.0);
+      $('#essayBox').css('opacity',0.0);
+      $('#essayBox').css('z-index',1);
+      $('#svgContainer').css('z-index',3);
+      $('#text-descp').css('z-index',3);
+      essayBoxShown = false;
     };
 }
 
