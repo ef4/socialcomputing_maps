@@ -7,7 +7,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/tipsy.css"/> 
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
@@ -70,58 +70,17 @@ $(window).load(function(){
 <div class="container">
 
   <div id="drawer">
-      <i id='button-icon' class="fa fa-angle-left"></i>
+      <p id='details'> Details </p>
+      <span>
+      <svg height='50' width='50' style="z-index:1">
+        <circle cx="20" cy="23" r="15"  stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />
+      </svg>
+      <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="position:relative; right:5px; top:-38px;float:right;"></i>
+      </span>
   </div>
 
   <div id="svgContainer"></div>
- <div id="infoGraphic">     
-    <div id="tabContainer">
-      <ul id="infoTabs" class="nav nav-tabs">
-        <li id="tab_1" style="background-color:rgba(43, 40, 40, 0.7);"> Street Graph </li>
-        <li id="tab_2"> Street View</li>
-      </ul>
-    </div>
-    <div id="paneContent">
-      <div id="tabcontent_1" >
-        </br>
-        <p align="center"> Accidents by Street </p>
-        <p id="chartTitle" align="center"> </p>
-        <div id="chart"> </div>
-      </div>
-      <div id="tabcontent_2">
-        <img id="street-view" > </img>
-        <p id="address" align="center">Hover over an accident to explore.</p>
-        <br></br>
-      </div>
-    </div>
-  </div> 
 
-  <div id='essayBox'>
-    <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
-    <h1> Essay Title </h1> 
-
-    <div id='essayContent'>
-      <h2> Motivation </h2>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-      </p>
-      
-      <h2> Data Collection </h2>
-      <p>
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
-      </p>
-
-      <h2> Analysis and Insights</h2>
-      <p>
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. 
-      </p>
-
-      <h2> References </h2>
-      <p>
-        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
-      </p>
-    </div>
-  </div> 
 
    <div class="title-container">
           <div class="title-text">
@@ -150,8 +109,70 @@ $(window).load(function(){
     <a href="http://media.mit.edu"> MIT Media Lab </a>
     <span class="footer-plus">+</span>
     <a href="http://mit.edu"> MIT</a>
+
+
+  <div id='essayBox'>
+    <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+    <h1> Bicycle Accidents in Cambridge </h1> 
+
+    <div id='essayContent'>
+      <p>
+        This map visualizes bicycle accidents in the city of Cambridge, Massachusetts.
+      </p>
+
+      <p> 
+      We've placed four years’ worth of bicycle crashes onto a map - hundreds of unexpected, painful, and traumatic impacts and falls. This maps helps to show where accidents tend to happen -- like Mass Ave and Cambridge Street and Hampshire Street -- in the hope that those streets might be made safer for bikers.  
+      <p>
+
+      <p>
+      You can explore this map on three levels: city, street and location.
+City: Each reported bike accident is recorded as a dot on the map.  Streets on which bike accidents are common are outlined in red.  You may hover over an accident to see the street or intersection on which it occurred.
+Street: Pull out the infographic panel from the top right of the map to make street-wise comparison of accidents. You can click on each bar to visualize only the accidents on that particular street
+Location:Use the streetview tab and hover over an accident point to get a localized view of the accident site.
+      </p>
+
+      <p>We were interested to learn how US cities were managing the reintroduction of mass bike use.  In Cambridge alone the number of daily bike commuters has quadrupled since 2006. Pedestrians and car owners are on a learning curve to mitigate cars and bikes on an ageing public infrastructure through introducing bike lanes and shared roads. It's our hope that mapping bike accidents will draw the attention of cities and interest groups to evaluate and re-imagine areas where collisions are common.
+      </p>
+ 
+      <p>
+The Cambridge Police gave us the data for bike crashes between 2010-2014.  Not all bike accidents are reported to the police, and this map only shows those that are reported.
+      </p>
+
+      <p>
+All accidents were placed on the map as a point at the place where they occurred.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
+      </p>
+
+      <p>
+The data extraction and geolocation was written in Python, and the visualization was written in JavaScript and D3.  We used the Google Maps API to geolocate every crash point, since the data was given to us as street addresses or intersections. 
+      </p>
+    </div>
+  </div> 
+
     
   </div>
+
+   <div id="infoGraphic">     
+    <div id="tabContainer">
+      <ul id="infoTabs" class="nav nav-tabs">
+        <li id="tab_1" style="background-color:rgba(43, 40, 40, 0.7);"> Street Graph </li>
+        <li id="tab_2"> Street View</li>
+      </ul>
+    </div>
+    <div id="paneContent">
+      <div id="tabcontent_1" >
+        </br>
+        <p align="center"> Accidents by Street </p>
+        <p id="chartTitle" align="center"> </p>
+        <div id="chart"> </div>
+      </div>
+      <div id="tabcontent_2">
+        <img id="street-view" > </img>
+        <p id="address" align="center">Hover over an accident to explore.</p>
+        <br></br>
+      </div>
+    </div>
+  </div> 
+
 
     
 </div>

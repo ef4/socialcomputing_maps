@@ -27,23 +27,25 @@ function initialize(){
   $('#drawer').click(function(){
     if (!infoGraphToggle){
       $('#infoGraphic').css('display', 'inline-block');
+      $('#details').css('display','none');
       $('#infoGraphic').css('width', '400px');
       $('#chart').css('width', $('#infoGraphic').width());
       $('#chart').css('height', $('#infoGraphic').height() * 0.95);
       $('#drawer').css('right', '410px');
       $('#street-view').css('width','100%');
-      $('#button-icon').removeClass('fa fa-angle-left');
-      $('#button-icon').addClass('fa fa-angle-right');
+      $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
+      $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
       drawChart();
     } else {
+      $('#details').css('display','inline-block');
       $('#infoGraphic').css('display','none');
       $('#infoGraphic').css('width', '0px');
       $('#chart').empty();
       $('#street-view').html('');
       $('#street-view').css('width','0px');
-      $('#button-icon').removeClass('fa fa-angle-right');
-      $('#button-icon').addClass('fa fa-angle-left');
-      $('#drawer').css('right', '100px');
+      $('#button-icon').removeClass('glyphicon glyphicon-chevron-right');
+      $('#button-icon').addClass('glyphicon glyphicon-chevron-left');
+      $('#drawer').css('right', '0px');
     }
     infoGraphToggle = !infoGraphToggle;
   });
@@ -54,6 +56,7 @@ function initialize(){
 
    $("#tab_2").click(function(){
       $(this).css('background-color','rgba(43, 40, 40, 0.7)');
+      $('#infoGraphic').css('height','300px');
       $("#tab_1").css('background-color', 'rgba(43, 40, 40, 0.1)');
       $("#tabcontent_1").hide()
       $("#tabcontent_2").show();
@@ -63,7 +66,8 @@ function initialize(){
    $("#tab_1").click(function(){
     $(this).css('background-color','rgba(43, 40, 40, 0.7)');
     $("#tab_2").css('background-color', 'rgba(43, 40, 40, 0.1)');
-    $("#tabcontent_1").show()
+    $("#tabcontent_1").show();
+    $('#infoGraphic').css('height','600px');
     $("#tabcontent_2").hide();
     drawChart();
    });
@@ -84,8 +88,11 @@ function initialize(){
 
   $('#showMore').click(function(){
     essayBoxShown = true;
-    $('#text-descp').css('opacity',0.2);
+    console.log('click show more');
+    $('#essayBox').css('display', 'inline-block');
+    $('.title-container').css('opacity',0.1);
     $('#essayBox').css('z-index',10);
+    $('#drawer').css('opacity',0.2);
     $('#essayBox').animate({
         'opacity':0.9}, 1500
     );
@@ -135,11 +142,12 @@ function closeEssayBox(){
   if (essayBoxShown){
       
       $('#svgContainer').animate({'opacity':1.0},'slow');
-      $('#text-descp').css('opacity',1.0);
+      $('.title-container').css('opacity',1.0);
+      $('#essayBox').css('display','none');
       $('#essayBox').css('opacity',0.0);
+      $('#drawer').css('opacity',1.0);
       $('#essayBox').css('z-index',1);
       $('#svgContainer').css('z-index',3);
-      $('#text-descp').css('z-index',3);
       essayBoxShown = false;
     };
 }
