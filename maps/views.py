@@ -27,13 +27,13 @@ def bicycleaccidents_portland(request):
 	return render_to_response('bicycle-accidents/portland.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def cambridge_footfall(request):
-	return render_to_response('cambridge-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+	return render_to_response('footfall/cambridge-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def manhattan_footfall(request):
-	return render_to_response('manhattan-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+	return render_to_response('footfall/manhattan-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def sanfrancisco_footfall(request):
-	return render_to_response('sanfrancisco-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+	return render_to_response('footfall/sanfrancisco-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def sanfrancisco_green(request):
 	return render_to_response('sanfrancisco-green.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})

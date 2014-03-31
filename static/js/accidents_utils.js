@@ -26,25 +26,24 @@ var URL_PREFIX = '{{URL_PREFIX}}';
 function initialize(){
   $('#drawer').click(function(){
     if (!infoGraphToggle){
-      $('#infoGraphic').css('visibility', 'visible');
+      $('#infoGraphic').css('display', 'inline-block');
       $('#infoGraphic').css('width', '400px');
       $('#chart').css('width', $('#infoGraphic').width());
       $('#chart').css('height', $('#infoGraphic').height() * 0.95);
       $('#drawer').css('right', '410px');
       $('#street-view').css('width','100%');
-      $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
-      $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
+      $('#button-icon').removeClass('fa fa-angle-left');
+      $('#button-icon').addClass('fa fa-angle-right');
       drawChart();
     } else {
-      $('#infoGraphic').css('visibility','hidden');
+      $('#infoGraphic').css('display','none');
       $('#infoGraphic').css('width', '0px');
-      $('#drawer').children().find('span').css('class','glyphicon glyphicon-arrow-left');
       $('#chart').empty();
       $('#street-view').html('');
       $('#street-view').css('width','0px');
-      $('#button-icon').removeClass('glyphicon glyphicon-chevron-right');
-      $('#button-icon').addClass('glyphicon glyphicon-chevron-left');
-      $('#drawer').css('right', '50px');
+      $('#button-icon').removeClass('fa fa-angle-right');
+      $('#button-icon').addClass('fa fa-angle-left');
+      $('#drawer').css('right', '100px');
     }
     infoGraphToggle = !infoGraphToggle;
   });
@@ -83,22 +82,7 @@ function initialize(){
     showAllFlag = !showAllFlag; 
    })
 
-   $('#data-source').click(function(){
-    lightBoxShown = true;
-    $('#svgContainer').css('opacity',0.1);
-
-    var windowWidth = $(window).width();
-    var windowHeight = $(window).height();
-    var selfWidth = $(this).width(); var selfHeight = $(this).height();
-    var moveX = 0.4*(windowWidth - selfWidth);
-    var moveY = 0.35*(windowHeight - selfHeight);
-
-    $('#data-lightbox').animate({
-        'opacity':1.0}, 1500
-    );
-   });
-
-  $('#essayBox-source').click(function(){
+  $('#showMore').click(function(){
     essayBoxShown = true;
     $('#text-descp').css('opacity',0.2);
     $('#essayBox').css('z-index',10);
@@ -107,27 +91,12 @@ function initialize(){
     );
   })
 
-  $('#svgContainer').click(function(){
-      closeLightBox();
-  });
-
-  $('#lightbox-close').click(function(){
-    closeLightBox();
-  });
 
   $('#essayBox-close').click(function(){
     closeEssayBox();
-  })
+  });
 
 }
-
-// window.onresize = function(){
-//   accidentDataDraw = accidentData;
-//   $('#svgContainer').empty();
-//   setProjection();
-//   drawMap();
-//   drawController();
-// }
 
 
 function bindHoverHandlers(){
@@ -136,26 +105,32 @@ function bindHoverHandlers(){
     if (classname.indexOf('accident') != -1){
       var data = this.__data__;
       toggleStreetView(data['lat'],data['lng'], data['image_id'], true);
+      $(this).tipsy({ 
+          gravity: 'w', 
+          html: true, 
+          title: function() {
+            var d1; var htmlText;
+            if (this.__data__.street1 != '(N/A)'){
+              d1 = this.__data__.street1;
+            } else {
+              d1 = '';
+            }
+            var d2;
+            if (this.__data__.street2 != '(N/A)'){
+              d2 = this.__data__.street2;
+            } else {
+              d2 = '';
+            }
+            htmlText = '<p style="color:white;font-size:8pt;padding-top:6px;letter-spacing:1px;opacity:0.95;">' + d1 + ' , ' + d2 + '</p>'; 
+            return htmlText
+          }
+        });
     }
+
   });
-
-  console.log('done binding');
-
 }
 
 
-
-
-function closeLightBox(){
-  if (lightBoxShown){
-      $('#data-lightbox').animate({
-        'opacity':0.0}, 'fast'
-      );
-      $('#svgContainer').animate({'opacity':1.0},'slow');
-
-      lightBoxShown = false;
-    };
-}
 function closeEssayBox(){
   if (essayBoxShown){
       
@@ -175,7 +150,6 @@ function setProjection(){
     .translate([0, 0]);
 
   width = $("#svgContainer").width(); height = $("#svgContainer").height();
-  console.log(width, height);
   var b = path.bounds(geoJSON),
     s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
@@ -400,7 +374,7 @@ function drawCircles(){
     .data(currentDrawPoints)
     .enter().append("circle")
       .attr("class", function(d){
-        return d.street1 + '-' + d.street2;
+        return 'accidents-' + d.street1 + '-' + d.street2;
       })
       .attr("r", 0.5)
       .attr('cx', function (d) {       

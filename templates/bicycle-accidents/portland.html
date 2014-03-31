@@ -7,7 +7,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/tipsy.css"/> 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
@@ -69,10 +69,7 @@ $(window).load(function(){
 <body>
   <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.png"></a>
   <div id="drawer">
-      <svg height='50' width='50' style="z-index:1">
-          <circle cx="25" cy="25" r="15" stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />
-      </svg>
-      <i id='button-icon' class="glyphicon glyphicon-chevron-left"></i>
+      <i id='button-icon' class="fa fa-angle-left fa-2x"></i>
   </div>
 
   <div id="infoGraphic">     
@@ -99,17 +96,33 @@ $(window).load(function(){
       </div>
     </div>
   </div>
-    
-    <div id="svgContainer"></div>
+    <div id='essayBox'>
+    <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+    <h1> Essay Title </h1> 
 
-    <div id='data-lightbox'>
-      <div id='lightbox-close' class="glyphicon glyphicon-remove"></div>
-      This map visualizes the 1085 bicycle accidents that were reported in Portland between 2010 and 2013.
-      <br>
-      Broadway, Division Street, and Hawthorne Boulevard had the most accidents during this time.  
-      <br>
-      The data was given to us by the <a href="http://www.oregon.gov/ODOT/TD/TDATA/Pages/index.aspx" class="footer-highlight-link"> Dept of Transportation, Oregon </a>
+    <div id='essayContent'>
+      <h2> Motivation </h2>
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+      </p>
+      
+      <h2> Data Collection </h2>
+      <p>
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
+      </p>
+
+      <h2> Analysis and Insights</h2>
+      <p>
+        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. 
+      </p>
+
+      <h2> References </h2>
+      <p>
+        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+      </p>
     </div>
+  </div>
+    <div id="svgContainer"></div>
 
 
     <div id='text-descp'>
@@ -118,7 +131,7 @@ $(window).load(function(){
       <p id='map-descp'>
         This map visualizes the 1085 bicycle accidents that were
         <br>
-        reported in Portland between 2010 and 2013.
+        reported in Portland between 2010 and 2013...<b id='essayBox-source'>more</b>
       </p>
     </div>
 
