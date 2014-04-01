@@ -115,6 +115,14 @@ html, body{
   overflow: hidden;
 }
 
+#street-view-SF{
+  width: 100%;
+  margin-top: 300px;
+  height: 280px;
+  visibility: hidden;
+  opacity: 0.6;
+  overflow: hidden;
+}
 
 .nav  {
   border-color: #404142;

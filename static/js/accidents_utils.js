@@ -280,16 +280,16 @@ function toggleStreetView(lat, lng, image_id, show){
   var LatLng = new google.maps.LatLng(lat, lng);
   if (show){
     //Load image
-    $('#street-view').empty();
-    $('#street-view').css('visibility', 'visible');
+    $(streetView).empty();
+    $(streetView).css('visibility', 'visible');
     var imgName = cityName + '_' + image_id.toString() + '.jpeg';
     console.log(imgName);
     var fileName = URL_PREFIX +'static/data/' + cityName + '/bicycle_accidents/streetviews/' + imgName;
     console.log(fileName);
-    $('#street-view').attr('src', fileName);
+    $(streetView).attr('src', fileName);
 
   } else{
-    $('#street-view').html('');
+    $(streetView).html('');
   }
 }
 
@@ -352,7 +352,7 @@ function drawCircles(){
       .attr("class", function(d){
         return 'accident-' + d.street1 + '-' + d.street2;
       })
-      .attr("r", 4.0)
+      .attr("r", shellRadius)
       .attr('cx', function (d) {       
         x = projection([d.lng, d.lat])[0]; 
         x_min = x - (x * shellRandomShift); x_max = x + (x*shellRandomShift);
@@ -379,7 +379,7 @@ function drawCircles(){
       .attr("class", function(d){
         return 'accidents-' + d.street1 + '-' + d.street2;
       })
-      .attr("r", 0.5)
+      .attr("r", coreRadius)
       .attr('cx', function (d) {       
         return projection([d.lng, d.lat])[0]; 
       })
