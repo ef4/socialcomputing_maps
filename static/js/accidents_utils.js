@@ -120,7 +120,7 @@ function bindHoverHandlers(){
       if (this.__data__.street2 != '(N/A)'){ text +=  ' , ' + this.__data__.street2};
 
         $('#streetname').html(text);
-      $('#streetname').offset({top : screenPoint[1] , left:screenPoint[0]});
+      $('#streetname').offset({top : screenPoint[1]-8 , left:screenPoint[0] +100});
     }
   });
 

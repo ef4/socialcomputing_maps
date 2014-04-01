@@ -21,9 +21,10 @@ html, body{
 
 #streetname{
   display: none;
-  color:white;
+  color:#A9A9A9;
   font-family: 'EB Garamond', serif;
   position: relative;
+  text-align: right;
   z-index: 15;
 }
 
@@ -146,7 +147,7 @@ rect {
 
 .title-container {
     position: relative;
-    top: -165px;
+    top: -155px;
     float:left;
     margin-top: 5px;
     font-family: 'EB Garamond', serif;
@@ -186,7 +187,7 @@ rect {
 
 #essayBox{
   position: relative;
-  top: -700px;
+  top: -850px;
   border:1px;
   border-color: rgba(43, 40, 40, 0.5);
   border-style: outset;
@@ -230,6 +231,7 @@ rect {
 
 #essayBox a{
   font-size: 16px;
+  color: rgb(222,16,40);
 }
 
 
