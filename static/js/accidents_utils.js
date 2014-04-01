@@ -116,8 +116,10 @@ function bindHoverHandlers(){
       var screenPoint = projection([this.__data__.lng, this.__data__.lat]);
       $('#streetname').css('display','inline-block');
       var text ='';
-      if (this.__data__.street1 != '(N/A)'){ text += this.__data__.street1};
-      if (this.__data__.street2 != '(N/A)'){ text +=  ' , ' + this.__data__.street2};
+      if (this.__data__.street1 !== '(n/a)'){ text += this.__data__.street1};
+      if (this.__data__.street2 !== '(n/a)'){ 
+        text +=  ' , ' + this.__data__.street2;
+      }
 
         $('#streetname').html(text);
       $('#streetname').offset({top : screenPoint[1]-8 , left:screenPoint[0] +100});
