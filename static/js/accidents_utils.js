@@ -24,20 +24,23 @@ var URL_PREFIX = '{{URL_PREFIX}}';
 
 
 function initialize(){
+
   $('#drawer').click(function(){
     if (!infoGraphToggle){
       $('#infoGraphic').css('display', 'inline-block');
-      $('#details').css('display','none');
       $('#infoGraphic').css('width', '400px');
       $('#chart').css('width', $('#infoGraphic').width());
       $('#chart').css('height', $('#infoGraphic').height() * 0.95);
-      $('#drawer').css('right', '410px');
+
+      $('#details').css('right', '380px');
+      drawChart();
       $('#street-view').css('width','100%');
       $('#button-icon').removeClass('glyphicon glyphicon-chevron-left');
       $('#button-icon').addClass('glyphicon glyphicon-chevron-right');
-      drawChart();
+      
     } else {
       $('#details').css('display','inline-block');
+      $('#details').css('right','0px');
       $('#infoGraphic').css('display','none');
       $('#infoGraphic').css('width', '0px');
       $('#chart').empty();
@@ -56,11 +59,10 @@ function initialize(){
 
    $("#tab_2").click(function(){
       $(this).css('background-color','rgba(43, 40, 40, 0.7)');
-      $('#infoGraphic').css('height','300px');
+      $('#infoGraphic').css('height','280px');
       $("#tab_1").css('background-color', 'rgba(43, 40, 40, 0.1)');
       $("#tabcontent_1").hide()
       $("#tabcontent_2").show();
-      $("#chart").empty();
    });
 
    $("#tab_1").click(function(){
@@ -69,7 +71,6 @@ function initialize(){
     $("#tabcontent_1").show();
     $('#infoGraphic').css('height','600px');
     $("#tabcontent_2").hide();
-    drawChart();
    });
 
    $('#svgContainer').on('mouseover', function(){
@@ -91,7 +92,7 @@ function initialize(){
     console.log('click show more');
     $('#essayBox').css('display', 'inline-block');
     $('.title-container').css('opacity',0.1);
-    $('#essayBox').css('z-index',10);
+    $('#essayBox').css('z-index',12);
     $('#drawer').css('opacity',0.2);
     $('#essayBox').animate({
         'opacity':0.9}, 1500
@@ -107,34 +108,26 @@ function initialize(){
 
 
 function bindHoverHandlers(){
-  $('svg circle').on('mouseover',function(){
+  $('svg circle').on('mouseover',function(event){
     var classname = $(this).attr('class');
     if (classname.indexOf('accident') != -1){
       var data = this.__data__;
       toggleStreetView(data['lat'],data['lng'], data['image_id'], true);
-      $(this).tipsy({ 
-          gravity: 'w', 
-          html: true, 
-          title: function() {
-            var d1; var htmlText;
-            if (this.__data__.street1 != '(N/A)'){
-              d1 = this.__data__.street1;
-            } else {
-              d1 = '';
-            }
-            var d2;
-            if (this.__data__.street2 != '(N/A)'){
-              d2 = this.__data__.street2;
-            } else {
-              d2 = '';
-            }
-            htmlText = '<p style="color:white;font-size:8pt;padding-top:6px;letter-spacing:1px;opacity:0.95;">' + d1 + ' , ' + d2 + '</p>'; 
-            return htmlText
-          }
-        });
-    }
+      var screenPoint = projection([this.__data__.lng, this.__data__.lat]);
+      $('#streetname').css('display','inline-block');
+      var text ='';
+      if (this.__data__.street1 != '(N/A)'){ text += this.__data__.street1};
+      if (this.__data__.street2 != '(N/A)'){ text +=  ' , ' + this.__data__.street2};
 
+        $('#streetname').html(text);
+      $('#streetname').offset({top : screenPoint[1] , left:screenPoint[0]});
+    }
   });
+
+  $('svg circle').on('mouseout', function(){
+    $('#streetname').html('');
+    $('#streetname').css('display','none');
+  })
 }
 
 
@@ -217,10 +210,10 @@ function drawChart(){
   var y = function(d, i) { return yScale(i); };
   var x = d3.scale.linear().domain([0, d3.max(chartData, barValue)]).range([0, maxBarWidth]);
 
-  var chart = d3.select('#chart').append("svg")
-    .attr("width", chartWidth)
-    .attr("height", chartHeight)
-  var gridContainer = chart.append('g')
+  // var chart = d3.select('#chart').append("svg")
+  //   .attr("width", chartWidth)
+  //   .attr("height", chartHeight)
+  // var gridContainer = chart.append('g')
 
 
   svg2.selectAll("rect")
