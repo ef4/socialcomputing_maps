@@ -120,21 +120,21 @@ function bindHoverHandlers(){
       var data = this.__data__;
       toggleStreetView(data['lat'],data['lng'], data['image_id'], true);
       var screenPoint = projection([this.__data__.lng, this.__data__.lat]);
-      $('#streetname').css('display','inline-block');
+      //$('#streetname').css('display','inline-block');
       var text ='';
       if (this.__data__.street1 !== '(n/a)'){ text += this.__data__.street1};
       if (this.__data__.street2 !== '(n/a)'){ 
         text +=  ' , ' + this.__data__.street2;
       }
-
-        $('#streetname').html(text);
-      $('#streetname').offset({top : screenPoint[1] + streetName_offset_top , left:screenPoint[0] +streetName_offset_left});
+      var frame_reference = $('#mainframe').offset();
+      $('#streetname').html(text);
+      $('#streetname').offset({top : screenPoint[1] + frame_reference.top + streetName_offset_top, left:screenPoint[0] + frame_reference.left +streetName_offset_left});
     }
   });
 
   $('svg circle').on('mouseout', function(){
     $('#streetname').html('');
-    $('#streetname').css('display','none');
+    //$('#streetname').css('display','none');
   })
 }
 

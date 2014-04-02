@@ -41,8 +41,8 @@ var cityName = 'Cambridge';
 var streetView = '#street-view';
 var URL_PREFIX = '{{URL_PREFIX}}';
 
-var streetName_offset_left = 160;
-var streetName_offset_top = -8;
+var streetName_offset_left = -60;
+var streetName_offset_top = -25;
 
 $(window).load(function(){
 
@@ -85,76 +85,84 @@ $(window).load(function(){
       </span> -->
   </div>
 
-  <div id="svgContainer"></div>
+  <div id="mainframe">
+
+    <div id="svgContainer"></div>
 
 
-   <div class="title-container">
-          <div class="title-text">
-              <h1 class="title">
-                  <span id="mapClass" class="title-keyword"> Cambridge</span> 
-              </h1>
-              <div class="subtitle">
-                  This map visualizes the 956 bicycle accidents in Cambridge, MA 
-                  </br>
-                  from 2010 to 2013
-                  <span id="showMore"> ... more </span>
-              </div>
-          </div>
-  </div>
-
-  <div id="footer">
-   <a id="logo" href="http://youarehere.cc">
-              <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 40px">
-    </a>
-    <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
-    This work is part of the <a href="http://youarehere.cc">You Are Here</a> project
-    <span class="footer-plus">+</span>
-    <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
-    <span class="footer-plus">+</span>
-    <a href="http://media.mit.edu"> MIT Media Lab </a>
-    <span class="footer-plus">+</span>
-    <a href="http://mit.edu"> MIT</a>
-  </div>
-
-
-  <div id='essayBox'>
-    <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
-    <h1> Bicycle Accidents in Cambridge </h1> 
-
-    <div id='essayContent'>
-      <p>
-        This map visualizes the 956 bicycle accidents in the city of Cambridge, Massachusetts from 2010-2013.
-      </p>
-
-      <p> 
-      In Cambridge alone the number of daily bike commuters has quadrupled since 2006. This map helps to show where accidents tend to happen &mdash; like Mass Ave and Cambridge Street and Hampshire Street &mdash; in the hope that those streets might be made safer for bikers.  
-      <p>
-
-      <p>
-      You can explore this map on three levels: city, street and location.
-<b>City:</b> Each reported bike accident is recorded as a dot on the map.  Streets on which bike accidents are common are outlined in red.  You may hover over an accident to see the street or intersection on which it occurred.
-<b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of accidents. You can click on each bar to visualize only the accidents on that particular street
-<b>Location:</b> Use the streetview tab and hover over an accident point to get a localized view of the accident site.
-      </p>
-
-      <p>
-All accidents were placed on the map as a point at the place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
-      </p>
-
-      <p>
-The data extraction and geolocation was written in Python, and the visualization was written in JavaScript and D3.  We used the Google Maps API to geolocate every crash point, since the data was given to us as street addresses or intersections. 
-      </p>
-
-      <p style="color:#898989;"> Data Sources </p>
-      <ol>
-        <li><a href="http://www.cambridgema.gov/cpd/">Cambridge Police Department Bicycle Accident Reports </a> </li>
-        <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
-        <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
-      </ol>
-      <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> View map </p>
-
+     <div class="title-container">
+            <div class="title-text">
+                <h1 class="title">
+                    <span id="mapClass" class="title-keyword"> Cambridge</span> 
+                </h1>
+                <div class="subtitle">
+                    This map visualizes the 956 bicycle accidents in Cambridge, MA 
+                    </br>
+                    from 2010 to 2013
+                    <span id="showMore"> ... more </span>
+                </div>
+            </div>
     </div>
-  </div> 
+
+    <div id="footer">
+     <a id="logo" href="http://youarehere.cc">
+                <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 40px">
+      </a>
+      <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+      This work is part of the <a href="http://youarehere.cc">You Are Here</a> project
+      <span class="footer-plus">+</span>
+      <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+      <span class="footer-plus">+</span>
+      <a href="http://media.mit.edu"> MIT Media Lab </a>
+      <span class="footer-plus">+</span>
+      <a href="http://mit.edu"> MIT</a>
+    </div>
+
+
+    <div id='essayBox'>
+      <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+      <h1> Bicycle Accidents in Cambridge </h1> 
+
+      <div id='essayContent'>
+        <p>
+          This map visualizes the 956 bicycle accidents in the city of Cambridge, Massachusetts from 2010-2013.
+        </p>
+
+        <p> 
+        In Cambridge alone the number of daily bike commuters has quadrupled since 2006. This map helps to show where accidents tend to happen &mdash; like Mass Ave and Cambridge Street and Hampshire Street &mdash; in the hope that those streets might be made safer for bikers.  
+        <p>
+
+        <p>
+        You can explore this map on three levels: city, street and location.
+  <b>City:</b> Each reported bike accident is recorded as a dot on the map.  Streets on which bike accidents are common are outlined in red.  You may hover over an accident to see the street or intersection on which it occurred.
+  <b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of accidents. You can click on each bar to visualize only the accidents on that particular street
+  <b>Location:</b> Use the streetview tab and hover over an accident point to get a localized view of the accident site.
+        </p>
+
+        <p>
+  All accidents were placed on the map as a point at the place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
+        </p>
+
+        <p>
+  The data extraction and geolocation was written in Python, and the visualization was written in JavaScript and D3.  We used the Google Maps API to geolocate every crash point, since the data was given to us as street addresses or intersections. 
+        </p>
+
+        <p style="color:#898989;"> Data Sources </p>
+        <ol>
+          <li><a href="http://www.cambridgema.gov/cpd/">Cambridge Police Department Bicycle Accident Reports </a> </li>
+          <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
+          <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
+        </ol>
+        <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> View map </p>
+
+      </div>
+    </div> 
+
+    <p id='streetname'></p>
+
+  </div>
+
+
 
    <div id="infoGraphic">     
     <div id="tabContainer">
@@ -178,7 +186,7 @@ The data extraction and geolocation was written in Python, and the visualization
     </div>
   </div> 
 
-  <p id='streetname'></p>
+  
 
   </div>
     

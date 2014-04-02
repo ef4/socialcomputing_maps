@@ -1,9 +1,8 @@
-html, body{
+body{
   font-family: 'EB Garamond', serif;
   font-weight: lighter;
-  background-color: rgba(43, 40, 40, 0.8);
+  background-color: rgba(43, 40, 40, 1.0);
   color: #FA8602;
-  overflow-y: hidden;
 }
 
 .container{
@@ -11,20 +10,24 @@ html, body{
  
 }
 
+#mainframe{
+  position: relative;
+}
+
 
 #svgContainer {
-  position: relative;
-  margin-top: 10px;
+/*  position: relative;
+*/  
+  margin-top: 50px;
   width: 1000px;
   height: 680px;
   z-index: 1;
 }
 
 #streetname{
-  display: none;
+  position: absolute;
   color:#A9A9A9;
   font-family: 'EB Garamond', serif;
-  position: relative;
   text-align: right;
   z-index: 15;
 }
@@ -155,10 +158,12 @@ rect {
 
 
 .title-container {
-    position: relative;
-    top: -155px;
+
+    position: absolute;
+    bottom :0px;
     float:left;
     margin-top: 5px;
+    margin-bottom: 25px;
     font-family: 'EB Garamond', serif;
     z-index: 7;
 }
@@ -195,8 +200,9 @@ rect {
 }
 
 #essayBox{
-  position: relative;
-  top: -850px;
+  position: absolute;
+  top: 30px;
+  left: 0px;
   border:1px;
   border-color: rgba(43, 40, 40, 0.5);
   border-style: outset;
@@ -246,12 +252,10 @@ rect {
 
 
 #footer {
-  position: relative;
-  top: -135px;
   float: left;
   width: 100%;
   border-top: 1px dotted rgba(200,200,200,0.25);
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 12px;
   padding: 5px 10px 10px 0px;
   color: rgba(160,160,160,0.98);
