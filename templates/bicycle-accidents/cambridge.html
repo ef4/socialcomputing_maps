@@ -41,10 +41,12 @@ var cityName = 'Cambridge';
 var streetView = '#street-view';
 var URL_PREFIX = '{{URL_PREFIX}}';
 
+var streetName_offset_left = 160;
+var streetName_offset_top = -8;
 
 $(window).load(function(){
 
-
+  $('.container').css('width', '1000px');
   jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
     geoJSON = geojson;
     setProjection();
@@ -58,6 +60,7 @@ $(window).load(function(){
       processChartData(allData["streets"]);
       drawClusters();
       drawController();
+
     });
   });
 
@@ -148,6 +151,8 @@ The data extraction and geolocation was written in Python, and the visualization
         <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
         <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
       </ol>
+      <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> View map </p>
+
     </div>
   </div> 
 

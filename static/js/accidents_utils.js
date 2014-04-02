@@ -5,7 +5,9 @@ var chartData = [];
 var chartDrawn = false;
 var finalClusters;
 var projection = d3.geo.mercator();
+var projection2 = d3.geo.mercator();
 var path = d3.geo.path().projection(projection); 
+var path2 = d3.geo.path().projection(projection2);
 var geoJSON;
 var svg;
 var g;
@@ -104,6 +106,10 @@ function initialize(){
     closeEssayBox();
   });
 
+  $('#viewMap').click(function(){
+    closeEssayBox();
+  });
+
 }
 
 
@@ -122,7 +128,7 @@ function bindHoverHandlers(){
       }
 
         $('#streetname').html(text);
-      $('#streetname').offset({top : screenPoint[1]-8 , left:screenPoint[0] +100});
+      $('#streetname').offset({top : screenPoint[1] + streetName_offset_top , left:screenPoint[0] +streetName_offset_left});
     }
   });
 
@@ -157,6 +163,17 @@ function setProjection(){
     s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
   projection.scale(s).translate(t);
+}
+
+function setProjection2(){ 
+  projection2.scale(1)
+    .translate([0, 0]);
+
+  width = $("#svgContainer").width(); height = $("#svgContainer").height();
+  var b = path2.bounds(bikeways),
+    s = 1.16 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+    t = [(width - s * (b[1][0] + b[0][0])) / 2 - 28, (height - s * (b[1][1] + b[0][1])) / 2 - 42];
+  projection2.scale(s).translate(t);
 }
 
 
@@ -313,6 +330,20 @@ function drawMap(){
       .attr("id", "blur")
     .append("feGaussianBlur")
       .attr("stdDeviation", blurConstant);
+}
+
+function drawBikeways(){
+  // svg = d3.select("#svgContainer").append("svg")
+  //       .attr('height',$('#svgContainer').height())
+  //       .attr('width', $('#svgContainer').width());
+        
+  svg.selectAll("path")
+    .data(bikeways.features)
+   .enter().append("path")
+    .attr("d", path2)
+    .attr("fill", 'none')
+    .attr("stroke-opacity",0.5)
+    .attr("stroke", 'green');
 }
 
 function blur() {

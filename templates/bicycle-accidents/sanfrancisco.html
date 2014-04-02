@@ -37,19 +37,22 @@ var shellRadius = 5;
 var coreOpacity = 0.5;
 var coreRadius = 1.5;
 var cityName = 'San Francisco';
-var streetView = '#street-view-SF';
+var streetView = '#street-view';
 var URL_PREFIX = '{{URL_PREFIX}}';
 
+var streetName_offset_left = 120;
+var streetName_offset_top = -10;
+var bikeways;
 
 $(window).load(function(){
 
-
+  $('.container').css('width', '1150px');
   jQuery.getJSON('{{URL_PREFIX}}static/data/San Francisco/boundary.geojson', function(geojson){
     geoJSON = geojson;
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/San Francisco/bicycle_accidents/final_data2.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/San Francisco/bicycle_accidents/final_data3.json', function(data){
     console.log(data);
       allData= data;
       accidentData = data['accidents'];
@@ -58,6 +61,11 @@ $(window).load(function(){
       processChartData(allData["streets"]);
       drawClusters();
       drawController();
+      jQuery.getJSON('{{URL_PREFIX}}static/data/San Francisco/bicycle_accidents/bikeways.geojson', function(data){
+        bikeways = data;
+        setProjection2();
+        drawBikeways();
+      });
     });
   });
 
@@ -71,7 +79,7 @@ $(window).load(function(){
 <div class="container">
 
   <div id="drawer">
-      <p id='details'> <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="float:left;left:-22px;top:5px;"></i> Details </p>
+      <p id='details'> <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="float:left;left:-22px;top:3px;"></i> Details </p>
      <!-- <span>
       <svg height='50' width='50' style="z-index:1">
         <circle cx="20" cy="23" r="15"  stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />
@@ -90,9 +98,9 @@ $(window).load(function(){
                   <span id="mapClass" class="title-keyword"> San Francisco</span> 
               </h1>
               <div class="subtitle">
-                  This map visualizes the 956 bicycle accidents in Cambridge, MA 
+                  This map visualizes the 307 bicycle accidents 
                   </br>
-                  from 2010 to 2013
+                  in San Francisco, CA from 2012 and 2013
                   <span id="showMore"> ... more </span>
               </div>
           </div>
@@ -119,11 +127,11 @@ $(window).load(function(){
 
     <div id='essayContent'>
       <p>
-        This map visualizes the 956 bicycle accidents in the city of Cambridge, Massachusetts from 2010-2013.
+      This map visualizes the 307 reported bicycle accidents in the city of San Francisco from 2012 and 2013.
       </p>
 
       <p> 
-      In Cambridge alone the number of daily bike commuters has quadrupled since 2006. This map helps to show where accidents tend to happen &mdash; like Mass Ave and Cambridge Street and Hampshire Street &mdash; in the hope that those streets might be made safer for bikers.  
+      This map helps to show where accidents tend to happen — like Market Street  and Mission Street and Valencia Street — in the hope that those streets might be made safer for bikers. 
       <p>
 
       <p>
@@ -134,7 +142,7 @@ $(window).load(function(){
       </p>
 
       <p>
-All accidents were placed on the map as a point at the place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
+All accidents were placed on the map as a point at the place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
       </p>
 
       <p>
@@ -143,10 +151,12 @@ The data extraction and geolocation was written in Python, and the visualization
 
       <p style="color:#898989;"> Data Sources </p>
       <ol>
-        <li><a href="http://www.cambridgema.gov/cpd/">Cambridge Police Department Bicycle Accident Reports </a> </li>
+        <li><a href="http://sf-police.org/">San Francisco Police Department Bicycle Accident Reports </a> </li>
         <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
         <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
       </ol>
+
+    <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> View map </p>
     </div>
   </div> 
 
@@ -165,7 +175,7 @@ The data extraction and geolocation was written in Python, and the visualization
         <div id="chart"> </div>
       </div>
       <div id="tabcontent_2">
-        <img id="street-view-SF" > </img>
+        <img id="street-view" > </img>
         <p id="address" align="center">Hover over an accident to view its location.</p>
         <br></br>
       </div>
