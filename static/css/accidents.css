@@ -18,7 +18,7 @@ body{
 #svgContainer {
 /*  position: relative;
 */  
-  margin-top: 50px;
+  margin-top: 25px;
   width: 1000px;
   height: 680px;
   z-index: 1;
@@ -212,13 +212,16 @@ rect {
   opacity: 0.0;
   display: none;
   color :rgba(250,250,250,0.98);
-  padding: 20px;
+  padding: 20px 20px 20px 20px;
   font-size: 15px;
   letter-spacing: 2px;
   z-index: 12;
   background-color:rgba(0, 0, 0, 0.8);
   font-family: 'EB Garamond', serif;
-  overflow-y:scroll;
+}
+
+#essayContent{
+  padding: 20px 20px 20px 20px;
 }
 
 #essayBox-close {
