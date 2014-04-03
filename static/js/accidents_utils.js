@@ -85,6 +85,8 @@ function initialize(){
       for (var cl in clusters){
         clusters[cl].setAttribute('visibility', 'show');
       }
+      svg.selectAll('.bikeway').attr('visibility','show');
+
     }
     showAllFlag = !showAllFlag; 
    })
@@ -171,8 +173,8 @@ function setProjection2(){
 
   width = $("#svgContainer").width(); height = $("#svgContainer").height();
   var b = path2.bounds(bikeways),
-    s = 1.16 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-    t = [(width - s * (b[1][0] + b[0][0])) / 2 - 28, (height - s * (b[1][1] + b[0][1])) / 2 - 42];
+    s = scaleFactor2 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+    t = [(width - s * (b[1][0] + b[0][0])) / 2 + bikeway_offset0, (height - s * (b[1][1] + b[0][1])) / 2 +bikeway_offset1];
   projection2.scale(s).translate(t);
 }
 
@@ -272,6 +274,8 @@ function drawChart(){
             }
           }
 
+          svg.selectAll('.bikeway').attr('visibility','hidden');
+
           
       })
       .attr("x", function (d) {return chartWidth - x(barValue(d)) -20 ;})
@@ -341,6 +345,7 @@ function drawBikeways(){
     .data(bikeways.features)
    .enter().append("path")
     .attr("d", path2)
+    .attr("class", "bikeway")
     .attr("fill", 'none')
     .attr("stroke-opacity",0.5)
     .attr("stroke", 'green');

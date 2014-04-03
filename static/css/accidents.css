@@ -18,7 +18,7 @@ body{
 #svgContainer {
 /*  position: relative;
 */  
-  margin-top: 25px;
+  margin-top: 20px;
   width: 1000px;
   height: 680px;
   z-index: 1;
@@ -163,7 +163,7 @@ rect {
     bottom :0px;
     float:left;
     margin-top: 5px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-family: 'EB Garamond', serif;
     z-index: 7;
 }
@@ -258,7 +258,7 @@ rect {
   float: left;
   width: 100%;
   border-top: 1px dotted rgba(200,200,200,0.25);
-  margin-top: 20px;
+  margin-top: 5px;
   font-size: 12px;
   padding: 5px 10px 10px 0px;
   color: rgba(160,160,160,0.98);
