@@ -32,12 +32,12 @@ var mapCenter = [-87.715044,41.93202];
 var scaleFactor = 1.0;
 var blurConstant = 0.3;
 var clusterStrokeOpacity = 0.3;
-var clusterStrokeWidth = 3.5;
+var clusterStrokeWidth = 2.5;
 var shellRandomShift = 0.002;
 var shellOpacity = 0.2;
-var shellRadius = 4;
+var shellRadius = 3;
 var coreOpacity = 0.5;
-var coreRadius = 0.5;
+var coreRadius = 0.3;
 var cityName = 'Chicago';
 var streetView = '#street-view';
 var URL_PREFIX = '{{URL_PREFIX}}';
@@ -52,16 +52,11 @@ var scaleFactor2 = 1.0;
 $(window).load(function(){
 
   $('.container').css('width', '1100px');
-  
-  jQuery.getJSON('{{URL_PREFIX}}static/data/Chicago/bicycle_accidents/bikeways.geojson', function(data){
-    bikeways = data;
     jQuery.getJSON('{{URL_PREFIX}}static/data/Chicago/boundary.geojson', function(geojson){
       geoJSON = geojson;
       setProjection();
       drawMap();
       initialize();
-      setProjection2();
-      drawBikeways();
       jQuery.getJSON('{{URL_PREFIX}}static/data/Chicago/bicycle_accidents/final_data2.json', function(data){
       console.log(data);
         allData= data;
@@ -71,6 +66,11 @@ $(window).load(function(){
         processChartData(allData["streets"]['2012']);
         drawClusters();
         drawController();
+        jQuery.getJSON('{{URL_PREFIX}}static/data/Chicago/bicycle_accidents/bikeways.geojson', function(data){
+          bikeways = data;
+          setProjection2();
+          drawBikeways();
+
         });
     });
   });

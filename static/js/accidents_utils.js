@@ -347,7 +347,7 @@ function drawBikeways(){
     .attr("d", path2)
     .attr("class", "bikeway")
     .attr("fill", 'none')
-    .attr("stroke-opacity",0.5)
+    .attr("stroke-opacity",0.4)
     .attr("stroke", 'green');
 }
 

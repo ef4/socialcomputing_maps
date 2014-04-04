@@ -30,11 +30,11 @@ var mapCenter = [-122.683914,45.515971];
 var scaleFactor = 1.0;
 var blurConstant = 0.3;
 var clusterStrokeOpacity = 0.3;
-var clusterStrokeWidth = 3.5;
+var clusterStrokeWidth = 2.5;
 var shellRandomShift = 0.002;
 var shellOpacity = 0.2;
-var shellRadius = 4;
-var coreOpacity = 0.5;
+var shellRadius = 3;
+var coreOpacity = 0.4;
 var coreRadius = 0.5;
 var cityName = 'Portland';
 var streetView = '#street-view';
@@ -43,9 +43,9 @@ var URL_PREFIX = '{{URL_PREFIX}}';
 var streetName_offset_left = -70;
 var streetName_offset_top = -30;
 var bikeways;
-var bikeway_offset0 = -28;
-var bikeway_offset1 = -42;
-var scaleFactor2 = 1.16;
+var bikeway_offset0 = 0;
+var bikeway_offset1 = 0;
+var scaleFactor2 = 1.0;
 
 
 $(window).load(function(){
@@ -64,8 +64,9 @@ $(window).load(function(){
       processChartData(allData["streets"]);
       drawClusters();
       drawController();
-      jQuery.getJSON('{{URL_PREFIX}}static/data/Portland/bicycle_accidents/bikeways.geojson', function(data){
+      jQuery.getJSON('{{URL_PREFIX}}static/data/Portland/bicycle_accidents/bikeways2.geojson', function(data){
         bikeways = data;
+        console.log(bikeways)
         setProjection2();
         drawBikeways();
       });
