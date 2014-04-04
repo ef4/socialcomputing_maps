@@ -31,7 +31,7 @@ var scaleFactor = 1.0;
 var blurConstant = 0.3;
 var clusterStrokeOpacity = 0.3;
 var clusterStrokeWidth = 2.5;
-var shellRandomShift = 0.002;
+var shellRandomShift = 0;
 var shellOpacity = 0.2;
 var shellRadius = 3;
 var coreOpacity = 0.4;
@@ -147,7 +147,7 @@ $(window).load(function(){
         </p>
 
         <p>
-  All accidents were placed on the map as a point at the place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
+  All accidents were placed on the map as a point at the approximate place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
         </p>
 
         <p>
