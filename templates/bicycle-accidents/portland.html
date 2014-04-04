@@ -19,30 +19,38 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-47879752-1', 'mit.edu');
+      ga('create', 'UA-47759411-2', 'youarehere.cc');
       ga('send', 'pageview');
 
     </script>
 
-
 <script type="text/javascript">
 
-var mapCenter = [-122.643914,45.515971];
+var mapCenter = [-122.683914,45.515971];
 var scaleFactor = 1.0;
 var blurConstant = 0.3;
 var clusterStrokeOpacity = 0.3;
-var clusterStrokeWidth = 3;
+var clusterStrokeWidth = 3.5;
 var shellRandomShift = 0.002;
 var shellOpacity = 0.2;
+var shellRadius = 4;
 var coreOpacity = 0.5;
+var coreRadius = 0.5;
 var cityName = 'Portland';
+var streetView = '#street-view';
 var URL_PREFIX = '{{URL_PREFIX}}';
+
+var streetName_offset_left = -70;
+var streetName_offset_top = -30;
+var bikeways;
+var bikeway_offset0 = -28;
+var bikeway_offset1 = -42;
+var scaleFactor2 = 1.16;
 
 
 $(window).load(function(){
 
-
+  $('.container').css('width', '1000px');
   jQuery.getJSON('{{URL_PREFIX}}static/data/Portland/boundary.geojson', function(geojson){
     geoJSON = geojson;
     setProjection();
@@ -56,6 +64,11 @@ $(window).load(function(){
       processChartData(allData["streets"]);
       drawClusters();
       drawController();
+      jQuery.getJSON('{{URL_PREFIX}}static/data/Portland/bicycle_accidents/bikeways.geojson', function(data){
+        bikeways = data;
+        setProjection2();
+        drawBikeways();
+      });
     });
   });
 
@@ -63,18 +76,101 @@ $(window).load(function(){
 
 });
 
-
 </script>
 </head>
 <body>
-  <a href="http://youarehere.media.mit.edu"><img id="logo" src="{{URL_PREFIX}}static/img/logo.png"></a>
+
+<div class="container">
+
   <div id="drawer">
-      <i id='button-icon' class="fa fa-angle-left fa-2x"></i>
+      <p id='details'> <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="float:left;left:-22px;top:5px;"></i> Details </p>
+     <!-- <span>
+      <svg height='50' width='50' style="z-index:1">
+        <circle cx="20" cy="23" r="15"  stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />
+      </svg> -->
+      <!-- Details
+      
+      </span> -->
   </div>
 
-  <div id="infoGraphic">     
-    <br></br>
-    <br></br>
+  <div id="mainframe">
+
+    <div id="svgContainer"></div>
+
+
+     <div class="title-container">
+            <div class="title-text">
+                <h1 class="title">
+                    <span id="mapClass" class="title-keyword"> Portland</span> 
+                </h1>
+                <div class="subtitle">
+                    This map visualizes the 1085 bicycle accidents in Portland, OR 
+                    </br>
+                    from 2010 to 2013
+                    <span id="showMore"> ... more </span>
+                </div>
+            </div>
+    </div>
+
+    <div id="footer">
+     <a id="logo" href="http://youarehere.cc">
+                <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 40px">
+      </a>
+      <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
+      This work is part of the <a href="http://youarehere.cc">You Are Here</a> project
+      <span class="footer-plus">+</span>
+      <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+      <span class="footer-plus">+</span>
+      <a href="http://media.mit.edu"> MIT Media Lab </a>
+      <span class="footer-plus">+</span>
+      <a href="http://mit.edu"> MIT</a>
+    </div>
+
+
+    <div id='essayBox'>
+      <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+      <div id='essayContent'>
+        <p>
+          This map visualizes the 1085 bicycle accidents in the city of Porland, Oregan from 2010-2013.
+        </p>
+
+        <p> 
+        This map helps to show where accidents tend to happen — like Broadway,  Division Street and Hawthorne Boulevard — in the hope that those streets might be made safer for bikers. 
+        <p>
+
+        <p>
+        You can explore this map on three levels: city, street and location.
+  <b>City:</b> Each reported bike accident is recorded as a dot on the map.  Streets on which bike accidents are common are outlined in red.  You may hover over an accident to see the street or intersection on which it occurred.
+  <b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of accidents. You can click on each bar to visualize only the accidents on that particular street
+  <b>Location:</b> Use the streetview tab and hover over an accident point to get a localized view of the accident site.
+        </p>
+
+        <p>
+  All accidents were placed on the map as a point at the place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
+        </p>
+
+        <p>
+  The data extraction and geolocation was written in Python, and the visualization was written in JavaScript and D3.  We used the Google Maps API to geolocate every crash point, since the data was given to us as street addresses or intersections. 
+        </p>
+
+        <p style="color:#898989;"> Data Sources </p>
+        <ol>
+          <li><a href="http://www.portlandoregon.gov/police/">Portland Police Department Bicycle Accident Reports </a> </li>
+          <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
+          <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
+        </ol>
+        <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> View map </p>
+
+      </div>
+    </div> 
+
+    <p id='streetname'></p>
+
+  </div>
+
+
+
+   <div id="infoGraphic">     
     <div id="tabContainer">
       <ul id="infoTabs" class="nav nav-tabs">
         <li id="tab_1" style="background-color:rgba(43, 40, 40, 0.7);"> Street Graph </li>
@@ -83,74 +179,23 @@ $(window).load(function(){
     </div>
     <div id="paneContent">
       <div id="tabcontent_1" >
-        <br></br>
+        </br>
         <p align="center"> Accidents by Street </p>
         <p id="chartTitle" align="center"> </p>
         <div id="chart"> </div>
       </div>
       <div id="tabcontent_2">
-        <br></br>
-        <p id="address" align="center">Hover over an accident to explore.</p>
         <img id="street-view" > </img>
+        <p id="address" align="center">Hover over an accident to view its location.</p>
         <br></br>
       </div>
     </div>
-  </div>
-    <div id='essayBox'>
-    <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
-    <h1> Essay Title </h1> 
+  </div> 
 
-    <div id='essayContent'>
-      <h2> Motivation </h2>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-      </p>
-      
-      <h2> Data Collection </h2>
-      <p>
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC.
-      </p>
-
-      <h2> Analysis and Insights</h2>
-      <p>
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham. 
-      </p>
-
-      <h2> References </h2>
-      <p>
-        If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
-      </p>
-    </div>
-  </div>
-    <div id="svgContainer"></div>
-
-
-    <div id='text-descp'>
-      <p id='title'> Portland, OR</p>
-
-      <p id='map-descp'>
-        This map visualizes the 1085 bicycle accidents that were
-        <br>
-        reported in Portland between 2010 and 2013...<b id='essayBox-source'>more</b>
-      </p>
-    </div>
-
-
-    <div id="footer">
-      <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
-      This work is part of the <a href="http://youarehere.media.mit.edu">You Are Here</a> project
-      <span class="footer-plus">+</span>
-      <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
-      <span class="footer-plus">+</span>
-      <a href="http://media.mit.edu"> MIT Media Lab </a>
-      <span class="footer-plus">+</span>
-      <a href="http://mit.edu"> MIT</a>
-      &nbsp
-      <span class="footer-plus">|</span>
-      &nbsp
-      <span id="data-source" class='footer-highlight'> Data Source</span>
-    </div>
   
- 
+
+  </div>
+    
+</div>
 </body>
 </html>
