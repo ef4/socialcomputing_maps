@@ -340,11 +340,21 @@ function drawBikeways(){
   // svg = d3.select("#svgContainer").append("svg")
   //       .attr('height',$('#svgContainer').height())
   //       .attr('width', $('#svgContainer').width());
+
+  var selectedPath;
+
+  if (cityName=='Portland'){
+    selectedPath = path;
+  } else {
+    selectedPath = path2;
+  }
+
+  console.log(selectedPath)
         
   svg.selectAll("path")
     .data(bikeways.features)
    .enter().append("path")
-    .attr("d", path2)
+    .attr("d", selectedPath)
     .attr("class", "bikeway")
     .attr("fill", 'none')
     .attr("stroke-opacity",0.4)
