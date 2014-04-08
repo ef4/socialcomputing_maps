@@ -291,7 +291,7 @@ function drawChart(){
           title: function() {
             var d = this.__data__.name;
             var val = this.__data__.numAccidents;
-            return '<p style="color:#FA8602;font-size:10pt;padding-top:8px;letter-spacing:2px;opacity:0.7;">' + d + ':<span style="color:#FA8602;">' + val + '</span> accidents</p>'; 
+            return '<p style="color:#FA8602;font-size:10pt;padding-top:8px;letter-spacing:2px;opacity:0.7;">' + d + ':<span style="color:#FA8602;">' + val + '</span> crashes</p>'; 
           }
         });
 }

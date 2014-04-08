@@ -105,7 +105,7 @@ $(window).load(function(){
                     <span id="mapClass" class="title-keyword"> Portland</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes the 1085 bicycle accidents in Portland, OR 
+                    This map visualizes the 1085 bicycle crashes in Portland, OR 
                     </br>
                     from 2010 to 2013
                     <span id="showMore"> ... more </span>
@@ -132,22 +132,22 @@ $(window).load(function(){
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
         <p>
-          This map visualizes the 1085 bicycle accidents in the city of Porland, Oregan from 2010-2013.
+          This map visualizes the 1085 bicycle crashes in the city of Porland, Oregan from 2010-2013.
         </p>
 
         <p> 
-        This map helps to show where accidents tend to happen — like Broadway,  Division Street and Hawthorne Boulevard — in the hope that those streets might be made safer for bikers. 
+        This map helps to show where crashes tend to happen — like Broadway,  Division Street and Hawthorne Boulevard — in the hope that those streets might be made safer for riders. 
         <p>
 
         <p>
         You can explore this map on three levels: city, street and location.
-  <b>City:</b> Each reported bike accident is recorded as a dot on the map.  Streets on which bike accidents are common are outlined in red.  You may hover over an accident to see the street or intersection on which it occurred.
-  <b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of accidents. You can click on each bar to visualize only the accidents on that particular street
-  <b>Location:</b> Use the streetview tab and hover over an accident point to get a localized view of the accident site.
+  <b>City:</b> Each reported bike crash is recorded as a dot on the map.  Streets on which bike crashes are common are outlined in red.  You may hover over an crash to see the street or intersection on which it occurred.
+  <b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of crashes. You can click on each bar to visualize only the crashes on that particular street
+  <b>Location:</b> Use the streetview tab and hover over an crash point to get a localized view of the crash site.
         </p>
 
         <p>
-  All accidents were placed on the map as a point at the approximate place where they occurred.  Not all bike accidents are reported to the police, and this map only shows those that are reported.  In order to show those streets where accidents were common, we used an average-link agglomerative clustering algorithm to cluster the accidents.  The large clusters, in which many accidents on a single street length, are shown by a red line.  
+  All crashes were placed on the map as a point at the place where they occurred.  Not all bike crashes are reported to the police, and this map only shows those that are reported.  In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
         </p>
 
         <p>
@@ -156,7 +156,7 @@ $(window).load(function(){
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="http://www.portlandoregon.gov/police/">Portland Police Department Bicycle Accident Reports </a> </li>
+          <li><a href="http://www.portlandoregon.gov/police/">Portland Police Department Bicycle Crash Reports </a> </li>
           <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
         </ol>
@@ -181,13 +181,13 @@ $(window).load(function(){
     <div id="paneContent">
       <div id="tabcontent_1" >
         </br>
-        <p align="center"> Accidents by Street </p>
+        <p align="center"> Crashes by Street </p>
         <p id="chartTitle" align="center"> </p>
         <div id="chart"> </div>
       </div>
       <div id="tabcontent_2">
         <img id="street-view" > </img>
-        <p id="address" align="center">Hover over an accident to view its location.</p>
+        <p id="address" align="center">Hover over a crash to view its location.</p>
         <br></br>
       </div>
     </div>
