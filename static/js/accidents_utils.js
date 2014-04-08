@@ -343,7 +343,7 @@ function drawBikeways(){
 
   var selectedPath;
 
-  if (cityName=='Portland'){
+  if (cityName=='Portland' || cityName=='Austin'){
     selectedPath = path;
   } else {
     selectedPath = path2;

@@ -26,6 +26,9 @@ def bicycleaccidents_manhattan(request):
 def bicycleaccidents_portland(request):
 	return render_to_response('bicycle-accidents/portland.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def bicycleaccidents_austin(request):
+	return render_to_response('bicycle-accidents/austin.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def cambridge_footfall(request):
 	return render_to_response('footfall/cambridge-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
