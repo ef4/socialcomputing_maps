@@ -56,14 +56,14 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/bicycle_accidents/final_data4.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/bicycle_accidents/final_data5.json', function(data){
     console.log(data);
       allData= data;
       accidentData = allData["accidents"];
       //finalClusters = allData["clusters"]["2012"];
       accidentDataDraw = accidentData;
       finalClusters = [];
-      processChartData(allData["streets"]["2012"]);
+      processChartData(allData["streets"]);
       drawClusters();
       drawController();
       jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/bicycle_accidents/bikeways.geojson', function(data){
@@ -137,7 +137,7 @@ $(window).load(function(){
         </p>
 
         <p> 
-        This map helps to show where crashes tend to happen — like Broadway, 3rd Avenue and 7th Avneue — in the hope that those streets might be made safer for riders. 
+        This map helps to show where crashes tend to happen — like Broadway, 3rd Avenue and 1st Avenue — in the hope that those streets might be made safer for riders. 
         <p>
 
         <p>
