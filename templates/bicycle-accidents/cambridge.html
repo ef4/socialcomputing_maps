@@ -43,6 +43,10 @@ var URL_PREFIX = '{{URL_PREFIX}}';
 
 var streetName_offset_left = -60;
 var streetName_offset_top = -25;
+var bikeways;
+var bikeway_offset0 = -240;
+var bikeway_offset1 = -195;
+var scaleFactor2 = 1.6;
 
 $(window).load(function(){
 
@@ -52,15 +56,22 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/bicycle_accidents/final_data3.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/bicycle_accidents/final_corrected_data.json', function(data){
+      
       allData= data;
       accidentData = data['accidents'];
+      console.log(accidentData.length);
       accidentDataDraw = accidentData;
       finalClusters = allData['clusters'];
       processChartData(allData["streets"]);
       drawClusters();
       drawController();
+      jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/bicycle_accidents/bikeways.geojson', function(data){
+          bikeways = data;
+          setProjection2();
+          drawBikeways();
 
+      });
     });
   });
 
@@ -96,7 +107,7 @@ $(window).load(function(){
                     <span id="mapClass" class="title-keyword"> Cambridge</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes the 956 bicycle crashes in Cambridge, MA 
+                    This map visualizes the 746 bicycle crashes in Cambridge, MA 
                     </br>
                     from 2010 to 2013
                     <span id="showMore"> ... more </span>
@@ -123,7 +134,7 @@ $(window).load(function(){
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
         <p>
-          This map visualizes the 956 bicycle crashes in the city of Cambridge, Massachusetts from 2010-2013.
+          This map visualizes the 746 bicycle crashes in the city of Cambridge, Massachusetts from 2010-2013.
         </p>
 
         <p> 
