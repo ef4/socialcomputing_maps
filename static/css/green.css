@@ -7,28 +7,43 @@ body{
   position: relative;
 }
 
-#svgContainer {
+#mainframe{
   position: relative;
+  height: 625px;
+  width: 1100px;
+  font-size: 18px;
+}
+
+#svgContainer {
+  top: 0;left: 0;
+  position: absolute;
   width: 1100px;
   height: 625px;
-  margin-top: 65px;
   z-index: 2;
 }
 
 canvas{
+  top: 0;left: 0;
   position: absolute;
-  margin-top: 65px;
   width: 1100px;
   height: 625px;
   z-index: 1;
 }
 
+#sliderContainer {
+  position: absolute;
+  bottom:0; left:0;
+  margin-bottom: 50px;
+}
 
-#sliderContainer{
-  float:left;
+#sliderContainer p{
+  margin-left: -20px;
+  font-size: 15px;
+}
+
+#slider{
   height: 15px;
-  width:450px;
-  margin-bottom: 20px;
+  width:300px;
   background: -webkit-linear-gradient(left,#d9f0a3, #238443); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(left,#d9f0a3, #238443); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(left,#d9f0a3, #238443); /* For Firefox 3.6 to 15 */
@@ -71,6 +86,11 @@ canvas{
 
 .title-keyword {
     color: #545454;
+}
+
+.spacer{
+  height: 1px;
+  clear:both;
 }
 
 #showMore{

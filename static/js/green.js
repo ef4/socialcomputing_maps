@@ -40,20 +40,32 @@ function closeEssayBox(){
 }
 
 function setupSlider(){
-  var colorScaleSlider = d3.scale.pow().exponent(1.5).domain([0,100]).range(['#d9f0a3', '#238443']);
-  $( "#sliderContainer" ).slider({
+  var colorScaleSlider = d3.scale.linear().domain([0,100]).range([9.99723963294e-05, 0.591211975017]);
+  $( "#slider" ).slider({
     change:function(event,ui){
-      var color = colorScaleSlider(ui.value);
-      ctx.clearRect(0, 0, canvas.width(), canvas.height());
-      greenData.filter(function(d){
-        return colorScale(d[4]) < color;
-      }).forEach(function(d){
-        var screenPoint = projection([d[1], d[0]]);
-        var radius =  d[3];
-        var opacity = d[4];
-        var color = colorScale(d[4]);
-        drawCircle(ctx, screenPoint[0], screenPoint[1],radius,opacity,color);
-      })
+      if (ui.value < 5){
+        drawPoints();
+      } else {
+        ctx.clearRect(0, 0, canvas.width(), canvas.height());
+        var show_streets = streets.filter(function(d){
+          return Math.abs(d[1] - colorScaleSlider(ui.value)) < 0.02 ;
+        });
+        console.log(show_streets);
+      }
+      
+
+
+
+
+      // points.filter(function(d){
+      //   return d[5] > color;
+      // }).forEach(function(d){
+      //   var screenPoint = projection([d[1], d[0]]);
+      //   var radius =  d[3];
+      //   var opacity = d[4];
+      //   var color = colorScale(d[4]);
+      //   drawCircle(ctx, screenPoint[0], screenPoint[1],radius,opacity,color);
+      // })
     }
   });
   $('.ui-slider-handle').height(20);
@@ -71,14 +83,15 @@ function setProjection(){
     s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
   projection.scale(s).translate(t);
+
+ svg = d3.select("#svgContainer").append("svg")
+      .attr('height',$('#svgContainer').height())
+      .attr('width', $('#svgContainer').width());
 }
 
 
 
 function drawBoundary(){
-  svg = d3.select("#svgContainer").append("svg")
-        .attr('height',$('#svgContainer').height())
-        .attr('width', $('#svgContainer').width());
 
   svg.selectAll("path")
     .data(boundary.features)
@@ -86,7 +99,7 @@ function drawBoundary(){
     .attr("d", path)
     .attr("fill", "none")
     .attr("fill-opacity", 0.0)
-    .attr("stroke-opacity", 0.5)
+    .attr("stroke-opacity", 0.3)
     .attr("stroke", "gray");
 }
 
@@ -94,21 +107,22 @@ function drawBoundary(){
 
 
 function drawMap(){
-  svg.selectAll(".road")
+  svg.selectAll("path")
     .data(geoJSON.features)
    .enter().append("path")
     .attr("d", path)
     .attr('class', 'road')
-    .attr("fill", "gray")
-    .attr("fill-opacity", 0.1)
-    .attr("stroke-opacity", 0.5)
+    .attr("fill", "none")
+    .attr("fill-opacity", 0.0)
+    .attr("stroke-opacity", 0.2)
+    .attr("stroke-width",3)
     .attr("stroke", "gray");
 }
 
 
 
 function drawPoints(){
-  greenData.map(function(d){
+  points.map(function(d){
     var screenPoint = projection([d[1], d[0]]);
     var radius =  d[3];
     var opacity = d[4];

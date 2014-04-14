@@ -34,7 +34,8 @@
    var greenData;
    var scaleFactor = 1.0;
    var svg;
-   var points = [];
+   var points;
+   var streets;
    var canvas;
    var ctx;
    var boundary;
@@ -49,14 +50,16 @@
     $.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(boundaryGeoJson){
       boundary = boundaryGeoJson;
       setProjection();
-      drawBoundary();
+      //drawBoundary();
       initialize();
-      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/roads.geojson', function(geojson){
-        geoJSON = geojson;
-        $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery4.json', function(greenJSON){
-          greenData = greenJSON['points'];      
+      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery4.json', function(greenJSON){
+          greenData = greenJSON;
+          points = greenData['points']; streets = greenData['streets'];      
           drawPoints();   
           //drawMap();
+        $.getJSON('{{URL_PREFIX}}static/data/Cambridge/streetlines.geojson', function(geojson){
+          geoJSON = geojson;
+          drawMap();
         });
       });
     });
@@ -79,16 +82,19 @@
                     <span id="showMore"> ... more </span>
                 </div>
           </div>
+          <div class="spacer"></div>
         </div>
-        <canvas id='canvasContainer'></canvas>
-        <div id="svgContainer"></div>
 
-      <div id="sliderContainer"></div>
+      <div id='mainframe'>
+          <canvas id='canvasContainer'></canvas>
+          <div id="svgContainer"></div>
+          <div id='sliderContainer'>
+            <p>All</p>
+            <div id="slider"></div>
+          </div>
+      </div>
 
       <div id="footer">
-<!--        <a id="logo" href="http://youarehere.cc">
-                  <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 40px">
-        </a> -->
         This work is part of the <a href="http://youarehere.cc">You Are Here</a> project
         <span class="footer-plus">+</span>
         <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
