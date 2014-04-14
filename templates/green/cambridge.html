@@ -5,6 +5,7 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/d3.v3.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/green.css"> </style>
@@ -25,21 +26,8 @@
     </script>
     
    <script type="text/javascript">
-   var map;
-   var canvasLayer;
-   var context;
-   var accidentData;
 
-   var bikeFlag = false;
-   var bikeLayer;
-   var activeTab;
-   var vertActiveTab;
-   var activeTabContent;
-   var pano;
-   var chartData = [];
-   var chartDrawn = false;
-   var allClusters = {};
-   var finalClusters = {};
+
    var projection = d3.geo.mercator();
    var path = d3.geo.path().projection(projection); 
    var geoJSON;
@@ -47,15 +35,12 @@
    var scaleFactor = 1.0;
    var svg;
    var points = [];
-   var drawIndex = 0;
-   var maxWidth = 1;
-   var maxPoints;
-   var currentDrawPoints;
    var canvas;
    var ctx;
    var boundary;
    $(window).load(function(){
     $('.container').css('width', '1100px');
+
     canvas = $('canvas');
     canvas.attr('height','625');
     canvas.attr('width','1100');
