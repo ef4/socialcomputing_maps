@@ -39,7 +39,7 @@ def sanfrancisco_footfall(request):
 	return render_to_response('footfall/sanfrancisco-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def sanfrancisco_green(request):
-	return render_to_response('green/sanfrancisco-green.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+	return render_to_response('green/sanfrancisco.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def cambridge_green(request):
 	return render_to_response('green/cambridge.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
