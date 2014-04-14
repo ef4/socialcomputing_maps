@@ -122,7 +122,7 @@ function drawCircle(ctx, x, y, r, a, color) {
   ctx.beginPath();
   ctx.arc(x,y,r, 0, 2*Math.PI);
   ctx.fillStyle = color;
-  ctx.shadowBlur=2;
+  ctx.shadowBlur=1.5;
   ctx.shadowColor=color;
   ctx.strokeStyle = color;
   ctx.fill();

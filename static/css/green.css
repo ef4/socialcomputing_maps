@@ -4,6 +4,7 @@ body{
 }
 
 .container{
+  position: relative;
 }
 
 #svgContainer {
