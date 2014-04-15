@@ -44,10 +44,26 @@ function initialize(){
           .attr("stroke-opacity", 0.1);
       })
 
-      $('svg').on('mouseover',function(){
-        console.log('road rage');
-      })
-     
+      $('#svgContainer').on('mouseover',function(e){
+        var element = d3.select($(event.target).clone()[0]);
+        var classname = element.attr('class');
+        if (classname == 'road2'){
+          var d  = element.attr("name");
+          $('#streetname').css('display','block');
+          $('#streetname').html(d);
+          $('#streetname').offset({top : e.pageY, left:e.pageX +10});
+        }
+      });
+
+      $('#svgContainer').on('mouseout', function(e){
+        var element = d3.select($(event.target).clone()[0]);
+        var classname = element.attr('class');
+        if (classname == 'road2'){
+          $('#streetname').css('display','none');
+          $('#streetname').html('');
+        }
+      });        
+
   setupSlider();
 }
 
@@ -194,18 +210,10 @@ function drawInvisibleRoads(){
     .attr("fill", "none")
     .attr("fill-opacity", 0.0)
     .attr("stroke-opacity", 0.0)
-    .attr("stroke-width",6)
-    .attr("stroke", "red")
-    .on('mouseover', function(d){
-      var frame_reference = $('#mainframe').offset();
-      $('#streetname').css('display','block');
-      $('#streetname').html(d[4]);
-      $('#streetname').offset({top : d3.event.y, left:d3.event.x + 10 });
-    })
-    .on('mouseout', function(d){
-      $('#streetname').html('');
-      $('#streetname').css('display','none');
-    })
+    .attr("stroke-width",8)
+    .attr("name", function(d){return d[4];})
+    .attr("stroke", "red");
+
   }
 
 
