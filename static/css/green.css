@@ -24,6 +24,7 @@ body{
 
 #streetname{
   z-index: 8;
+  display: none;
   font-size: 14px;
 }
 

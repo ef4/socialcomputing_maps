@@ -197,11 +197,13 @@ function drawInvisibleRoads(){
     .attr("stroke", "red")
     .on('mouseover', function(d){
       var frame_reference = $('#mainframe').offset();
+      $('#streetname').css('display','block');
       $('#streetname').html(d[4]);
       $('#streetname').offset({top : d3.event.y, left:d3.event.x + 10 });
     })
     .on('mouseout', function(d){
       $('#streetname').html('');
+      $('#streetname').css('display','none');
     })
   }
 
