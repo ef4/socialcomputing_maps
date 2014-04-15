@@ -12,6 +12,7 @@
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/green.js"></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
@@ -56,6 +57,7 @@
           greenData = greenJSON;
           segments = greenData['segments'];
           streets = greenData['streets'];  
+          $('#svgContainer').empty();
           drawInvisibleRoads();
           drawPoints();
       });
@@ -84,7 +86,9 @@
 
       <div id='mainframe'>
           <canvas id='canvasContainer'></canvas>
-          <div id="svgContainer"></div>
+          <div id="svgContainer">
+            <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
+          </div>
           <p id='streetname'></p>
           <div id='sliderContainer'>
             <p id='allStreets'> View all streets</p>

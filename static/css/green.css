@@ -168,8 +168,9 @@ canvas{
 #footer {
   float: left;
   width: 100%;
-  border-top: 1px dotted rgba(200,200,200,0.4);
+  border-top: 1px dotted rgba(200,200,200,0.6);
   margin-top: 15px;
+  padding-top: 5px;
   font-size: 15px;
   color: rgba(160,160,160,0.98);
   z-index: 4;

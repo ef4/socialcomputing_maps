@@ -43,6 +43,10 @@ function initialize(){
           .attr('stroke','green')
           .attr("stroke-opacity", 0.1);
       })
+
+      $('svg').on('mouseover',function(){
+        console.log('road rage');
+      })
      
   setupSlider();
 }
@@ -64,12 +68,6 @@ function setupSlider(){
           .attr('stroke','gray')
           .attr("stroke-opacity", 0.1);
 
-      // if (ui.value < 10){
-      //   $('canvas').css('opacity',1.0);
-      //   d3.selectAll('.road')
-      //     .attr('stroke','green')
-      //     .attr("stroke-opacity", 0.1);
-      // } else {
         $('canvas').css('opacity',0.0);
         d3.selectAll('.road').filter(function(d){
           return Math.abs(d[7] - colorScaleSlider(ui.value)) < 0.05;
@@ -97,9 +95,6 @@ function setProjection(){
     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
   projection.scale(s).translate(t);
 
- svg = d3.select("#svgContainer").append("svg")
-      .attr('height',$('#svgContainer').height())
-      .attr('width', $('#svgContainer').width());
 }
 
 
@@ -179,6 +174,12 @@ function drawCircle(ctx, x, y, r, a, color) {
 }
 
 function drawInvisibleRoads(){
+
+
+ svg = d3.select("#svgContainer").append("svg")
+      .attr('height',$('#svgContainer').height())
+      .attr('width', $('#svgContainer').width());
+
   var line = d3.svg.line()
       .x(function(d) { return d[0]; })
       .y(function(d) { return d[1]; });
