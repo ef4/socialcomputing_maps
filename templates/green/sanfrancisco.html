@@ -12,6 +12,7 @@
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/green.js"></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
@@ -39,6 +40,7 @@
    var canvas;
    var ctx;
    var boundary;
+   var storePoints = [];
    $(window).load(function(){
     $('.container').css('width', '1100px');
 
@@ -50,18 +52,14 @@
     $.getJSON('{{URL_PREFIX}}static/data/San Francisco/boundary.geojson', function(boundaryGeoJson){
       boundary = boundaryGeoJson;
       setProjection();
-      //drawBoundary();
       initialize();
-      $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/greenery_test_all.json', function(greenJSON){
+      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery_test.json', function(greenJSON){
           greenData = greenJSON;
-          segments = greenData['points']; 
-          //streets = greenData['streets'];      
-          drawPoints();   
-          //drawMap();
-        d3.json('{{URL_PREFIX}}static/data/San Francisco/streets.geojson', function(error,geojson){
-          geoJSON = geojson;
-          drawMap();
-        });
+          segments = greenData['points'];
+          streets = greenData['streets'];  
+          $('#svgContainer').empty();
+          drawInvisibleRoads();
+          drawPoints();
       });
     });
   });
@@ -71,15 +69,15 @@
     <body>
     <div class="container">
         <div class="title-container"> 
-          <a id="logo" href="http://youarehere.media.mit.edu">
+          <a id="logo" href="http://youarehere.cc">
                 <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 50px">
           </a>
           <div class="title-text">
                 <h1 class="title">
-                    <span id="mapClass" class="title-keyword"> Cambridge</span> 
+                    <span id="mapClass" class="title-keyword"> San Francisco</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes street greenery in Cambridge, MA
+                    This map visualizes street greenery in San Francisco, CA
                     <span id="showMore"> ... more </span>
                 </div>
           </div>
@@ -88,9 +86,12 @@
 
       <div id='mainframe'>
           <canvas id='canvasContainer'></canvas>
-          <div id="svgContainer"></div>
+          <div id="svgContainer">
+            <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
+          </div>
+          <p id='streetname'></p>
           <div id='sliderContainer'>
-            <p>All</p>
+            <p id='allStreets'> View all streets</p>
             <div id="slider"></div>
           </div>
       </div>
@@ -108,34 +109,39 @@
       <div id='essayBox'>
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
-        <p>
-          This map visualizes the 746 bicycle crashes in the city of Cambridge, Massachusetts from 2010-2013.
-        </p>
+      <p>
+            "When great trees fall,</br>
+            rocks on distant hills shudder,</br>
+            lions hunker down </br>
+            in tall grasses,</br>
+            and even elephants</br>
+            lumber after safety.</br>
+            </br>
+            When great trees fall</br>
+            in forests,</br>
+            small things recoil into silence,</br>
+            their senses</br>
+            eroded beyond fear."</br>
+            </br>
+            -Maya Angelou
+      </p>
 
-        <p> 
-        In Cambridge alone the number of daily bike commuters has quadrupled since 2006. This map helps to show where crashes tend to happen &mdash; like Mass Ave and Cambridge Street and Hampshire Street &mdash; in the hope that those streets might be made safer for riders.  
-        <p>
+      <p>
+        Trees provide us shade, fresh air, and beauty.  They create places to be in, to lean on, and to pass through.  And they remind us of our essential connection with nature, and with one another.  Trees can make a city feel alive, and places with no trees can feel barren.  
+      </p>
 
-        <p>
-        You can explore this map on three levels: city, street and location.
-  <b>City:</b> Each reported bike crash is recorded as a dot on the map.  Streets on which bike crashes are common are outlined in red.  You may hover over an crash to see the street or intersection on which it occurred.
-  <b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of crashes. You can click on each bar to visualize only the crashes on that particular street
-  <b>Location:</b> Use the streetview tab and hover over an crash point to get a localized view of the crash site.
-        </p>
+      <p>
+        This map visualizes the approximate amount of greenery on the streets in Cambridge.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.  And the slider at the bottom allows you to see just the streets above a certain threshold.
+      </p>
 
-        <p>
-  All crashes were placed on the map as a point at the place where they occurred.  Not all bike crashes are reported to the police, and this map only shows those that are reported.  In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
-        </p>
-
-        <p>
-  The data extraction and geolocation was written in Python, and the visualization was written in JavaScript and D3.  We used the Google Maps API to geolocate every crash point, since the data was given to us as street addresses or intersections. 
-        </p>
+      <p> 
+        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because some street view photos were taken during the winter (for example, on Oxford Street), but they give us a sense of which streets are full of life.
+      </p>
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="http://www.cambridgema.gov/cpd/">Cambridge Police Department Bicycle Accident Reports </a> </li>
-          <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
+          <li><a href="http://www.cambridgema.gov/GIS/gisdata/datadownload.aspx">Geographic Information Systems, City of Cambridge,MA </a></li>
         </ol>
 
       </div>
