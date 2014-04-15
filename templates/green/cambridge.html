@@ -34,7 +34,7 @@
    var greenData;
    var scaleFactor = 1.0;
    var svg;
-   var points;
+   var segments;
    var streets;
    var canvas;
    var ctx;
@@ -50,17 +50,12 @@
     $.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(boundaryGeoJson){
       boundary = boundaryGeoJson;
       setProjection();
-      //drawBoundary();
       initialize();
-      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery4.json', function(greenJSON){
+      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery_test.json', function(greenJSON){
           greenData = greenJSON;
-          points = greenData['points']; streets = greenData['streets'];      
-          drawPoints();   
-          //drawMap();
-        $.getJSON('{{URL_PREFIX}}static/data/Cambridge/streetlines.geojson', function(geojson){
-          geoJSON = geojson;
-          drawMap();
-        });
+          segments = greenData['points'];
+          streets = greenData['streets'];     
+          drawPoints();
       });
     });
   });
@@ -88,10 +83,11 @@
       <div id='mainframe'>
           <canvas id='canvasContainer'></canvas>
           <div id="svgContainer"></div>
-          <div id='sliderContainer'>
-            <p>All</p>
+          <p id='streetName'></p>
+<!--           <div id='sliderContainer'>
+            
             <div id="slider"></div>
-          </div>
+          </div> -->
       </div>
 
       <div id="footer">
@@ -107,36 +103,43 @@
       <div id='essayBox'>
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
-        <p>
-          This map visualizes the 746 bicycle crashes in the city of Cambridge, Massachusetts from 2010-2013.
-        </p>
+      <quote>
+          <pre>
+            "When great trees fall,
+            rocks on distant hills shudder,
+            lions hunker down
+            in tall grasses,
+            and even elephants
+            lumber after safety.
 
-        <p> 
-        In Cambridge alone the number of daily bike commuters has quadrupled since 2006. This map helps to show where crashes tend to happen &mdash; like Mass Ave and Cambridge Street and Hampshire Street &mdash; in the hope that those streets might be made safer for riders.  
-        <p>
+            When great trees fall
+            in forests,
+            small things recoil into silence,
+            their senses
+            eroded beyond fear."
 
-        <p>
-        You can explore this map on three levels: city, street and location.
-  <b>City:</b> Each reported bike crash is recorded as a dot on the map.  Streets on which bike crashes are common are outlined in red.  You may hover over an crash to see the street or intersection on which it occurred.
-  <b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of crashes. You can click on each bar to visualize only the crashes on that particular street
-  <b>Location:</b> Use the streetview tab and hover over an crash point to get a localized view of the crash site.
-        </p>
+            -Maya Angelou
+          </pre>
+      </quote>
 
-        <p>
-  All crashes were placed on the map as a point at the place where they occurred.  Not all bike crashes are reported to the police, and this map only shows those that are reported.  In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
-        </p>
 
-        <p>
-  The data extraction and geolocation was written in Python, and the visualization was written in JavaScript and D3.  We used the Google Maps API to geolocate every crash point, since the data was given to us as street addresses or intersections. 
-        </p>
+      <p>
+        Much of the discussion around the relationship between humans and nature doesn’t emphasize enough the fact that humans are nature.  As such we need nature, even in our most urban centers.  Trees can make a city feel alive, and areas with no trees can feel desolate.  
+      </p>
+
+      <p>
+        This map visualizes the approximate amount of greenery on the streets in Cambridge.  This map works on two levels.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.  At the city level, each street is assigned a score, and moving the slider at the bottom allows you to see the greenest streets.
+      </p>
+
+      <p> 
+        To create these maps, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life on a street.  These maps are approximate, in part because some street view photos were taken during the winter (for example, on Oxford Street).  But they give us a sense of which streets are full of life.
+      </p>
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="http://www.cambridgema.gov/cpd/">Cambridge Police Department Bicycle Accident Reports </a> </li>
-          <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
+          <li><a href="http://www.cambridgema.gov/GIS/gisdata/datadownload.aspx">Geographic Information Systems, City of Cambridge,MA </a></li>
         </ol>
-        <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> Back to map </p>
 
       </div>
     </div> 

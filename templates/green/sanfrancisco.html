@@ -5,17 +5,16 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/d3.v3.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-responsive.min.css"/> 
-    <link rel="stylesheet" type="text/css" href="/static/css/tipsy.css"/> 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
-    <script type="text/javascript" src="{{URL_PREFIX}}static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{URL_PREFIX}}static/js/GeoJSON.js"></script>
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/green.css"> </style>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/green.js"></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -27,99 +26,76 @@
     </script>
     
    <script type="text/javascript">
-   var map;
-   var canvasLayer;
-   var context;
-   var accidentData;
 
-   var bikeFlag = false;
-   var bikeLayer;
-   var activeTab;
-   var vertActiveTab;
-   var activeTabContent;
-   var pano;
-   var chartData = [];
-   var chartDrawn = false;
-   var allClusters = {};
-   var finalClusters = {};
+
    var projection = d3.geo.mercator();
    var path = d3.geo.path().projection(projection); 
    var geoJSON;
    var greenData;
    var scaleFactor = 1.0;
    var svg;
-   var points = [];
-   var drawIndex = 0;
-   var maxWidth = 1;
-   var maxPoints;
-   var currentDrawPoints;
    var segments;
-   var treesGeoJSON;
-
+   var streets;
+   var canvas;
+   var ctx;
+   var boundary;
    $(window).load(function(){
     $('.container').css('width', '1100px');
-    $.getJSON('{{URL_PREFIX}}static/data/San Francisco/boundary.geojson', function(geojson){
-      geoJSON = geojson;
-      setProjection();
-      drawMap();
 
-      d3.csv('{{URL_PREFIX}}static/data/San Francisco/segs_test.csv', function(error, segs){
-        //greenData = greenGeoJSON;      
-        // drawCircles();   
-        // drawGraph();
-        segments = segs;
-        drawSegments();
-        // $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/trees.geojson', function(trees){
-        //   treesGeoJSON = trees;
-        //   //drawTrees();
-        // });
+    canvas = $('canvas');
+    canvas.attr('height','625');
+    canvas.attr('width','1100');
+    ctx = canvas.get(0).getContext('2d');
+
+    $.getJSON('{{URL_PREFIX}}static/data/San Francisco/boundary.geojson', function(boundaryGeoJson){
+      boundary = boundaryGeoJson;
+      setProjection();
+      //drawBoundary();
+      initialize();
+      $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/greenery_test_all.json', function(greenJSON){
+          greenData = greenJSON;
+          segments = greenData['points']; 
+          //streets = greenData['streets'];      
+          drawPoints();   
+          //drawMap();
+        d3.json('{{URL_PREFIX}}static/data/San Francisco/streets.geojson', function(error,geojson){
+          geoJSON = geojson;
+          drawMap();
+        });
       });
     });
   });
-
-  function drawSegments(){
-  svg.selectAll('circle')
-    .data(segments)
-    .enter().append("circle")
-    .attr("class", "points")
-    .attr("r",0.5)
-    .attr('cx', function (d) {       
-      return projection([parseFloat(d.lng), parseFloat(d.lat)])[0]; 
-    })
-    .attr('cy', function (d) {
-      return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]; 
-    })
-    .attr("fill","red")
-    //.attr("fill", '#329932')
-    .attr("stroke", "red")
-    .attr("fill-opacity", 0.2)
-    .attr("stroke-opacity",0.2);
-  }
+     
    </script>
     </head>
     <body>
     <div class="container">
-      <div id="svgContainer"></div>
-      <div id="infoContainer">
         <div class="title-container"> 
+          <a id="logo" href="http://youarehere.media.mit.edu">
+                <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 50px">
+          </a>
           <div class="title-text">
                 <h1 class="title">
-                    <span id="mapClass" class="title-keyword"> San Francisco</span> 
+                    <span id="mapClass" class="title-keyword"> Cambridge</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes street greenery in San Francisco, CA
+                    This map visualizes street greenery in Cambridge, MA
                     <span id="showMore"> ... more </span>
                 </div>
-            </div>
+          </div>
+          <div class="spacer"></div>
         </div>
-        <div id="graphContainer"></div>
+
+      <div id='mainframe'>
+          <canvas id='canvasContainer'></canvas>
+          <div id="svgContainer"></div>
+          <div id='sliderContainer'>
+            <p>All</p>
+            <div id="slider"></div>
+          </div>
       </div>
-      
+
       <div id="footer">
-       <a id="logo" href="http://youarehere.cc">
-                  <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 40px">
-        </a>
-        <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
         This work is part of the <a href="http://youarehere.cc">You Are Here</a> project
         <span class="footer-plus">+</span>
         <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
@@ -128,6 +104,43 @@
         <span class="footer-plus">+</span>
         <a href="http://mit.edu"> MIT</a>
       </div>
+
+      <div id='essayBox'>
+      <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+      <div id='essayContent'>
+        <p>
+          This map visualizes the 746 bicycle crashes in the city of Cambridge, Massachusetts from 2010-2013.
+        </p>
+
+        <p> 
+        In Cambridge alone the number of daily bike commuters has quadrupled since 2006. This map helps to show where crashes tend to happen &mdash; like Mass Ave and Cambridge Street and Hampshire Street &mdash; in the hope that those streets might be made safer for riders.  
+        <p>
+
+        <p>
+        You can explore this map on three levels: city, street and location.
+  <b>City:</b> Each reported bike crash is recorded as a dot on the map.  Streets on which bike crashes are common are outlined in red.  You may hover over an crash to see the street or intersection on which it occurred.
+  <b>Street:</b> Pull out the infographic panel from the top right of the map to make street-wise comparison of crashes. You can click on each bar to visualize only the crashes on that particular street
+  <b>Location:</b> Use the streetview tab and hover over an crash point to get a localized view of the crash site.
+        </p>
+
+        <p>
+  All crashes were placed on the map as a point at the place where they occurred.  Not all bike crashes are reported to the police, and this map only shows those that are reported.  In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
+        </p>
+
+        <p>
+  The data extraction and geolocation was written in Python, and the visualization was written in JavaScript and D3.  We used the Google Maps API to geolocate every crash point, since the data was given to us as street addresses or intersections. 
+        </p>
+
+        <p style="color:#898989;"> Data Sources </p>
+        <ol>
+          <li><a href="http://www.cambridgema.gov/cpd/">Cambridge Police Department Bicycle Accident Reports </a> </li>
+          <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
+          <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
+        </ol>
+
+      </div>
+    </div> 
+
 
     </div>
     </body>

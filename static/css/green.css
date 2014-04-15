@@ -37,7 +37,6 @@ canvas{
 }
 
 #sliderContainer p{
-  margin-left: -20px;
   font-size: 15px;
 }
 
@@ -50,6 +49,21 @@ canvas{
   background: linear-gradient(left,#d9f0a3, #238443); /* Standard syntax */
   border-radius: 0px;
   border:none;
+}
+quote{
+  margin-left: 0px;
+}
+pre{
+  border:none;
+  font-size:12px;
+  font-style: italic;
+  text-align: left;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 5px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-left: -20px;
 }
 
 
@@ -106,11 +120,16 @@ canvas{
   border-radius: 5px;
   opacity: 0.0;
   color : #444;
+  margin-top: 0px;
   padding: 40px;
   font-size: 14px;
   letter-spacing: 1.5px;
   background-color:rgba(255, 255, 255, 0.8);
   font-family: 'EB Garamond', serif;
+}
+
+#viewMap{
+  cursor: pointer;
 }
 
 #essayBox-close {
@@ -121,10 +140,12 @@ canvas{
   position: absolute;
   top: 2%;
   left: 95%;
+  z-index: 6;
   color:rgb(222,16,40);
 }
 
 #essayContent{
+  margin-top: 5px;
   margin-left: 18px;
 }
 
@@ -135,6 +156,10 @@ canvas{
 #essayContent a {
     color: black;
     text-decoration: underline;
+}
+
+#essayContent h3{
+  font-weight: bold;
 }
 
 
