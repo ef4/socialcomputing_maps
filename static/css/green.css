@@ -19,8 +19,14 @@ body{
   position: absolute;
   width: 1100px;
   height: 625px;
-  z-index: 2;
+  z-index: 4;
 }
+
+#streetname{
+  z-index: 8;
+  font-size: 14px;
+}
+
 
 canvas{
   top: 0;left: 0;
@@ -34,15 +40,18 @@ canvas{
   position: absolute;
   bottom:0; left:0;
   margin-bottom: 50px;
+  z-index: 6;
 }
 
 #sliderContainer p{
   font-size: 15px;
+  z-index: 6;
 }
 
 #slider{
   height: 15px;
   width:300px;
+  z-index: 6;
   background: -webkit-linear-gradient(left,#d9f0a3, #238443); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(left,#d9f0a3, #238443); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(left,#d9f0a3, #238443); /* For Firefox 3.6 to 15 */
@@ -50,21 +59,7 @@ canvas{
   border-radius: 0px;
   border:none;
 }
-quote{
-  margin-left: 0px;
-}
-pre{
-  border:none;
-  font-size:12px;
-  font-style: italic;
-  text-align: left;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 5px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-  margin-left: -20px;
-}
+
 
 
 .title-container {
@@ -168,7 +163,7 @@ pre{
   float: left;
   width: 100%;
   border-top: 1px dotted rgba(200,200,200,0.4);
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 15px;
   color: rgba(160,160,160,0.98);
   z-index: 4;

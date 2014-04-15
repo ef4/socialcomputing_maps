@@ -9,8 +9,7 @@ function initialize(){
         e.preventDefault();
         essayBoxShown = !essayBoxShown;
         if (essayBoxShown) {
-            $('#svgContainer').css('opacity',0.25);
-            $('canvas').css('opacity',0.25);
+            $('#mainframe').css('opacity',0.25);
             $('#essayBox').css('display', 'block');
             $('#essayBox').animate({'opacity':1.0}, 300);
             $(this).text(' ... view map ');
@@ -37,10 +36,7 @@ function initialize(){
           $('#showMore').text(' ... more ');
       });
 
-    $('path').on('mouseover',function(){
-      console.log("hover");
-    })
-
+     
   setupSlider();
 }
 
@@ -49,58 +45,38 @@ function closeEssayBox(){
     $('#essayBox').css('display', 'none');
   })
   essayBoxShown = false;
-  $('#svgContainer').css('opacity',1.0);
-  $('canvas').css('opacity',1.0);
+  $('#mainframe').css('opacity',1.0);
+
 }
 
 function setupSlider(){
-  var colorScaleSlider = d3.scale.linear().domain([0,100]).range([9.99723963294e-05, 0.591211975017]);
+  var colorScaleSlider = d3.scale.linear().domain([0,100]).range([0.000290625, 0.214216666667]);
   $( "#slider" ).slider({
     change:function(event,ui){
       d3.selectAll('.road')
           .attr('stroke','gray')
-          .attr("stroke-opacity", 0.2);
+          .attr("stroke-opacity", 0.05);
 
-      if (ui.value < 5){
-        
-        drawPoints();
-      
+      if (ui.value < 10){
+        $('canvas').css('opacity',1.0);
+        d3.selectAll('.road')
+          .attr('stroke','green')
+          .attr("stroke-opacity", 0.1);
       } else {
-        ctx.clearRect(0, 0, canvas.width(), canvas.height());
-
-        var show_streets = streets.filter(function(d){
-          return Math.abs(d[1] - colorScaleSlider(ui.value)) < 0.1 ;
-        });
-        var names = show_streets.map(function(d){return d[0];});
-
+        $('canvas').css('opacity',0.0);
         d3.selectAll('.road').filter(function(d){
-          if (names.indexOf(d.properties.street) != -1){
-            d3.select(this)
-              .attr('stroke', colorScale(d.properties.value))
+          return Math.abs(d[7] - colorScaleSlider(ui.value)) < 0.05;
+        }).each(function(d){
+          d3.select(this)
+              .attr('stroke', function(d) {return colorScale(d[7]);})
               .attr('stroke-opacity',1.0);
-
-          }
         });
       }
+   }
+   });
       
-
-
-
-
-      // points.filter(function(d){
-      //   return d[5] > color;
-      // }).forEach(function(d){
-      //   var screenPoint = projection([d[1], d[0]]);
-      //   var radius =  d[3];
-      //   var opacity = d[4];
-      //   var color = colorScale(d[4]);
-      //   drawCircle(ctx, screenPoint[0], screenPoint[1],radius,opacity,color);
-      // })
-    }
-  });
   $('.ui-slider-handle').height(20);
-  $('.ui-slider-handle').width(10);
-  $('.ui-slider-handle').attr('background','blue');
+  $('.ui-slider-handle').width(8);
 }
 
 function setProjection(){ 
@@ -183,16 +159,43 @@ function drawPoints(){
 
 }
 
+
 function drawCircle(ctx, x, y, r, a, color) {
   ctx.globalAlpha = a;
   ctx.beginPath();
   ctx.arc(x,y,r, 0, 2*Math.PI);
   ctx.fillStyle = color;
-  ctx.shadowBlur=1.5;
+  ctx.shadowBlur=1.2;
   ctx.shadowColor=color;
   ctx.strokeStyle = color;
   ctx.fill();
 }
+
+function drawInvisibleRoads(){
+  var line = d3.svg.line()
+      .x(function(d) { return d[0]; })
+      .y(function(d) { return d[1]; });
+
+  svg.selectAll('.road2')
+    .data(segments)
+    .enter().append("path")
+    .attr('class','road2')
+    .attr('d', function(d){
+      var coords = [projection([d[1],d[0]]), projection([d[3], d[2]])];
+      return line(coords);})
+    .attr("fill", "none")
+    .attr("fill-opacity", 0.0)
+    .attr("stroke-opacity", 0.0)
+    .attr("stroke-width",6)
+    .attr("stroke", "red")
+    .on('mouseover', function(d){
+      var frame_reference = $('#mainframe').offset();
+      $('#streetname').html(d[4]);
+      $('#streetname').offset({top : d3.event.y, left:d3.event.x + 10 });
+    
+    });
+  }
+
 
   
 

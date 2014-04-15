@@ -39,6 +39,7 @@
    var canvas;
    var ctx;
    var boundary;
+   var storePoints = [];
    $(window).load(function(){
     $('.container').css('width', '1100px');
 
@@ -51,10 +52,11 @@
       boundary = boundaryGeoJson;
       setProjection();
       initialize();
-      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery_test.json', function(greenJSON){
+      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery5.json', function(greenJSON){
           greenData = greenJSON;
-          segments = greenData['points'];
-          streets = greenData['streets'];     
+          segments = greenData['segments'];
+          streets = greenData['streets'];  
+          drawInvisibleRoads();
           drawPoints();
       });
     });
@@ -83,11 +85,11 @@
       <div id='mainframe'>
           <canvas id='canvasContainer'></canvas>
           <div id="svgContainer"></div>
-          <p id='streetName'></p>
-<!--           <div id='sliderContainer'>
-            
+          <p id='streetname'></p>
+          <div id='sliderContainer'>
+            <p> < View all points</p>
             <div id="slider"></div>
-          </div> -->
+          </div>
       </div>
 
       <div id="footer">
@@ -103,8 +105,7 @@
       <div id='essayBox'>
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
-      <quote>
-          <pre>
+      <p>
             "When great trees fall,
             rocks on distant hills shudder,
             lions hunker down
@@ -119,20 +120,18 @@
             eroded beyond fear."
 
             -Maya Angelou
-          </pre>
-      </quote>
-
-
-      <p>
-        Much of the discussion around the relationship between humans and nature doesn’t emphasize enough the fact that humans are nature.  As such we need nature, even in our most urban centers.  Trees can make a city feel alive, and areas with no trees can feel desolate.  
       </p>
 
       <p>
-        This map visualizes the approximate amount of greenery on the streets in Cambridge.  This map works on two levels.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.  At the city level, each street is assigned a score, and moving the slider at the bottom allows you to see the greenest streets.
+        Trees provide us shade, fresh air, and beauty.  They create places to be in, to lean on, and to pass through.  And they remind us of our essential connection with nature, and with one another.  Trees can make a city feel alive, and places with no trees can feel barren.  
+      </p>
+
+      <p>
+        This map visualizes the approximate amount of greenery on the streets in Cambridge.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.  And the slider at the bottom allows you to see just the streets above a certain threshold.
       </p>
 
       <p> 
-        To create these maps, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life on a street.  These maps are approximate, in part because some street view photos were taken during the winter (for example, on Oxford Street).  But they give us a sense of which streets are full of life.
+        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because some street view photos were taken during the winter (for example, on Oxford Street), but they give us a sense of which streets are full of life.
       </p>
 
         <p style="color:#898989;"> Data Sources </p>
