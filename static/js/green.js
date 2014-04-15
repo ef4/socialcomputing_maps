@@ -36,6 +36,13 @@ function initialize(){
           $('#showMore').text(' ... more ');
       });
 
+      $('#allStreets').click(function(){
+        $("#slider").slider('value',0);
+        $('canvas').css('opacity',1.0);
+        d3.selectAll('.road')
+          .attr('stroke','green')
+          .attr("stroke-opacity", 0.1);
+      })
      
   setupSlider();
 }
@@ -55,14 +62,14 @@ function setupSlider(){
     change:function(event,ui){
       d3.selectAll('.road')
           .attr('stroke','gray')
-          .attr("stroke-opacity", 0.05);
-
-      if (ui.value < 10){
-        $('canvas').css('opacity',1.0);
-        d3.selectAll('.road')
-          .attr('stroke','green')
           .attr("stroke-opacity", 0.1);
-      } else {
+
+      // if (ui.value < 10){
+      //   $('canvas').css('opacity',1.0);
+      //   d3.selectAll('.road')
+      //     .attr('stroke','green')
+      //     .attr("stroke-opacity", 0.1);
+      // } else {
         $('canvas').css('opacity',0.0);
         d3.selectAll('.road').filter(function(d){
           return Math.abs(d[7] - colorScaleSlider(ui.value)) < 0.05;
@@ -71,7 +78,7 @@ function setupSlider(){
               .attr('stroke', function(d) {return colorScale(d[7]);})
               .attr('stroke-opacity',1.0);
         });
-      }
+      //}
    }
    });
       
@@ -192,8 +199,10 @@ function drawInvisibleRoads(){
       var frame_reference = $('#mainframe').offset();
       $('#streetname').html(d[4]);
       $('#streetname').offset({top : d3.event.y, left:d3.event.x + 10 });
-    
-    });
+    })
+    .on('mouseout', function(d){
+      $('#streetname').html('');
+    })
   }
 
 

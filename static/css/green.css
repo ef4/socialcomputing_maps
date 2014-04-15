@@ -39,7 +39,8 @@ canvas{
 #sliderContainer {
   position: absolute;
   bottom:0; left:0;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  width: 400px;
   z-index: 6;
 }
 
@@ -58,6 +59,10 @@ canvas{
   background: linear-gradient(left,#d9f0a3, #238443); /* Standard syntax */
   border-radius: 0px;
   border:none;
+}
+
+#allStreets{
+  cursor: pointer;
 }
 
 
