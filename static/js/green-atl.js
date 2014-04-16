@@ -50,7 +50,6 @@ function initialize(){
       $('#svgContainer').on('mouseover',function(e){
         var element = d3.select($(event.target).clone()[0]);
         var classname = element.attr('class');
-        console.log('mouseover!', classname);
         if (classname == 'road2'){
           var d  = element.attr("name");
           $('#streetname').css('display','block');
@@ -138,6 +137,11 @@ function setProjection(){
     s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
   projection.scale(s).translate(t);
+
+  svg = d3.select("#svgContainer").append("svg")
+      .attr('height',$('#svgContainer').height())
+      .attr('width', $('#svgContainer').width());
+
 }
 
 
@@ -146,12 +150,14 @@ function setProjection(){
 
 function drawPoints(){
 
+  $('#dataContainer').css('display','block');
+
   var line = d3.svg.line()
       .x(function(d) { return d[0]; })
       .y(function(d) { return d[1]; });
 
-  svg.selectAll('line')
-    .data(segmentsToDraw)
+  svg.selectAll('.road')
+    .data(segments)
     .enter().append("path")
     .attr('class','road')
     .attr('d', function(d){
@@ -159,21 +165,23 @@ function drawPoints(){
       return line(coords);})
     .attr("fill", "none")
     .attr("fill-opacity", 0.0)
-    .attr("stroke-opacity", streetOpacity)
-    .attr("stroke-width",streetWidth)
+    .attr("stroke-opacity", 0.15)
+    .attr("stroke-width",1)
     .attr("stroke", "green")
-    .each(function(d,i) {
+    .each(function(d) {
       var path = d3.select(this).node();
       var pathLength = path.getTotalLength();
       for (var i = 0; i<pathLength;i+=pixelOffset){
         var p = path.getPointAtLength(i);
+        drawCircle(ctx, p.x, p.y, 0.5, 0.25,'red');
         var value = (i / pathLength) * (d[6] - d[5]) + d[5];
-        drawCircle(ctx, p.x,p.y,radiusScale(value), opacityScale(value), colorScale(value));
+        //drawCircle(ctx, p.x,p.y,radiusScale(value), opacityScale(value), colorScale(value));
       }
       var lastPoint = projection([d[3], d[2]]); 
-      drawCircle(ctx, lastPoint[0], lastPoint[1],radiusScale(d[6]), opacityScale(d[6]), colorScale(d[6]));
+      //drawCircle(ctx, lastPoint[0], lastPoint[1],radiusScale(d[6]), opacityScale(d[6]), colorScale(d[6]));
+      drawCircle(ctx, lastPoint[0], lastPoint[1], 0.5, 0.25, 'red');
   });
-  setTimeout(drawInvisibleRoads,100);
+
 }
 
 
@@ -199,9 +207,9 @@ function drawInvisibleRoads(){
       .x(function(d) { return d[0]; })
       .y(function(d) { return d[1]; });
 
-  svg.selectAll('line')
-    .data(segmentsToDraw)
-    .enter().append('path')
+  svg.selectAll('.road2')
+    .data(segments)
+    .enter().append("path")
     .attr('class','road2')
     .attr('d', function(d){
       var coords = [projection([d[1],d[0]]), projection([d[3], d[2]])];
@@ -212,23 +220,6 @@ function drawInvisibleRoads(){
     .attr("stroke-width",8)
     .attr("name", function(d){return d[4];})
     .attr("stroke", "red");
-
-  setTimeout(drawController,150);
-}
-
-
-function drawController(){  
-  if (controlIndex +1000 < segments.length){
-    segmentsToDraw = segments.slice(controlIndex, controlIndex+1000);
-    controlIndex+=1000;
-    setTimeout(drawPoints,150);
-    //setTimeout(drawInvisibleRoads,200);
-  } else if (controlIndex  < segments.length){
-    segmentsToDraw = segments.slice(controlIndex, segments.length - controlIndex);
-    controlIndex = segments.length;
-    setTimeout(drawPoints,150);
-    //setTimeout(drawInvisibleRoads,200);
-  }
 }
 
 
@@ -254,7 +245,7 @@ function drawGreenGraph(){
     .attr('width', width);
 
 
-  //console.log(histogram, height,width);
+  console.log(histogram, height,width);
 
   var xScale = d3.scale.linear().domain([0, histogram.length-1]).range([2,width]);
   var yScale = d3.scale.linear().domain([0, d3.max(histogram)]).range([15,height-3]);
