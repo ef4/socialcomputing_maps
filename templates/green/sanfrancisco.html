@@ -45,8 +45,10 @@
    var maxRadiusLimit = 2.75;
    var minOpacityLimit = 0;
    var minStreetAvg  = 0.0;
+   var streetOpacity =0.05;
+   var streetWidth = 0.25;
    var maxStreetAvg = 0.231583333333; 
-   var pixelOffset=4;
+   var pixelOffset=3;
    var radiusScale; var opacityScale; var colorScale;
    var maxValue = 0.46745;
    var boundary;
@@ -102,7 +104,7 @@
             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
           </div>
           <p id='streetname'></p>
-          <!-- <div id="dataContainer">
+          <div id="dataContainer">
             <p id="allStreets"> View all Streets </p>
             <div id='graphContainer'>
               <p id='chartKey'></p>
@@ -110,7 +112,7 @@
             <div id='sliderContainer'>
               <div id="slider"></div>
             </div>
-          </div> -->
+          </div>
       </div>
 
       <div id="footer">
@@ -148,17 +150,17 @@
       </p>
 
       <p>
-        This map visualizes the approximate amount of greenery on the streets in Cambridge.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.  And the slider at the bottom allows you to see just the streets above a certain threshold.
+        This map visualizes the approximate amount of greenery on the streets in San Francisco.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.
       </p>
 
       <p> 
-        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because some street view photos were taken during weather conditions, but they give us a sense of which streets are full of life.
+        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because of seasonal changes and weather conditions, yet they give us a sense of, but they give us a sense of which streets are full of life.
       </p>
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
-          <li><a href="http://www.cambridgema.gov/GIS/gisdata/datadownload.aspx">Geographic Information Systems, City of Cambridge,MA </a></li>
+          <li><a href="http://sfgov3.org/index.aspx?page=3959">San Francisco Enterprise GIS Program </a></li>
         </ol>
 
       </div>

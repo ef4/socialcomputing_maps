@@ -189,8 +189,8 @@ function drawPoints(){
       return line(coords);})
     .attr("fill", "none")
     .attr("fill-opacity", 0.0)
-    .attr("stroke-opacity", 0.3)
-    .attr("stroke-width",1)
+    .attr("stroke-opacity", streetOpacity)
+    .attr("stroke-width",streetWidth)
     .attr("stroke", "green")
     .each(function(d) {
       var path = d3.select(this).node();
