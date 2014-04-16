@@ -11,5 +11,7 @@
 /static/data/Austin/bicycle_accidents/streetviews/*
 /static/data/schools/*
 /static/data/schools/transportation/*
+/static/data/Los Angeles/allroads.geojson
+/static/data/Atlanta/allstreets.geojson
 
 
