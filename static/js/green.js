@@ -39,7 +39,7 @@ function initialize(){
       });
 
       $('#allStreets').click(function(){
-        $('.ui-slider-handle').css('left','10px');
+        $('.ui-slider-handle').css('left','0px');
         $('canvas').css('opacity',1.0);
         $('#allStreets').css('display','none');
         d3.selectAll('.road')
@@ -123,10 +123,8 @@ function setupSlider(){
   $('.ui-slider-handle').css('left','10px');
   $('.ui-slider-handle').css('background','none');
   $('.ui-slider-handle').css('border','1px solid black');
-  $('.ui-slider-handle').css('border-top','0px solid gray');
-  $('.ui-slider-handle').css('border-bottom','0px solid gray');
   $('.ui-slider-handle').css('border-radius','0px');
-  $('.ui-slider-handle').html('<hr style="margin-top:12px;padding-top:0px;border-top:0px;height:1px;width:100%;background:black;">');
+  $('.ui-slider-handle').css('outline','none');
 }
 
 function setProjection(){ 
@@ -273,7 +271,7 @@ function drawGreenGraph(){
 
   console.log(histogram, height,width);
 
-  var xScale = d3.scale.linear().domain([0, histogram.length-1]).range([3,width]);
+  var xScale = d3.scale.linear().domain([0, histogram.length-1]).range([2,width]);
   var yScale = d3.scale.linear().domain([0, d3.max(histogram)]).range([15,height-3]);
 
   var startLine = d3.svg.line()
@@ -312,7 +310,7 @@ function drawGreenGraph(){
     .attr("stroke-width",2.5)
     .attr("stroke-opacity", 0.1)
     .transition()
-      .duration(6000)
+      .duration(2000)
       .attr("d", finalLine(histogram));
 
 
@@ -326,7 +324,7 @@ function drawGreenGraph(){
         .attr("stroke-width",2.5)
         .attr("stroke-opacity", 0.1)
         .transition()
-          .duration(6000)
+          .duration(2000)
           .attr("d", finalArea);
 
 
@@ -345,7 +343,7 @@ function drawGreenGraph(){
       var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
       return p.x;
     })
-    .attr('r',3)
+    .attr('r',2)
     .attr('fill', 'green')
     .attr('fill-opacity',0.1)
     .attr("stroke", 'green')
@@ -353,7 +351,7 @@ function drawGreenGraph(){
     .attr('cy', 0)
     .attr('value', function(d){return d;})
     .transition()
-      .duration(6000)
+      .duration(2000)
       .attr('cy',function(d,i){
         var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
         return p.y;
