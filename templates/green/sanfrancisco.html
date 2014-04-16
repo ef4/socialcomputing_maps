@@ -48,7 +48,7 @@
    var streetOpacity =0.05;
    var streetWidth = 0.25;
    var maxStreetAvg = 0.231583333333; 
-   var pixelOffset=3;
+   var pixelOffset=4;
    var radiusScale; var opacityScale; var colorScale;
    var maxValue = 0.46745;
    var boundary;
@@ -69,11 +69,12 @@
       $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/greenery_compressed.json', function(greenJSON){
           greenData = greenJSON;
           segments = greenData['segments'];
+          console.log('data loaded');
           $('#svgContainer').empty();
           drawInvisibleRoads();
           drawPoints();
           //drawGreenGraph();
-
+          console.log('compute done');
           $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/street_map.json', function(smap){
             streetMap = smap;
           })
@@ -158,7 +159,7 @@
       </p>
 
       <p> 
-        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because of seasonal changes and weather conditions, yet they give us a sense of, but they give us a sense of which streets are full of life.
+        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because of seasonal changes and weather conditions, yet they give us a sense of which streets are full of life.
       </p>
 
         <p style="color:#898989;"> Data Sources </p>
