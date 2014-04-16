@@ -3,8 +3,8 @@ var essayBoxShown= false;
 function initialize(){
 
   colorScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range(['#d9f0a3', '#238443']);
-  radiusScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range([1, 3.5]);
-  opacityScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range([0.2, 1.0]);
+  radiusScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range([minRadiusLimit, maxRadiusLimit]);
+  opacityScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range([minOpacityLimit, 1.0]);
 
   var essayBoxShown = false;
     $('#showMore').click(function(e){
@@ -98,7 +98,7 @@ function closeEssayBox(){
 }
 
 function setupSlider(){
-  var colorScaleSlider = d3.scale.linear().domain([0,100]).range([0.000290625, 0.214216666667]);
+  var colorScaleSlider = d3.scale.linear().domain([0,100]).range([minStreetAvg, maxStreetAvg]);
   $( "#slider" ).slider({
     change:function(event,ui){
       $('#allStreets').css('display', 'block');
@@ -254,7 +254,7 @@ function drawGreenGraph(){
 
   var histogram = Array.apply(null, new Array(10)).map(Number.prototype.valueOf,0);
 
-  var histScale = d3.scale.linear().domain([0.000290625, 0.214216666667]).range([0,histogram.length]);
+  var histScale = d3.scale.linear().domain([minStreetAvg, maxStreetAvg]).range([0,histogram.length]);
 
   
 
