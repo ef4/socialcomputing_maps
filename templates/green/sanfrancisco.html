@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/green.css"> </style>
-    <script type="text/javascript" src="{{URL_PREFIX}}static/js/green.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/green-sf.js"></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -52,6 +52,7 @@
    var radiusScale; var opacityScale; var colorScale;
    var maxValue = 0.46745;
    var boundary;
+   var streetMap;
    var storePoints = [];
    $(window).load(function(){
     $('.container').css('width', '1100px');
@@ -68,11 +69,14 @@
       $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/greenery_compressed.json', function(greenJSON){
           greenData = greenJSON;
           segments = greenData['segments'];
-          //streets = greenData['streets'];  
           $('#svgContainer').empty();
           drawInvisibleRoads();
           drawPoints();
           //drawGreenGraph();
+
+          $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/street_map.json', function(smap){
+            streetMap = smap;
+          })
 
       });
     });
