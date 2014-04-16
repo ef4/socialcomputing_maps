@@ -108,18 +108,25 @@ function setupSlider(){
 
         $('canvas').css('opacity',0.0);
         d3.selectAll('.road').filter(function(d){
-          return Math.abs(d[7] - colorScaleSlider(ui.value)) < 0.05;
+          return Math.abs(d[7] - colorScaleSlider(ui.value)) < 0.02;
         }).each(function(d){
           d3.select(this)
               .attr('stroke', function(d) {return colorScale(d[7]);})
-              .attr('stroke-opacity',1.0);
+              .attr('stroke-opacity',0.8)
+              .attr('stroke-width',2.5);
         });
       //}
    }
    });
-  $('.ui-slider-handle').height(20);
-  $('.ui-slider-handle').width(8);
+  $('.ui-slider-handle').height(25);
+  $('.ui-slider-handle').width(20);
   $('.ui-slider-handle').css('left','10px');
+  $('.ui-slider-handle').css('background','none');
+  $('.ui-slider-handle').css('border','1px solid black');
+  $('.ui-slider-handle').css('border-top','0px solid gray');
+  $('.ui-slider-handle').css('border-bottom','0px solid gray');
+  $('.ui-slider-handle').css('border-radius','0px');
+  $('.ui-slider-handle').html('<hr style="margin-top:12px;padding-top:0px;border-top:0px;height:1px;width:100%;background:black;">');
 }
 
 function setProjection(){ 
@@ -258,7 +265,6 @@ function drawGreenGraph(){
     histogram[i]++;
   });
 
-  histogram.push(histogram[histogram.length-1]);
 
   svg2 = d3.select('#graphContainer').append('svg')
     .attr('height', height)
@@ -330,28 +336,28 @@ function drawGreenGraph(){
         .attr("stroke-width",2.5)
         .attr("stroke-opacity", 0.0);
 
-  // svg2.selectAll('.datapoint')
-  //   .data(histogram)
-  //   .enter().append('circle')
-  //   .attr('class','datapoint')
+  svg2.selectAll('.datapoint')
+    .data(histogram)
+    .enter().append('circle')
+    .attr('class','datapoint')
 
-  //   .attr('cx', function(d,i){ 
-  //     var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
-  //     return p.x;
-  //   })
-  //   .attr('r',3)
-  //   .attr('fill', 'green')
-  //   .attr('fill-opacity',0.1)
-  //   .attr("stroke", 'green')
-  //   .attr('stroke-opacity', 0.5)
-  //   .attr('cy', 0)
-  //   .attr('value', function(d){return d;})
-  //   .transition()
-  //     .duration(6000)
-  //     .attr('cy',function(d,i){
-  //       var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
-  //       return p.y;
-  //     });
+    .attr('cx', function(d,i){ 
+      var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
+      return p.x;
+    })
+    .attr('r',3)
+    .attr('fill', 'green')
+    .attr('fill-opacity',0.1)
+    .attr("stroke", 'green')
+    .attr('stroke-opacity', 0.5)
+    .attr('cy', 0)
+    .attr('value', function(d){return d;})
+    .transition()
+      .duration(6000)
+      .attr('cy',function(d,i){
+        var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
+        return p.y;
+      });
 
 }
 
