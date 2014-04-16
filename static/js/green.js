@@ -330,28 +330,28 @@ function drawGreenGraph(){
         .attr("stroke-width",2.5)
         .attr("stroke-opacity", 0.0);
 
-  svg2.selectAll('.datapoint')
-    .data(histogram)
-    .enter().append('circle')
-    .attr('class','datapoint')
+  // svg2.selectAll('.datapoint')
+  //   .data(histogram)
+  //   .enter().append('circle')
+  //   .attr('class','datapoint')
 
-    .attr('cx', function(d,i){ 
-      var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
-      return p.x;
-    })
-    .attr('r',3)
-    .attr('fill', 'green')
-    .attr('fill-opacity',0.1)
-    .attr("stroke", 'green')
-    .attr('stroke-opacity', 0.5)
-    .attr('cy', 0)
-    .attr('value', function(d){return d;})
-    .transition()
-      .duration(6000)
-      .attr('cy',function(d,i){
-        var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
-        return p.y;
-      });
+  //   .attr('cx', function(d,i){ 
+  //     var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
+  //     return p.x;
+  //   })
+  //   .attr('r',3)
+  //   .attr('fill', 'green')
+  //   .attr('fill-opacity',0.1)
+  //   .attr("stroke", 'green')
+  //   .attr('stroke-opacity', 0.5)
+  //   .attr('cy', 0)
+  //   .attr('value', function(d){return d;})
+  //   .transition()
+  //     .duration(6000)
+  //     .attr('cy',function(d,i){
+  //       var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
+  //       return p.y;
+  //     });
 
 }
 
