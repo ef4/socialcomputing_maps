@@ -28,6 +28,16 @@ body{
   font-size: 14px;
 }
 
+#chartKey{
+  position: absolute;
+  display: none;
+  width: 80px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: rgba(50,50,50,0.6);
+  color:rgba(225,225,225,1.0);
+}
 
 canvas{
   top: 0;left: 0;
@@ -37,10 +47,22 @@ canvas{
   z-index: 1;
 }
 
-#sliderContainer {
+#graphContainer{
+  bottom: 0px; left:0px;
+  height: 100px;
+  width: 350px;
+  z-index: 5;
+}
+
+#dataContainer{
+  display: none;
   position: absolute;
-  bottom:0; left:0;
-  margin-bottom: 30px;
+  bottom: 0px;left: 0px;
+  z-index: 6;
+}
+
+#sliderContainer {
+  margin-bottom: 0px;
   width: 400px;
   z-index: 6;
 }
@@ -52,7 +74,7 @@ canvas{
 
 #slider{
   height: 15px;
-  width:300px;
+  width:350px;
   z-index: 6;
   background: -webkit-linear-gradient(left,#d9f0a3, #238443); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(left,#d9f0a3, #238443); /* For Opera 11.1 to 12.0 */
@@ -62,8 +84,18 @@ canvas{
   border:none;
 }
 
+
 #allStreets{
+  display: none;
+  width: 125px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid green;
+  margin-bottom: 35px;
+  color:green;
   cursor: pointer;
+  z-index: 7;
 }
 
 

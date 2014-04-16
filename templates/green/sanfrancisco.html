@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title> Street Greenery in San Francisco, CA </title>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/d3.v3.js"></script>
@@ -9,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/green.css"> </style>
-    <script type="text/javascript" src="{{URL_PREFIX}}static/js/green.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/green-sf.js"></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -39,6 +40,10 @@
    var streets;
    var canvas;
    var ctx;
+   var power =0.9;
+   var pixelOffset=5;
+   var radiusScale; var opacityScale; var colorScale;
+   var maxValue = 0.416;
    var boundary;
    var storePoints = [];
    $(window).load(function(){
@@ -53,9 +58,9 @@
       boundary = boundaryGeoJson;
       setProjection();
       initialize();
-      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery_test.json', function(greenJSON){
+      $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/dreamworks.json', function(greenJSON){
           greenData = greenJSON;
-          segments = greenData['points'];
+          segments = greenData['segments'];
           streets = greenData['streets'];  
           $('#svgContainer').empty();
           drawInvisibleRoads();
@@ -91,8 +96,8 @@
           </div>
           <p id='streetname'></p>
           <div id='sliderContainer'>
-            <p id='allStreets'> View all streets</p>
             <div id="slider"></div>
+            <p id='allStreets'> View all streets</p>
           </div>
       </div>
 

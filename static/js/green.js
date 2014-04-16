@@ -1,8 +1,10 @@
 var essayBoxShown= false;
-var colorScale = d3.scale.pow().exponent(0.75).domain([0,0.3381]).range(['#d9f0a3', '#238443']);
-var radiusScale = d3.scale.pow().exponent(0.75).domain([0,0.3381]).range([1, 3.5]);
-var opacityScale = d3.scale.pow().exponent(0.75).domain([0,0.3381]).range([0.2, 1.0]);
+
 function initialize(){
+
+  colorScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range(['#d9f0a3', '#238443']);
+  radiusScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range([1, 3.5]);
+  opacityScale = d3.scale.pow().exponent(power).domain([0,maxValue]).range([0.2, 1.0]);
 
   var essayBoxShown = false;
     $('#showMore').click(function(e){
@@ -37,8 +39,9 @@ function initialize(){
       });
 
       $('#allStreets').click(function(){
-        $("#slider").slider('value',0);
+        $('.ui-slider-handle').css('left','10px');
         $('canvas').css('opacity',1.0);
+        $('#allStreets').css('display','none');
         d3.selectAll('.road')
           .attr('stroke','green')
           .attr("stroke-opacity", 0.1);
@@ -51,7 +54,7 @@ function initialize(){
           var d  = element.attr("name");
           $('#streetname').css('display','block');
           $('#streetname').html(d);
-          $('#streetname').offset({top : e.pageY, left:e.pageX +10});
+          $('#streetname').offset({top : e.pageY -22, left:e.pageX - 35});
         }
       });
 
@@ -62,8 +65,26 @@ function initialize(){
           $('#streetname').css('display','none');
           $('#streetname').html('');
         }
-      });        
+      });    
 
+      $('#graphContainer').on('mouseover', function(e){
+        var element = d3.select($(event.target).clone()[0]);
+        var classname = element.attr('class');
+        if (classname == 'datapoint'){
+          $('#chartKey').css('display','block');
+          $('#chartKey').html(element.attr('value') + ' streets');
+          $('#chartKey').offset({top : e.pageY - 35, left:e.pageX-35});
+        }
+      });
+
+      $('#graphContainer').on('mouseout', function(e){
+        var element = d3.select($(event.target).clone()[0]);
+        var classname = element.attr('class');
+        if (classname == 'datapoint'){
+          $('#chartKey').css('display','none');
+          $('#chartKey').html('');
+        }
+      });
   setupSlider();
 }
 
@@ -80,6 +101,7 @@ function setupSlider(){
   var colorScaleSlider = d3.scale.linear().domain([0,100]).range([0.000290625, 0.214216666667]);
   $( "#slider" ).slider({
     change:function(event,ui){
+      $('#allStreets').css('display', 'block');
       d3.selectAll('.road')
           .attr('stroke','gray')
           .attr("stroke-opacity", 0.1);
@@ -95,9 +117,9 @@ function setupSlider(){
       //}
    }
    });
-      
   $('.ui-slider-handle').height(20);
   $('.ui-slider-handle').width(8);
+  $('.ui-slider-handle').css('left','10px');
 }
 
 function setProjection(){ 
@@ -147,6 +169,8 @@ function drawMap(){
 
 function drawPoints(){
 
+  $('#dataContainer').css('display','block');
+
   var line = d3.svg.line()
       .x(function(d) { return d[0]; })
       .y(function(d) { return d[1]; });
@@ -160,19 +184,21 @@ function drawPoints(){
       return line(coords);})
     .attr("fill", "none")
     .attr("fill-opacity", 0.0)
-    .attr("stroke-opacity", 0.1)
-    .attr("stroke-width",2.5)
+    .attr("stroke-opacity", 0.3)
+    .attr("stroke-width",1)
     .attr("stroke", "green")
     .each(function(d) {
       var path = d3.select(this).node();
       var pathLength = path.getTotalLength();
-      for (var i = 0; i<pathLength;i+=3){
+      for (var i = 0; i<pathLength;i+=pixelOffset){
         var p = path.getPointAtLength(i);
+        //drawCircle(ctx, p.x, p.y, 1, 0.5,'red');
         var value = (i / pathLength) * (d[6] - d[5]) + d[5];
         drawCircle(ctx, p.x,p.y,radiusScale(value), opacityScale(value), colorScale(value));
       }
       var lastPoint = projection([d[3], d[2]]); 
       drawCircle(ctx, lastPoint[0], lastPoint[1],radiusScale(d[6]), opacityScale(d[6]), colorScale(d[6]));
+      //drawCircle(ctx, lastPoint[0], lastPoint[1], 1, 0.5, 'red');
   });
 
 }
@@ -213,8 +239,121 @@ function drawInvisibleRoads(){
     .attr("stroke-width",8)
     .attr("name", function(d){return d[4];})
     .attr("stroke", "red");
+}
 
-  }
+
+function drawGreenGraph(){
+
+  var height = $('#graphContainer').height();
+  var width = $('#graphContainer').width();
+
+  var histogram = Array.apply(null, new Array(10)).map(Number.prototype.valueOf,0);
+
+  var histScale = d3.scale.linear().domain([0.000290625, 0.214216666667]).range([0,histogram.length]);
+
+  
+
+  streets.map(function(d){
+    var i = Math.floor(histScale(d[1]));
+    histogram[i]++;
+  });
+
+  histogram.push(histogram[histogram.length-1]);
+
+  svg2 = d3.select('#graphContainer').append('svg')
+    .attr('height', height)
+    .attr('width', width);
+
+
+  console.log(histogram, height,width);
+
+  var xScale = d3.scale.linear().domain([0, histogram.length-1]).range([3,width]);
+  var yScale = d3.scale.linear().domain([0, d3.max(histogram)]).range([15,height-3]);
+
+  var startLine = d3.svg.line()
+    .x(function(d,i){
+      return xScale(i);})
+    .y(function(d,i){return 0;})
+    .interpolate('basis');
+
+
+  var finalLine = d3.svg.line()
+    .x(function(d,i){
+      return xScale(i);})
+    .y(function(d,i){return height - yScale(d);})
+    .interpolate('basis');
+
+
+  var startArea = d3.svg.area()
+    .x(function(d,i) { return xScale(i); })
+    .y0(height)
+    .y1(function(d) { return 0; })
+    .interpolate('basis');
+
+  var finalArea = d3.svg.area()
+    .x(function(d,i) { return xScale(i); })
+    .y0(height)
+    .y1(function(d) { return height - yScale(d); })
+    .interpolate('basis');
+
+
+
+  svg2.append("path")
+    .attr("d", startLine(histogram))
+    .attr("fill", "none")
+    .attr("fill-opacity", 0.0)
+    .attr("stroke", 'green')
+    .attr("stroke-width",2.5)
+    .attr("stroke-opacity", 0.1)
+    .transition()
+      .duration(6000)
+      .attr("d", finalLine(histogram));
+
+
+  svg2.append("path")
+        .datum(histogram)
+        .attr("class", "area")
+        .attr("d", startArea)
+        .attr("fill-opacity", 0.1)
+        .attr("fill","green")
+        .attr("stroke","green")
+        .attr("stroke-width",2.5)
+        .attr("stroke-opacity", 0.1)
+        .transition()
+          .duration(6000)
+          .attr("d", finalArea);
+
+
+  var path = svg2.append('path').datum(histogram).attr('d',finalLine).attr("fill-opacity", 0.0)
+        .attr("fill","green")
+        .attr("stroke","green")
+        .attr("stroke-width",2.5)
+        .attr("stroke-opacity", 0.0);
+
+  svg2.selectAll('.datapoint')
+    .data(histogram)
+    .enter().append('circle')
+    .attr('class','datapoint')
+
+    .attr('cx', function(d,i){ 
+      var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
+      return p.x;
+    })
+    .attr('r',3)
+    .attr('fill', 'green')
+    .attr('fill-opacity',0.1)
+    .attr("stroke", 'green')
+    .attr('stroke-opacity', 0.5)
+    .attr('cy', 0)
+    .attr('value', function(d){return d;})
+    .transition()
+      .duration(6000)
+      .attr('cy',function(d,i){
+        var p = path.node().getPointAtLength((i/histogram.length) * path.node().getTotalLength());
+        return p.y;
+      });
+
+}
 
 
   
