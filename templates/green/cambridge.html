@@ -45,17 +45,23 @@
    var pixelOffset = 3;
    var minRadiusLimit = 1;
    var minOpacityLimit = 0.2;
-   var  maxRadiusLimit = 3.5;
+   var maxRadiusLimit = 3.5;
    var streetOpacity =0.3;
    var streetWidth = 1;
-   var minStreetAvg  = 0.000290625;
-   var maxStreetAvg = 0.214216666667; 
+   var minStreetAvg  = 0.000275;
+   var maxStreetAvg = 0.216911111111; 
    var radiusScale; var opacityScale; var colorScale;
    var maxValue = 0.3381;
-   var storePoints = [];
+   var streetMap;
+   var controlIndex = 1000;
+   var segmentsToDraw;
+   var histogram; var histScale; var numBuckets = 50;
+   var leftShiftOffset = 0;
+   
    $(window).load(function(){
     $('.container').css('width', '1100px');
-
+    $('canvas').css('margin-left','0px');
+    $('svgContainer').css('margin-left','0px');
     canvas = $('canvas');
     canvas.attr('height','625');
     canvas.attr('width','1100');
@@ -65,18 +71,31 @@
       boundary = boundaryGeoJson;
       setProjection();
       initialize();
-      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery5.json', function(greenJSON){
+      $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/greenery_compressed.json', function(greenJSON){
           greenData = greenJSON;
-          segments = greenData['segments'];
-          streets = greenData['streets'];  
+          greenData_backup = greenData;
+          segments = greenJSON['segments'];
+          segmentsToDraw = segments.slice(0,1000);
+          console.log('data loaded');
           $('#svgContainer').empty();
-          drawInvisibleRoads();
-          drawPoints();
-          drawGreenGraph();
+
+          svg = d3.select("#svgContainer").append("svg")
+              .attr('height',$('#svgContainer').height())
+              .attr('width', $('#svgContainer').width());
+
+          histogram = Array.apply(new Array, new Array(numBuckets)).map(function(){return [];});
+          histScale = d3.scale.pow().exponent(power).domain([minStreetAvg, maxStreetAvg]).range([0,numBuckets-1]);
+
+
+          drawController();
+
+
+          $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/street_map_compressed.json', function(smap){
+            streetMap = smap;
+          });
+        });
       });
     });
-  });
-     
    </script>
     </head>
     <body>
@@ -97,20 +116,16 @@
           <div class="spacer"></div>
         </div>
 
-      <div id='mainframe'>
+        <div id='mainframe'>
           <canvas id='canvasContainer'></canvas>
           <div id="svgContainer">
             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
           </div>
           <p id='streetname'></p>
-          <div id="dataContainer">
-            <p id="allStreets"> View all Streets </p>
-            <div id='graphContainer'>
-              <p id='chartKey'></p>
-            </div>
-            <div id='sliderContainer'>
-              <div id="slider"></div>
-            </div>
+          <p id="allStreets"> View all Streets </p>
+
+          <div id="graphContainer">
+            <p id="chartKey"></p>
           </div>
       </div>
 

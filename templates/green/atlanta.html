@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'> 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/green.css"> </style>
-    <script type="text/javascript" src="{{URL_PREFIX}}static/js/green-atl.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/green.js"></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -55,6 +55,8 @@
    var streetMap;
    var controlIndex = 1000;
    var segmentsToDraw;
+   var histogram; var histScale; var numBuckets = 50;
+   var leftShiftOffset = -100;
    $(window).load(function(){
     $('.container').css('width', '1000px');
     $('canvas').css('margin-left','0px');
@@ -79,6 +81,9 @@
           svg = d3.select("#svgContainer").append("svg")
               .attr('height',$('#svgContainer').height())
               .attr('width', $('#svgContainer').width());
+
+          histogram = Array.apply(new Array, new Array(numBuckets)).map(function(){return [];});
+          histScale = d3.scale.pow().exponent(power).domain([minStreetAvg, maxStreetAvg]).range([0,numBuckets-1]);
 
           drawController();
           $.getJSON('{{URL_PREFIX}}static/data/Atlanta/green/street_map_compressed.json', function(smap){
