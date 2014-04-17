@@ -44,6 +44,7 @@
    var power =0.4;
    var minRadiusLimit = 0.5;
    var maxRadiusLimit = 2.75;
+   var roadWidth =1.5;
    var minOpacityLimit = 0;
    var minStreetAvg  = 0.0;
    var streetOpacity =0.05;
@@ -76,17 +77,17 @@
           segmentsToDraw = segments.slice(0,1000);
           console.log('data loaded');
           $('#svgContainer').empty();
+
           svg = d3.select("#svgContainer").append("svg")
               .attr('height',$('#svgContainer').height())
               .attr('width', $('#svgContainer').width());
-          $('#dataContainer').css('display','block');
+
           drawController();
-          console.log('compute1 done');
-          console.log('compute2 done');
-          $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/street_map.json', function(smap){
+
+
+          $.getJSON('{{URL_PREFIX}}static/data/San Francisco/green/street_map_compressed.json', function(smap){
             streetMap = smap;
-            
-          })
+          });
 
       });
     });
@@ -118,15 +119,11 @@
             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
           </div>
           <p id='streetname'></p>
-<!--           <div id="dataContainer">
-            <p id="allStreets"> View all Streets </p>
-            <div id='graphContainer'>
-              <p id='chartKey'></p>
-            </div>
-            <div id='sliderContainer'>
-              <div id="slider"></div>
-            </div>
-          </div> -->
+          <p id="allStreets"> View all Streets </p>
+
+          <div id="graphContainer">
+            <p id="chartKey"></p>
+          </div>
       </div>
 
       <div id="footer">

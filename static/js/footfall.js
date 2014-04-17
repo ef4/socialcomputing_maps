@@ -126,7 +126,7 @@ function drawMap(){
   .attr("stroke-opacity", 0.0)
   .attr("stroke", "black")
   .attr("fill", "#CCCCCC")
-  .attr("fill-opacity", 0.075);
+  .attr("fill-opacity", 0.5);
 }
 
 
