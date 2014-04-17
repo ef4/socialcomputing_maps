@@ -55,12 +55,12 @@
    var maxValue = 0.46745;
    var boundary;
    var streetMap;
-   var storePoints = [];
    var controlIndex = 1000;
    var segmentsToDraw;
    $(window).load(function(){
     $('.container').css('width', '1100px');
-
+    $('canvas').css('margin-left','50px');
+    $('svgContainer').css('margin-left','50px');
     canvas = $('canvas');
     canvas.attr('height','625');
     canvas.attr('width','1100');
