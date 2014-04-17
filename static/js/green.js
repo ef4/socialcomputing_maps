@@ -193,8 +193,8 @@ function drawController(){
           var streets_names = streets_with_avg.map(function(d){return d[0];})
           drawStreetsFromHistogram(streets_names);
           $('#allStreets').css('display','block');
-          svg2.selectAll('.bar')[0][Math.round(histScale(street_avg))]
-            .enter().attr('fill-opacity',0.9);
+          // svg2.selectAll('.bar')[0][Math.round(histScale(street_avg))]
+          //   .enter().attr('fill-opacity',0.9);
         }
       }); 
     }
@@ -232,12 +232,6 @@ function drawGreenGraph(){
     .attr('height', height)
     .attr('width', width);
 
-  // var numBuckets = 50;
-
-
-  // histogram = Array.apply(new Array, new Array(numBuckets)).map(function(){return [];});
-
-  // histScale = d3.scale.pow().exponent(power).domain([minStreetAvg, maxStreetAvg]).range([0,numBuckets-1]);
 
 
   for (key in streetMap){
@@ -253,26 +247,26 @@ function drawGreenGraph(){
   var bar = svg2.selectAll('g')
     .data(histogram)
     .enter().append('g')
-      .attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
+        .attr("transform", function(d, i) { return "translate(" + i * barWidth + ",0)"; });
 
 
 
   bar.append('rect')
-    .attr('y', height)
-    .attr('height', 0)
     .attr('class', 'bar')
-    .attr('width', function(d){return barWidth;})
-    .attr('fill', function(d,i){return barColorScale(i);})
-    .attr('fill-opacity', 0.6)
-    .attr('stroke', function(d,i){return barColorScale(i);})
-    .attr('stroke-opacity',0.3)
-    .attr('cursor','pointer')
     .transition()
-      .duration(2000)
-      .ease("bounce")
-        .attr('y', function(d){return yScale(d.length);})
-      .attr('height', function(d){return height -yScale(d.length);})
-    
+      .delay(function(d,i) {return i*50;})
+      .attr('y', height)
+      .attr('height', 0)
+      .attr('width', function(d){return barWidth;})
+      .attr('fill', function(d,i){return barColorScale(i);})
+      .attr('fill-opacity', 0.6)
+      .attr('stroke', function(d,i){return barColorScale(i);})
+      .attr('stroke-opacity',0.3)
+      .attr('cursor','pointer')
+      .transition()
+        .duration(2000)
+          .attr('y', function(d){return yScale(d.length);})
+        .attr('height', function(d){return height -yScale(d.length);});
 
 
   svg2.selectAll('.bar')
@@ -286,6 +280,7 @@ function drawGreenGraph(){
     ctx.clearRect(0,0,canvas.width(), canvas.height());
     $('#allStreets').css('display', 'block');
     var streets = d.map(function(d){return d[0];});
+    console.log(streets);
     drawStreetsFromHistogram(streets);
   });
 
