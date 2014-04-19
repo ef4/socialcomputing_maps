@@ -35,7 +35,7 @@
    var geoJSON;
    var greenData_backup;
    var greenData;
-   var scaleFactor = 1.01;
+   var scaleFactor = 1.15;
    var svg;
    var segments;
    var streets;
@@ -48,7 +48,7 @@
    var minOpacityLimit = 0;
    var minStreetAvg  = 0.0007;
    var streetOpacity =0.1;
-   var streetWidth = 0.75;
+   var streetWidth = 0.95;
    var maxStreetAvg = 0.3605875; 
    var pixelOffset=4;
    var radiusScale; var opacityScale; var colorScale;
@@ -59,6 +59,7 @@
    var segmentsToDraw;
    var histogram; var histScale; var numBuckets = 50;
    var leftShiftOffset = 20;
+   var downShiftOffset = 40;
    
    $(window).load(function(){
     $('.container').css('width', '900px');

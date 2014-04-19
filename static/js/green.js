@@ -93,7 +93,7 @@ function setProjection(){
   console.log(width, height);
   var b = path.bounds(boundary),
     s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-    t = [(width - s * (b[1][0] + b[0][0])) / 2 + leftShiftOffset, (height - s * (b[1][1] + b[0][1])) / 2];
+    t = [(width - s * (b[1][0] + b[0][0])) / 2 + leftShiftOffset, (height - s * (b[1][1] + b[0][1])) / 2 + downShiftOffset];
   projection.scale(s).translate(t);
 }
 
@@ -198,7 +198,7 @@ function drawController(){
           drawStreetsFromHistogram(streets_names);
           $('#allStreets').css('display','block');
           
-          
+
 
         }
       }); 
