@@ -74,6 +74,8 @@ function initialize(){
           $('#streetname').offset({top : e.pageY -22, left:e.pageX - 35});
         }
       });
+
+
 }
 
 function closeEssayBox(){
@@ -191,12 +193,24 @@ function drawController(){
         var element = d3.select($(event.target).clone()[0]);
         var classname = element.attr('class');
         if (classname == 'road2'){
+          svg2.selectAll('.bar').attr('fill','#CFCFCF').attr("stroke",'#CFCFCF');
+
           ctx.clearRect(0,0,canvas.width(), canvas.height());
           var street_avg=streetMap[element.attr("name")][1];
           var streets_with_avg = histogram[Math.round(histScale(street_avg))];
           var streets_names = streets_with_avg.map(function(d){return d[0];})
           drawStreetsFromHistogram(streets_names);
           $('#allStreets').css('display','block');
+
+          svg2.selectAll('.bar').each(function(d,i){
+            names = d.map(function(d){return d[0];})
+            if (names.indexOf(element.attr("name")) != -1){
+              d3.select(this).attr('fill',function(d,i){return d3.select(this).attr('color')}).attr('stroke', function(d,i){return barColorScale(i);});
+            } else {
+              d3.select(this).attr('fill','#CFCFCF').attr("stroke",'#CFCFCF');
+
+            }
+          })
           
 
 
