@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title> Street Greenery in Washington, DC </title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/d3.v3.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'> 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/green.css"> </style>
+    <script type="text/javascript" src="{{URL_PREFIX}}static/js/green.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-47759411-2', 'youarehere.cc');
+      ga('send', 'pageview');
+
+    </script>
+    
+   <script type="text/javascript">
+
+
+   var projection = d3.geo.mercator();
+   var path = d3.geo.path().projection(projection); 
+   var geoJSON;
+   var greenData_backup;
+   var greenData;
+   var scaleFactor = 1.01;
+   var svg;
+   var segments;
+   var streets;
+   var canvas;
+   var ctx;
+   var power =0.65;
+   var minRadiusLimit = 0.25;
+   var maxRadiusLimit = 2.75;
+   var roadWidth =1.5;
+   var minOpacityLimit = 0;
+   var minStreetAvg  = 0.0007;
+   var streetOpacity =0.1;
+   var streetWidth = 0.75;
+   var maxStreetAvg = 0.3605875; 
+   var pixelOffset=4;
+   var radiusScale; var opacityScale; var colorScale;
+   var maxValue = 0.532;
+   var boundary;
+   var streetMap;
+   var controlIndex = 1000;
+   var segmentsToDraw;
+   var histogram; var histScale; var numBuckets = 50;
+   var leftShiftOffset = 20;
+   
+   $(window).load(function(){
+    $('.container').css('width', '900px');
+    $('canvas').css('margin-left','0px');
+    $('svgContainer').css('margin-left','0px');
+    canvas = $('canvas');
+    canvas.attr('height','625');
+    canvas.attr('width','1100');
+    ctx = canvas.get(0).getContext('2d');
+
+    $.getJSON('{{URL_PREFIX}}static/data/Washington/boundary.geojson', function(boundaryGeoJson){
+      boundary = boundaryGeoJson;
+      setProjection();
+      initialize();
+      $.getJSON('{{URL_PREFIX}}static/data/Washington/green/greenery_compressed.json', function(greenJSON){
+          greenData = greenJSON;
+          greenData_backup = greenData;
+          segments = greenJSON['segments'];
+          segmentsToDraw = segments.slice(0,1000);
+          console.log('data loaded');
+          $('#svgContainer').empty();
+
+          svg = d3.select("#svgContainer").append("svg")
+              .attr('height',$('#svgContainer').height())
+              .attr('width', $('#svgContainer').width());
+
+          histogram = Array.apply(new Array, new Array(numBuckets)).map(function(){return [];});
+          histScale = d3.scale.pow().exponent(power).domain([minStreetAvg, maxStreetAvg]).range([0,numBuckets-1]);
+
+          
+          
+          drawController();
+
+
+          $.getJSON('{{URL_PREFIX}}static/data/Washington/green/street_map_compressed.json', function(smap){
+            streetMap = smap;
+            for (key in streetMap){
+              var i = Math.floor(histScale(streetMap[key][1]));
+              histogram[i].push([key,streetMap[key]]);
+            };
+          });
+
+      });
+    });
+  });
+     
+   </script>
+    </head>
+    <body>
+    <div class="container">
+        <div class="title-container"> 
+          <a id="logo" href="http://youarehere.cc">
+                <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 50px">
+          </a>
+          <div class="title-text">
+                <h1 class="title">
+                    <span id="mapClass" class="title-keyword"> Washington DC</span> 
+                </h1>
+                <div class="subtitle">
+                    This map visualizes street greenery in Washington, DC
+                    <span id="showMore"> ... more </span>
+                </div>
+          </div>
+          <div class="spacer"></div>
+        </div>
+
+        <div id='mainframe'>
+          <canvas id='canvasContainer'></canvas>
+          <div id="svgContainer">
+            <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
+          </div>
+          <p id='streetname'></p>
+          
+          <div id="graphContainer">
+            <p id="chartKey"></p>
+            <p id="less">Less green</p><p id='more'>More Green</p>
+          </div>
+           <p id="allStreets"> View all Streets </p>
+      </div>
+
+      <div id="footer">
+        This work is part of the <a href="http://youarehere.cc">You Are Here</a> project
+        <span class="footer-plus">+</span>
+        <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
+        <span class="footer-plus">+</span>
+        <a href="http://media.mit.edu"> MIT Media Lab </a>
+        <span class="footer-plus">+</span>
+        <a href="http://mit.edu"> MIT</a>
+      </div>
+
+      <div id='essayBox'>
+      <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+      <div id='essayContent'>
+      <p>
+            "When great trees fall,</br>
+            rocks on distant hills shudder,</br>
+            lions hunker down </br>
+            in tall grasses,</br>
+            and even elephants</br>
+            lumber after safety.</br>
+            </br>
+            When great trees fall</br>
+            in forests,</br>
+            small things recoil into silence,</br>
+            their senses</br>
+            eroded beyond fear."</br>
+            </br>
+            -Maya Angelou
+      </p>
+
+      <p>
+        Trees provide us shade, fresh air, and beauty.  They create places to be in, to lean on, and to pass through.  And they remind us of our essential connection with nature, and with one another.  Trees can make a city feel alive, and places with no trees can feel barren.  
+      </p>
+
+      <p>
+        This map visualizes the approximate amount of greenery on the streets in San Francisco.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.
+      </p>
+
+      <p> 
+        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because of seasonal changes and weather conditions, yet they give us a sense of which streets are full of life.
+      </p>
+
+        <p style="color:#898989;"> Data Sources </p>
+        <ol>
+          <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
+          <li><a href="http://octo.dc.gov/service/dc-gis-services">Washington DC GIS Data program </a></li>
+        </ol>
+
+      </div>
+    </div> 
+
+
+    </div>
+    </body>
+
+</html>
+    

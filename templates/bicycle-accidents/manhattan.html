@@ -28,15 +28,15 @@
 <script type="text/javascript">
 
 var mapCenter = [-87.715044,41.93202];
-var scaleFactor =1.0;
-var blurConstant = 0.3;
-var clusterStrokeOpacity = 0.3;
-var clusterStrokeWidth = 3;
-var shellRandomShift = 0.002;
-var shellRadius = 4;
-var shellOpacity = 0.03;
-var coreOpacity = 0.1;
-var coreRadius = 0.5;
+var scaleFactor =1.2;
+var blurConstant = 0.0;
+var clusterStrokeOpacity = 0.2;
+var clusterStrokeWidth = 1.2;
+var shellRandomShift = 0.00;
+var shellOpacity = 0.15;
+var shellRadius = 2.8;
+var coreOpacity = 0.3;
+var coreRadius = 0.2;
 var streetView = '#street-view';
 var cityName = 'Manhattan';
 var URL_PREFIX = '{{URL_PREFIX}}';
@@ -57,20 +57,19 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/bicycle_accidents/final_data5.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/bicycle_accidents/final_final_data_2013.json', function(data){
     console.log(data);
       allData= data;
       accidentData = allData["accidents"];
-      //finalClusters = allData["clusters"]["2012"];
+      finalClusters = allData["clusters"];
       accidentDataDraw = accidentData;
-      finalClusters = [];
       processChartData(allData["streets"]);
       drawClusters();
       drawController();
       jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/bicycle_accidents/bikeways.geojson', function(data){
         bikeways = data;
         setProjection2();
-        setTimeout(drawBikeways,4000);
+        //setTimeout(drawBikeways,4000);
       });
     });
   });
@@ -107,9 +106,9 @@ $(window).load(function(){
                     <span id="mapClass" class="title-keyword"> Manhattan</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes the 5432 bicycle crashes in Manhattan
+                    This map visualizes the 2653 bicycle crashes in Manhattan
                     </br>
-                    in 2012
+                    from December 2012 to November 2013
                     <span id="showMore"> ... more </span>
                 </div>
             </div>
@@ -134,11 +133,11 @@ $(window).load(function(){
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
         <p>
-        This map visualizes the 5432 reported bicycle crashes in Manhattan in 2012.
+        This map visualizes the 2653 reported bicycle crashes in Manhattan from December 2012 to November 2013.
         </p>
 
         <p> 
-        This map helps to show where crashes tend to happen — like Broadway, 3rd Avenue and 1st Avenue — in the hope that those streets might be made safer for riders. 
+        This map helps to show where crashes tend to happen — like Broadway, 5th Avenue and 3rd Avenue — in the hope that those streets might be made safer for riders. 
         <p>
 
         <p>

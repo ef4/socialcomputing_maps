@@ -41,11 +41,15 @@ function initialize(){
       $('#allStreets').click(function(){
         ctx.clearRect(0,0,canvas.width(), canvas.height());
         $('#allStreets').css('display','none');
-        d3.selectAll('.road')
+        svg.selectAll('.road')
           .attr('stroke','green')
           .attr("stroke-opacity", streetOpacity)
           .attr("stroke-width", streetWidth)
           .each(function(d,i){drawHelper(d3.select(this),d);});
+
+        svg2.selectAll('.bar')
+          .attr('fill', function(d){return d3.select(this).attr('color')})
+          .attr('stroke',function(d){return d3.select(this).attr('color')});
       });
     
 
@@ -193,8 +197,9 @@ function drawController(){
           var streets_names = streets_with_avg.map(function(d){return d[0];})
           drawStreetsFromHistogram(streets_names);
           $('#allStreets').css('display','block');
-          // svg2.selectAll('.bar')[0][Math.round(histScale(street_avg))]
-          //   .enter().attr('fill-opacity',0.9);
+          
+          
+
         }
       }); 
     }
@@ -233,12 +238,6 @@ function drawGreenGraph(){
     .attr('width', width);
 
 
-
-  for (key in streetMap){
-    var i = Math.floor(histScale(streetMap[key][1]));
-    histogram[i].push([key,streetMap[key]]);
-  };
-
   var yScale = d3.scale.linear().domain([0, d3.max(histogram,function(d){return d.length;})]).range([height-4, 0]); 
   var barColorScale = d3.scale.linear().domain([0,numBuckets]).range(['#d9f0a3', '#238443']);
 
@@ -263,6 +262,7 @@ function drawGreenGraph(){
       .attr('stroke', function(d,i){return barColorScale(i);})
       .attr('stroke-opacity',0.3)
       .attr('cursor','pointer')
+      .attr('color', function(d,i){return barColorScale(i);})
       .transition()
         .duration(2000)
           .attr('y', function(d){return yScale(d.length);})
@@ -276,7 +276,9 @@ function drawGreenGraph(){
       })
       .on('mouseout',function(d){$('#chartKey').css('display','none');});
 
-  svg2.selectAll('.bar').on('click',function(d){
+  svg2.selectAll('.bar').on('click',function(d,i){
+    svg2.selectAll('.bar').attr('fill','#CFCFCF').attr("stroke",'#CFCFCF');
+    d3.select(this).attr('fill',function(d,i){return d3.select(this).attr('color')}).attr('stroke', function(d,i){return barColorScale(i);});
     ctx.clearRect(0,0,canvas.width(), canvas.height());
     $('#allStreets').css('display', 'block');
     var streets = d.map(function(d){return d[0];});

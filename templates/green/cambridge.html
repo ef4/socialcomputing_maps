@@ -43,7 +43,7 @@
    var boundary;
    var power = 0.75;
    var pixelOffset = 3;
-   var minRadiusLimit = 1;
+   var minRadiusLimit = 0.2;
    var minOpacityLimit = 0.2;
    var maxRadiusLimit = 3.5;
    var streetOpacity =0.3;
@@ -85,13 +85,17 @@
 
           histogram = Array.apply(new Array, new Array(numBuckets)).map(function(){return [];});
           histScale = d3.scale.pow().exponent(power).domain([minStreetAvg, maxStreetAvg]).range([0,numBuckets-1]);
-
+          
 
           drawController();
 
 
           $.getJSON('{{URL_PREFIX}}static/data/Cambridge/green/street_map_compressed.json', function(smap){
             streetMap = smap;
+            for (key in streetMap){
+              var i = Math.floor(histScale(streetMap[key][1]));
+              histogram[i].push([key,streetMap[key]]);
+            };
           });
         });
       });

@@ -88,6 +88,10 @@
           drawController();
           $.getJSON('{{URL_PREFIX}}static/data/Atlanta/green/street_map_compressed.json', function(smap){
             streetMap = smap;
+            for (key in streetMap){
+              var i = Math.floor(histScale(streetMap[key][1]));
+              histogram[i].push([key,streetMap[key]]);
+            };
 
           })
 
@@ -125,7 +129,9 @@
 
           <div id="graphContainer">
             <p id="chartKey"></p>
+            <p id="less">Less green</p><p id='more'>More Green</p>
           </div>
+           <p id="allStreets"> View all Streets </p>
       </div>
 
       <div id="footer">
@@ -173,7 +179,7 @@
         <p style="color:#898989;"> Data Sources </p>
         <ol>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
-          <li><a href="http://sfgov3.org/index.aspx?page=3959">San Francisco Enterprise GIS Program </a></li>
+          <li><a href="http://www.atlantaregional.com/info-center/gis-data-maps">Atlanta Regional GIS Program </a></li>
         </ol>
 
       </div>
