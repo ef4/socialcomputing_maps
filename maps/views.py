@@ -50,6 +50,9 @@ def washington_green(request):
 def atlanta_green(request):
 	return render_to_response('green/atlanta.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def portland_green(request):
+	return render_to_response('green/portland.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def cambridge_green2(request):
 	return render_to_response('green/cambridge-green2.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
