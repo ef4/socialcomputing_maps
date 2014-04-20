@@ -154,6 +154,7 @@ canvas{
 
 #essayBox{
   position: absolute;
+  overflow-y:scroll;
   display: none;
   top: 90px;
   left:0px;
