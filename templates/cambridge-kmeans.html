@@ -8,7 +8,7 @@
     <script type="text/javascript">
 
     
-    var K = 25; 
+    var K = 10; 
     var numLocations =1000; 
     var points = [];
     var means =[];
@@ -16,7 +16,7 @@
     var FIXED_K = 0;
     var cluster;
     var size = 100; var offset =10;
-    var colors = d3.scale.category20b();
+    var colors = d3.scale.category10();
     var MAX_INTERATIONS = 25; 
     var numInterations = 0;
     var geoJSON;
@@ -75,18 +75,18 @@
       .attr("fill-opacity", 0.0);
     }
 
-    function drawMapPoints(){
-      svg.selectAll(".mapPoint")
-      .data(mapPoints)
-      .enter().append("circle")
-      .attr('r', 3)
-      .attr('cx', function (d) {return projection([d.lng, d.lat])[0]; })
-      .attr('cy', function (d) {return projection([d.lng, d.lat])[1];})
-      .attr("stroke-opacity", 0.0)
-      .attr("stroke", "black")
-      .attr("fill", "#CCCCCC")
-      .attr("fill-opacity", 0.5);
-    }
+    // function drawMapPoints(){
+    //   svg.selectAll(".mapPoint")
+    //   .data(mapPoints)
+    //   .enter().append("circle")
+    //   .attr('r', 3)
+    //   .attr('cx', function (d) {return projection([d.lng, d.lat])[0]; })
+    //   .attr('cy', function (d) {return projection([d.lng, d.lat])[1];})
+    //   .attr("stroke-opacity", 0.0)
+    //   .attr("stroke", "black")
+    //   .attr("fill", "#CCCCCC")
+    //   .attr("fill-opacity", 0.5);
+    // }
 
 
     function setupPoints(){
@@ -120,7 +120,7 @@
         .attr("class","mean")
         .attr("cx", function(d){return d[0];})
         .attr("cy", function(d){return d[1];})
-        .attr("r", 5)
+        .attr("r", 10)
         .attr("fill",function(d,i){return colors(i);});
 
         svg.selectAll(".fixed")
