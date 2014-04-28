@@ -29,6 +29,18 @@ def bicycleaccidents_portland(request):
 def bicycleaccidents_austin(request):
 	return render_to_response('bicycle-accidents/austin.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def bicycleaccidents_brooklyn(request):
+	return render_to_response('bicycle-accidents/brooklyn.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def bicycleaccidents_queens(request):
+	return render_to_response('bicycle-accidents/queens.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def bicycleaccidents_statenisland(request):
+	return render_to_response('bicycle-accidents/statenisland.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def bicycleaccidents_bronx(request):
+	return render_to_response('bicycle-accidents/bronx.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def cambridge_footfall(request):
 	return render_to_response('footfall/cambridge-footfall.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 

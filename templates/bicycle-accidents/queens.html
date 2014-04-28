@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <title> Bicycle Crashes in San Francisco, CA </title>
+    <title> Bicycle Crashes in Queens,NY </title>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZnvqy9HEpG-LAQwm_AxDOegMciI9jgP4&libraries=geometry&sensor=false"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -27,48 +27,49 @@
 
 <script type="text/javascript">
 
-var mapCenter = [-122.683914,45.515971];
-var scaleFactor = 1.02;
-var blurConstant = 0.3;
+var mapCenter = [-87.715044,41.93202];
+var scaleFactor =1.0;
+var blurConstant = 0.0;
 var clusterStrokeOpacity = 0.3;
-var clusterStrokeWidth = 3.5;
-var shellRandomShift = 0.002;
-var shellOpacity = 0.3;
-var shellRadius = 5;
-var coreOpacity = 0.5;
-var coreRadius = 1.5;
-var cityName = 'San Francisco';
+var clusterStrokeWidth = 1.2;
+var shellRandomShift = 0.00;
+var shellOpacity = 0.15;
+var shellRadius = 2.2;
+var coreOpacity = 0.3;
+var coreRadius = 0.2;
 var streetView = '#street-view';
+var cityName = 'Queens';
 var URL_PREFIX = '{{URL_PREFIX}}';
 
-var streetName_offset_left = -50;
-var streetName_offset_top = -30;
-var bikeways;
-var bikeway_offset0 = -28;
-var bikeway_offset1 = -42;
-var scaleFactor2 = 1.16;
+var streetName_offset_left = -60;
+var streetName_offset_top = -25;
 
+
+var bikeways;
+var bikeway_offset0 = -42;
+var bikeway_offset1 = 65;
+var scaleFactor2 = 1.2;
 $(window).load(function(){
 
-  $('.container').css('width', '1150px');
-  jQuery.getJSON('{{URL_PREFIX}}static/data/San Francisco/boundary.geojson', function(geojson){
+  $('.container').css('width', '1075px');
+  jQuery.getJSON('{{URL_PREFIX}}static/data/Queens/boundary.geojson', function(geojson){
     geoJSON = geojson;
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/San Francisco/bicycle_accidents/final_data3.json', function(data){
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Queens/bicycle_accidents/final_final_data_2013.json', function(data){
     console.log(data);
       allData= data;
-      accidentData = data['accidents'];
+      accidentData = allData["accidents"];
+      finalClusters = allData["clusters"];
       accidentDataDraw = accidentData;
-      finalClusters = allData['clusters'];
       processChartData(allData["streets"]);
       drawClusters();
       drawController();
-      jQuery.getJSON('{{URL_PREFIX}}static/data/San Francisco/bicycle_accidents/bikeways.geojson', function(data){
+      jQuery.getJSON('{{URL_PREFIX}}static/data/Queens/bicycle_accidents/bikeways.geojson', function(data){
         bikeways = data;
         setProjection2();
-        drawBikeways();
+        //setTimeout(drawBikeways,4000);
       });
     });
   });
@@ -77,13 +78,14 @@ $(window).load(function(){
 
 });
 
+
 </script>
 </head>
 <body>
 <div class="container">
 
   <div id="drawer">
-      <p id='details'> <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="float:left;left:-22px;top:3px;"></i> Details </p>
+      <p id='details'> <i id='button-icon' class="glyphicon glyphicon-chevron-left" style="float:left;left:-22px;top:5px;"></i> Details </p>
      <!-- <span>
       <svg height='50' width='50' style="z-index:1">
         <circle cx="20" cy="23" r="15"  stroke-opacity="0.0" fill="#FA8602" fill-opacity="0.5" />
@@ -97,18 +99,16 @@ $(window).load(function(){
 
     <div id="svgContainer"></div>
 
-    <p id='streetname'></p>
-
 
      <div class="title-container">
             <div class="title-text">
                 <h1 class="title">
-                    <span id="mapClass" class="title-keyword"> San Francisco</span> 
+                    <span id="mapClass" class="title-keyword"> Queens</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes the 307 bicycle crashes 
+                    This map visualizes the 3599 bicycle crashes in Queens,NY
                     </br>
-                    in San Francisco, CA from 2012 and 2013
+                    from November 2012 to November 2013
                     <span id="showMore"> ... more </span>
                 </div>
             </div>
@@ -131,14 +131,13 @@ $(window).load(function(){
 
     <div id='essayBox'>
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
-      
       <div id='essayContent'>
         <p>
-        This map visualizes the 307 reported bicycle crashes in the city of San Francisco from 2012 and 2013.
+        This map visualizes the 3359 reported bicycle crashes in Queens,NY from December 2012 to November 2013.
         </p>
 
         <p> 
-        This map helps to show where crashes tend to happen — like Market Street  and Mission Street and Valencia Street — in the hope that those streets might be made safer for riders. 
+        This map helps to show where crashes tend to happen — like 164th Street, Francisc Lewis Boulevard and 108th Street — in the hope that those streets might be made safer for riders. 
         <p>
 
         <p>
@@ -158,18 +157,20 @@ $(window).load(function(){
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="https://gist.github.com/pranavr/11348749">San Francisco Police Department Bicycle Crash Reports </a> </li>
+          <li><a href="https://nycopendata.socrata.com/">NYC OpenData </a> </li>
           <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
         </ol>
+        <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> View map </p>
 
-      <p id='viewMap' style="color:rgb(222,16,40);cursor:pointer;"> View map </p>
       </div>
     </div> 
 
-  
+    <p id='streetname'></p>
 
   </div>
+
+
 
    <div id="infoGraphic">     
     <div id="tabContainer">
@@ -193,6 +194,7 @@ $(window).load(function(){
     </div>
   </div> 
 
+  
 
   </div>
     

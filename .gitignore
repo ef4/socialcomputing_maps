@@ -9,9 +9,14 @@
 /static/data/San Francisco/bicycle_accidents/streetviews/*
 /static/data/Portland/bicycle_accidents/streetviews/*
 /static/data/Austin/bicycle_accidents/streetviews/*
+/static/data/Brooklyn/bicycle_accidents/streetviews/*
+/static/data/Bronx/bicycle_accidents/streetviews/*
+/static/data/Queens/bicycle_accidents/streetviews/*
+/static/data/Staten Island/bicycle_accidents/streetviews/*
 /static/data/schools/*
 /static/data/schools/transportation/*
 /static/data/Los Angeles/allroads.geojson
 /static/data/Atlanta/allstreets.geojson
+
 
 
