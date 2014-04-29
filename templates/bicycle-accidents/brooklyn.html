@@ -33,8 +33,8 @@ var blurConstant = 0.0;
 var clusterStrokeOpacity = 0.3;
 var clusterStrokeWidth = 1.5;
 var shellRandomShift = 0.00;
-var shellOpacity = 0.1;
-var shellRadius = 2.1;
+var shellOpacity = 0.15;
+var shellRadius = 2.2;
 var coreOpacity = 0.3;
 var coreRadius = 0.2;
 var streetView = '#street-view';
@@ -107,9 +107,9 @@ $(window).load(function(){
                     <span id="mapClass" class="title-keyword"> Brooklyn</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes the 2653 bicycle crashes in Brooklyn, NY
+                    This map visualizes the 3735 bicycle crashes in Brooklyn, NY
                     </br>
-                    from December 2012 to November 2013
+                    from August 2011 to February 2014
                     <span id="showMore"> ... more </span>
                 </div>
             </div>
@@ -134,11 +134,11 @@ $(window).load(function(){
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
         <p>
-        This map visualizes the 2653 reported bicycle crashes in Brooklyn,NY from November 2012 to November 2013.
+        This map visualizes the 3735 reported bicycle crashes in Brooklyn,NY from August 2011 to February 2014.
         </p>
 
         <p> 
-        This map helps to show where crashes tend to happen — like Atlantic Avenue, Bedford Avenue and Broadway — in the hope that those streets might be made safer for riders. 
+        This map helps to show where crashes tend to happen — like Bedford Avenue, Broadway and Atlantic Avenue — in the hope that those streets might be made safer for riders. 
         <p>
 
         <p>
@@ -158,7 +158,7 @@ $(window).load(function(){
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="https://nycopendata.socrata.com/">NYC OpenData </a> </li>
+          <li><a href="https://nycopendata.socrata.com/">NYC OpenData </a> <a href='http://youarehere.cc/p/static/data/Brooklyn/bicycle_accidents/final_prettified.json'> (Raw Data)</a> </li>
           <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
         </ol>
