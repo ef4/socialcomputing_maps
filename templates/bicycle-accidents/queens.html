@@ -30,11 +30,11 @@
 var mapCenter = [-87.715044,41.93202];
 var scaleFactor =1.0;
 var blurConstant = 0.0;
-var clusterStrokeOpacity = 0.3;
+var clusterStrokeOpacity = 0.35;
 var clusterStrokeWidth = 1.2;
 var shellRandomShift = 0.00;
-var shellOpacity = 0.15;
-var shellRadius = 2.2;
+var shellOpacity = 0.1;
+var shellRadius = 2.25;
 var coreOpacity = 0.3;
 var coreRadius = 0.2;
 var streetView = '#street-view';
@@ -57,8 +57,8 @@ $(window).load(function(){
     setProjection();
     drawMap();
     initialize();
-    jQuery.getJSON('{{URL_PREFIX}}static/data/Queens/bicycle_accidents/final_final_data_2013.json', function(data){
-    console.log(data);
+    jQuery.getJSON('{{URL_PREFIX}}static/data/Queens/bicycle_accidents/final_corrected_data_2013_2.json', function(data){
+    console.log(data['accidents'].length);
       allData= data;
       accidentData = allData["accidents"];
       finalClusters = allData["clusters"];
@@ -148,7 +148,7 @@ $(window).load(function(){
         </p>
 
         <p>
-  All crashes were placed on the map as a point at the place where they occurred.  Not all bike crashes are reported to the police, and this map only shows those that are reported.  In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
+  All crashes were placed on the map as a point at the place where they occurred. Not all bike crashes are reported to the police, and this map only shows those that are reported and included someone getting injured.   In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
         </p>
 
         <p>
@@ -157,7 +157,7 @@ $(window).load(function(){
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="https://nycopendata.socrata.com/">NYC OpenData </a> </li>
+          <li><a href="http://www.nyc.gov/html/nypd/html/traffic_reports/traffic_report_archive_2011.shtml">NYC OpenData </a> <a href='http://youarehere.cc/p/static/data/Queens/bicycle_accidents/final_prettified.json'> (Raw Data)</a> </li>
           <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
         </ol>
