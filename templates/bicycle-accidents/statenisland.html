@@ -28,15 +28,15 @@
 <script type="text/javascript">
 
 var mapCenter = [-87.715044,41.93202];
-var scaleFactor =1.0;
+var scaleFactor =0.8;
 var blurConstant = 0.0;
-var clusterStrokeOpacity = 0.5;
-var clusterStrokeWidth = 1.2;
+var clusterStrokeOpacity = 0.1;
+var clusterStrokeWidth = 1.5;
 var shellRandomShift = 0.00;
-var shellOpacity = 0.15;
-var shellRadius = 2.8;
-var coreOpacity = 0.3;
-var coreRadius = 0.2;
+var shellOpacity = 0.3;
+var shellRadius = 4.2;
+var coreOpacity = 0.7;
+var coreRadius = 0.6;
 var streetView = '#street-view';
 var cityName = 'Staten Island';
 var URL_PREFIX = '{{URL_PREFIX}}';
@@ -51,7 +51,7 @@ var bikeway_offset1 = 65;
 var scaleFactor2 = 1.2;
 $(window).load(function(){
 
-  $('.container').css('width', '1075px');
+  $('.container').css('width', '1205px');
   jQuery.getJSON('{{URL_PREFIX}}static/data/Staten Island/boundary.geojson', function(geojson){
     geoJSON = geojson;
     setProjection();
@@ -106,9 +106,9 @@ $(window).load(function(){
                     <span id="mapClass" class="title-keyword"> Staten Island</span> 
                 </h1>
                 <div class="subtitle">
-                    This map visualizes the 1143 bicycle crashes in Staten Island, NY
+                    This map visualizes the 94 bicycle crashes in Staten Island, NY
                     </br>
-                    from December 2012 to November 2013
+                    from August 2011 to February 2014
                     <span id="showMore"> ... more </span>
                 </div>
             </div>
@@ -133,11 +133,11 @@ $(window).load(function(){
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
         <p>
-        This map visualizes the 1143 reported bicycle crashes in Staten Island from December 2012 to November 2013.
+        This map visualizes the 94 reported bicycle crashes in Staten Island,NY from August 2011 to February 2014.
         </p>
 
         <p> 
-        This map helps to show where crashes tend to happen — like Hyland Boulevard, Forest Avenue and Amboy Road — in the hope that those streets might be made safer for riders. 
+        This map helps to show where crashes tend to happen — like Bay Street, Hyland Boulevard and Amboy Road — in the hope that those streets might be made safer for riders. 
         <p>
 
         <p>
@@ -148,7 +148,7 @@ $(window).load(function(){
         </p>
 
         <p>
-  All crashes were placed on the map as a point at the place where they occurred.  Not all bike crashes are reported to the police, and this map only shows those that are reported.  In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
+  All crashes were placed on the map as a point at the place where they occurred. Not all bike crashes are reported to the police, and this map only shows those that are reported and included someone getting injured.   In order to show those streets where crashes were common, we used an average-link agglomerative clustering algorithm to cluster the crashes.  The large clusters, in which many crashes on a single street length, are shown by a red line.  Green lines on the map indicate existing bike paths.
         </p>
 
         <p>
@@ -157,7 +157,7 @@ $(window).load(function(){
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="https://nycopendata.socrata.com/">NYC OpenData </a> </li>
+           <li><a href="http://www.nyc.gov/html/nypd/html/traffic_reports/traffic_report_archive_2011.shtml"> NYPD Crash Reports </a> <a href='http://youarehere.cc/p/static/data/Staten Island/bicycle_accidents/final_prettified.json'> (Raw Data)</a> </li>
           <li><a href="https://developers.google.com/maps/documentation/business/geolocation/"> Google Maps Geolocation API</a></li>
           <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
         </ol>
