@@ -251,12 +251,14 @@ rect {
 }
 
 
+#bottomContainer{
+  border-top: 1px dotted rgba(200,200,200,0.25);
+  margin-top: 5px;
+  width: 100%;
+}
 
 #footer {
   float: left;
-  width: 100%;
-  border-top: 1px dotted rgba(200,200,200,0.25);
-  margin-top: 5px;
   font-size: 12px;
   padding: 5px 10px 10px 0px;
   color: rgba(160,160,160,0.98);
@@ -295,5 +297,23 @@ rect {
   font-size: 12px;
 }
 
-
+.navElements {
+  color: rgba(200,200,200,0.7);
+  float: right;
+  z-index: 7;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+}
+ 
+.navElements > a {
+  color: rgba(200,200,200,1.0);
+  height: 3.125em;
+  color: gray;
+  cursor: pointer;
+}
+ 
+.navElements > a:hover {
+  text-decoration: none;
+  color: #656566;
+}
 
