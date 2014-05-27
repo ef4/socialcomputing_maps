@@ -16,50 +16,48 @@ var lightBoxShown = false;
 
 function initialize(){
 
-  $('#data-source').click(function(){
-    console.log("click lbox");
-    lightBoxShown = true;
-    $('#svgContainer').css('opacity',0.1);
-    $('.tag').css('opacity',0.1);
+  var essayBoxShown = false;
+    $('#showMore').click(function(e){
+        e.preventDefault();
+        essayBoxShown = !essayBoxShown;
+        if (essayBoxShown) {
+            $('#mainframe').css('opacity',0.25);
+            $('#essayBox').css('display', 'block');
+            $('#essayBox').animate({'opacity':1.0}, 300);
+            $(this).text(' ... view map ');
+        } else {
+            closeEssayBox();
+            $(this).text(' ... more ');
+        }
 
-    var windowWidth = $(window).width();
-    var windowHeight = $(window).height();
-    var selfWidth = $(this).width(); var selfHeight = $(this).height();
-    var moveX = 0.4*(windowWidth - selfWidth);
-    var moveY = 0.35*(windowHeight - selfHeight);
+      })
 
-    $('#data-lightbox').animate({
-        'opacity':1.0}, 1500
-    );
 
-    $('#data-lightbox').attr('z-index', 6);
-    $('.tag').attr('z-index', 1);
-   });
+      $('#essayBox-close').click(function(){
+        closeEssayBox();
+        $('#showMore').text(' ... more ');
+      });
 
-  $('#svgContainer').click(function(){
-      closeLightBox();
-  });
+      $('#essayBox').click(function () {
+          closeEssayBox(); 
+          $('#showMore').text(' ... more ');
+      });
 
-  $('#lightbox-close').click(function(){
-    closeLightBox();
-  });
+      $('#viewMap').click(function () {
+          closeEssayBox(); 
+          $('#showMore').text(' ... more ');
+      });
+
 }
 
+function closeEssayBox(){
+  $('#essayBox').animate({'opacity':0.0}, 300, function () {
+    $('#essayBox').css('display', 'none');
+  })
+  essayBoxShown = false;
+  $('#mainframe').css('opacity',1.0);
 
-function closeLightBox(){
-  if (lightBoxShown){
-      $('#data-lightbox').animate({
-        'opacity':0.0}, 'fast'
-      );
-
-      $('#svgContainer').animate({'opacity':1.0},'slow');
-      $('.tag').css('opacity',0.4);
-      lightBoxShown = false;
-  };
-  $('#data-lightbox').attr('z-index', 1);
-  $('.tag').animate({'z-index': 6}, 'slow');
 }
-
 
 
 function setProjection(){ 

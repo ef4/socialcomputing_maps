@@ -72,7 +72,7 @@ def cambridge_generations(request):
 	return render_to_response('cambridge-generations.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def cambridge_bestmode(request):
-	return render_to_response('cambridge-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+	return render_to_response('cambridge-bestmode-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def cambridge_efficiency_blocks(request):
 	return render_to_response('cambridge-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
