@@ -4,7 +4,13 @@ body{
 }
 
 .container{
-  position: relative;
+  z-index: 3;
+}
+
+#mapContainer{
+  z-index: 1;
+  width: 100%;
+  height: 850px;
 }
 
 #mainframe{
@@ -23,15 +29,28 @@ body{
   z-index: 4;
 }
 
+/*.gmnoprint a, .gmnoprint span {
+    display:none;
+}
+.gmnoprint {
+    background:none !important;
+}*/
+.gmnoprint:last-child {
+    display: none !important;
+}
+.gm-style-cc:last-child {
+    display: none !important;
+}
 
 
-.block{
+.nhood{
   z-index: 7;
 }
 
 
 
 .title-container {
+  z-index: 3;
   margin-top: 30px;
   font-family: 'EB Garamond', serif;
 
@@ -77,6 +96,7 @@ body{
 
 #essayBox{
   position: absolute;
+  z-index: 5;
   overflow-y:scroll;
   display: none;
   top: 90px;

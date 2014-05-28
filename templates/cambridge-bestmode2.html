@@ -10,7 +10,7 @@
     <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="http://maps.googleapis.com/maps/api/js?client=gme-mitisandt&sensor=false&v=3.16"></script>
 
     <!-- Google Analytics -->
     <script>
@@ -25,38 +25,64 @@
     </script>
     
     <script type="text/javascript">
-    $('.container').css('width', '1000px');
-    var scaleFactor = 1.0;
+    $('.container').css('width', '1600px');
+
+    var scaleFactor = 0.92;
     var mapCenter = [-71.123625,42.372115];
     var labelXoffset = 140;
     var labelYoffset = 25;
     var drawSpeed = 20;
     var segments;
-    var dataValues;
     var structuredOffset = false;
     var buildings;
-    var blurConstant = 0.3;
-    var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
+    var gMap; 
+    var dataValues;
+    var blocks;
+    var overlay;
+    var neighborhoods;
+    var cMap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
 
     $(window).load(function(){
-      jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
-            geoJSON = geojson;
-            setProjection();
-            drawMap();
-            initialize();
 
-        d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/blocks_processed.geojson', function(geojson2){
-              buildings = geojson2;
-              drawBlocks();
 
-          d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values.json', function(values){
+        d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/neighborhoods.geojson', function(geojson2){
+              neighborhoods = geojson2;              
+              drawGoogleMap();
+              initialize();
+
+          d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/blocks_processed.geojson', function(blockgeojson){
+              blocks = blockgeojson;
+
+            d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values_blocks.json', function(values){
               dataValues = values; 
+              initializeBlocksOverlay();
               initOpacityScales();
-          });
+
+            });
         });
       });
     });
+
+
+    function drawGoogleMap(){
+      var mapStyles = [{"featureType":"poi","stylers":[{"visibility":"off"}]},{"stylers":[{"saturation":-70},{"lightness":37},{"gamma":1.15}]},{"elementType":"labels","stylers":[{"gamma":0.26},{"visibility":"off"}]},{"featureType":"road","stylers":[{"lightness":0},{"saturation":0},{"hue":"#ffffff"},{"gamma":0}]},{"featureType":"road","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"administrative.province","stylers":[{"visibility":"simplified"},{"lightness":-50}]}, {"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"visibility":"on"}, {"lightness":60}]},{"featureType":"administrative.province", "elementType":"labels.text","stylers":[{"lightness":20}]}];
+
+      var mapOptions = {
+        center: new google.maps.LatLng(42.378115,-71.1123625),
+        zoom: 14,
+        zoomControl: false,
+        panControl:false,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
+        disableDefaultUI:true,
+        styles:mapStyles
+      };
+
+      gMap = new google.maps.Map(document.getElementById('mapContainer'),mapOptions);
+    }
 
     function initOpacityScales(){
       var ranges = dataValues['ranges'];
@@ -66,65 +92,90 @@
       opacityScales['driving'] = d3.scale.linear().domain([ranges['driving'][0], ranges['driving'][1]]).range([0.2,0.9]);
     }
 
-    function initHandlers(){
-      $('.block').click(function(){
-        var this_id = $(this).attr('id');
-        var allBlocks = $('.block');
-        $('.block').each(function(){
-          var block_id = $(this).attr('id');
-          if (block_id != this_id){
-            
-            var bestMode = dataValues[this_id][block_id]['bestMode'];
-            var bestVal = dataValues[this_id][block_id]['bestVal'];
-            var colorValue = cmap[bestMode];
-            d3.select(this)
-              .attr('fill', colorValue)
-              .attr('fill-opacity',opacityScales[bestMode](bestVal))
-              .attr('stroke', 'white')
-              .attr('stroke-opacity',0.15);
-          } else {
-            d3.select(this)
-              .attr('fill','gray')
-              .attr('fill-opacity',0.5)
-              .attr('stroke','black')
-              .attr('stroke-opacity',0.9)
-              .attr('stroke-width',2);
-          }
-          
+    function colorBlocks(nHood){
+      var values = dataValues[nHood];
+      svg.selectAll('.block')
+        .attr('fill', function(d){
+          if (values[d.id] != undefined){
+            return cMap[values[d.id].bestMode]
+          } else {return cMap['driving']}
         })
-      })
+        .attr('fill-opacity', 0.5);
+        // .attr('fill-opacity', function(d){
+        //   if (values[d.id] != undefined) {
+        //     console.log()
+        //     if (values[d.id].bestMode != -1){
+        //       opacityScales[values[d.id].bestMode](values[d.id].bestVal);
+        //     }
+        //   } else {return 0.5}
+        //   });
     }
 
-    function drawBlocks(){
+    function initializeBlocksOverlay(){
+      overlay = new google.maps.OverlayView();
 
-      var filter = svg.append("defs")
-        .append("filter")
-          .attr("id", "blur")
-        .append("feGaussianBlur")
-          .attr("stdDeviation", blurConstant);
+      overlay.onAdd = function (){
+        var layer = d3.select(this.getPanes().overlayLayer).append("div")
+          .attr('class','d3overlay');
 
-      var buildingsPaths = svg.selectAll(".block")
-          .data(buildings.features)
-          .enter().append("path")
+          svg = layer.append('svg');
+
+          svg.selectAll('.block')
+            .data(blocks.features)
+            .enter().append("path")
+            .attr("class", "block")
+            .attr("fill", 'blue')
+            .attr("fill-opacity", 0.0)
+            .attr("id", function(d){return d.id;})
+            .attr("stroke", 'blue')
+            .attr("stroke-opacity", 0.0)
+
+
+          svg.selectAll('.nhood')
+            .data(neighborhoods.features)
+            .enter().append("path")
+            .attr("class", "nhood")
+            .attr("fill", 'white')
+            .attr("fill-opacity", 0.0)
+            .attr("id", function(d){return d.id;})
+            .attr("stroke", 'red')
+            .attr("stroke-opacity", 1.0)
+            .on('click', function(d){colorBlocks(d.properties.N_HOOD);});
+
+          overlay.draw = function(){
+            var overlayProjection = this.getProjection();
+            var projection = function(coordinates){
+              var googleCoordinates = new google.maps.LatLng(coordinates[1], coordinates[0]);
+              var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
+              return [pixelCoordinates.x + 0, pixelCoordinates.y + 0];
+            }
+          var path = d3.geo.path().projection(projection);
+
+          svg.selectAll('.block')
+            .data(blocks.features)
+            .attr("d",path);
+
+          svg.selectAll('.nhood')
+            .data(neighborhoods.features)
+            .attr("d",path);
           
-          .attr("class", "block")
-          .attr("fill", 'white')
-          .attr("fill-opacity", 1.0)
-          .attr("id", function(d){return d.id;})
-          .attr("d",path)
-          .attr("stroke", 'black')
-          .attr("stroke-opacity", 0.4);
 
-      initHandlers();
-    } 
+        }
 
-
+        overlay.draw();
+      }
+      overlay.setMap(gMap);
+    }
 
     </script>
     </head>
 
     <body>
+
+      
+    
       <div class='container'>
+
         <div class="title-container"> 
           <a id="logo" href="http://youarehere.cc">
                 <img src="{{URL_PREFIX}}static/img/logo_png24.png" style="width: 50px">
@@ -141,13 +192,7 @@
           <div class="spacer"></div>
         </div>
 
-        <div id='mainframe'>
-          <div id="svgContainer">
-<!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
-          </div>
-      </div>
-
-
+        <div id="mapContainer"></div>
 
           <div id="footer">
             <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
@@ -157,7 +202,8 @@
             <span class="footer-plus">+</span>
             <a href="http://media.mit.edu"> MIT Media Lab </a>
           </div>
-          <div id='essayBox'>
+      
+      <div id='essayBox'>
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
       <p>
@@ -196,8 +242,11 @@
         </ol>
 
       </div>
-    </div> 
-        </div>
+      </div> 
+    </div>
+
+
+      
     </body>
 </html>
     

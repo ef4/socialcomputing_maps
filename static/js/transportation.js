@@ -1,17 +1,4 @@
-var projection = d3.geo.mercator();
-var path = d3.geo.path().projection(projection); 
-var geoJSON;
-var segmentColor = '#F52307'
 var svg;
-var stations
-var g;
-var currentStation;
-var segmentsToDraw;
-var streets = {};
-var stationIndex  = 0;
-var maxOverlap=1;
-var lightBoxShown = false;
-
 
 
 function initialize(){
@@ -46,6 +33,13 @@ function initialize(){
       $('#viewMap').click(function () {
           closeEssayBox(); 
           $('#showMore').text(' ... more ');
+      });
+
+      d3.selectAll('.nhood').on('click', function(d){
+        console.log('hover over nhood');
+        d3.select(this)
+          .attr('stroke', 'black')
+          .attr('stroke-opacity', 1.0);
       });
 
 }
@@ -88,3 +82,5 @@ function drawMap(){
   .attr("fill", "#CCCCCC")
   .attr("fill-opacity", 0.05);
 }
+
+
