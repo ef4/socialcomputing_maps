@@ -79,6 +79,7 @@
         d3.select(previousBlock).attr('stroke','gray').attr('stroke-opacity',0.0);
       }
       $('.controlBlock').click(function(){
+        $('#hover_value').css('display','none');
         var this_id = $(this).attr('id');
         originID = this_id;
         previousBlock = d3.select(this);
@@ -95,14 +96,14 @@
         var this_id = $(this).attr('id');
         if (dataValues[originID][this_id]['bestVal'] != undefined){
           $('#hover_value').css('display', 'inline');
-          $('#hover_value').offset({left:$(this).offset().left, top: $(this).offset().top + 10});
+          $('#hover_value').offset({left:$(this).offset().left - 20, top: $(this).offset().top - 20});
           $('#hover_value').html(convertTime(dataValues[originID][this_id]['bestVal']) + ' by ' + dataValues[originID][this_id]['bestMode']);
         } else {
           $('#hover_value').css('display', 'none');
         } 
       });
 
-      $('.controlBlock').on('mouseout', function(){
+      $('.controlBlock').on('mouseleave', function(){
         $('#hover_value').css('display','none');
       });
     }
@@ -236,30 +237,10 @@
           <p>Click on the map to explore travel efficiencies in the city.</p>
         </div>
 
-          <div id='essayBox'>
-      <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
-      <div id='essayContent'>
-      <p>
-            "When great trees fall,</br>
-            rocks on distant hills shudder,</br>
-            lions hunker down </br>
-            in tall grasses,</br>
-            and even elephants</br>
-            lumber after safety.</br>
-            </br>
-            When great trees fall</br>
-            in forests,</br>
-            small things recoil into silence,</br>
-            their senses</br>
-            eroded beyond fear."</br>
-            </br>
-            -Maya Angelou
-      </p>
-
-      <p>
-        Trees provide us shade, fresh air, and beauty.  They create places to be in, to lean on, and to pass through.  And they remind us of our essential connection with nature, and with one another.  Trees can make a city feel alive, and places with no trees can feel barren.  
-      </p>
-
+      <div id='essayBox'>
+        <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
+        <div id='essayContent'>
+    
       <p>
         This map visualizes the approximate amount of greenery on the streets in and around the downtown area of Atlanta.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.
       </p>
@@ -270,13 +251,14 @@
 
         <p style="color:#898989;"> Data Sources </p>
         <ol>
-          <li><a href="https://developers.google.com/maps/documentation/streetview/">Google Maps StreetView Image API </a></li>
-          <li><a href="http://www.atlantaregional.com/info-center/gis-data-maps">Atlanta Regional GIS Program </a></li>
+          <li><a href="https://developers.google.com/maps/documentation/javascript/directions">Google Maps Directions Services API </a></li>
+          <li><a href="http://www.cambridgema.gov/GIS/gisdatadictionary/Demographics/Census_2010/DEMOGRAPHICS_BlockGroups2010.aspx">2010 US CENSUS Block Groups - Cambridge, MA </a></li>
         </ol>
 
-      </div>
-      </div>
         </div>
+      </div>
+    
+    </div>
     </body>
 </html>
     
