@@ -1,4 +1,7 @@
+var projection = d3.geo.mercator();
+var path = d3.geo.path().projection(projection); 
 var svg;
+var lightBoxShown = false;
 
 
 function initialize(){

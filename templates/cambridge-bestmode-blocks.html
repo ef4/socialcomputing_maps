@@ -46,7 +46,7 @@
             drawMap();
             initialize();
 
-        d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/blocks_processed.geojson', function(geojson2){
+        d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/blocks_groups_processed.geojson', function(geojson2){
               buildings = geojson2;
               drawBlocks();
 
