@@ -1,6 +1,7 @@
 var projection = d3.geo.mercator();
 var path = d3.geo.path().projection(projection); 
 var svg;
+var svg2;
 var lightBoxShown = false;
 
 
@@ -75,15 +76,19 @@ function drawMap(){
         .attr('height',$('#svgContainer').height())
         .attr('width', $('#svgContainer').width());
 
+  svg2 = d3.select("#svgControlContainer").append("svg")
+        .attr('height',$('#svgControlContainer').height())
+        .attr('width', $('#svgControlContainer').width());
+
 
   svg.selectAll(".map")
   .data(geoJSON.features)
   .enter().append("path")
   .attr("d", path)
-  .attr("stroke-opacity", 0.0)
+  .attr("stroke-opacity", 0.15)
   .attr("stroke", "black")
   .attr("fill", "#CCCCCC")
-  .attr("fill-opacity", 0.05);
+  .attr("fill-opacity", 0.00);
 }
 
 

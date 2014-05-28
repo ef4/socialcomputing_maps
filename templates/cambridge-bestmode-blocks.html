@@ -38,6 +38,9 @@
     var blurConstant = 0.3;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
+    var centerCircle;
+    var previousBlock;
+    var originID;
 
     $(window).load(function(){
       jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
@@ -46,13 +49,17 @@
             drawMap();
             initialize();
 
-        d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/blocks_groups_processed.geojson', function(geojson2){
+        d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/block_groups_processed.geojson', function(geojson2){
               buildings = geojson2;
               drawBlocks();
 
-          d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values.json', function(values){
+          d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values2.json', function(values){
               dataValues = values; 
               initOpacityScales();
+              var numBlocks = buildings.features.length;
+              var randomBlock = Math.floor(Math.random() * numBlocks) + 1;
+              originID = randomBlock;
+              processBlocks(randomBlock);
           });
         });
       });
@@ -60,17 +67,48 @@
 
     function initOpacityScales(){
       var ranges = dataValues['ranges'];
-      opacityScales['walking'] = d3.scale.linear().domain([ranges['walking'][0], ranges['walking'][1]]).range([0.2,0.9]);
-      opacityScales['bicycling'] = d3.scale.linear().domain([ranges['bicycling'][0], ranges['bicycling'][1]]).range([0.2,0.9]);
-      opacityScales['transit'] = d3.scale.linear().domain([ranges['transit'][0], ranges['transit'][1]]).range([0.2,0.9]);
-      opacityScales['driving'] = d3.scale.linear().domain([ranges['driving'][0], ranges['driving'][1]]).range([0.2,0.9]);
+      opacityScales['walking'] = d3.scale.linear().domain([ranges['walking'][0], ranges['walking'][1]]).range([0.3,1.0]);
+      opacityScales['bicycling'] = d3.scale.linear().domain([ranges['bicycling'][0], ranges['bicycling'][1]]).range([0.3,1.0]);
+      opacityScales['transit'] = d3.scale.linear().domain([ranges['transit'][0], ranges['transit'][1]]).range([0.3,1.0]);
+      opacityScales['driving'] = d3.scale.linear().domain([ranges['driving'][0], ranges['driving'][1]]).range([0.3,1.0]);
     }
 
     function initHandlers(){
-      $('.block').click(function(){
+
+      if (previousBlock != undefined){
+        d3.select(previousBlock).attr('stroke','gray').attr('stroke-opacity',0.0);
+      }
+      $('.controlBlock').click(function(){
         var this_id = $(this).attr('id');
-        var allBlocks = $('.block');
-        $('.block').each(function(){
+        originID = this_id;
+        previousBlock = d3.select(this);
+        processBlocks(this_id);      
+        var areas = dataValues[this_id]['areas'];
+        $('#dataSentence').css('display','inline');
+        $('#driving_value').html(areas['driving'].toFixed(1) + '%');
+        $('#transit_value').html(areas['transit'].toFixed(1) + '%');
+        $('#bicycling_value').html(areas['bicycling'].toFixed(1) + '%');
+        $('#walking_value').html(areas['walking'].toFixed(1) + '%');
+      });
+
+      $('.controlBlock').on('mouseover', function(){
+        var this_id = $(this).attr('id');
+        if (dataValues[originID][this_id]['bestVal'] != undefined){
+          $('#hover_value').css('display', 'inline');
+          $('#hover_value').offset({left:$(this).offset().left, top: $(this).offset().top + 10});
+          $('#hover_value').html(convertTime(dataValues[originID][this_id]['bestVal']) + ' by ' + dataValues[originID][this_id]['bestMode']);
+        } else {
+          $('#hover_value').css('display', 'none');
+        } 
+      });
+
+      $('.controlBlock').on('mouseout', function(){
+        $('#hover_value').css('display','none');
+      });
+    }
+
+    function processBlocks(this_id){
+      svg.selectAll('.block').each(function(){
           var block_id = $(this).attr('id');
           if (block_id != this_id){
             
@@ -80,19 +118,23 @@
             d3.select(this)
               .attr('fill', colorValue)
               .attr('fill-opacity',opacityScales[bestMode](bestVal))
-              .attr('stroke', 'white')
-              .attr('stroke-opacity',0.15);
+
           } else {
             d3.select(this)
-              .attr('fill','gray')
+              .attr('fill',cmap['walking'])
               .attr('fill-opacity',0.5)
-              .attr('stroke','black')
-              .attr('stroke-opacity',0.9)
-              .attr('stroke-width',2);
+              .each(function(d){
+                drawCenterCircle(d.properties.center[0], d.properties.center[1]);
+              });
           }
           
-        })
-      })
+        });
+    }
+
+    function convertTime(timeInSeconds){
+      var minutes = Math.round(timeInSeconds / 60);
+      var seconds = timeInSeconds % 60;
+      return minutes + ' minutes ' + seconds + ' seconds';
     }
 
     function drawBlocks(){
@@ -113,11 +155,35 @@
           .attr("id", function(d){return d.id;})
           .attr("d",path)
           .attr("stroke", 'black')
-          .attr("stroke-opacity", 0.4);
+          .attr("stroke-opacity", 0.0);
+
+      var controlBlocks = svg2.selectAll(".controlBlock")
+          .data(buildings.features)
+          .enter().append("path")
+          
+          .attr("class", "controlBlock")
+          .attr("fill", 'white')
+          .attr("fill-opacity", 0.0)
+          .attr("id", function(d){return d.id;})
+          .attr("d",path)
+          .attr("stroke", 'gray')
+          .attr("stroke-opacity", 0.0);
+
+      centerCircle = svg2.selectAll('.centerCircle')
+          .data(buildings.features)
+          .enter().append('text')
+          .text("X")
+          .attr('class','centerCircle');
 
       initHandlers();
     } 
 
+    function drawCenterCircle(lng,lat){
+      svg2.select('.centerCircle')
+        .attr('dx', function(d){ 
+          return projection([lng,lat])[0]})
+        .attr('dy', function(d){return projection([lng,lat])[1]});
+    }
 
 
     </script>
@@ -134,7 +200,7 @@
                     <span id="mapClass" class="title-keyword"> Cambridge </span> 
                 </h1>
                 <div class="subtitle">
-                    What is the best mode of transport? <span style='color:#4dac26;'> walking</span>,<span style='color:#fdae61;'> bicycling </span>,<span style='color:#2b83ba;'> transit</span> or <span style='color:#d7191c;'> driving </span> ?
+                    What is the best mode of transport: <span style='color:#fdae61;'> bicycling </span>,<span style='color:#2b83ba;'> transit</span>,<span style='color:#4dac26;'> walking</span> or <span style='color:#d7191c;'> driving </span> ?
                     <span id="showMore"> ... more </span>
                 </div>
           </div>
@@ -145,9 +211,10 @@
           <div id="svgContainer">
 <!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
           </div>
+          <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/cambridge3.png">
+          <div id="svgControlContainer"></div>
+          <p id='hover_value'></p>
       </div>
-
-
 
           <div id="footer">
             <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
@@ -157,6 +224,18 @@
             <span class="footer-plus">+</span>
             <a href="http://media.mit.edu"> MIT Media Lab </a>
           </div>
+
+        <div id='textContainer'>
+          
+          <p id='dataSentence'> From this location, <span id='driving' style="color:#d7191c"> <span id='driving_value'> </span> of the city is best reached by car </span>,</br>
+          <span id='bicycling' style="color:#fdae61"> <span id='bicycling_value'> </span> by bicycle </span>, <span id='transit' style="color:#2b83ba" > <span id='transit_value'> </span> by public transit </span>, and </br>
+          <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> by walking </span>
+           </p>
+          </br>
+          </br>
+          <p>Click on the map to explore travel efficiencies in the city.</p>
+        </div>
+
           <div id='essayBox'>
       <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
       <div id='essayContent'>
@@ -196,7 +275,7 @@
         </ol>
 
       </div>
-    </div> 
+      </div>
         </div>
     </body>
 </html>
