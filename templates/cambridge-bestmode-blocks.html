@@ -41,6 +41,7 @@
     var centerCircle;
     var previousBlock;
     var originID;
+    var neighborhoods;
 
     $(window).load(function(){
       jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
@@ -51,15 +52,21 @@
 
         d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/block_groups_processed.geojson', function(geojson2){
               buildings = geojson2;
-              drawBlocks();
+              
 
-          d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values2.json', function(values){
+          d3.csv('{{URL_PREFIX}}static/data/Cambridge/transportation/neighborhoods.csv', function(error, csvdata){
+            neighborhoods = csvdata;
+            drawBlocks();
+
+           d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values2.json', function(values){
               dataValues = values; 
               initOpacityScales();
               var numBlocks = buildings.features.length;
               var randomBlock = Math.floor(Math.random() * numBlocks) + 1;
               originID = randomBlock;
               processBlocks(randomBlock);
+
+            });
           });
         });
       });
@@ -84,12 +91,6 @@
         originID = this_id;
         previousBlock = d3.select(this);
         processBlocks(this_id);      
-        var areas = dataValues[this_id]['areas'];
-        $('#dataSentence').css('display','inline');
-        $('#driving_value').html(areas['driving'].toFixed(1) + '%');
-        $('#transit_value').html(areas['transit'].toFixed(1) + '%');
-        $('#bicycling_value').html(areas['bicycling'].toFixed(1) + '%');
-        $('#walking_value').html(areas['walking'].toFixed(1) + '%');
       });
 
       $('.controlBlock').on('mouseover', function(){
@@ -128,6 +129,12 @@
                 drawCenterCircle(d.properties.center[0], d.properties.center[1]);
               });
           }
+          var areas = dataValues[this_id]['areas'];
+          $('#dataSentence').css('display','inline');
+          $('#driving_value').html(areas['driving'].toFixed(1) + '%');
+          $('#transit_value').html(areas['transit'].toFixed(1) + '%');
+          $('#bicycling_value').html(areas['bicycling'].toFixed(1) + '%');
+          $('#walking_value').html(areas['walking'].toFixed(1) + '%');
           
         });
     }
@@ -157,6 +164,14 @@
           .attr("d",path)
           .attr("stroke", 'black')
           .attr("stroke-opacity", 0.0);
+
+      var nhoodtexts = svg2.selectAll('.nhoodlabel')
+        .data(neighborhoods)
+        .enter().append('text')
+          .attr('class','nhoodlabel')
+          .text(function(d){return d.name;})
+          .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
+          .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
 
       var controlBlocks = svg2.selectAll(".controlBlock")
           .data(buildings.features)
@@ -201,14 +216,16 @@
                     <span id="mapClass" class="title-keyword"> Cambridge </span> 
                 </h1>
                 <div class="subtitle">
-                    What is the best mode of transport: <span style='color:#fdae61;'> bicycling </span>,<span style='color:#2b83ba;'> transit</span>,<span style='color:#4dac26;'> walking</span> or <span style='color:#d7191c;'> driving </span> ?
+                    What is the fastest mode of transport:,<span style='color:#4dac26;'> walking</span>, <span style='color:#fdae61;'> bicycling </span>,<span style='color:#2b83ba;'> transit</span> or <span style='color:#d7191c;'> driving </span> ? &nbsp <b style="color:black;"> Click on the map to explore </b>
                     <span id="showMore"> ... more </span>
                 </div>
+                <!-- <p  id='introMsg'>Click on the map to explore.</p> -->
           </div>
           <div class="spacer"></div>
         </div>
 
         <div id='mainframe'>
+          
           <div id="svgContainer">
 <!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
           </div>
@@ -228,27 +245,30 @@
 
         <div id='textContainer'>
           
-          <p id='dataSentence'> From this location, <span id='driving' style="color:#d7191c"> <span id='driving_value'> </span> of the city is best reached by car </span>,</br>
-          <span id='bicycling' style="color:#fdae61"> <span id='bicycling_value'> </span> by bicycle </span>, <span id='transit' style="color:#2b83ba" > <span id='transit_value'> </span> by public transit </span>, and </br>
-          <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> by walking </span>
+          <p id='dataSentence'> From this location, <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> of the city can be reached fastest by walking </span>,</br>
+          <span id='bicycling' style="color:#fdae61"> <span id='bicycling_value'> </span> by bicycling </span>, <span id='transit' style="color:#2b83ba" > <span id='transit_value'> </span> by taking public transit </span>, and <span id='driving' style="color:#d7191c"> <span id='driving_value'> </span> by driving. </span>
+          
            </p>
-          </br>
-          </br>
-          <p>Click on the map to explore travel efficiencies in the city.</p>
         </div>
 
       <div id='essayBox'>
         <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
         <div id='essayContent'>
-    
       <p>
-        This map visualizes the approximate amount of greenery on the streets in and around the downtown area of Atlanta.  On the map, the relative amount of greenery at each point is represented by a marker's size and opacity.
+      We walk to our neighbors' apartments and ride the subway to work. Our walking city is not our subway city is not our driving city.  Each mode of transit creates a different scale and pattern of use. 
       </p>
-
-      <p> 
-        To create this map, we crawled Google Street View images, and then ran a simple probabilistic classifier to approximate the amount of visible plant life for each street.  These maps are approximate, in part because of seasonal changes and weather conditions, yet they give us a sense of which streets are full of life. The histogram in the lower left-hand corner gives a distribution of street greenery.  The left-hand side of the histogram represents the number of streets with low levels of street greenery, and the right-hand side of the histogram represents the number of streets with a high levels of street greenery.  Clicking on a bar in the histogram shows all the streets at that level, and clicking on a street on the map will highlight where in the histogram that street belongs. 
+      <p>
+      This map visualizes the fastest mode of transportation from each point in the city to every other point in the city. Diverse modes of transit affect the efficiency of how a city works, and the reach of many of its citizens.  We hope that these maps help shed light on the the way accessibility shapes one's experience of the city, and the need to plan our streets for multiple uses.  
       </p>
-
+      <p>
+      This map is activated by selecting a specific departure point.  Once the departure point is selected, the rest of the city will be colored based on the fastest form of transportation.  Those points to which it's fastest to get to by bicycle are colored yellow, by public transit: blue, by walking: green, and by driving: red.  
+      </p>
+      <p>
+      To make this map, we gridded up the city at the block-group level, and then computed the time using each mode of transport from the centroid of the source block group to the centroid of the destination block group using the Google Maps API.  For driving, we added a buffer time for parking and walking, and then we compared the four resulting times and colored the block-group based on the minimum.  
+      </p>
+      <p>
+      A more complete calculation of transportation efficiency would not only take into consideration the time it takes, but the true cost of each mode of transport, including the cost of the vehicle, the cost of fuel, and the effect on air quality.  In these calculations, walking and bicycling would cover even more area, and we will explore this in later maps.
+      </p>
         <p style="color:#898989;"> Data Sources </p>
         <ol>
           <li><a href="https://developers.google.com/maps/documentation/javascript/directions">Google Maps Directions Services API </a></li>
