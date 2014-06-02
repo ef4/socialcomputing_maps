@@ -65,12 +65,10 @@ function setProjection(){
   console.log(width,height);
   var b = path.bounds(geoJSON),
   s = scaleFactor / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
-  t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+  t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2 + moveDown];
   projection.scale(s).translate(t);
   projection(mapCenter);
-}
 
-function drawMap(){
 
   svg = d3.select("#svgContainer").append("svg")
         .attr('height',$('#svgContainer').height())
@@ -79,6 +77,10 @@ function drawMap(){
   svg2 = d3.select("#svgControlContainer").append("svg")
         .attr('height',$('#svgControlContainer').height())
         .attr('width', $('#svgControlContainer').width());
+}
+
+function drawMap(){
+
 
 
   svg.selectAll(".map")

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <title> Fastest Mode of Transport - Cambridge, MA </title>
+    <title> Fastest Mode of Transport - Manhattan </title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
@@ -26,8 +26,8 @@
     </script>
     
     <script type="text/javascript">
-    $('.container').css('width', '1000px');
-    var scaleFactor = 1.0;
+    $('.container').css('width', '950');
+    var scaleFactor = 1.09;
     var mapCenter = [-71.123625,42.372115];
     var labelXoffset = 140;
     var labelYoffset = 25;
@@ -37,6 +37,7 @@
     var structuredOffset = false;
     var buildings;
     var blurConstant = 0.3;
+    var moveDown = 40;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
     var centerCircle;
@@ -45,30 +46,30 @@
     var neighborhoods;
 
     $(window).load(function(){
-      jQuery.getJSON('{{URL_PREFIX}}static/data/Cambridge/boundary.geojson', function(geojson){
+      jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/boundary.geojson', function(geojson){
             geoJSON = geojson;
             setProjection();
-            drawMap();
+            //drawMap();
             initialize();
 
-        d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/block_groups_processed.geojson', function(geojson2){
+        d3.json('{{URL_PREFIX}}static/data/Manhattan/transportation/block_groups_processed.geojson', function(geojson2){
               buildings = geojson2;
-              
+              drawBlocks();
 
-          d3.csv('{{URL_PREFIX}}static/data/Cambridge/transportation/neighborhoods.csv', function(error, csvdata){
-            neighborhoods = csvdata;
-            drawBlocks();
+          //d3.csv('{{URL_PREFIX}}static/data/Cambridge/transportation/neighborhoods.csv', function(error, csvdata){
+          //  neighborhoods = csvdata;
+            //drawBlocks();
 
-           d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values2.json', function(values){
-              dataValues = values; 
-              initOpacityScales();
-              var numBlocks = buildings.features.length;
-              var randomBlock = Math.floor(Math.random() * numBlocks) + 1;
-              originID = randomBlock;
-              processBlocks(randomBlock);
+           // d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values2.json', function(values){
+           //    dataValues = values; 
+           //    initOpacityScales();
+           //    var numBlocks = buildings.features.length;
+           //    var randomBlock = Math.floor(Math.random() * numBlocks) + 1;
+           //    originID = randomBlock;
+           //    processBlocks(randomBlock);
 
-            });
-          });
+           //  });
+          //});
         });
       });
     });
@@ -159,40 +160,52 @@
           .enter().append("path")
           
           .attr("class", "block")
-          .attr("fill", 'white')
+          .attr("fill", 'red')
           .attr("fill-opacity", 1.0)
           .attr("id", function(d){return d.id;})
           .attr("d",path)
           .attr("stroke", 'black')
-          .attr("stroke-opacity", 0.0);
+          .attr("stroke-opacity", 1.0);
 
-      var nhoodtexts = svg2.selectAll('.nhoodlabel')
-        .data(neighborhoods)
-        .enter().append('text')
-          .attr('class','nhoodlabel')
-          .text(function(d){return d.name;})
-          .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
-          .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
-
-      var controlBlocks = svg2.selectAll(".controlBlock")
+        var buildingsCenters = svg.selectAll(".cents")
           .data(buildings.features)
-          .enter().append("path")
+          .enter().append("circle")
           
-          .attr("class", "controlBlock")
-          .attr("fill", 'white')
-          .attr("fill-opacity", 0.0)
-          .attr("id", function(d){return d.id;})
-          .attr("d",path)
-          .attr("stroke", 'gray')
-          .attr("stroke-opacity", 0.0);
+          .attr("class", "cents")
+          .attr("fill", 'green')
+          .attr("fill-opacity", 1.0)
+          .attr('r', 1.4)
+          .attr('cx', function(d){return projection([d.properties.center[0], d.properties.center[1]])[0]})
+          .attr('cy', function(d){return projection([d.properties.center[0], d.properties.center[1]])[1]});
+          
 
-      centerCircle = svg2.selectAll('.centerCircle')
-          .data(buildings.features)
-          .enter().append('text')
-          .text("X")
-          .attr('class','centerCircle');
+      // var nhoodtexts = svg2.selectAll('.nhoodlabel')
+      //   .data(neighborhoods)
+      //   .enter().append('text')
+      //     .attr('class','nhoodlabel')
+      //     .text(function(d){return d.name;})
+      //     .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
+      //     .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
 
-      initHandlers();
+      // var controlBlocks = svg2.selectAll(".controlBlock")
+      //     .data(buildings.features)
+      //     .enter().append("path")
+          
+      //     .attr("class", "controlBlock")
+      //     .attr("fill", 'white')
+      //     .attr("fill-opacity", 0.0)
+      //     .attr("id", function(d){return d.id;})
+      //     .attr("d",path)
+      //     .attr("stroke", 'gray')
+      //     .attr("stroke-opacity", 0.0);
+
+      // centerCircle = svg2.selectAll('.centerCircle')
+      //     .data(buildings.features)
+      //     .enter().append('text')
+      //     .text("X")
+      //     .attr('class','centerCircle');
+
+      // initHandlers();
     } 
 
     function drawCenterCircle(lng,lat){
@@ -214,7 +227,7 @@
           </a>
           <div class="title-text">
                 <h1 class="title">
-                    <span id="mapClass" class="title-keyword"> Cambridge </span> 
+                    <span id="mapClass" class="title-keyword"> Manhattan </span> 
                 </h1>
                 <div class="subtitle">
                     What is the fastest mode of transport:,<span style='color:#4dac26;'> walking</span>, <span style='color:#fdae61;'> bicycling </span>,<span style='color:#2b83ba;'> transit</span> or <span style='color:#d7191c;'> driving </span> ? &nbsp <b style="color:black;"> Click on the map to explore </b>
@@ -230,8 +243,8 @@
           <div id="svgContainer">
 <!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
           </div>
-          <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/cambridge3.png">
-          <div id="svgControlContainer"></div>
+          <!-- <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/cambridge3.png"> -->
+          <!-- <div id="svgControlContainer"></div>-->
           <p id='hover_value'></p>
       </div>
 
