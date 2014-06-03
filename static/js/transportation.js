@@ -89,8 +89,9 @@ function drawMap(){
   .attr("d", path)
   .attr("stroke-opacity", 0.15)
   .attr("stroke", "black")
-  .attr("fill", "#CCCCCC")
-  .attr("fill-opacity", 0.0);
+  .attr("fill", "blue")
+  .attr("fill-opacity", 1.0)
+  .on('click',function(d){console.log(d.properties.Id);})
 }
 
 

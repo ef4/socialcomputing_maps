@@ -7,7 +7,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation.css"> </style>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation-nyc.css"> </style>
     <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     
     <script type="text/javascript">
     $('.container').css('width', '950');
-    var scaleFactor = 1.09;
+    var scaleFactor = 1.10;
     var mapCenter = [-71.123625,42.372115];
     var labelXoffset = 140;
     var labelYoffset = 25;
@@ -37,7 +37,7 @@
     var structuredOffset = false;
     var buildings;
     var blurConstant = 0.3;
-    var moveDown = 40;
+    var moveDown = 60;
     var moveRight = 20;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
@@ -45,6 +45,7 @@
     var previousBlock;
     var originID;
     var neighborhoods;
+    var roadsGJS;
 
     $(window).load(function(){
       jQuery.getJSON('{{URL_PREFIX}}static/data/Manhattan/boundary.geojson', function(geojson){
@@ -57,9 +58,9 @@
               buildings = geojson2;
               drawBlocks();
 
-          // d3.csv('{{URL_PREFIX}}static/data/Manhattan/transportation/neighborhoods.csv', function(error, csvdata){
-          //  neighborhoods = csvdata;
-          //   drawBlocks();
+          d3.json('{{URL_PREFIX}}static/data/Manhattan/roads.geojson', function(roads){
+           roadsGJS = roads;
+            drawRoads();
 
            d3.json('{{URL_PREFIX}}static/data/Manhattan/transportation/bestMode_values3.json', function(values){
               dataValues = values; 
@@ -70,7 +71,7 @@
               processBlocks(randomBlock);
 
             });
-          //});
+          });
         });
       });
     });
@@ -123,14 +124,14 @@
             d3.select(this)
               .attr('fill', colorValue)
               .attr('fill-opacity',opacityScales[bestMode](bestVal))
+              .attr('stroke','none').attr('stroke-opacity',0.0);
 
           } else {
             d3.select(this)
               .attr('fill',cmap['walking'])
-              .attr('fill-opacity',0.5)
-              .each(function(d){
-                drawCenterCircle(d.properties.center[0], d.properties.center[1]);
-              });
+              .attr('stroke-width',1.8)
+              .attr('stroke','black').attr('stroke-opacity',1.0)
+              .attr('fill-opacity',0.5);
           }
           var areas = dataValues[this_id]['areas'];
           $('#dataSentence').css('display','inline');
@@ -149,6 +150,7 @@
     }
 
     function drawBlocks(){
+
 
       var filter = svg.append("defs")
         .append("filter")
@@ -200,11 +202,11 @@
           .attr("stroke", 'gray')
           .attr("stroke-opacity", 0.0);
 
-      centerCircle = svg2.selectAll('.centerCircle')
-          .data(buildings.features)
-          .enter().append('text')
-          .text("X")
-          .attr('class','centerCircle');
+      // centerCircle = svg2.selectAll('.centerCircle')
+      //     .data(buildings.features)
+      //     .enter().append('text')
+      //     .text("X")
+      //     .attr('class','centerCircle');
 
       initHandlers();
     } 
@@ -216,6 +218,20 @@
         .attr('dy', function(d){return projection([lng,lat])[1]});
     }
 
+    function drawRoads(){
+      var svg3 = d3.select("#building_layer").append("svg")
+        .attr('height',$('#building_layer').height())
+        .attr('width', $('#building_layer').width());
+
+      svg3.selectAll(".map")
+        .data(roadsGJS.features)
+        .enter().append("path")
+        .attr("d", path)
+        .attr("stroke-opacity", 0.8)
+        .attr("stroke", "white")
+        .attr("fill", "blue")
+        .attr("fill-opacity", 0.0);
+    }
 
     </script>
     </head>
@@ -240,11 +256,11 @@
         </div>
 
         <div id='mainframe'>
-          
           <div id="svgContainer">
-<!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
+             
           </div>
-          <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">
+          <!--  id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">-->
+          <div id="building_layer"></div>
           <div id="svgControlContainer"></div>
           <p id='hover_value'></p>
       </div>

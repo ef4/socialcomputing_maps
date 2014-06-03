@@ -7,7 +7,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation.css"> </style>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation-boulder.css"> </style>
     <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     
     <script type="text/javascript">
     $('.container').css('width', '950');
-    var scaleFactor = 1.09;
+    var scaleFactor = 1.0;
     var mapCenter = [-71.123625,42.372115];
     var labelXoffset = 140;
     var labelYoffset = 25;
@@ -37,7 +37,7 @@
     var structuredOffset = false;
     var buildings;
     var blurConstant = 0.3;
-    var moveDown = 40;
+    var moveDown = 0;
     var moveRight = 20;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
@@ -50,12 +50,12 @@
       jQuery.getJSON('{{URL_PREFIX}}static/data/Boulder/boundary.geojson', function(geojson){
             geoJSON = geojson;
             setProjection();
-            drawMap();
             initialize();
 
-        d3.json('{{URL_PREFIX}}static/data/Boulder/transportation/block_groups_processed.geojson', function(geojson2){
+        d3.json('{{URL_PREFIX}}static/data/Boulder/transportation/block_groups_processed2.geojson', function(geojson2){
               buildings = geojson2;
               drawBlocks();
+              drawMap();
 
           // d3.csv('{{URL_PREFIX}}static/data/Manhattan/transportation/neighborhoods.csv', function(error, csvdata){
           //  neighborhoods = csvdata;
@@ -166,7 +166,8 @@
           .attr("id", function(d){ return d.id;})
           .attr("d",path)
           .attr("stroke", 'black')
-          .attr("stroke-opacity", 1.0);
+          .attr("stroke-opacity", 1.0)
+          .on('click', function(d){console.log(d.id);});
 
         var buildingsCenters = svg.selectAll(".cents")
           .data(buildings.features)
@@ -234,19 +235,15 @@
                     What is the fastest mode of transport:,<span style='color:#4dac26;'> walking</span>, <span style='color:#fdae61;'> bicycling </span>,<span style='color:#2b83ba;'> transit</span> or <span style='color:#d7191c;'> driving </span> ? &nbsp <b style="color:black;"> Click on the map to explore </b>
                     <span id="showMore"> ... more </span>
                 </div>
-                <!-- <p  id='introMsg'>Click on the map to explore.</p> -->
           </div>
           <div class="spacer"></div>
         </div>
 
         <div id='mainframe'>
           
-          <div id="svgContainer">
-<!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
-          </div>
-          
-          <!-- <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">
-          <div id="svgControlContainer"></div> -->
+          <div id="svgContainer"></div>
+          <!--<img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/boulder.png">-->
+          <div id="svgControlContainer"></div>
           <p id='hover_value'></p>
       </div>
 
