@@ -228,6 +228,7 @@
         .enter().append("path")
         .attr("d", path)
         .attr("stroke-opacity", 0.8)
+        .attr('stroke-width',0.5)
         .attr("stroke", "white")
         .attr("fill", "blue")
         .attr("fill-opacity", 0.0);
@@ -274,7 +275,7 @@
             <a href="http://media.mit.edu"> MIT Media Lab </a>
           </div>
 
-        <div id='textContainerManhattan'>
+        <div id='textContainer'>
           
           <p id='dataSentence'> From this location, <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> of the city can be reached </br> fastest by walking </span>,
           <span id='bicycling' style="color:#fdae61"> <span id='bicycling_value'> </span> by bicycling </span>, <span id='transit' style="color:#2b83ba" > <span id='transit_value'> </span> by taking public </br> transit </span>, and <span id='driving' style="color:#d7191c"> <span id='driving_value'> </span> by driving. </span>
