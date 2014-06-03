@@ -80,18 +80,15 @@ function setProjection(){
 }
 
 function drawMap(){
-
-
-
   svg.selectAll(".map")
   .data(geoJSON.features)
   .enter().append("path")
   .attr("d", path)
-  .attr("stroke-opacity", 0.15)
-  .attr("stroke", "black")
+  .attr('stroke-width',2)
+  .attr("stroke-opacity", 0.8)
+  .attr("stroke", "red")
   .attr("fill", "blue")
-  .attr("fill-opacity", 1.0)
-  .on('click',function(d){console.log(d.properties.Id);})
+  .attr("fill-opacity",1.0);
 }
 
 

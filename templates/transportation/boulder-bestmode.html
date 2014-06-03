@@ -50,12 +50,13 @@
       jQuery.getJSON('{{URL_PREFIX}}static/data/Boulder/boundary.geojson', function(geojson){
             geoJSON = geojson;
             setProjection();
+            drawMap();
             initialize();
 
-        d3.json('{{URL_PREFIX}}static/data/Boulder/transportation/block_groups_processed2.geojson', function(geojson2){
+        d3.json('{{URL_PREFIX}}static/data/Boulder/transportation/block_groups_processed_new.geojson', function(geojson2){
               buildings = geojson2;
               drawBlocks();
-              drawMap();
+              
 
           // d3.csv('{{URL_PREFIX}}static/data/Manhattan/transportation/neighborhoods.csv', function(error, csvdata){
           //  neighborhoods = csvdata;
@@ -162,7 +163,7 @@
           
           .attr("class", "block")
           .attr("fill", 'green')
-          .attr("fill-opacity", 1.0)
+          .attr("fill-opacity", 0.5)
           .attr("id", function(d){ return d.id;})
           .attr("d",path)
           .attr("stroke", 'black')
@@ -174,20 +175,20 @@
           .enter().append("circle")
           
           .attr("class", "cents")
-          .attr("fill", 'green')
+          .attr("fill", 'orange')
           .attr("fill-opacity", 1.0)
           .attr('r', 1.4)
           .attr('cx', function(d){return projection([d.properties.center[0], d.properties.center[1]])[0]})
           .attr('cy', function(d){return projection([d.properties.center[0], d.properties.center[1]])[1]});
           
 
-      var nhoodtexts = svg2.selectAll('.nhoodlabel')
-        .data(neighborhoods)
-        .enter().append('text')
-          .attr('class','nhoodlabel')
-          .text(function(d){return d.name;})
-          .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
-          .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
+      // var nhoodtexts = svg2.selectAll('.nhoodlabel')
+      //   .data(neighborhoods)
+      //   .enter().append('text')
+      //     .attr('class','nhoodlabel')
+      //     .text(function(d){return d.name;})
+      //     .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
+      //     .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
 
       // var controlBlocks = svg2.selectAll(".controlBlock")
       //     .data(buildings.features)
@@ -243,7 +244,7 @@
           
           <div id="svgContainer"></div>
           <!--<img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/boulder.png">-->
-          <div id="svgControlContainer"></div>
+          <!-- <div id="svgControlContainer"></div>-->
           <p id='hover_value'></p>
       </div>
 
