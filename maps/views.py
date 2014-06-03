@@ -77,6 +77,9 @@ def cambridge_bestmode(request):
 def manhattan_bestmode(request):
 	return render_to_response('transportation/manhattan-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def boulder_bestmode(request):
+	return render_to_response('transportation/boulder-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def cambridge_bestmode2(request):
 	return render_to_response('cambridge-bestmode2.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
