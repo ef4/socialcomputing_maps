@@ -58,7 +58,7 @@
               buildings = geojson2;
               drawBlocks();
 
-          d3.json('{{URL_PREFIX}}static/data/Manhattan/roads.geojson', function(roads){
+          d3.json('{{URL_PREFIX}}static/data/Manhattan/roads_processed.geojson', function(roads){
            roadsGJS = roads;
             drawRoads();
 
