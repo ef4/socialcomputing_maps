@@ -85,10 +85,10 @@ function drawMap(){
   .enter().append("path")
   .attr("d", path)
   .attr('stroke-width',2)
-  .attr("stroke-opacity", 0.8)
-  .attr("stroke", "red")
-  .attr("fill", "blue")
-  .attr("fill-opacity",1.0);
+  .attr("stroke-opacity", 0.15)
+  .attr("stroke", "gray")
+  .attr("fill", "#CCCCCC")
+  .attr("fill-opacity",0.0);
 }
 
 
