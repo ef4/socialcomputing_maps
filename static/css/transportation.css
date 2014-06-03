@@ -191,6 +191,16 @@ body{
   font-weight: lighter;
 }
 
+#textContainerManhattan{
+  position: relative;
+  z-index: 8;
+  float: left;
+  bottom:105px;
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
 #dataSentence{
   display: none;
   margin-bottom: 10px;

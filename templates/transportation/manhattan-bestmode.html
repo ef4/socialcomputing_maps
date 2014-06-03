@@ -38,6 +38,7 @@
     var buildings;
     var blurConstant = 0.3;
     var moveDown = 40;
+    var moveRight = 20;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
     var centerCircle;
@@ -56,19 +57,19 @@
               buildings = geojson2;
               drawBlocks();
 
-          //d3.csv('{{URL_PREFIX}}static/data/Cambridge/transportation/neighborhoods.csv', function(error, csvdata){
+          // d3.csv('{{URL_PREFIX}}static/data/Manhattan/transportation/neighborhoods.csv', function(error, csvdata){
           //  neighborhoods = csvdata;
-            //drawBlocks();
+          //   drawBlocks();
 
-           // d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/bestMode_values2.json', function(values){
-           //    dataValues = values; 
-           //    initOpacityScales();
-           //    var numBlocks = buildings.features.length;
-           //    var randomBlock = Math.floor(Math.random() * numBlocks) + 1;
-           //    originID = randomBlock;
-           //    processBlocks(randomBlock);
+           d3.json('{{URL_PREFIX}}static/data/Manhattan/transportation/bestMode_values3.json', function(values){
+              dataValues = values; 
+              initOpacityScales();
+              var numBlocks = buildings.features.length;
+              var randomBlock = Math.floor(Math.random() * numBlocks-1) + 1;
+              originID = randomBlock;
+              processBlocks(randomBlock);
 
-           //  });
+            });
           //});
         });
       });
@@ -115,7 +116,7 @@
       svg.selectAll('.block').each(function(){
           var block_id = $(this).attr('id');
           if (block_id != this_id){
-            
+            //console.log(block_id, this_id);
             var bestMode = dataValues[this_id][block_id]['bestMode'];
             var bestVal = dataValues[this_id][block_id]['bestVal'];
             var colorValue = cmap[bestMode];
@@ -160,23 +161,23 @@
           .enter().append("path")
           
           .attr("class", "block")
-          .attr("fill", 'red')
-          .attr("fill-opacity", 1.0)
-          .attr("id", function(d){return d.id;})
+          .attr("fill", 'white')
+          .attr("fill-opacity", 0.0)
+          .attr("id", function(d){ return d.id;})
           .attr("d",path)
           .attr("stroke", 'black')
-          .attr("stroke-opacity", 1.0);
+          .attr("stroke-opacity", 0.0);
 
-        var buildingsCenters = svg.selectAll(".cents")
-          .data(buildings.features)
-          .enter().append("circle")
+        // var buildingsCenters = svg.selectAll(".cents")
+        //   .data(buildings.features)
+        //   .enter().append("circle")
           
-          .attr("class", "cents")
-          .attr("fill", 'green')
-          .attr("fill-opacity", 1.0)
-          .attr('r', 1.4)
-          .attr('cx', function(d){return projection([d.properties.center[0], d.properties.center[1]])[0]})
-          .attr('cy', function(d){return projection([d.properties.center[0], d.properties.center[1]])[1]});
+        //   .attr("class", "cents")
+        //   .attr("fill", 'green')
+        //   .attr("fill-opacity", 1.0)
+        //   .attr('r', 1.4)
+        //   .attr('cx', function(d){return projection([d.properties.center[0], d.properties.center[1]])[0]})
+        //   .attr('cy', function(d){return projection([d.properties.center[0], d.properties.center[1]])[1]});
           
 
       // var nhoodtexts = svg2.selectAll('.nhoodlabel')
@@ -187,25 +188,25 @@
       //     .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
       //     .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
 
-      // var controlBlocks = svg2.selectAll(".controlBlock")
-      //     .data(buildings.features)
-      //     .enter().append("path")
+      var controlBlocks = svg2.selectAll(".controlBlock")
+          .data(buildings.features)
+          .enter().append("path")
           
-      //     .attr("class", "controlBlock")
-      //     .attr("fill", 'white')
-      //     .attr("fill-opacity", 0.0)
-      //     .attr("id", function(d){return d.id;})
-      //     .attr("d",path)
-      //     .attr("stroke", 'gray')
-      //     .attr("stroke-opacity", 0.0);
+          .attr("class", "controlBlock")
+          .attr("fill", 'white')
+          .attr("fill-opacity", 0.0)
+          .attr("id", function(d){return d.id;})
+          .attr("d",path)
+          .attr("stroke", 'gray')
+          .attr("stroke-opacity", 0.0);
 
-      // centerCircle = svg2.selectAll('.centerCircle')
-      //     .data(buildings.features)
-      //     .enter().append('text')
-      //     .text("X")
-      //     .attr('class','centerCircle');
+      centerCircle = svg2.selectAll('.centerCircle')
+          .data(buildings.features)
+          .enter().append('text')
+          .text("X")
+          .attr('class','centerCircle');
 
-      // initHandlers();
+      initHandlers();
     } 
 
     function drawCenterCircle(lng,lat){
@@ -243,8 +244,8 @@
           <div id="svgContainer">
 <!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
           </div>
-          <!-- <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/cambridge3.png"> -->
-          <!-- <div id="svgControlContainer"></div>-->
+          <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">
+          <<div id="svgControlContainer"></div>
           <p id='hover_value'></p>
       </div>
 
@@ -257,10 +258,10 @@
             <a href="http://media.mit.edu"> MIT Media Lab </a>
           </div>
 
-        <div id='textContainer'>
+        <div id='textContainerManhattan'>
           
-          <p id='dataSentence'> From this location, <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> of the city can be reached fastest by walking </span>,</br>
-          <span id='bicycling' style="color:#fdae61"> <span id='bicycling_value'> </span> by bicycling </span>, <span id='transit' style="color:#2b83ba" > <span id='transit_value'> </span> by taking public transit </span>, and <span id='driving' style="color:#d7191c"> <span id='driving_value'> </span> by driving. </span>
+          <p id='dataSentence'> From this location, <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> of the city can be reached </br> fastest by walking </span>,
+          <span id='bicycling' style="color:#fdae61"> <span id='bicycling_value'> </span> by bicycling </span>, <span id='transit' style="color:#2b83ba" > <span id='transit_value'> </span> by taking public </br> transit </span>, and <span id='driving' style="color:#d7191c"> <span id='driving_value'> </span> by driving. </span>
           
            </p>
         </div>
@@ -286,7 +287,7 @@
         <p style="color:#898989;"> Data Sources </p>
         <ol>
           <li><a href="https://developers.google.com/maps/documentation/javascript/directions">Google Maps Directions Services API </a></li>
-          <li><a href="http://www.cambridgema.gov/GIS/gisdatadictionary/Demographics/Census_2010/DEMOGRAPHICS_BlockGroups2010.aspx">2010 US CENSUS Block Groups - Cambridge, MA </a></li>
+          <li><a href="https://nycopendata.socrata.com/">2010 US CENSUS Block Groups - NYC Open Data Portal </a></li>
         </ol>
 
         </div>
