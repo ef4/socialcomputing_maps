@@ -28,7 +28,7 @@
     
     <script type="text/javascript">
     $('.container').css('width', '950');
-    var scaleFactor = 1.0;
+    var scaleFactor = 1.1;
     var mapCenter = [-71.123625,42.372115];
     var labelXoffset = 140;
     var labelYoffset = 25;
@@ -38,7 +38,7 @@
     var structuredOffset = false;
     var buildings;
     var blurConstant = 0.3;
-    var moveDown = 10;
+    var moveDown = 38;
     var moveRight = 20;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
@@ -63,16 +63,21 @@
            roadsGJS = roads;
             drawRoads();
 
-           d3.json('{{URL_PREFIX}}static/data/Manhattan/transportation/bestMode_values7.json', function(values){
-              dataValues = values; 
-              initOpacityScales();
-              var numBlocks = buildings.features.length;
-              var randomBlock = Math.floor(Math.random() * numBlocks-1) + 1;
-              originID = randomBlock;
-              processBlocks(randomBlock);
+             d3.csv('{{URL_PREFIX}}static/data/Manhattan/neighborhoods.csv', function(error, csvdata){
+              neighborhoods = csvdata;
+              drawNHoodTags();
 
 
+               d3.json('{{URL_PREFIX}}static/data/Manhattan/transportation/bestMode_values7.json', function(values){
+                  dataValues = values; 
+                  initOpacityScales();
+                  var numBlocks = buildings.features.length;
+                  var randomBlock = Math.floor(Math.random() * numBlocks-1) + 1;
+                  originID = randomBlock;
+                  processBlocks(randomBlock);
 
+
+              });
             });
           });
         });
@@ -105,7 +110,7 @@
         if (dataValues[originID][this_id]['bestVal'] != undefined){
           $('#hover_value').css('display', 'inline');
           $('#hover_value').offset({left:$(this).offset().left - 20, top: $(this).offset().top - 20});
-          $('#hover_value').html(convertTime(dataValues[originID][this_id]['bestVal']) + ' by ' + dataValues[originID][this_id]['bestMode']);
+          $('#hover_value').html('&nbsp'+ convertTime(dataValues[originID][this_id]['bestVal']) + ' by ' + dataValues[originID][this_id]['bestMode'] + '&nbsp');
         } else {
           $('#hover_value').css('display', 'none');
         } 
@@ -120,7 +125,6 @@
       svg.selectAll('.block').each(function(){
           var block_id = parseInt($(this).attr('id'));
           if (block_id != this_id){
-            console.log(this_id, block_id);
             var bestMode = dataValues[this_id][block_id]['bestMode'];
             var bestVal = dataValues[this_id][block_id]['bestVal'];
             var colorValue = cmap[bestMode];
@@ -132,7 +136,7 @@
           } else {
             d3.select(this)
               .attr('fill',cmap['walking'])
-              .attr('stroke-width',1.8)
+              .attr('stroke-width',0.8)
               .attr('stroke','black').attr('stroke-opacity',1.0)
               .attr('fill-opacity',0.5);
           }
@@ -235,6 +239,17 @@
         .attr("stroke", "white")
         .attr("fill", "blue")
         .attr("fill-opacity", 0.0);
+    }
+
+    function drawNHoodTags(){
+
+      svg2.selectAll('.nhoodlabel')
+        .data(neighborhoods)
+        .enter().append('text')
+          .attr('class','nhoodlabel')
+          .text(function(d){return d.name;})
+          .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0]-20})
+          .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
     }
 
     </script>

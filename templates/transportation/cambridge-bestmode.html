@@ -100,7 +100,7 @@
         if (dataValues[originID][this_id]['bestVal'] != undefined){
           $('#hover_value').css('display', 'inline');
           $('#hover_value').offset({left:$(this).offset().left - 20, top: $(this).offset().top - 20});
-          $('#hover_value').html(convertTime(dataValues[originID][this_id]['bestVal']) + ' by ' + dataValues[originID][this_id]['bestMode']);
+          $('#hover_value').html('&nbsp'+ convertTime(dataValues[originID][this_id]['bestVal']) + ' by ' + dataValues[originID][this_id]['bestMode'] + '&nbsp');
         } else {
           $('#hover_value').css('display', 'none');
         } 
