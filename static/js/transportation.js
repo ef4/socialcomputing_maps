@@ -79,6 +79,13 @@ function setProjection(){
         .attr('width', $('#svgControlContainer').width());
 }
 
+function convertTime(timeInSeconds){
+  var minutes = Math.round(timeInSeconds / 60);
+  var seconds = timeInSeconds % 60;
+  return minutes + ' minutes';
+}
+
+
 function drawMap(){
   svg.selectAll(".map")
   .data(geoJSON.features)

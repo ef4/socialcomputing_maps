@@ -11,6 +11,7 @@
     <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 
     <!-- Google Analytics -->
@@ -143,12 +144,6 @@
         });
     }
 
-    function convertTime(timeInSeconds){
-      var minutes = Math.round(timeInSeconds / 60);
-      var seconds = timeInSeconds % 60;
-      return minutes + ' minutes ' + seconds + ' seconds';
-    }
-
     function drawBlocks(){
 
 
@@ -222,6 +217,8 @@
     }
 
     function drawRoads(){
+      $('#building_layer').empty();
+
       var svg3 = d3.select("#building_layer").append("svg")
         .attr('height',$('#building_layer').height())
         .attr('width', $('#building_layer').width());
@@ -261,10 +258,10 @@
 
         <div id='mainframe'>
           <div id="svgContainer">
-             
           </div>
           <!--  id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">-->
-          <div id="building_layer"></div>
+          <div id="building_layer"><i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
+</div>
           <div id="svgControlContainer"></div>
           <p id='hover_value'></p>
       </div>

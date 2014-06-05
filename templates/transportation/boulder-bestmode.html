@@ -53,7 +53,7 @@
             //drawMapBoulder();
             initialize();
 
-        d3.json('{{URL_PREFIX}}static/data/Boulder/transportation/block_groups_processed_new2.geojson', function(geojson2){
+        d3.json('{{URL_PREFIX}}static/data/Boulder/transportation/block_groups_processed_new.geojson', function(geojson2){
               buildings = geojson2;
               drawBlocks();
               
@@ -142,13 +142,7 @@
           
         });
     }
-
-    function convertTime(timeInSeconds){
-      var minutes = Math.round(timeInSeconds / 60);
-      var seconds = timeInSeconds % 60;
-      return minutes + ' minutes ' + seconds + ' seconds';
-    }
-
+    
     function drawBlocks(){
 
       var filter = svg.append("defs")
