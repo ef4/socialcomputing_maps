@@ -63,13 +63,15 @@
            roadsGJS = roads;
             drawRoads();
 
-           d3.json('{{URL_PREFIX}}static/data/Manhattan/transportation/bestMode_values2.json', function(values){
+           d3.json('{{URL_PREFIX}}static/data/Manhattan/transportation/bestMode_values7.json', function(values){
               dataValues = values; 
               initOpacityScales();
               var numBlocks = buildings.features.length;
               var randomBlock = Math.floor(Math.random() * numBlocks-1) + 1;
               originID = randomBlock;
               processBlocks(randomBlock);
+
+
 
             });
           });
@@ -118,7 +120,7 @@
       svg.selectAll('.block').each(function(){
           var block_id = parseInt($(this).attr('id'));
           if (block_id != this_id){
-            //console.log(this_id, block_id);
+            console.log(this_id, block_id);
             var bestMode = dataValues[this_id][block_id]['bestMode'];
             var bestVal = dataValues[this_id][block_id]['bestVal'];
             var colorValue = cmap[bestMode];
@@ -217,6 +219,7 @@
     }
 
     function drawRoads(){
+      
       $('#building_layer').empty();
 
       var svg3 = d3.select("#building_layer").append("svg")

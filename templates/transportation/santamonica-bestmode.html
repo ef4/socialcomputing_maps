@@ -111,6 +111,17 @@
       $('.controlBlock').on('mouseleave', function(){
         $('#hover_value').css('display','none');
       });
+
+      svg2.selectAll('.road')
+        .on('mouseover',function(d){
+          console.log('d.properties.name');
+          $('#street_name').css('display', 'inline');
+          $('#street_name').offset({left:$(this).offset().left - 20, top: $(this).offset().top - 20});
+          $('#street_name').html(d.properties.name);
+        })
+        .on('mouseout',function(d){
+          $('#street_name').css('display','none');
+        });
     }
 
     function processBlocks(this_id){
@@ -216,14 +227,15 @@
     }
 
     function drawRoads(){
-      var svg3 = d3.select("#building_layer").append("svg")
-        .attr('height',$('#building_layer').height())
-        .attr('width', $('#building_layer').width());
+      // var svg3 = d3.select("#building_layer").append("svg")
+      //   .attr('height',$('#building_layer').height())
+      //   .attr('width', $('#building_layer').width());
 
-      svg3.selectAll(".map")
+      svg2.selectAll(".road")
         .data(roadsGJS.features)
         .enter().append("path")
         .attr("d", path)
+        .attr("class","road")
         .attr("stroke-opacity", 0.8)
         .attr('stroke-width',0.5)
         .attr("stroke", "white")
@@ -255,10 +267,11 @@
 
         <div id='mainframe'>
           <div id="svgContainer"></div>
-          <!--  id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">-->
+          <!--<img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/santa-monica.png">-->
           <div id="building_layer"></div>
           <div id="svgControlContainer"></div>
           <p id='hover_value'></p>
+          <p id='street_name'></p>
       </div>
 
           <div id="footer">

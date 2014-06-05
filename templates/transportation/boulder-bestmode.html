@@ -58,9 +58,9 @@
               drawBlocks();
               
 
-          // d3.csv('{{URL_PREFIX}}static/data/Manhattan/transportation/neighborhoods.csv', function(error, csvdata){
-          //  neighborhoods = csvdata;
-          //   drawBlocks();
+          d3.json('{{URL_PREFIX}}static/data/Boulder/roads_processed.geojson', function(roads){
+           roadsGJS = roads;
+              drawRoads();
 
            d3.json('{{URL_PREFIX}}static/data/Boulder/transportation/bestMode_values5.json', function(values){
               dataValues = values; 
@@ -71,7 +71,7 @@
               processBlocks(randomBlock);
 
             });
-          //});
+          });
         });
       });
     });
@@ -117,7 +117,6 @@
       svg.selectAll('.block').each(function(){
           var block_id = $(this).attr('id');
           if (block_id != this_id){
-            console.log(block_id, this_id);
             var bestMode = dataValues[this_id][block_id]['bestMode'];
             var bestVal = dataValues[this_id][block_id]['bestVal'];
             var colorValue = cmap[bestMode];
@@ -226,6 +225,24 @@
         .attr('dy', function(d){return projection([lng,lat])[1]});
     }
 
+    function drawRoads(){
+      $('#building_layer').empty();
+
+      var svg3 = d3.select("#building_layer").append("svg")
+        .attr('height',$('#building_layer').height())
+        .attr('width', $('#building_layer').width());
+
+      svg3.selectAll(".map")
+        .data(roadsGJS.features)
+        .enter().append("path")
+        .attr("d", path)
+        .attr("stroke-opacity", 0.8)
+        .attr('stroke-width',0.5)
+        .attr("stroke", "white")
+        .attr("fill", "blue")
+        .attr("fill-opacity", 0.0);
+    }
+
 
     </script>
     </head>
@@ -251,7 +268,8 @@
         <div id='mainframe'>
           
           <div id="svgContainer"></div>
-          <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/boulder2.png">
+          <!--<img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/boulder2.png">-->
+          <div id="building_layer"></div>
           <div id="svgControlContainer"></div>
           <p id='hover_value'></p>
       </div>
