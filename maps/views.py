@@ -92,8 +92,8 @@ def sanfrancisco_bestmode(request):
 def cambridge_bestmode2(request):
 	return render_to_response('cambridge-bestmode2.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
-def cambridge_efficiency_blocks(request):
-	return render_to_response('cambridge-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+def cambridge_transefficiency(request):
+	return render_to_response('transportation/cambridge-efficiency.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def manhattan_efficiency_blocks(request):
 	return render_to_response('manhattan-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
