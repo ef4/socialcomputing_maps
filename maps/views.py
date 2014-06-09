@@ -83,6 +83,12 @@ def boulder_bestmode(request):
 def santamonica_bestmode(request):
 	return render_to_response('transportation/santamonica-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def portland_bestmode(request):
+	return render_to_response('transportation/portland-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def sanfrancisco_bestmode(request):
+	return render_to_response('transportation/sanfrancisco-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def cambridge_bestmode2(request):
 	return render_to_response('cambridge-bestmode2.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 

@@ -13,6 +13,7 @@ function initialize(){
         essayBoxShown = !essayBoxShown;
         if (essayBoxShown) {
             $('#mainframe').css('opacity',0.25);
+            $('#textContainer').css('opacity',0.1);
             $('#essayBox').css('display', 'block');
             $('#essayBox').animate({'opacity':1.0}, 300);
             $(this).text(' ... view map ');
@@ -54,7 +55,7 @@ function closeEssayBox(){
   })
   essayBoxShown = false;
   $('#mainframe').css('opacity',1.0);
-
+  $('#textContainer').css('opacity',1.0)
 }
 
 
