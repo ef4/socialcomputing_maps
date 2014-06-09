@@ -63,9 +63,9 @@
            roadsGJS = roads;
             drawRoads();
 
-          //    d3.csv('{{URL_PREFIX}}static/data/San Francisco/neighborhoods.csv', function(error, csvdata){
-          //     neighborhoods = csvdata;
-          //     drawNHoodTags();
+             d3.csv('{{URL_PREFIX}}static/data/San Francisco/neighborhoods.csv', function(error, csvdata){
+              neighborhoods = csvdata;
+              drawNHoodTags();
 
 
                d3.json('{{URL_PREFIX}}static/data/San Francisco/transportation/bestMode_values7.json', function(values){
@@ -79,7 +79,7 @@
 
               });
              });
-          // });
+           });
         });
       });
     });
