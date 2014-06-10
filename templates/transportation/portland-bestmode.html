@@ -37,8 +37,8 @@
     var structuredOffset = false;
     var buildings;
     var blurConstant = 0.3;
-    var moveDown = 0;
-    var moveRight = 20;
+    var moveDown = 10;
+    var moveRight = 50;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
     var centerCircle;
@@ -58,7 +58,7 @@
               buildings = geojson2;
               drawBlocks();
 
-          d3.json('{{URL_PREFIX}}static/data/Portland/streets.geojson', function(roads){
+          d3.json('{{URL_PREFIX}}static/data/Portland/roads_processed.geojson', function(roads){
            roadsGJS = roads;
             drawRoads();
 
