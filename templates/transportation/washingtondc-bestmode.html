@@ -152,7 +152,6 @@
 
     function drawBlocks(){
 
-
       var filter = svg.append("defs")
         .append("filter")
           .attr("id", "blur")
@@ -189,6 +188,7 @@
         .x(function(d){return d[0];})
         .y(function(d){return d[1];});
 
+      $("#spinningwheel").remove();
       initHandlers();
     } 
 
@@ -200,9 +200,7 @@
     }
 
     function drawRoads(){
-      
-      $('#building_layer').empty();
-
+  
       var svg3 = d3.select("#building_layer").append("svg")
         .attr('height',$('#building_layer').height())
         .attr('width', $('#building_layer').width());
@@ -255,9 +253,8 @@
           <div id="svgContainer">
           </div>
           <!--  id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">-->
-          <div id="building_layer"><!-- <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
-</div>
-          <div id="svgControlContainer"></div>
+          <div id="building_layer"></div>
+          <div id="svgControlContainer"><i id='spinningwheel' style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i></div>
           <p id='hover_value'></p>
       </div>
 
