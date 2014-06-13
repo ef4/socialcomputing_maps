@@ -59,7 +59,7 @@
               buildings = geojson2;
               drawBlocks();
 
-          d3.json('{{URL_PREFIX}}static/data/Washington/waterbodies.geojson', function(roads){
+          d3.json('{{URL_PREFIX}}static/data/Washington/waterbodies_processed.geojson', function(roads){
            roadsGJS = roads;
             drawRoads();
 
@@ -270,13 +270,13 @@
             <a href="http://media.mit.edu"> MIT Media Lab </a>
           </div>
 
-        <!-- <div id='textContainer'>
+        <div id='textContainer'>
           
           <p id='dataSentence'> From this location, <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> of the city can be reached </br> fastest by walking </span>,
           <span id='bicycling' style="color:#fdae61"> <span id='bicycling_value'> </span> by bicycling </span>, <span id='transit' style="color:#2b83ba" > <span id='transit_value'> </span> by taking public </br> transit </span>, and <span id='driving' style="color:#d7191c"> <span id='driving_value'> </span> by driving. </span>
           
            </p>
-        </div> -->
+        </div>
 
       <div id='essayBox'>
         <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
@@ -299,7 +299,7 @@
         <p style="color:#898989;"> Data Sources </p>
         <ol>
           <li><a href="https://developers.google.com/maps/documentation/javascript/directions">Google Maps Directions Services API </a></li>
-          <li><a href="http://sfgov3.org/index.aspx?page=3959">San Francisco GIS Program </a></li>
+          <li><a href="http://dcatlas.dcgis.dc.gov/catalog/">Washington DC GIS Program </a></li>
         </ol>
 
         </div>
