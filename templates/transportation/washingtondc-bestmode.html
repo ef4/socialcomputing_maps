@@ -75,6 +75,7 @@
                   originID = randomBlock;
                   processBlocks(randomBlock);
 
+                  $("#spinningwheel").remove();
 
               //});
              });
@@ -188,7 +189,6 @@
         .x(function(d){return d[0];})
         .y(function(d){return d[1];});
 
-      $("#spinningwheel").remove();
       initHandlers();
     } 
 
