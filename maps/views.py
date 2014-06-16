@@ -98,6 +98,9 @@ def saltlakecity_bestmode(request):
 def brooklyn_bestmode(request):
 	return render_to_response('transportation/brooklyn-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def philadelphia_bestmode(request):
+	return render_to_response('transportation/philadelphia-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def cambridge_bestmode2(request):
 	return render_to_response('cambridge-bestmode2.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
