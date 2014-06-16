@@ -48,7 +48,7 @@
     var originID;
     var neighborhoods;
     var roadsGJS;
-    var edgeBlocks = [691];
+    var edgeBlocks = [691,531];
 
     $(window).load(function(){
       jQuery.getJSON('{{URL_PREFIX}}static/data/Brooklyn/boundary.geojson', function(geojson){
@@ -59,7 +59,7 @@
 
         d3.json('{{URL_PREFIX}}static/data/Brooklyn/transportation/block_groups_processed.geojson', function(geojson2){
               buildings = geojson2;
-              //drawBlocks();
+              drawBlocks();
 
           // d3.json('{{URL_PREFIX}}static/data/Brooklyn/waterfront.geojson', function(roads){
           //  roadsGJS = roads;
@@ -75,7 +75,7 @@
                   var numBlocks = buildings.features.length;
                   var randomBlock = Math.floor(Math.random() * numBlocks-1) + 1;
                   originID = randomBlock;
-                  //processBlocks(randomBlock);
+                  processBlocks(randomBlock);
 
                   $("#spinningwheel").remove();
 
@@ -296,8 +296,8 @@
         <div id='mainframe'>
           <div id="svgContainer">
           </div>
-          <!--  id='building_layer' src="{{URL_PREFIX}}static/img/transportation/manhattan2.png">-->
-          <div id="building_layer"></div>
+          <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/brooklyn.png">
+      
           <div id="svgControlContainer"><i id='spinningwheel' style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i></div>
           <p id='hover_value'></p>
       </div>
@@ -332,7 +332,7 @@
       This map is activated by selecting a specific departure point.  Once the departure point is selected, the rest of the city will be colored based on the fastest form of transportation.  Those points to which it's fastest to get to by bicycle are colored yellow, by public transit: blue, by walking: green, and by driving: red.  
       </p>
       <p>
-      To make this map, we gridded up the city at the block-group level, and then computed the time using each mode of transport from the centroid of the source block group to the centroid of the destination block group using the Google Maps API.  For driving, we added a buffer time for parking and walking, and then we compared the four resulting times and colored the block-group based on the minimum.  
+      To make this map, we gridded up the city at the CENSUS tract level, and then computed the time using each mode of transport from the centroid of the source CENSUS tract to the centroid of the destination CENSUS tract using the Google Maps API.  For driving, we added a buffer time for parking and walking, and then we compared the four resulting times and colored the block-group based on the minimum.  
       </p>
       <p>
       A more complete calculation of transportation efficiency would not only take into consideration the time it takes, but the true cost of each mode of transport, including the cost of the vehicle, the cost of fuel, and the effect on air quality.  In these calculations, walking and bicycling would cover even more area, and we will explore this in later maps.
