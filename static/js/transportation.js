@@ -92,9 +92,9 @@ function drawMap(){
   .data(geoJSON.features)
   .enter().append("path")
   .attr("d", path)
-  .attr('stroke-width',2)
-  .attr("stroke-opacity", 0.15)
-  .attr("stroke", "gray")
+  .attr('stroke-width',0.5)
+  .attr("stroke-opacity", 0.5)
+  .attr("stroke", "white")
   .attr("fill", "#CCCCCC")
   .attr("fill-opacity",0.0);
 }

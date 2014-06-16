@@ -7,7 +7,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation-wdc.css"> </style>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/transportation-bk.css"> </style>
     <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -28,17 +28,18 @@
     
     <script type="text/javascript">
     $('.container').css('width', '900');
-    var scaleFactor = 1.000;
+    var scaleFactor = 0.99;
     var mapCenter = [-71.123625,42.372115];
     var labelXoffset = 140;
     var labelYoffset = 25;
     var drawSpeed = 20;
     var segments;
+    var svg3;
     var dataValues;
     var structuredOffset = false;
     var buildings;
     var blurConstant = 0.3;
-    var moveDown = 0;
+    var moveDown =2;
     var moveRight = 100;
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
@@ -47,19 +48,20 @@
     var originID;
     var neighborhoods;
     var roadsGJS;
+    var edgeBlocks = [691];
 
     $(window).load(function(){
       jQuery.getJSON('{{URL_PREFIX}}static/data/Brooklyn/boundary.geojson', function(geojson){
             geoJSON = geojson;
             setProjection();
-            //drawMap();
+            drawBKMap();
             initialize();
 
         d3.json('{{URL_PREFIX}}static/data/Brooklyn/transportation/block_groups_processed.geojson', function(geojson2){
               buildings = geojson2;
-              drawBlocks();
+              //drawBlocks();
 
-          // d3.json('{{URL_PREFIX}}static/data/Washington/waterbodies_processed.geojson', function(roads){
+          // d3.json('{{URL_PREFIX}}static/data/Brooklyn/waterfront.geojson', function(roads){
           //  roadsGJS = roads;
           //   drawRoads();
 
@@ -73,7 +75,7 @@
                   var numBlocks = buildings.features.length;
                   var randomBlock = Math.floor(Math.random() * numBlocks-1) + 1;
                   originID = randomBlock;
-                  processBlocks(randomBlock);
+                  //processBlocks(randomBlock);
 
                   $("#spinningwheel").remove();
 
@@ -83,6 +85,22 @@
         });
       });
     });
+
+    function drawBKMap(){
+      svg3 = d3.select("#building_layer").append("svg")
+        .attr('height',$('#building_layer').height())
+        .attr('width', $('#building_layer').width());
+    svg3.selectAll(".map")
+    .data(geoJSON.features)
+    .enter().append("path")
+    .attr("d", path)
+    .attr('stroke-width',1)
+    .attr("stroke-opacity", 1.0)
+    .attr("stroke", "#CCCCCC")
+    .attr("fill", "#CCCCCC")
+    .attr("fill-opacity",0.0);
+  }
+
 
     function initOpacityScales(){
       var ranges = dataValues['ranges'];
@@ -99,8 +117,9 @@
         d3.select(previousBlock).attr('stroke','gray').attr('stroke-opacity',0.0);
       }
       $('.controlBlock').click(function(){
-        $('#hover_value').css('display','none');
         var this_id = $(this).attr('id');
+        if (edgeBlocks.indexOf(this_id) > -1) return;
+        $('#hover_value').css('display','none');
         originID = this_id;
         previousBlock = d3.select(this);
         processBlocks(this_id);      
@@ -130,9 +149,34 @@
             var bestVal = dataValues[this_id][block_id]['bestVal'];
             var colorValue = cmap[bestMode];
             d3.select(this)
-              .attr('fill', colorValue)
-              .attr('fill-opacity',opacityScales[bestMode](bestVal))
-              .attr('stroke','none').attr('stroke-opacity',0.0);
+              .attr('fill', function(d){
+                if (edgeBlocks.indexOf(d.id) > -1){
+                  return 'white';
+                } else {
+                  return colorValue;
+                }
+              })
+              .attr('fill-opacity',function(d){
+                if (edgeBlocks.indexOf(d.id) > -1){
+                  return 0.5;
+                } else{
+                  return opacityScales[bestMode](bestVal);
+                }
+              })
+              .attr('stroke',function(d){
+                if (edgeBlocks.indexOf(d.id) > -1){
+                  return 'gray';
+                } else{
+                  return 'none';
+                }
+              })
+              .attr('stroke-opacity',function(d){
+                if (edgeBlocks.indexOf(d.id) > -1){
+                  return 0.15;
+                } else{
+                  return 0;
+                }
+              });
 
           } else {
             d3.select(this)
@@ -201,7 +245,7 @@
 
     function drawRoads(){
   
-      var svg3 = d3.select("#building_layer").append("svg")
+      svg3 = d3.select("#building_layer").append("svg")
         .attr('height',$('#building_layer').height())
         .attr('width', $('#building_layer').width());
 
