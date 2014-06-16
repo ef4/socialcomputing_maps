@@ -126,7 +126,8 @@
       });
 
       $('.controlBlock').on('mouseover', function(){
-        var this_id = $(this).attr('id');
+        var this_id = parseInt($(this).attr('id'));
+        if (edgeBlocks.indexOf(this_id) > -1) return;
         if (dataValues[originID][this_id]['bestVal'] != undefined){
           $('#hover_value').css('display', 'inline');
           $('#hover_value').offset({left:$(this).offset().left - 20, top: $(this).offset().top - 20});
@@ -137,6 +138,7 @@
       });
 
       $('.controlBlock').on('mouseleave', function(){
+
         $('#hover_value').css('display','none');
       });
     }
