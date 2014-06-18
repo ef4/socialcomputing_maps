@@ -63,7 +63,7 @@
             drawNTags();
             drawBlocks();
 
-           d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/efficiency_values_drtr3.json', function(values){
+           d3.json('{{URL_PREFIX}}static/data/Cambridge/transportation/efficiency_values_drtr6.json', function(values){
               dataValues = values; 
               initOpacityScales();
               var initialBlock = dataValues['best']
@@ -91,8 +91,8 @@
 
 //rgba(43, 40, 40, 1.0)
     function initOpacityScales(){
-      var power = 0.15;
-      var avg_power = 10;
+      var power = 0.78;
+      var avg_power =7.5;
       var ranges = dataValues['ranges'];
       opacityScales['efficiency-color'] = d3.scale.pow().exponent(power).domain([ranges['efficiency'][0], ranges['efficiency'][1]]).range(["rgba(20,20,20,0.0)","#1FABF2"]);
       opacityScales['efficiency-op'] = d3.scale.pow().exponent(power).domain([ranges['efficiency'][0], ranges['efficiency'][1]]).range([0.0,1.0]);
@@ -122,7 +122,7 @@
             var block_value = dataValues[originID][this_id];
             $('#hover_value').css('display', 'inline');
             $('#hover_value').offset({left:$(this).offset().left - 50, top: $(this).offset().top - 20});
-            $('#hover_value').html('&nbsp'+ 'Public Transit is &nbsp' + block_value + '&nbsp times faster than Driving'+'&nbsp');
+            $('#hover_value').html('&nbsp'+ 'This location has a transit efficiency score of  &nbsp' + block_value.toFixed(1) + '&nbsp out of 10'+'&nbsp');
           } else {
             $('#hover_value').css('display', 'none');
           }
@@ -291,7 +291,7 @@
                     <span id="mapClass" class="title-keyword"> Cambridge </span> 
                 </h1>
                 <div class="subtitle">
-                    How does Public transportation compare to driving? &nbsp <b>Click on the map to explore.</b><span id="showMore"> ... more </span>
+                    What is the efficiency of the public transport network for each neighborhood? &nbsp <b>Click on the map to explore.</b><span id="showMore"> ... more </span>
                 </div>
                 <!-- <p  id='introMsg'>Click on the map to explore.</p> -->
           </div>
@@ -317,10 +317,10 @@
             <a href="http://media.mit.edu"> MIT Media Lab </a>
           </div>
 
-        <div id='textContainer'>
+<!--         <div id='textContainer'>
           <p class='mode' style='color:#ED7D05;'> Show most connected areas by Public Transit </p>
         </div>
-
+ -->
       <div id='essayBox'>
         <div id='essayBox-close' class="glyphicon glyphicon-remove"></div>
         <div id='essayContent'>

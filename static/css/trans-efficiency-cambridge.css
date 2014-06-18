@@ -210,7 +210,7 @@ body{
 
 #textContainer{
   position: relative;
-  z-index: 8;
+  z-index: 4;
   float: left;
   bottom:60px;
   font-family: 'EB Garamond', serif;
@@ -218,6 +218,15 @@ body{
   font-color: white;
   font-size: 15px;
   color: white;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px #545454 solid;
+  height: 24px;
+}
+
+#textContainer:hover{
+  background-color: #323232;
 }
 
 .mode{
