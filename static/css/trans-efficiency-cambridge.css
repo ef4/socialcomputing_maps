@@ -33,13 +33,15 @@ body{
 }
 
 #hover_value{
+  display: none;
   position: relative;
-  height: 15px;
+  height: 18px;
   z-index: 10;
   font-size: 14px;
   font-family: 'EB Garamond', serif;
   font-weight: lighter;
-  background-color: white;
+  background-color: rgba(25,25,25,0.8);
+  color: #1FABF2;
 }
 
 .nhoodlabel{
@@ -125,6 +127,7 @@ body{
 
 .title-container .title-text {
     margin-left: 10px;
+    color:rgba(225,225,225,0.9);
 }
 
 .title-container #showMore {
@@ -135,17 +138,13 @@ body{
 
 .title-text .title {
     margin-top: 0px; 
-    margin-bottom:0px
+    margin-bottom:0px;
 }
 
 .title-text .subtitle {
     font-size: 16px;
-    color: gray;
 }
 
-.title-keyword {
-    color: #545454;
-}
 
 .spacer{
   height: 1px;
@@ -213,26 +212,25 @@ body{
   position: relative;
   z-index: 8;
   float: left;
-  bottom:90px;
+  bottom:60px;
   font-family: 'EB Garamond', serif;
-  font-size: 15px;
   font-weight: lighter;
+  font-color: white;
+  font-size: 15px;
+  color: white;
 }
 
-#textContainerManhattan{
-  position: relative;
-  z-index: 8;
-  float: left;
-  bottom:105px;
-  font-family: 'EB Garamond', serif;
+.mode{
+  cursor: pointer;
   font-size: 15px;
-  font-weight: lighter;
 }
+
 
 #dataSentence{
   display: none;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 15px;
+  color: white;
 }
 
 
