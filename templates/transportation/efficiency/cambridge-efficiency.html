@@ -11,6 +11,7 @@
     <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 
     <!-- Google Analytics -->
@@ -301,8 +302,8 @@
         <div id='mainframe'>
           
           <div id="svgContainer">
-<!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i> -->
-          </div>
+<!--             <i style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
+ -->          </div>
           <!-- <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/cambridge3.png">
           <div id="svgControlContainer"></div> -->
           <p id='hover_value'></p>
@@ -328,7 +329,7 @@
       Public transit is one of the most equitable and environmentally sustainable forms of urban transportation.  Robust public transit infrastructures can free us from using cars, lessen pollution, ease congestion, and empower communities.
       </p>
       <p>
-      This map visualizes the efficiency of the public transit infrastructure for different neighborhoods in the city.  For each point in the city, we query the times it takes to reach every other point by riding public transit and by driving a car.  We then divide the former with latter. This ratio represents the efficiency of a transit system. Darker areas are transit deserts where cars are a necessity, while lighter areas are places where public transit represents an efficient alternative.  
+      This map visualizes the efficiency of the public transit infrastructure for different neighborhoods in the city. For each point in the city, we query the times it takes to reach every other point by riding public transit and by driving a car. We then divide the former with latter. This ratio represents the efficiency of a transit system. We normalize each scores by dividing it by the maximum ratio in a city and multiplying by 10, giving a relative transit efficiency score for each neighborhood.  Darker areas (closer to 0) are transit deserts where cars are a necessity, while lighter areas (closer to 10) are places where public transit represents a more viable alternative.  
       </p>
       <p>
       We believe that a vibrant public transportation network is an essential feature of the modern city, and we hope these maps can contribute to a discussion around the future of these networks. 
