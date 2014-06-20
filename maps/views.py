@@ -110,6 +110,9 @@ def cambridge_transefficiency(request):
 def sanfrancisco_transefficiency(request):
 	return render_to_response('transportation/efficiency/sanfrancisco-efficiency.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def manhattan_transefficiency(request):
+	return render_to_response('transportation/efficiency/manhattan-efficiency.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def manhattan_efficiency_blocks(request):
 	return render_to_response('manhattan-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
