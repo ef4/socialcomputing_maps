@@ -119,6 +119,9 @@ def washingtondc_transefficiency(request):
 def brooklyn_transefficiency(request):
 	return render_to_response('transportation/efficiency/brooklyn-efficiency.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def santamonica_transefficiency(request):
+	return render_to_response('transportation/efficiency/santamonica-efficiency.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def manhattan_efficiency_blocks(request):
 	return render_to_response('manhattan-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
