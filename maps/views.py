@@ -101,6 +101,9 @@ def brooklyn_bestmode(request):
 def philadelphia_bestmode(request):
 	return render_to_response('transportation/philadelphia-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
+def chicago_bestmode(request):
+	return render_to_response('transportation/chicago-bestmode.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
 def cambridge_bestmode2(request):
 	return render_to_response('cambridge-bestmode2.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
@@ -127,6 +130,9 @@ def boulder_transefficiency(request):
 
 def philadelphia_transefficiency(request):
 	return render_to_response('transportation/efficiency/philadelphia-efficiency.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
+
+def chicago_transefficiency(request):
+	return render_to_response('transportation/efficiency/chicago-efficiency.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
 
 def manhattan_efficiency_blocks(request):
 	return render_to_response('manhattan-efficiency-blocks.html', {'URL_PREFIX':url_config.get_URL_PREFIX()})
