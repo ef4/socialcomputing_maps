@@ -137,7 +137,7 @@
             d3.select(this)
               .attr('fill', function(d){
                 if (edgeBlocks.indexOf(d.id) > -1){
-                  return 'grey';
+                  return '#CCCCCC';
                 } else {
                   return colorValue;
                 }
@@ -151,7 +151,7 @@
               })
               .attr('stroke',function(d){
                 if (edgeBlocks.indexOf(d.id) > -1){
-                  return 'gray';
+                  return '#CCCCCC';
                 } else{
                   return 'none';
                 }
