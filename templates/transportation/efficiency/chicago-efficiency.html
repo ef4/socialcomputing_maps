@@ -66,7 +66,7 @@
             //drawRoads();
 
 
-           d3.json('{{URL_PREFIX}}static/data/Chicago/transportation/efficiency_values_drtr8.json', function(values){
+           d3.json('{{URL_PREFIX}}static/data/Chicago/transportation/efficiency_values_drtr10.json', function(values){
               dataValues = values; 
               initOpacityScales();
               var initialBlock = dataValues['best']
@@ -96,11 +96,11 @@
 
 //rgba(43, 40, 40, 1.0)
     function initOpacityScales(){
-      var power = 1.8;
-      var avg_power =7.5;
+      var power = 0.8;
+      var avg_power =4;
       var ranges = dataValues['ranges'];
-      opacityScales['efficiency-color'] = d3.scale.pow().exponent(power).domain([1, 6]).range(["#0A86A1","#07C8F2"]);
-      opacityScales['efficiency-op'] = d3.scale.pow().exponent(power).domain([1, 6]).range([0.0,1.5]);
+      opacityScales['efficiency-color'] = d3.scale.pow().exponent(power).domain([1, 7]).range(["#0A86A1","#07C8F2"]);
+      opacityScales['efficiency-op'] = d3.scale.pow().exponent(power).domain([1, 7]).range([0.0,1.5]);
       opacityScales['avg-color'] = d3.scale.pow().exponent(avg_power).domain([ranges['avg'][0], ranges['avg'][1]]).range(['#ED7D05','#ED7D05']);
       opacityScales['avg-op'] = d3.scale.pow().exponent(avg_power).domain([ranges['avg'][0], ranges['avg'][1]]).range([0.0,1.0]);
     }
@@ -111,9 +111,13 @@
         d3.select(previousBlock).attr('stroke','gray').attr('stroke-opacity',0.0);
       }
       $('.block').click(function(){
+
+
         if (mode != 'average'){
           $('#hover_value').css('display','none');
           var this_id = $(this).attr('id');
+          var block_value = dataValues[originID][this_id];
+          if (block_value > 10) {return}
           console.log('id = ' + this_id);
           originID = this_id;
           previousBlock = d3.select(this);
@@ -126,6 +130,7 @@
         if (mode != 'average'){
           if (dataValues[originID][this_id] != undefined){
             var block_value = dataValues[originID][this_id];
+            if (block_value > 10) {return}
             $('#hover_value').css('display', 'inline');
             $('#hover_value').offset({left:$(this).offset().left - 50, top: $(this).offset().top - 20});
             $('#hover_value').html('&nbsp'+ 'This location has a transit efficiency score of  &nbsp' + block_value.toFixed(1) + '&nbsp out of 10'+'&nbsp');
@@ -178,9 +183,14 @@
           if (block_id != this_id){
 
             var block_value = dataValues[this_id][block_id];
-            
-            var colorValue= opacityScales['efficiency-color'](block_value);
-            var opacityValue = opacityScales['efficiency-op'](block_value);
+            if (block_value > 10){ 
+              var colorValue= '#0A86A1';
+              var opacityValue = 0.1;
+            }
+            else {
+              var colorValue= opacityScales['efficiency-color'](block_value);
+              var opacityValue = opacityScales['efficiency-op'](block_value);
+            }
             d3.select(this)
               .attr('fill', colorValue)
               .attr('fill-opacity',opacityValue);
