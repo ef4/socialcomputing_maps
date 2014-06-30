@@ -96,11 +96,11 @@
 
 //rgba(43, 40, 40, 1.0)
     function initOpacityScales(){
-      var power = 0.8;
-      var avg_power =4;
+      var power = 3.0;
+      var avg_power =9.0;
       var ranges = dataValues['ranges'];
-      opacityScales['efficiency-color'] = d3.scale.pow().exponent(power).domain([1, 7]).range(["#0A86A1","#07C8F2"]);
-      opacityScales['efficiency-op'] = d3.scale.pow().exponent(power).domain([1, 7]).range([0.0,1.5]);
+      opacityScales['efficiency-color'] = d3.scale.pow().exponent(power).domain([1, 10]).range(["#0A86A1","#07C8F2"]);
+      opacityScales['efficiency-op'] = d3.scale.pow().exponent(power).domain([1, 10]).range([0.0,1.5]);
       opacityScales['avg-color'] = d3.scale.pow().exponent(avg_power).domain([ranges['avg'][0], ranges['avg'][1]]).range(['#ED7D05','#ED7D05']);
       opacityScales['avg-op'] = d3.scale.pow().exponent(avg_power).domain([ranges['avg'][0], ranges['avg'][1]]).range([0.0,1.0]);
     }
@@ -225,7 +225,7 @@
     function drawBlocks(){
 
       $('body').css('background-color', 'rgba(20,20,20,0.85)');
-
+      var blurConstant = 0.4;
       var filter = svg.append("defs")
         .append("filter")
           .attr("id", "blur")
