@@ -64,7 +64,7 @@
             //drawRoads();
 
 
-           d3.json('{{URL_PREFIX}}static/data/Brooklyn/transportation/efficiency_values_drtr7.json', function(values){
+           d3.json('{{URL_PREFIX}}static/data/Brooklyn/transportation/efficiency_values_drtr10.json', function(values){
               dataValues = values; 
               initOpacityScales();
               var initialBlock = dataValues['best']
@@ -94,11 +94,11 @@
 
 //rgba(43, 40, 40, 1.0)
     function initOpacityScales(){
-      var power = 0.5;
+      var power = 3.5;
       var avg_power =7.5;
       var ranges = dataValues['ranges'];
-      opacityScales['efficiency-color'] = d3.scale.pow().exponent(power).domain([1, 6]).range(["#0A86A1","#07C8F2"]);
-      opacityScales['efficiency-op'] = d3.scale.pow().exponent(power).domain([1, 6]).range([0.0,1.5]);
+      opacityScales['efficiency-color'] = d3.scale.pow().exponent(power).domain([1, 10]).range(["#0A86A1","#07C8F2"]);
+      opacityScales['efficiency-op'] = d3.scale.pow().exponent(power).domain([1, 10]).range([0.0,1.5]);
       opacityScales['avg-color'] = d3.scale.pow().exponent(avg_power).domain([ranges['avg'][0], ranges['avg'][1]]).range(['#ED7D05','#ED7D05']);
       opacityScales['avg-op'] = d3.scale.pow().exponent(avg_power).domain([ranges['avg'][0], ranges['avg'][1]]).range([0.0,1.0]);
     }
