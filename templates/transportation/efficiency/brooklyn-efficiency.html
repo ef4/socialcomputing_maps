@@ -7,7 +7,7 @@
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <script type="text/javascript" src="{{URL_PREFIX}}static/js/jquery.tipsy.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/trans-efficiency-cambridge.css"> </style>
+    <link rel="stylesheet" type="text/css" href="{{URL_PREFIX}}static/css/trans-efficiency-brooklyn.css"> </style>
     <script type="text/javascript" src='{{URL_PREFIX}}static/js/transportation.js'></script>
     <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -43,6 +43,7 @@
     var cmap = {'walking':"#4dac26", 'transit': "#2b83ba", 'bicycling': "#fdae61", 'driving': "#d7191c"};
     var opacityScales={};
     var centerCircle;
+    var controlBlocks;
     var previousBlock;
     var originID;
     var neighborhoods;
@@ -108,7 +109,7 @@
       if (previousBlock != undefined){
         d3.select(previousBlock).attr('stroke','gray').attr('stroke-opacity',0.0);
       }
-      $('.block').click(function(){
+      $('.controlBlock').click(function(){
         if (mode != 'average'){
           $('#hover_value').css('display','none');
           var this_id = $(this).attr('id');
@@ -118,7 +119,7 @@
         }
       });
 
-      $('.block').on('mouseover', function(){
+      $('.controlBlock').on('mouseover', function(){
         var this_id = $(this).attr('id');
         if (mode != 'average'){
           if (dataValues[originID][this_id] != undefined){
@@ -132,7 +133,7 @@
         } 
       });
 
-      $('.block').on('mouseleave', function(){
+      $('.controlBlock').on('mouseleave', function(){
         $('#hover_value').css('display','none');
       });
 
@@ -231,13 +232,13 @@
           .attr("stroke", 'black')
           .attr("stroke-opacity", 0.0);
 
-      var nhoodtexts = svg2.selectAll('.nhoodlabel')
-        .data(neighborhoods)
-        .enter().append('text')
-          .attr('class','nhoodlabel')
-          .text(function(d){return d.name;})
-          .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
-          .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
+      // var nhoodtexts = svg2.selectAll('.nhoodlabel')
+      //   .data(neighborhoods)
+      //   .enter().append('text')
+      //     .attr('class','nhoodlabel')
+      //     .text(function(d){return d.name;})
+      //     .attr('dx', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[0] - 10})
+      //     .attr('dy', function(d){return projection([parseFloat(d.lng), parseFloat(d.lat)])[1]});
 
       var controlBlocks = svg2.selectAll(".controlBlock")
           .data(buildings.features)
@@ -319,9 +320,8 @@
           <div id="svgContainer">
             <i id='spinningwheel' style="position: absolute; left: 500px; top:250px;" class="fa fa-spinner fa-spin fa-3x"></i>
           </div>
-<!--           <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/brooklyn.png">
- -->          <!-- <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/cambridge3.png">
-          <div id="svgControlContainer"></div> -->
+          <img id='building_layer' src="{{URL_PREFIX}}static/img/transportation/brooklyn-eff-edge.png">
+          <div id="svgControlContainer"></div>
           <p id='hover_value'></p>
       </div>
 
