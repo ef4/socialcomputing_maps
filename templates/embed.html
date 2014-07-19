@@ -1,0 +1,53 @@
+<script type="text/javascript">
+$(function(){
+  if (/embed/i.test(window.location.search)){
+    $('body').addClass('embedded');
+    var showOriginal = $(document.createElement('a'));
+    showOriginal.attr('target', 'new');
+    showOriginal.attr('href', window.location.href.replace(window.location.search, '?more=1'));
+    showOriginal.html('... more');
+    showOriginal.attr('id', 'showOriginal');
+    $('#showMore').replaceWith(showOriginal);
+  }
+  if (/more/i.test(window.location.search)){
+    setTimeout(function(){$('#showMore').click();},1000);
+  }
+});
+</script>
+
+<style type="text/css">
+  .embedded {
+    overflow: hidden;
+  }
+  .embedded .navElements {
+    display: none;
+  }
+  .embedded #footer {
+    display: none;
+  }
+  #showOriginal { color: #DE1028 }
+  .embedded .title-container {
+    margin-top: 0;
+  }
+  .title-logo {
+    display: none;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  .title-logo img { width: 100%; height: 100% }
+  .embedded .title-logo {
+    display: block;
+  }
+  .embedded > .container {
+    margin-bottom: 0;
+    width: auto !important;
+  }
+  .embedded .title {
+    font-size: 18px !important;
+  }
+  .embedded .subtitle {
+    font-size: 12px !important;
+  }
+</style>
