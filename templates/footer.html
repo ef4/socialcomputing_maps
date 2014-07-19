@@ -26,20 +26,7 @@
           f.a.q
         </a>
         |
-	<script type="text/javascript">
-	  function embedMe(){
-	    // We subtracting 48px from the height to
-	    // approximately account for embed mode not having
-	    // a footer and having a smaller title.
-	    var params = {
-	      map: window.location.href,
-	      width: $('body > .container').outerWidth(),
-	      height: $('body > .container').outerHeight() - 48
-	    };
-	    window.location.href = '/#/embed/'+encodeURIComponent(JSON.stringify(params));
-	  }
-	</script>
-	<a href="#" onclick="embedMe()">embed</a>
+	{% include "embed-link.html" %}
 	|
         <a id="ember364" class="ember-view" href="/#/contact">
           contact us

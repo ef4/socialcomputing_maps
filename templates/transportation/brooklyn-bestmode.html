@@ -274,6 +274,7 @@
     }
 
     </script>
+    {% include "embed.html" %}
     </head>
 
     <body>
@@ -304,15 +305,7 @@
           <p id='hover_value'></p>
       </div>
 
-          <div id="footer">
-            <!--<img src="/static/img/logo.png" style="width: 40px;"/> -->
-            This work is part of the <a href="http://youarehere.cc">You Are Here</a> project
-            <span class="footer-plus">+</span>
-            <a href="http://socialcomputing.media.mit.edu"> The Social Computing Group </a>
-            <span class="footer-plus">+</span>
-            <a href="http://media.mit.edu"> MIT Media Lab </a>
-          </div>
-
+	{% include "bestmode-footer.html" %}
         <div id='textContainer'>
           
           <p id='dataSentence'> From this location, <span id='walking' style="color:#4dac26" > <span id='walking_value'> </span> of the city can be reached </br> fastest by walking </span>,
